@@ -1,0 +1,74 @@
+<script setup>
+import { ref } from "vue";
+import { FastGrid } from "fastgrid-vue";
+import "../Tutorial.css";
+
+const src = ({ //. All layout and data for grid
+
+   Cfg: { 
+      AutoCookie:1+2+16, ResizingTag:3, Style:'Blue',
+      PdfUrl: "http://localhost:8000/Pdf.js?func=getpdf", //. PDF export is run on separate node server located in ./server/
+      },
+   Top:[ "AI", "Search", "Data1", "Data2", "Data4", "Data3", "Text1", "Text4", "Layout", "Text2", "Text3", "Styles", "Edit" ],
+   AI: {
+      InputHistory: "|-|What is in the current sheet?"
+                  + "|What can you do?"
+                  + "|Rename sheet Data to Old Data"
+                  + "|Copy complete cells B2:J999999 to new sheet Copy A1"
+                  + "|Move cells B8:K17 to B19"
+                  + "|Focus and color yellow B8:J17"
+                  + "|Clear the focused cells"
+                  + "|Clear background and text colors in the sheet"
+                  + "|Mark all prices higher than 500 by yellow background"
+                  + "|Duplicate the sheet to Duplicated"
+                  + "|Delete all sheets"
+                  + "|Undo it"
+                  + "|-"
+                  + "|Sort and show sheet Data by Total descending"
+                  + "|Sort and show sheet Pivot by March 2015"
+                  + "|Sort and show sheet Pivot columns by years and months descending"
+                  + "|Filter rows to show only Rabat higher than 10% in sheet Data and show it, show all parent rows with visible child rows"
+                  + "|Filter columns to show only March and April in sheet Pivot and show it, show all parent columns with visible child columns"
+                  + "|-"
+                  + "|Make this sheet presentation-ready"
+                  + "|Do executive polish pass and print-ready formatting in the sheet"
+                  + "|-"
+                  + "|Create sheet with monthly average day and night temperatures in C and F in New York Central Park in year 2023"
+                  + "|Create sheet with matrix of approximate driving distances in km between all EU capitals, sort by capital"
+                  + "|Create sheet with 50 most valuable automotive companies in 2025 with name, country, value in M USD, profit in M USD, sort by value"
+                  + "|Create sheet with matrix of today exchange rates for all convertible currencies and highlight USD, EUR, GBP, CHF, CNY, INR, JPY, KRW"
+                  + "|Create sheet with 150 most populated countries with their population in 2023 and fertility rates per year in years 2023 to 2000,\n     sort by the 2023 fertility rate column ascending; round fertility to 2 decimals, caption fertility as year only;\n     freeze and bold captions and country names"
+                  + "|-"
+                  + "|Insert image of Titanic to cell D13, 300 x 200 px"
+                  + "|Insert emoticon smile to cell B2"
+                  + "|Insert linked-in icon to cell D12, exactly on the cell right edge"
+                  + "|Generate drawing of girl with flower and set it to D9:E23"
+                  + "|Generate photo of mountains with river and insert it as background image for the whole current sheet\n      and convert all cell background colors to 60% transparency"
+      }
+   });
+
+const gridRef = ref(null); //. Grid reference received for grid, access the grid object as gridRef.value
+</script>
+
+<template>
+   <h1>7. Excel 1M rows example</h1>
+   <h5>
+      Spread sheet example opening maximal 1,000,000 rows xlsx file by default. The large xlsx file is loaded from treegrid.com.<br/>
+      Spread sheet configuration is in source vue file at <b>./src/sheet/07-excel-1M.vue</b>, 
+      XLSX file is downloaded from <b><a href="https://www.treegrid.com/FExamples/Complex/07-Excel1M/Excel1M.xlsx" target="_blank">https://www.treegrid.com/FExamples/Complex/07-Excel1M/Excel1M.xlsx</a></b>
+   </h5>
+   <p style="width:fit-content;max-width:100%;margin:0px auto 12px">
+      <b>Drop or paste any .xlsx or .csv file to the grid to open and edit it here! Or open any .xlsx or .csv file from your disk by click to 
+         <svg @click="gridRef?.ActionImport()" viewBox="0 0 17 17"><path stroke-width="1.25" d="m2.5,16h9q2,0,3.3,-2l1.4,-2q1.3,-2,-0.7,-2h-9q-2,0,-3.3,2l-1.4,2q-1.3,2,0.7,2q-2,0,-2,-2v-8q0,-2,2,-2h2q2,0,2,2v1h5q2,0,2,2v1" /><path fill="#7A8899" d="m9,9q0,-6,5,-5.5v2l2.5,-2.5l-2.5,-2.5v2q-6,0,-5,6.5"/></svg>
+      icon on toolbar. </b><br>
+      <i>The xlsx files can be opened, edited and saved (by
+      <svg @click="gridRef?.ActionExport()" viewBox="0 0 17 17"><path fill-rule="evenodd" stroke="none" fill="#7A8899" d="m0.5,0.5v16h16v-12l-4,-4zm1.5,1.5v13h1.25v-5h10.5v5h1.25v-10l-3,-3h-0.75v5h-8v-5zm5,0v4h3v-4zm-2.5,9.2v4h8v-4" /></svg>
+      or
+      <svg @click="gridRef?.ShowDialog(null,null,'Export')" viewBox="0 0 17 17"><path d="m10,0.5h-7.5v16h12v-12zv4h4m-8,3l4,6h1l-4,-6zm4,0l-4,6h1l4,-6z" /></svg>
+      icon) directly in browser, without any communication with server!</i><br>
+   </p>
+   <FastGrid 
+      :src='{ Progress:27878327, Style:"Blue", Sources:[src,"https://www.treegrid.com/FExamples/Complex/07-Excel1M/Excel1M.xlsx"] }' 
+      ref="gridRef" style="height:100%; min-height:500px; width:100%" 
+      />
+</template>

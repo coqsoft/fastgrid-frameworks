@@ -1,0 +1,57 @@
+{
+   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+   "version": 1,
+   "newProjectRoot": "projects",
+   "cli": {
+      "cache": {
+         "enabled": true,
+         "environment": "local",
+         "path": "../../node_modules/.cache/angular/fastgrid-angular-quick-start"
+      }
+   },
+   "projects": {
+      "fastgrid-angular-examples": {
+         "projectType": "application",
+         "root": "",
+         "sourceRoot": "src",
+         "prefix": "app",
+         "architect": {
+            "build": {
+               "builder": "@angular/build:application",
+               "options": {
+                  "preserveSymlinks": true,
+                  "browser": "src/main.ts",
+                  "polyfills": [ "zone.js" ],
+                  "tsConfig": "tsconfig.app.json",
+                  "assets": [ { "glob": "**/*", "input": "public" } ],
+                  "styles": [ "src/styles.css" ]
+               },
+               "configurations": {
+                  "production": {
+                     "budgets": [
+                        { "type": "initial", "maximumWarning": "4MB", "maximumError": "12MB" },
+                        { "type": "anyComponentStyle", "maximumWarning": "16kB", "maximumError": "32kB" }
+                     ],
+                     "outputHashing": "all"
+                  },
+                  "development": {
+                     "optimization": false,
+                     "extractLicenses": false,
+                     "sourceMap": { "scripts": true, "styles": true, "vendor": true }
+                  }
+               },
+               "defaultConfiguration": "production"
+            },
+            "serve": {
+               "builder": "@angular/build:dev-server",
+               "options": { "prebundle": { "exclude": [ "fastgrid-angular" ] } },
+               "configurations": {
+                  "production": { "buildTarget": "fastgrid-angular-examples:build:production" },
+                  "development": { "buildTarget": "fastgrid-angular-examples:build:development" }
+               },
+               "defaultConfiguration": "development"
+            }
+         }
+      }
+   }
+}

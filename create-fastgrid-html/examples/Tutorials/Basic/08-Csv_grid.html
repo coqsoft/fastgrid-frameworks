@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>8. CSV grid</h1>
+   <h5>Basic grid loaded from CSV data</h5>
+
+   <div class="Src">Source: <a href='08-Csv_grid.csv' target="_blank">08-Csv_grid.csv</a></div>
+   <section>
+      <fast-grid style="max-width: 500px;" Src="[{Cfg:{id:'CsvGrid',CsvHeaderRows:1,CsvHeaderCols:1},Bottom:['Data1']},'08-Csv_grid.csv']"></fast-grid>
+   </section>
+
+   <ul class="Error">
+      <li>
+         <script> if(location.protocol=="file:") document.write("<style>.Tutorial ul { display:none; } .Tutorial .Error { display:block; } </style>"); </script>
+         Do <b>not</b> run this file locally!<br />Run it from your local or remote web http server (e.g. localhost).<br>
+      </li>
+   </ul>
+   <ul>
+      <li>
+         <h4>Loading CSV</h4><br />
+         <ul>
+            <li>CSV data or its url can be directly passed to FastGrid like JSON, like <dfn>&lt;fast-grid  Src="08-Csv_grid.csv"&gt;&lt;/fast-grid&gt;</dfn></li>
+            <li>If the CSV file url has not extension <b>csv</b>, set also Format="csv" like <dfn>&lt;fast-grid  Src="[{Format:'csv',Url:'08-Csv_grid.csv'}]"&gt;&lt;/fast-grid&gt;</dfn></li>
+            <li>If passing CSV directly in string, set also Format="csv" like <dfn>&lt;fast-grid Src={Format:'csv',Data:'...'}>&lt;/fast-grid></dfn></li>
+         </ul>
+      </li>
+      <li> <h4>CSV separators</h4>
+         <ul>
+            <li>By default the input CSV has separated columns by comma, the rows by CR or LF or CRLF and quoted valued by double quote.</li>
+            <li>To specify different separators, set <b>Cfg</b> attributes <dfn>CsvRowSeparator</dfn>, <dfn>CsvValueSeparator</dfn> and <dfn>CsvQuote</dfn></li>
+            <li>For example <dfn>&lt;fast-grid Src=[{Cfg:{CsvValueSeparator:';'}},{Format:'csv',Data:'a;b;c\nd;e;f'}]>&lt;/fast-grid></dfn></li>
+         </ul>
+      </li>
+      <li>
+         <h4>CSV layout</h4>
+         <ul>
+            <li>The data rows are always created from CSV and added to default row part or to part specified by <b>Cfg</b> <dfn>CsvRows</dfn>.</li>
+            <li>By default the columns are created from CSV in default column part. It is possible to define the columns in JSON layout and set <b>Cfg</b> <dfn>CsvCols</dfn> to empty string to not create them from CSV.</li>
+            <li>It is possible to define Header rows in JSON layout or create them from first lines in CSV by <b>Cfg</b> attribute <dfn>CsvHeaderRows</dfn>.</li>
+            <li>It is possible to define Header columns in JSON layout or create them from first columns in CSV by <b>Cfg</b> attribute <dfn>CsvHeaderCols</dfn>.</li>
+         </ul>
+      </li>
+   </ul>
+</body>
+</html>

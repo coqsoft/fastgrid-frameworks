@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>7. Manipulate rows and columns</h1>
+   <h5>Selecting, adding, copying, moving, deleting, hiding, expanding and saving</h5>
+
+   <div class="Src">Source: <a href='07-Manipulate.js'>07-Manipulate.js</a></div>
+   <section>
+      <fast-grid style="max-width: 1000px; height: 700px;" Src="07-Manipulate.js"></fast-grid>
+   </section>
+
+   <ul>
+      <li><b style="color:red;">Changes in this sample are <u>not</u> saved, they are just printed to browser <u>console</u> and accepted!</b><br />
+      It is done by setting <b>SaveUrl</b>: { <b>Debug</b>:<b>2</b> }</li>
+      <li><h4>Manipulate rows</h4><br />
+      Manipulating rows is permitted by default. Moving is permitted only inside the same row part.<br />
+      To control manipulating rows set Cfg attributes <dfn>AddingRows</dfn>, <dfn>DeletingRows</dfn>, <dfn>DraggingRows</dfn>, <dfn>HidingRows</dfn>.<br />
+      To permit row tree set <dfn>Tree</dfn> attribute in the row parts where to show the tree.<br />
+      </li>
+      <li><h4>Manipulate columns</h4><br />
+      Adding and deleting columns is restricted by default. Only moving and hiding columns is permitted by default.<br />
+      To control manipulating columns set Cfg attributes <dfn>AddingCols</dfn>, <dfn>DeletingCols</dfn>, <dfn>DraggingCols</dfn>, <dfn>HidingCols</dfn>.<br />
+      To permit column tree set Cfg <dfn>ColTree</dfn>.
+      </li>
+      <li><h4>Selecting</h4><br />
+      Selecting rows is permitted by default, but selecting columns is restricted by default.<br />
+      To control selecting set Cfg attributes <dfn>SelectingRows</dfn>, <dfn>SelectingCols</dfn>.<br />
+      If the selecting is restricted, it is possible to manipulate focused rows and columns. To permit focusing more cells, set Cfg attribute <dfn>Focus</dfn> to <b>2</b> or <b>3</b>.<br />
+      To control what is shown in row (usually header) icon <b>SelectAll</b>, set Cfg attribute <dfn>SelectAllType</dfn>.<br />
+      </li>
+      <li><h4>Column icons for row manipulation</h4><br />
+      The icons can be placed to any cell in any icons, but usually are placed to column with <b>D:"Panel"</b> in <dfn>LeftIcons</dfn><br />
+      The icons are: <b>SelectRow</b>, <b>DeleteRow</b>, <b>HideRow</b>, <b>AddRow</b> to manipulate the row where the icons are placed in.<br />
+      And <b>SelectRows</b>, <b>DeleteRows</b>, <b>HideRows</b>, <b>AddRows</b> placed usually in Header row in the Panel column to manipulate all rows in grid.<br />
+      </li>
+      <li><h4>Row icons for column manipulation</h4><br />
+      The icons can be placed to any cell in any icons, but usually are placed to row with <b>D:"Panel"</b> in <dfn>LeftIcons</dfn><br />
+      The icons are: <b>SelectCol</b>, <b>DeleteCol</b>, <b>HideCol</b>, <b>AddCol</b> to manipulate the column where the icons are placed in.<br />
+      And <b>SelectCols</b>, <b>DeleteCols</b>, <b>HideCols</b>, <b>AddCols</b> placed usually in Header column in the Panel row to manipulate all columns in grid.<br />
+      </li>
+      <li><h4>Toolbar icons for row / column manipulation</h4><br />
+      The icons can be placed to any toolbar in any order.<br />
+      The icons that show popup menu to manipulate row(s) or column(s): <b>Select</b>, <b>Delete</b>, <b>Hide</b>, <b>Add</b>, <b>Collapse</b>, <b>Indent</b>.<br />
+      The icons for row(s) manipulation: <b>SelectRows</b>, <b>DeleteRows</b>, <b>HideRows</b>, <b>AddRows</b>, <b>CopyRows</b>, <b>AddRowEnd</b>, <b>ExpandRows</b>, <b>CollapseRows</b>, <b>IndentRows</b>, <b>OutdentRows</b><br />
+      The icons for column(s) manipulation: <b>SelectCols</b>, <b>DeleteCols</b>, <b>HideCols</b>, <b>AddCols</b>, <b>CopyCols</b>, <b>AddColEnd</b>, <b>ExpandCols</b>, <b>CollapseCols</b>, <b>IndentCols</b>, <b>OutdentCols</b><br />
+      </li>
+      <li><h4>Tracking changes</h4><br />
+      The row and cell changes are tracked, colored and saved by default, except expand &amp; select.<br />
+      The column and toolbar changes are <b>not</b> tracked, colored and saved by default.<br />
+      To control what changes will be tracked, use Cfg attributes <dfn>RowChanges</dfn>, <dfn>ColChanges</dfn>, <dfn>CellChanges</dfn>, <dfn>ToolChanges</dfn>.<br />
+      </li>
+      <li><h4>Saving changes</h4><br />
+      Saving changes can be done by toolbar icon <b>Save</b> or calling action <b>Save()</b>.<br />
+      There must be defined Cfg <dfn>SaveUrl</dfn> to display the <b>Save</b> icon. If the <b>SaveUrl</b> is an object, it must have defined <b>Url</b> or <b>Data</b> attribute, or <b>Debug</b> = 2 for testing.<br />
+      What changes will be saved is controlled by Cfg attribute <dfn>SaveFlags</dfn>.<br />
+      </li>
+   </ul>
+</body>
+</html>

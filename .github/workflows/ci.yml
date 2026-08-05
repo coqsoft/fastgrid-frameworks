@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  angular:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22.22.3
+          cache: npm
+      - run: npm ci
+      - run: npm run build -w fastgrid-angular
+      - run: npm pack -w fastgrid-angular --dry-run
+      - run: npm pack -w create-fastgrid-angular --dry-run
+      - run: node --check create-fastgrid-angular/create-fastgrid-angular.js

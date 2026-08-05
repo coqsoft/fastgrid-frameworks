@@ -1,0 +1,32 @@
+<h1>1. Sorting rows</h1>
+      <h5>Sorting rows according to the values in selected columns</h5>
+      <section>
+         <fast-grid [src]="src" style="display:inline-block; max-width:100%; height:550px;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li><h4>Setting sorting</h4><br />
+            Row sorting can be set per <b>row part</b> as list of column ids in <dfn>Sort</dfn> attribute.<br />
+            To sort descending, add "-" before the column id, e.g. Sort:"A,-B".<br />
+            To assign an object to row part that already defined rows in array use the part id with "_" suffix, e.g. <b>Body: [...], Body_Cfg: &#123; Sort:"C,D" &#125;</b><br />
+         </li>
+         <li><h4>Changing sorting</h4><br />
+            Sorting can be changed by click to row that has set <dfn>SortIcons</dfn> attribute. By default they are rows <b>D:</b> <dfn>Header</dfn> and <dfn>Index</dfn>.<br />
+            The way how the clicked column is added to sorting is controlled by Cfg <dfn>SortType</dfn>.<br />
+            The sorting can be cleared by clicking to <b>Tool</b> cell <b>D:</b> <dfn>ClearSort</dfn> or <dfn>Sort</dfn>.<br />
+         </li>
+         <li><h4>Sorting settings</h4><br />
+         Some of the global sorting setting can be changed by users in popup menu for <b>Tool</b> cell <b>D: </b> <dfn>Sort</dfn>.<br />
+         When comparing values for sorting it is possible to ignore <b>case</b> (Cfg <dfn>SortCaseSensitive</dfn>, column <dfn>CaseSensitive</dfn>), 
+         <b>diacritics</b> (Cfg <dfn>SortLocaleCompare</dfn>, column <dfn>LocaleCompare</dfn>), 
+         some characters (usually <b>spaces</b>) (Cfg <dfn>SortWhiteChars </dfn>, column <dfn>WhiteChars</dfn>), etc.<br />
+         It is possible to sort values as strings or numbers / dates / ranges using column <dfn>NumberSort</dfn> attribute.<br />
+         List values are sorted by keys or index by default, to sort by the List values set column <dfn>SortList</dfn> attribute.<br />
+         To change the way the cell values are compared, set cell attribute <dfn>SortValue</dfn> to use this value instead of the cell value for comparing.<br />
+         </li>
+         <li><h4>Sorting restrictions</h4><br />
+            To not sort the row and fix it on top or bottom, set row <dfn>SortFix</dfn> attribute.<br />
+            To not sort row children, set parent row <dfn>NoSort</dfn>.<br />
+         </li>
+      </ul>

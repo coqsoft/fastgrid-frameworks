@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>1. Row tree</h1>
+   <h5>Nesting rows to tree levels</h5>
+
+   <div class="Src">Source: <a href='01-Row_tree.js'>01-Row_tree.js</a></div>
+   <section>
+      <fast-grid style="height:550px;" Src="01-Row_tree.js"></fast-grid>
+   </section>
+
+   <ul>
+      <li>
+         Every row can have defined its level of nesting in tree by <dfn>L</dfn> attribute.<br />
+         The root level, that can be expanded, has <b>L</b> = <b>0</b>, the not expandable level outside the tree is defined by <b>L</b> = <b>-1</b>.<br />
+         The next row should have defined the <b>L</b> maximally as <b>L + 1</b> of its previous row to be its child.<br />
+      </li>
+      <li>
+         Row tree can be displayed in column defined by <b>RowPart</b> attribute <dfn>Tree</dfn>.<br />
+         It is possible also to display different tree levels in different columns, the column is set by <b>row</b> attribute <dfn>Tree</dfn>. 
+         For this case there must be defined also <b>Cfg</b> attribute <dfn>RowTree</dfn> = <b>2</b>.<br />
+         The expand / collapse button can be shown also in any other column in <b>LeftIcons</b> / <b>RightIcons</b> / <b>TextIcons</b> by adding <b>CollapseRow</b> button.<br />
+      </li>
+      <li>
+         Row can hide its children if it has set <dfn>Collapsed</dfn> = <b>0</b>.<br />
+         To restrict collapsing or expanding row children set <dfn>NoCollapse</dfn> = <b>1</b>.
+      </li>
+      <li>To display Level buttons to expand particular tree level set <b>row</b> attribute <dfn>LevelsPart</dfn> to the row part ids to control.</li>
+      <li>To collapse / expand the rows on start or on grouping set <b>part</b> attribute <dfn>CollapseLevel</dfn> to the level of expanding. It is also shown in the <b>LevelsPart</b> button. It is used only for <b>RowTree</b> = <b>1</b>.</li>
+      <li>The expand button can show plus or it can show the count of collapsed children according to various conditions set by Cfg <dfn>ExpandDigits</dfn>.</li>
+      <li>The row tree can be shown also in reversed order, the children shown above parents, if set Cfg <dfn>ReversedTree</dfn> &amp; <b>1</b>.</li>
+      <li>The width of the tree level in the Tree column (how much the next level is indented in pixels) is set by Cfg <dfn>TreeWidth</dfn>.</li>
+      <li>It is possible to hide lines in the tree and show only expand / collapse buttons by Cfg <dfn>TreeLines</dfn>.</li>
+      <li>When dragging, the drop icons (where the row will be dropped) can be shown in the tree column or in the header / index column by setting 3. bit &amp;<b>4</b> of <dfn>MoveRowType</dfn>.</li>
+   </ul>
+</body>
+</html>

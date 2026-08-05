@@ -1,0 +1,149 @@
+{
+   "name": "fastgrid-angular",
+   "version": "3.2.1",
+   "description": "Official Angular wrapper for FastGrid and FastSheet, a high-performance TypeScript data grid and web spreadsheet for large datasets, virtual scrolling, tree data, pivoting, XLSX and AI.",
+   "keywords": [
+      "fastgrid",
+      "fast-grid",
+      "fastsheet",
+      "fast-sheet",
+      "angular",
+      "angular-grid",
+      "angular grid",
+      "angular-data-grid",
+      "angular data grid",
+      "angular-datagrid",
+      "angular-table",
+      "angular table",
+      "angular-data-table",
+      "angular-datatable",
+      "angular-tree-grid",
+      "angular tree grid",
+      "angular-spreadsheet",
+      "angular spreadsheet",
+      "angular-component",
+      "angular-library",
+      "angular-wrapper",
+      "angular-standalone",
+      "standalone-component",
+      "typescript",
+      "typescript-grid",
+      "data-grid",
+      "data grid",
+      "datagrid",
+      "data-table",
+      "datatable",
+      "tree-grid",
+      "tree grid",
+      "hierarchical-grid",
+      "hierarchical-data",
+      "spreadsheet",
+      "web-spreadsheet",
+      "javascript-spreadsheet",
+      "excel-like-grid",
+      "xlsx",
+      "xlsx-editor",
+      "csv",
+      "virtual-scrolling",
+      "virtual-scroll",
+      "virtualization",
+      "large-datasets",
+      "large-data-grid",
+      "big-data-grid",
+      "million-rows",
+      "million-columns",
+      "high-performance-grid",
+      "editable-grid",
+      "cell-editing",
+      "sorting",
+      "filtering",
+      "grouping",
+      "aggregation",
+      "pivot-grid",
+      "pivot-table",
+      "tree-table",
+      "formulas",
+      "excel-formulas",
+      "conditional-formatting",
+      "copy-paste",
+      "xlsx-export",
+      "csv-export",
+      "pdf-export",
+      "enterprise-grid",
+      "enterprise-data-grid",
+      "ai-grid",
+      "ai-data-grid",
+      "ai-spreadsheet",
+      "ai-assisted-grid",
+      "openai-integration"
+   ],
+   "author": {
+      "name": "COQsoft",
+      "email": "support@coqsoft.com",
+      "url": "https://www.treegrid.com"
+   },
+   "license": "SEE LICENSE IN LICENSE.md",
+   "homepage": "https://www.treegrid.com/FDoc/FastGridAngular.html",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/coqsoft/fastgrid-frameworks.git",
+      "directory": "fastgrid-angular"
+   },
+   "bugs": {
+      "url": "https://github.com/coqsoft/fastgrid-frameworks/issues"
+   },
+   "type": "module",
+   "sideEffects": false,
+   "peerDependencies": {
+      "@angular/common": ">=17.0.0",
+      "@angular/core": ">=17.0.0",
+      "rxjs": ">=7.8.0"
+   },
+   "dependencies": {
+      "tslib": "^2.8.0"
+   },
+   "devDependencies": {
+      "@angular/common": "latest",
+      "@angular/compiler": "latest",
+      "@angular/compiler-cli": "latest",
+      "@angular/core": "latest",
+      "ng-packagr": "latest",
+      "rxjs": "latest",
+      "tslib": "latest"
+   },
+   "scripts": {
+      "generate:events": "node scripts/generate-fastgrid-events.mjs",
+      "generate:source": "node scripts/generate-fastgrid-source.mjs",
+      "build:package": "node scripts/build-package.mjs",
+      "build": "npm run generate:events && npm run generate:source && npm run build:package && node scripts/postbuild.mjs",
+      "prepack": "npm run build",
+      "prepare": "npm run build"
+   },
+   "publishConfig": {
+      "registry": "http://localhost:4873"
+   },
+   "module": "fesm2022/fastgrid-angular.mjs",
+   "typings": "types/fastgrid-angular.d.ts",
+   "exports": {
+      "./package.json": {
+         "default": "./package.json"
+      },
+      ".": {
+         "types": "./dist/types/fastgrid-angular.d.ts",
+         "default": "./dist/fesm2022/fastgrid-angular.mjs"
+      },
+      "./core": {
+         "types": "./dist/types/fastgrid-angular-core.d.ts",
+         "default": "./dist/fesm2022/fastgrid-angular-core.mjs"
+      },
+      "./registered": {
+         "types": "./dist/types/fastgrid-angular-registered.d.ts",
+         "default": "./dist/fesm2022/fastgrid-angular-registered.mjs"
+      }
+   },
+   "files": [
+      "dist",
+      "README.md",
+      "LICENSE"
+   ]
+}

@@ -1,0 +1,44 @@
+<h1>3. Columns</h1>
+      <h5>FastGrid columns and column parts</h5>
+      <section>
+         <fast-grid [src]="src" style="max-width:600px;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li><h4>ColParts</h4><br />
+            The column parts and their order are defined in <b>ColParts</b> array. Default ColParts definition is in <b>Defaults.js</b>:<br />
+            <span class="inline-code"><b>ColParts</b>: [<br />
+               &#123; id:"<b>LeftScroll</b>",Type:"<b>Scroll</b>", Item:"$ItemLeftScroll", Hidden:1 &#125;,   <i>//. Left vertical scrollbar, hidden by default</i><br />
+               &#123; id:"<b>LeftCols</b>", Type:"<b>Cols</b>", Rel:100000, MinWidth:70, MinWidthResize:0, ExportFixed:1 &#125;, <i>//. Left columns</i><br />
+               &#123; id:"<b>Cols</b>", Type:"<b>Cols</b>", Rel:2, MinWidth:70, MaxAuto:475254, AcceptImages:1 &#125;, <i>//. Middle columns</i><br />
+               &#123; id:"<b>RightCols</b>",Type:"<b>Cols</b>", Rel:100000, MinWidth:70, MinWidthResize:0 &#125;,      <i>//. Right columns</i><br />
+               &#123; id:"<b>RightScroll</b>",Type:"<b>Scroll</b>", Item:"$ItemRightScroll" &#125;            <i>//. Right vertical scrollbar</i><br />
+               ],<br /></span>
+         It is possible to move, add or delete only some column parts in other <b>ColParts</b> definition, e.g. <span class="inline-code">ColParts: [ &#123; id:"RightScroll", Next:"RightCols" &#125; ] </span><br />
+         Or it is possible to redefine all row parts by adding first item in <b>ColParts</b> as <span class="inline-code">&#123; Clear:1 &#125;</span><br />
+         </li> 
+         <li><h4>Columns</h4><br />
+            <ul>
+               <li>The columns are defined only for <b>table rows</b>. The <b>toolbar rows</b> have defined their cells in <b>Cells</b> array instead of columns.</li>
+               <li>The columns define column and cell attributes for whole columns. The cell values and attributes are usually defined in rows, although it is possible also in columns, in arrays <b>V</b>, <b>U</b>, <b>A</b> and <b>B</b>.</li>
+               <li>The columns contain cells in rows. Cells can be spanned in both directions, similarly to HTML &lt;TABLE&gt; tag.</li>
+               <li>The columns can be scrolled in both directions, vertically and horizontally. Although in some sections like LeftCols or RightCols the columns are usually fixed, not scrolled horizontally.</li>
+               <li>The columns can be nested in tree, sorted, filtered, grouped, added, deleted, moved (dragged), in the same way as table rows.</li>
+               <li>The columns are defined in in ColPart <b>Type</b> = "<b>Cols</b>", by default in <b>LeftCols</b>, <b>RightCols</b> and <b>Cols</b> parts.</li>
+               <li>The columns can contain data without special meaning and there are also predefined some feature columns:
+                  <ul>
+                     <li><dfn>Header</dfn> column defined by D: "Header". Shows row captions (ids). Provides row resizing and moving. Controls sorting settings.<br />
+                     Header column has cells like any data column, it is possible to define Type, Format and other cell attributes.<br />
+                     The Header cells are not editable, but can be changed from popup list like List. The default cell Type for Header column is Text, new line can be added by '&amp;#x0a;' or can be retyped to Html and used &lt;br&gt;.
+                     </li>
+                     <li><dfn>Index</dfn> column defined by D: "Index". The same as <b>Header</b>, but shows row indexes instead of captions.</li>
+                     <li><dfn>Filter</dfn> column defined by D: "Filter". Controls filter settings.</li>
+                     <li><dfn>Panel</dfn> column defined by D: "Panel". It usually shows control icons in LeftIcons to manipulate rows.</li>
+                  </ul>
+                  The feature columns have set <b>Important</b> attribute, so their cell attributes are prefered to the attributes set in rows.<br />
+                  The normal columns have <b>not</b> set <b>Important</b> by default, so cell attributes set in row are prefered to cell attributes set in columns.<br />
+               </li>
+            </ul>
+         </li>
+      </ul>

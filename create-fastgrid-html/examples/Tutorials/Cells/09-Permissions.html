@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>9. Permissions and input validation</h1>
+   <h5>Editing and other permissions and validation during editing, before save and before upload</h5>
+
+   <div class='Src'>Source: <a href='09-Permissions.js'>09-Permissions.js</a></div>
+   <section>
+      <fast-grid Src='09-Permissions.js'></fast-grid>
+   </section>
+
+   <ul>
+      <li>
+         Every feature in FastGrid can be enabled or disabled. For whole grid or for row / column / cell or by <dfn>Lock</dfn>.<br />
+      </li>
+      <li>
+      <h4>Permissions</h4><br />
+      <table>
+         <tr><th style="width:185px;">Feature</th><th>Cfg attribute</th><th style="width:210px;">Row / column / cell attribute</th><th>Lock name</th><th>Remarks</th></tr>
+         <tr><td>Edit cell value</td><td><dfn>Editing</dfn></td><td>cell / tool <dfn>NoEdit</dfn></td><td colspan="2"><b>Edit</b>, <b>Write</b>, <b>EditAll</b>, <b>NoEdit</b>, <b>Controls</b></td><td></td></tr>
+         <tr><td>Edit cell formula</td><td><dfn>FormulaEditing</dfn></td><td>cell / tool <dfn>FormulaNoEdit</dfn></td><td colspan="2"><b>Formula</b>, <b>EditAll</b>, <b>NoEdit</b></td><td></td></tr>
+         <tr><td>Edit cell style</td><td><dfn>EditingStyle</dfn></td><td>cell / tool <dfn>NoEditStyle</dfn></td><td colspan="2"><b>Style</b>, <b>StyleAll</b>, <b>NoEdit</b></td><td></td></tr>
+         <tr><td>Edit cell link</td><td><dfn>EditingLink</dfn></td><td>cell / tool <dfn>NoEditLink</dfn></td><td colspan="2"><b>EditLink</b>, <b>WriteLink</b>, <b>EditAll</b>, <b>NoEdit</b></td><td></td></tr>
+         <tr><td>Edit cell tip</td><td></td><td></td><td><b>EditTip</b></td><td></td></tr>
+         <tr><td>Focus cell(s)</td><td><dfn>Focus</dfn></td><td>cell / tool <dfn>NoFocus</dfn></td><td><b>Focus</b></td><td></td></tr>
+         <tr><td>Mouse hover cell</td><td><dfn>Hover</dfn></td><td>cell / tool <dfn>NoHover</dfn></td><td><b>Hover</b></td><td></td></tr>
+         <tr><td>Navigate to cell link</td><td></td><td></td><td><b>Link</b></td><td></td></tr>
+         <tr><td>Show tip for cell under mouse</td><td></td><td></td><td><b>Tip</b></td><td></td></tr>
+         <tr><td>Change mouse cursor for cell</td><td></td><td></td><td><b>Cursor</b></td><td></td></tr>
+
+         <tr><td>Resizing row height</td><td><dfn>ResizingRows</dfn></td><td>row <dfn>NoResize</dfn></td><td><b>ResizeRow</b></td><td>The resizing by dragging edge is permitted by column attribute <dfn>UseResize</dfn></td></tr>
+         <tr><td>Resizing column width</td><td><dfn>ResizingCols</dfn></td><td>col<dfn>NoResize</dfn></td><td><b>ResizeCol</b></td><td>The resizing by dragging edge is permitted by row attribute <dfn>UseResize</dfn></td></tr>
+         <tr><td>Resizing part height</td><td><dfn>ResizingRowParts</dfn></td><td>part <dfn>NoResize</dfn></td><td><b>ResizeRowPart</b></td><td></td></tr>
+         <tr><td>Resizing part width</td><td><dfn>ResizingColParts</dfn></td><td>part <dfn>NoResize</dfn></td><td><b>ResizeColPart</b></td><td></td></tr>
+         <tr><td>Adding / copying rows</td><td><dfn>AddingRows</dfn></td><td>row <dfn>NoDuplicate</dfn></td><td><b>AddRow</b></td><td></td></tr>
+         <tr><td>Adding / copying columns</td><td><dfn>AddingCols</dfn></td><td>col <dfn>NoDuplicate</dfn></td><td><b>AddCol</b></td><td></td></tr>
+         <tr><td>Moving / copying rows</td><td><dfn>DraggingRows</dfn></td><td>row <dfn>NoMove</dfn>, <dfn>NoDuplicate</dfn></td><td><b>MoveRow</b>, <b>IndentRow</b>, <b>FixRow</b></td><td>The moving by dragging the cell is permitted by cell attribute <dfn>UseMove</dfn></td></tr>
+         <tr><td>Moving / copying columns</td><td><dfn>DraggingCols</dfn></td><td>col <dfn>NoMove</dfn>, <dfn>NoDuplicate</dfn></td><td><b>MoveCol</b>, <b>IndentCol</b>, <b>FixCol</b></td><td>The moving by dragging the cell is permitted by cell attribute <dfn>UseMove</dfn></td></tr>
+         <tr><td>Deleting rows</td><td><dfn>DeletingRows</dfn></td><td>row <dfn>NoDelete</dfn></td><td><b>DeleteRow</b></td><td></td></tr>
+         <tr><td>Deleting columns</td><td><dfn>DeletingCols</dfn></td><td>col <dfn>NoDelete</dfn></td><td><b>DeleteCol</b></td><td></td></tr>
+         <tr><td>Hiding / showing rows</td><td><dfn>HidingRows</dfn></td><td>row <dfn>NoHide</dfn></td><td><b>HideRow</b></td><td></td></tr>
+         <tr><td>Hiding / showing columns</td><td><dfn>HidingCols</dfn></td><td>col <dfn>NoHide</dfn></td><td><b>HideCol</b></td><td></td></tr>
+         <tr><td>Selecting rows</td><td><dfn>SelectingRows</dfn></td><td>row <dfn>NoSelect</dfn></td><td><b>SelectRow</b></td><td></td></tr>
+         <tr><td>Selecting columns</td><td><dfn>SelectingCols</dfn></td><td>col <dfn>NoSelect</dfn></td><td><b>SelectCol</b></td><td></td></tr>
+         <tr><td>Expanding / collapsing rows</td><td><dfn>RowTree</dfn></td><td>row <dfn>NoCollapse</dfn></td><td><b>CollapseRow</b></td><td>Row tree must be defined by row / part <dfn>Tree</dfn> attribute.</td></tr>
+         <tr><td>Expanding / collapsing columns</td><td><dfn>ColTree</dfn></td><td>col <dfn>NoCollapse</dfn></td><td><b>CollapseCol</b></td><td></td></tr>
+         <tr><td>Spanning / splitting cells</td><td></td><td></td><td><b>Span</b></td><td></td></tr>
+
+         <tr><td>Copy to clipboard</td><td><dfn>Copying</dfn></td><td>row / col <dfn>NoCopy</dfn></td><td><b>Copy</b></td><td></td></tr>
+         <tr><td>Pasting from clipboard</td><td><dfn>Pasting</dfn></td><td>row / col <dfn>NoPaste</dfn></td><td><b>Paste</b></td><td></td></tr>
+         <tr><td>Exporting to xlsx/csv/html</td><td><dfn>Exporting</dfn></td><td>row / col <dfn>NoExport</dfn></td><td><b>Export</b></td><td>If exporting more grids, the one grid export can be restricted by Cfg <dfn>NoExport</dfn></td></tr>
+         <tr><td>Printing</td><td><dfn>Printing</dfn></td><td>row / col <dfn>NoPrint</dfn></td><td><b>Print</b>, <b>Pdf</b></td><td>If printing more grids, the one grid print can be restricted by Cfg <dfn>NoPrint</dfn></td></tr>
+         <tr><td>Undo / redo changes</td><td><dfn>Undo</dfn></td><td>row / col <dfn>NoUndo</dfn></td><td><b>Undo</b></td><td></td></tr>
+
+         <tr><td>Sorting rows / columns</td><td><dfn>Sorting</dfn></td><td>row / col <dfn>NoSort</dfn> (children)</td><td><b>Sort</b></td><td>To restricts sorting rows by values in the column set the column attribute <dfn>NoSortBy</dfn></td></tr>
+         <tr><td>Filtering rows / columns</td><td><dfn>FilterAction</dfn></td><td>row / col <dfn>NoFilter</dfn></td><td><b>Filter</b></td><td>To restricts filtering row / column by the cell value, set cell attribute <dfn>NoFilterRow</dfn> / <dfn>NoFilterCol</dfn></td></tr>
+         <tr><td>Grouping rows / columns</td><td><dfn>Grouped</dfn></td><td>row / col <dfn>NoGroup</dfn></td><td><b>Group</b></td><td>To restricts grouping by the column / row set the row / column attribute <dfn>NoGroupBy</dfn></td></tr>
+         <tr><td>Pivot</td><td><dfn>PivotDisabled</dfn></td><td>row / col <dfn>NoPivot</dfn></td><td><b>Pivot</b></td><td></td></tr>
+         <tr><td>Searching in cell values</td><td><dfn>SearchAction</dfn></td><td>row / col / cell <dfn>NoSearch</dfn></td><td><b>Search</b></td><td></td></tr>
+         <tr><td>Import files</td><td><dfn>ImportAction</dfn></td><td></td><td><b>Import</b></td><td>Drop file to grid must be permitted by <dfn>DropFiles</dfn></td></tr>
+         <tr><td>Sending changes to server</td><td></td><td></td><td><b>Save</b></td><td>If saving more grids, the one grid save can be restricted by Cfg <dfn>NoSave</dfn></td></tr>
+         <tr><td>Reload data from server</td><td></td><td></td><td><b>Reload</b></td><td></td></tr>
+         <tr><td>Changing grid settings</td><td></td><td></td><td><b>Settings</b></td><td></td></tr>
+         <tr><td>Restrict managing saved settings</td><td></td><td></td><td><b>Cookie</b>, <b>AddCokie</b>, <b>DeleteCookie</b></td><td></td></tr>
+
+         <tr><td>Moving toolbar cells</td><td><dfn>DraggingTools</dfn></td><td>tool <dfn>NoMove</dfn>, <dfn>NoDuplicate</dfn>, <dfn>NoDelete</dfn></td><td><b>Toolbar</b></td><td></td></tr>
+         <tr><td>Moving toolbars</td><td><dfn>DraggingToolbars</dfn></td><td></td><td><b>Toolbar</b></td><td>Dragging individual toolbar is not possible to restrict, only setting its <dfn>Pos</dfn>>=<b>3</b> will drag it with its predecessor.</td></tr>
+         <tr><td>Hiding / showing toolbars</td><td><dfn>HidingToolbars</dfn></td><td>toolbar <dfn>NoHide</dfn></td><td><b>Toolbar</b></td><td></td></tr>
+         <tr><td>Hiding / showing toolbar cells</td><td><dfn>HidingTools</dfn></td><td>tool <dfn>NoHide</dfn></td><td><b>Toolbar</b></td><td></td></tr>
+         <tr><td>Resizing toolbar height</td><td></td><td></td><td><b>ResizeToolbar</b></td><td>The resizing by dragging edge is permitted by toolbar cell attribute <dfn>UseResize</dfn></td></tr>
+         <tr><td>Resizing toolbar cell width</td><td></td><td></td><td><b>ResizeTool</b></td><td>The resizing by dragging edge is permitted by toolbar cell attribute <dfn>UseResize</dfn></td></tr>
+
+         <tr><td>Adding / copying images</td><td><dfn>AddingImages</dfn> </td><td>image <dfn>NoDuplicate</dfn></td><td><b>AddImage</b></td><td>Drop image to grid must be permitted by <dfn>DropFiles</dfn></td></tr>
+         <tr><td>Deleting images</td><td><dfn>DeletingImages</dfn></td><td>image <dfn>NoDelete</dfn></td><td><b>DeleteImage</b></td><td></td></tr>
+         <tr><td>Dragging images</td><td><dfn>DraggingImages</dfn></td><td>image <dfn>NoMove</dfn></td><td><b>MoveImage</b></td><td></td></tr>
+         <tr><td>Changing images</td><td><dfn>ChangingImages</dfn></td><td>image <dfn>NoChange</dfn></td><td><b>ChangeImage</b></td><td></td></tr>
+
+         <tr><td>Sheets manipulation</td><td><dfn>ChangingSheets</dfn></td><td></td><td colspan="2"><b>AddSheet</b>, <b>DeleteSheet</b>, <b>HideSheet</b>, <b>RenameSheet</b>, <b>MoveSheet</b></td><td></td></tr>
+         <tr><td>Defining and editing names</td><td></td><td></td><td><b>Name</b></td><td></td></tr>
+      </table>
+      </li>
+   </ul>
+</body>
+</html>

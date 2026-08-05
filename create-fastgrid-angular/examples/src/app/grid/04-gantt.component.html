@@ -1,0 +1,11 @@
+<h1>4. Large example with detail TreeGrid Gantt chart</h1>
+   <h5>
+      Complex grid with huge data sets with creating pivot grid and many other features. Only HTML without saving changes.<br/>
+      Items used in this sample are explained in the commented Angular component source at <b>./src/app/examples/grid/04-gantt.component.ts</b>,
+      UTF8Store data are used from 03-pivot example at <b><a href="/03-pivot/PivotData100000.js" target="_blank">./public/03-pivot/</a></b>.
+      The TreeGrid script is located at <b>./public/04-gantt/GridEStandalone.js</b>.
+   </h5>
+   <fast-grid [src]="{ Progress:1400000, Style:'Blue', Sources:[src,'/03-pivot/PivotData100000.js'] }" #gridRef style="width:100%; min-height:500px; height:100%; min-height:300px" ></fast-grid>
+   <div style="height:300px; margin-top:10px;">
+      <bdo [attr.layout_data]="ganttSrcJson" style="width:100%; height:100%; display:block" suppressmessage="1"></bdo>
+   </div>

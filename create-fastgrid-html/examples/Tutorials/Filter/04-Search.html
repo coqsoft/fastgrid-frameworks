@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>4. Searching in cells</h1>
+   <h5>Focus or highlight cells or select or show rows that satisfy selected criteria</h5>
+
+   <div class="Src">Source: <a href='04-Search.js'>04-Search.js</a></div>
+   <section>
+      <fast-grid style="height:550px;" Src="04-Search.js"></fast-grid>
+   </section>
+
+   <ul>
+      <li><h4>Changing search</h4><br />
+         Search control can be added to grid by toolbar <b>D:</b> <dfn>Search</dfn>.<br />
+         This toolbar contains two cells by default, search combo as tool <b>D:</b> <dfn>SearchText</dfn> that permits entering text to search. The search starts by pressing enter. 
+         The combo can show also popup list of search history and search off item.<br />
+         The next cell on the Search toolbar is search button as tool <b>D:</b> <dfn>Search</dfn> that performs next search (usually for focus search) and can show search options in popup list.<br />
+         The search can be run also by API method <b>Search</b>.<br />
+      </li>
+      <li><h4>Setting search</h4><br />
+         Text to search is set in Cfg attribute <dfn>SearchText</dfn>. It can contain more words separated by space that can be searched together or separatelly according to setting <dfn>SearchMulti</dfn>.<br />
+         Performed search action is set in Cfg attribute <dfn>SearchAction</dfn>. The available search actions are focus, color (cells or rows), select or filter.<br />
+         The search can store the found rows or cells in Cfg attributes <b>FoundRows</b> / <b>FoundCells</b> / <b>FoundBlocks</b> if <b>SearchAction</b> contains appropriate action.<br />
+         To perform any search, the <b>SearchAction</b> must contain keyword <b>Search</b>.<br />
+      </li>
+      <li><h4>Search operators</h4><br />
+         There are 18 search operators that can be assigned to Cfg <dfn>SearchCompare</dfn> attribute as numbers 1 - 18:<br />
+         <table>
+            <tr><td style="width:100px;">Number search:</td><td><b>1</b> - Equal, <b>2</b> - Not equal, <b>3</b> - Less than, <b>4</b> - Less than or equal, <b>5</b> - Greater than, <b>6</b> - Greater than or equal</td></tr>
+            <tr><td>String search:</td><td><b>7</b> - Begins with, <b>8</b> - Does not begin with, <b>9</b> - Ends with, <b>10</b> - Does not end with, <b>11</b> - Contains, <b>12</b> - Does not contain</td></tr>
+            <tr><td>Word search:</td><td><b>13</b> - Any word begins with, <b>14</b> - No word begins with, <b>15</b> - Any word ends with, <b>16</b> - No word ends with, <b>17</b> - Any word equals to, <b>18</b> - No word equals to</td></tr>
+         </table>
+      </li>
+      <li><h4>Wildcards</h4><br />
+         In string filter is possible to use wildcards if <dfn>SearchOptions</dfn> contains <b>Wildcards</b> keyword, 
+         "<b>?</b>" to replace one character (defined by Cfg <dfn>SearchReplaceOne </dfn>), "<b>*</b>" to replace none, one or more characters (defined by Cfg <dfn>SearchReplaceMore</dfn>).<br />
+      </li>
+     <li><h4>Search settings</h4><br />
+        Some of the global search setting can be changed by users in popup menu for <b>Tool</b> cell <b>D: </b> <dfn>Search</dfn>.<br />
+        When comparing values for search it is possible to ignore <b>case</b> (Cfg <dfn>SearchCaseSensitive</dfn>), 
+        <b>diacritics</b> (Cfg <dfn>SearchLocaleCompare</dfn>), 
+        some characters (usually <b>spaces</b>) (Cfg <dfn>SearchWhiteChars </dfn>), etc.<br />
+        To change the way the cell values are compared, set cell attribute <dfn>SearchValue</dfn> to use this value instead of the cell value for comparing.<br />
+        How the cell value will be formatted for search can be set by Cfg <dfn>SearchType</dfn>.<br />
+        The search can by run asynchronously with progress dialog and cancel button shown when search time is higher than <dfn>MaxSearchTime </dfn>.<br />
+     </li>
+     <li><h4>Search restrictions</h4><br />
+        To not search in the row or column, set its attribute <dfn>NoSearch</dfn>.<br />
+        To not search in the cell, set its <dfn>NoSearch</dfn>, this attribute is read only if set <b>FV</b>&amp;<b>32</b>.<br />
+        It is possible to specify which rows and column will be searched in <dfn>SearchRows</dfn> / <dfn>SearchCols</dfn>.<br />
+        It is also possible to specify which type of rows and columns will be searched by <dfn>SearchRowsType</dfn> / <dfn>SearchColsType</dfn>.<br />
+     </li>
+   </ul>
+</body>
+</html>

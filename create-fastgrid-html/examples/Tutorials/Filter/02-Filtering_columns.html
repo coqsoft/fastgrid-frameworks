@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>2. Filtering columns</h1>
+   <h5>Showing only columns that satisfy selected criteria</h5>
+
+   <div class="Src">Source: <a href='02-Filtering_columns.js'>02-Filtering_columns.js</a></div>
+   <section>
+      <fast-grid Src="02-Filtering_columns.js"></fast-grid>
+   </section>
+
+   <ul>
+      <li><h4>Setting filter</h4><br />
+         FastGrid filter can be set and controlled by special table column <b>D: </b><dfn>"Filter"</dfn>.<br />
+         The "<b>Filter</b>" column can be placed to any column part, usually in LeftCols.<br />
+         The initial filtering can be set in the "<b>Filter</b>" column, by setting its cell values in <dfn>V</dfn> and operators in <dfn>Filter</dfn> attribute.<br />
+         The "<b>Filter</b>" column by default filters Cols column part, it can be changed by column <dfn>FilterPart</dfn> attribute, to filter other column part(s).<br />
+      </li>
+      <li><h4>Changing filter</h4><br />
+         Filter can be changed by a user by choosing filter operator from filter menu. It is possible to preset the available filter operators for given Filter cell by <dfn>FilterMenu</dfn> attribute.<br />
+         The filter can be changed also by changing cell value in the Filter column. If there was no filter operator, the value change presets also filter operator to operator set by cell <dfn>DefaultFilter</dfn>.<br />
+         The filter can be changed also by API method <b>ChangeFilter</b>.<br />
+      </li>
+      <li><h4>Merging and disabling filters</h4><br />
+         The individual filters in one "<b>Filter</b>" column are merged together by operator <b>AND</b> by default (all filters must be passed to show the column).<br />
+         If the "<b>Filter</b>" column has set <dfn>FilterAction</dfn> = <b>2</b>, the individual filters are merged by operator <b>OR</b> (at least one filter must be passes to show the column).<br />
+         To disable filtering by the "<b>Filter</b>" column, set its <b>FilterAction</b> to <b>0</b>.<br />
+         There can be more "<b>Filter</b>" columns in grid. The filters in these columns are merged together by operator <b>AND</b> by default.<br />
+         If the Cfg attribute <dfn>FilterAction</dfn> = <b>2</b>, the column filters are merged by operator <b>OR</b>.<br />
+         To disable all filters in grid set Cfg attribute <b>FilterAction</b> to <b>0</b>.<br />
+         Merging custom filters is controlled by Cfg <dfn>FilterActionCustom</dfn>.<br />
+      </li>
+      <li><h4>Filter operators</h4><br />
+         There are 15 filter operators that can be assigned to <b>Filter</b> attribute as numbers 0 - 14:<br />
+         <table>
+         <tr><td style="width:120px;">Off:</td><td><b>0</b> - Off</td></tr>
+         <tr><td>Number filter:</td><td><b>1</b> - Equal, <b>2</b> - Not equal, <b>3</b> - Less than, <b>4</b> - Less than or equal, <b>5</b> - Greater than, <b>6</b> - Greater than or equal</td></tr>
+         <tr><td>String filter:</td><td><b>7</b> - Begins with, <b>8</b> - Does not begin with, <b>9</b> - Ends with, <b>10</b> - Does not end with, <b>11</b> - Contains, <b>12</b> - Does not contain</td></tr>
+         <tr><td>Range filter:</td><td><b>13</b> - Equal all, <b>14</b> - Not equal all</td></tr>
+         </table>
+      </li>
+      <li><h4>Range filter</h4><br />
+         To permit filtering by more selected values or by range(s) of dates or numbers set Filter cell attribute <dfn>Range</dfn> = <b>1</b>.<br />
+         To permit filtering by comparing individual values in Range cells, set Filter cell attribute <b>Range</b> = <b>2</b>.<br />
+      </li>
+      <li><h4>Custom filters</h4><br />
+         It is possible to add custom filters by API method <dfn>SetFilter</dfn>.<br />
+         Or set specific custom filter to filter range of values by API method <dfn>FilterRange</dfn>.<br />
+      </li>
+      <li><h4>Wildcards</h4><br />
+         In string filter is possible to use wildcards, "<b>?</b>" to replace one character (defined by Cfg <dfn>FilterReplaceOne </dfn>), "<b>*</b>" to replace none, one or more characters (defined by Cfg <dfn>FilterReplaceMore</dfn>).<br />
+      </li>
+     <li><h4>Filter only specified defaults</h4><br />
+        It is possible to apply the filter set in the <b>Filter</b> cell to only particular columns, set their default column id(s) to cell <dfn>FilterD</dfn>. Rows with other default columns will not be affected by this filter and will be always shown.<br />
+        To let users to choose the <b>FilterD</b>, define cell attribute <dfn>FilterDList</dfn> to add these options to the filter operators menu.<br />
+     </li>
+     <li><h4>Filter settings</h4><br />
+        Some of the global filter setting can be changed by users in popup menu for <b>Tool</b> cell <b>D: </b> <dfn>Filter</dfn>.<br />
+        When comparing values for filter it is possible to ignore <b>case</b> (Cfg <dfn>FilterCaseSensitive</dfn>, column <dfn>CaseSensitive</dfn>), 
+        <b>diacritics</b> (Cfg <dfn>FilterLocaleCompare</dfn>, column <dfn>LocaleCompare</dfn>), 
+        some characters (usually <b>spaces</b>) (Cfg <dfn>FilterWhiteChars </dfn>, column <dfn>WhiteChars</dfn>), etc.<br />
+        To change the way the cell values are compared, set cell attribute <dfn>FilterValue</dfn> to use this value instead of the cell value for comparing.<br />
+        List values are filtered by List values by default, to filter by the index or keys set filter cell <dfn>FilterRaw</dfn> attribute.<br />
+        To hide columns with empty cells in filtered columns by number operators set appropriate value to Cfg <dfn>FilterIgnoreEmpty</dfn>.<br />
+     </li>
+     <li><h4>Filter restrictions</h4><br />
+        To not filter the column, set column <dfn>NoFilterCol</dfn> attribute.<br />
+        To not permit filtering by some cell in filter column, set its attribute <dfn>NoFilterBy</dfn> = <b>0</b> and optionally attributes <b>NoEdit</b> = <b>1</b> and <b>LeftIcons</b> = <b>""</b>.<br />
+     </li>
+   </ul>
+</body>
+</html>

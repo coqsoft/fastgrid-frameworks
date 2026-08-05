@@ -1,0 +1,33 @@
+<h1>8. CSV grid</h1>
+      <h5>Basic grid loaded from CSV data</h5>
+      <section>
+         <fast-grid [src]="[src,&#123;Format:'csv',Data:csv&#125;]" style="display:inline-block; max-width:100%;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li>
+            <h4>Loading CSV</h4><br />
+            <ul>
+               <li>CSV data or its url can be directly passed to FastGrid like JSON, like <dfn>&lt;fast-grid src="08-Csv_grid.csv"/&gt;</dfn></li>
+               <li>If the CSV file url has not extension <b>csv</b>, set also Format="csv" like <dfn>&lt;fast-grid  src=&#123;Format:'csv',Url:'08-Csv_grid.csv'&#125;/&gt;</dfn></li>
+               <li>If passing CSV directly in string, set also Format="csv" like <dfn>&lt;fast-grid src=&#123;Format:'csv',Data:'...'&#125;/&gt;</dfn></li>
+            </ul>
+         </li>
+         <li> <h4>CSV separators</h4>
+            <ul>
+               <li>By default the input CSV has separated columns by comma, the rows by CR or LF or CRLF and quoted valued by double quote.</li>
+               <li>To specify different separators, set <b>Cfg</b> attributes <dfn>CsvRowSeparator</dfn>, <dfn>CsvValueSeparator</dfn> and <dfn>CsvQuote</dfn></li>
+               <li>For example <dfn>&lt;fast-grid src=[&#123;Cfg:&#123;CsvValueSeparator:';'&#125;&#125;,&#123;Format:'csv',Data:'a;b;c\nd;e;f'&#125;]/&gt;</dfn></li>
+            </ul>
+         </li>
+         <li>
+            <h4>CSV layout</h4>
+            <ul>
+               <li>The data rows are always created from CSV and added to default row part or to part specified by <b>Cfg</b> <dfn>CsvRows</dfn>.</li>
+               <li>By default the columns are created from CSV in default column part. It is possible to define the columns in JSON layout and set <b>Cfg</b> <dfn>CsvCols</dfn> to empty string to not create them from CSV.</li>
+               <li>It is possible to define Header rows in JSON layout or create them from first lines in CSV by <b>Cfg</b> attribute <dfn>CsvHeaderRows</dfn>.</li>
+               <li>It is possible to define Header columns in JSON layout or create them from first columns in CSV by <b>Cfg</b> attribute <dfn>CsvHeaderCols</dfn>.</li>
+            </ul>
+         </li>
+      </ul>

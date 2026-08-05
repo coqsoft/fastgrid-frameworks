@@ -1,0 +1,37 @@
+<h1>8. Toolbar size and position</h1>
+      <h5>Toolbars positions, wrapping and manual updating</h5>
+      <section>
+         <fast-grid [src]="src" style="min-width:100%;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li><b style="color:red;">All the textboxes are individual toolbars with only one cell, just for demonstration of toolbar positioning.</b></li>
+         <li>
+            Toolbars are placed in row parts of type "Toolbars". The "Toolbars" part is always as wide as the grid width, but the part does not resize grid according to its content.<br />
+            Toolbars can contain the same cells as table rows, but the cells are not aligned in columns and every the cell can have its width.<br />
+         </li>
+         <li>
+            By default the toolbars in their part are placed <b>horizontally</b> on the same line, one by one. 
+            After the toolbars reach the line end, they are wrapped to the next line, except if set the part attribute <dfn>NoWrap</dfn>.<br />
+            The toolbar can be wrapped also manually, before or after, by setting its attribute <dfn>NewLine</dfn>.<br />
+         </li>
+         <li>The toolbars can be placced also <b>vertically</b> on more <b>levels</b> in one toolbars line.<br />
+         It is controlled by toolbar <dfn>Pos</dfn> attribute. It places the toolbar relative to the previous toolbar(s).<br />
+         The toolbar can be placed below the previous toolbar, on the same level, back on the first level, etc.<br />
+         </li>
+         <li>
+         It is possible to let users to reorder the toolbar, to hide or show the toolbars or individual cells by setting Cfg attribute <dfn>DraggingToolbars</dfn>.<br />
+         This mode can be turned on / off by toolbar icon <b>UpdateToolbars</b>. If used, this icon and its parent toolbar <b>Layout</b> cannot be hidden by users.<br />
+         </li>
+         <li>
+         Every toolbar cell can have set its with by <dfn>Width</dfn> cell attribute. For <b>Width</b> = <b>0</b> the cell width is calculated according to its content.<br />
+         Default width for textual cells is <b>100</b>, for icons is <b>0</b>.<br />
+         The cell width can be resized by mouse dragging, if it has set attribute <dfn>UseResize</dfn>, bit <b>2</b>.<br />
+         </li>
+         <li>
+         Every toolbar can have set its height by <dfn>Height</dfn> toolbar attribute.<br />
+         If not set the <b>Height</b> attribute, it is used Cfg attribute <dfn>ToolbarHeight</dfn>, default is <b>30</b>.<br />
+         The toolbar height can be resized by mouse dragging its particular cell(s), if the cell has set attribute <dfn>UseResize</dfn>, bit <b>1</b>.<br />
+         </li>
+      </ul>

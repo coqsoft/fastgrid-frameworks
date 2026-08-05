@@ -1,0 +1,51 @@
+<h1>1. Dragging and pasting rows</h1>
+      <h5>Dragging rows inside grid and between grids and copying &amp; pasting rows via clipboard</h5>
+      <section>
+         <div>
+            <fast-grid [src]="srcTree" style="display:inline-block; height:490px; margin-right:10px;"></fast-grid>
+            <fast-grid [src]="srcNodes" style="display:inline-block; height:490px; margin-right:10px;"></fast-grid>
+            <fast-grid [src]="srcItems" style="display:inline-block; height:490px; margin-right:10px;"></fast-grid>
+            <fast-grid [src]="srcSubitems" style="display:inline-block; height:490px;"></fast-grid>
+         </div>
+      </section>
+
+      
+      <ul>
+         <li>
+           <h4>Example description</h4><br />
+           <ul>
+           <li><i><b>Move</b> row with children by dragging by <b>left</b> mouse button, <b>copy</b> row by dragging by <b>shift+right</b> mouse button, <b>copy</b> row with <b>children</b> by dragging by <b>ctrl+right</b> mouse button.
+           <b>Select</b> more rows (by panel row panel button) and drag them together.</i></li>
+           <li><i>There are three row types (default rows), NODE, ITEM and SUBITEM. The NODE can contain only ITEM. The ITEM can contain ITEM and SUBITEM. The SUBITEM can contain only SUBITEM.</i></li>
+           <li><i>New child in NODE is ITEM. New child in ITEM is SUBITEM. New child in SUBITEM is SUBITEM.</i></li>
+           <li><i>The Tree and Nodes grids can contain all rows (NODE, ITEM, SUBITEM), root rows are NODE. The Items grid can contain ITEM and SUBITEM rows, root rows are ITEM. 
+           The Subitems grid does not accept new rows.</i></li>
+           <li><i>Rows dragged from Tree, Nodes and Items grids are moved (or copied if dragged by right or middle mouse button) and rows dragged from Subitems grid are always copied.</i></li>
+           <li><i>Rows are copied to clipboard always with children, preserves their tree structure and default rows.</i></li>
+           <li><i>To Tree are pasted rows fully with tree, before focused or in children of focused depending on default row of the copied rows.</i></li>
+           <li><i>To Nodes and Items are pasted only with appropriate default rows, NODE or ITEM, always before focused row.</i></li>
+           <li><i>All the grids share the same <b>undo</b> queue</i> to correctly undo / redo the moves between grids.</li>
+           </ul>
+         </li>
+         <li><h4>Dragging</h4><br />
+         Dragging rows in grid can be controlled by Cfg <dfn>DraggingRows</dfn>, it can permit or restrict dragging inside row part, between parts, between parts, etc.<br />
+         By which cell can be row caught and dragged is set by column attribute <dfn>UseMove</dfn>, by default set in column <b>D</b>: <b>Header</b> / <b>Index</b>.<br />
+         Dragging rows can be more controlled by Cfg <dfn>MoveRowTypw</dfn> and in tree by Cfg <dfn>MoveRowTree</dfn>.<br />
+         </li>
+         <li><h4>Dropping permissions</h4><br />
+         Dropping permissions are specified by <b>parent</b> row or <b>row part</b> <dfn>Accept</dfn> attribute. It specifies which rows can be dropped to children of the row or row part.<br />
+         The rows for the <b>Accept</b> are identified by row attribute <dfn>DragId</dfn>. By default all rows have set <b>DragId</b> = "<b>Row</b> and <b>Accept</b> = "<b>Row</b>".<br />
+         The <b>Accept</b> and <b>DragId</b> are usually set in row default, aassigned to row by <dfn>D</dfn> or parent <dfn>CD</dfn> attribute.<br />
+         </li>
+         <li><h4>Copying rows to clipboard</h4><br />
+         To copy whole rows to clipboard set <dfn>Copying</dfn> = <b>3</b>.<br />
+         To copy required information for pasting restrictions use Cfg attribute <dfn>CopyStyles</dfn> with values like <b>D</b> or <b>L</b>. And set also <dfn>CopyHtml</dfn> = <b>1</b>.<br />
+         In tree is possible to copy also parents and / or children of selected / focused rows adding <b>Parent</b> or <b>Children</b> to Cfg <dfn>CopyPasteRowsType</dfn>.<br />
+         </li>
+         <li><h4>Pasting rows from clipboard</h4><br />
+         To add new rows by pasting from clipboard, set Cfg <dfn>PasteFillRows</dfn> = <b>0</b>, <dfn>PasteAddRows</dfn> = <b>2</b>, <dfn>PasteFillCols</dfn> = <b>3</b>
+         and optionally <dfn>PasteFillSingle</dfn> = <b>0</b>.<br />
+         To use information copied for pasting restrictions use Cfg attribute <dfn>PasteStyles</dfn> with values like <b>D</b> or <b>L</b>. And set also <dfn>PasteHtml</dfn> = <b>1</b>.<br />
+         To more control which rows are where pasted, use API event <dfn>OnPaste</dfn>, here is possible to move or delete the newly added rows.<br />
+         </li>
+      </ul>

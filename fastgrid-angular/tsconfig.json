@@ -1,0 +1,42 @@
+{
+   "compilerOptions": {
+      "paths": {
+         "fastgrid-angular/core": [
+            "./core/public-api.ts"
+         ],
+         "fastgrid-angular/registered": [
+            "./registered/public-api.ts"
+         ]
+      },
+      "target": "ES2022",
+      "useDefineForClassFields": false,
+      "strict": true,
+      "noImplicitOverride": true,
+      "noPropertyAccessFromIndexSignature": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "sourceMap": true,
+      "declaration": true,
+      "declarationMap": true,
+      "inlineSources": true,
+      "experimentalDecorators": true,
+      "moduleResolution": "bundler",
+      "importHelpers": true,
+      "skipLibCheck": false,
+      "lib": [
+         "ES2022",
+         "DOM"
+      ],
+      "module": "ES2022"
+   },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "compilationMode": "partial"
+  },
+  "files": [],
+  "include": [],
+  "references": []
+}

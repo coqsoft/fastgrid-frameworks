@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>6. Cell style and border</h1>
+   <h5>Cell text and background style and border</h5>
+
+   <div class='Src'>Source: <a href='06-Styles.js'>06-Styles.js</a></div>
+   <section>
+      <fast-grid Src='06-Styles.js'></fast-grid>
+   </section>
+
+   <ul>
+      <li>
+         <h4>Styles set to cell</h4><br />
+         They are independent on the cell <b>Type</b>. All the attributes can be changed by users if set Cfg <dfn>EditingStyle</dfn>.<br />
+         <dfn>TextStyle</dfn> - sets bold and italic text.<br />
+         <dfn>TextLine</dfn> and <dfn>TextLineColor</dfn> - set text underline / strike / overline and the line style, color and width.<br />
+         <dfn>TextSize</dfn> - sets text font size and line height.<br />
+         <dfn>TextFont</dfn> - sets text font family.<br />
+         <dfn>TextColor</dfn> - sets text color.<br />
+         <dfn>TextShadow</dfn> - sets text background or shadow around or next to the text.<br />
+         <dfn>Background</dfn> - sets cell background color.<br />
+         <dfn>Pattern</dfn> and <dfn>PatternColor</dfn> - sets cell background pattern, gradient or line(s).<br />
+         <dfn>Align</dfn> - sets cell horizontal alignment and overflow side.<br />
+         <dfn>VertAlign</dfn> - sets cell vertical alignment.<br />
+         <dfn>Wrap</dfn> - sets wrapping text to more lines.<br />
+         <dfn>Rotate</dfn> - rotates text in 360 degrees.<br />
+         <dfn>Indent</dfn> - indents cell text from align side.<br />
+         <dfn>RowBorder</dfn> and <dfn>ColBorder</dfn> - sets border around the cell, sets edge(s), color, width and style.<br />
+      </li>
+      <li>
+         <h4>Styles set to cell text</h4><br />
+         They can be set only in <b>Html</b> <b>Type</b>. Or to <b>Auto</b> <b>Type</b> if set Cfg <dfn>AutoHtml</dfn>.<br />
+         All the HTML text attributes can be changed by users if the cell is editable.<br />
+         The styles are set in HTML code in the cell <b>Value</b> by standard &lt;span> tags. Only text styles are permitted.<br />
+         <ul>
+         <li>
+         Permitted <b>HTML</b> tags: 
+            <b>&lt;span></b>, <b>&lt;b></b>  / <b>&lt;strong></b> (font-weight:bold), <b>&lt;i></b> / <b>&lt;em></b> (font-style:italic), 
+            <b>&lt;u></b> / <b>&lt;ins></b> (text-decoration:underline), <b>&lt;s></b> / <b>&lt;strike></b> / <b>&lt;del></b> (text-decoration:line-through), 
+            <b>&lt;small></b> (font-size:10px),  <b>&lt;code></b> (font-family:monospace), 
+            <b>&lt;br></b>, <b>&lt;a></b>.<br />
+         </li>
+         <li>
+         Permitted <b>CSS</b> attributes: <b>font-weight</b>, <b>font-style</b>, <b>font-variant</b>, <b>text-decoration</b>, <b>font-size</b>, <b>font-family</b>, <b>color</b>, <b>text-shadow</b>.<br />
+         </li>
+         <li>
+         Sub and super text can be done by <b>vertical-align:50%</b> /*super = 50%, sub = -50%*/; <b>line-height:50%</b>; optionally with <b>font-size:85%</b>.<br />
+         </li>
+         </ul>
+      </li>
+      <li>All styles can be used and changed also in <h4>Toolbar</h4> cells, except <b>RowBorder</b>, <b>ColBorder</b> and <b>Rotate</b>.</li>
+      <li>
+         To update row height according to style or html content set Cfg <dfn>HtmlHeight</dfn>.<br />
+         To calculate column width according to style or html content set Cfg <dfn>HtmlWidth</dfn>.<br />
+      </li>
+      <li>
+         To update toolbar icons for editing styles according to actual selected text or focus set appropriate value to Cfg <dfn>RecalcOn</dfn>.<br />
+         <i>The toolbars are not updated if editing is done in toolbar cell in the same row part.</i><br />
+      </li>
+      <li>
+         <h4>Hyperlinks</h4><br />
+         Hyperlink for whole cell can be set <dfn>Link</dfn> attribute, its target by <dfn>Target</dfn> and tooltip by <dfn>LinkTip</dfn>.<br />
+         Hyperlink for some text in cell value can be set by HTML tag <dfn>&lt;a></dfn> in Html or Auto type cell.<br />
+         To permit adding or changing links by users set Cfg <dfn>EditingLink</dfn>.<br />
+         Styling links in grid can be done by Cfg <dfn>LinkCSS</dfn> object attribute.<br />
+      </li>
+   </ul>
+</body>
+</html>

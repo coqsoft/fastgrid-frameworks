@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>   
+   <meta charset="utf-8">
+   <title>FastGrid - Examples</title>
+   <link rel="icon" href='data:image/svg+xml,%3Csvg%20viewBox="0,0,16,16"%20xmlns="http://www.w3.org/2000/svg"%3E%3Cpath%20stroke="%230F172A"%20stroke-width="1.5"%20fill="none"%20d="m2.5,3a1.7,1.7,0,1,1,0,0.001m1.7,1v9h6a1.7,1.7,0,1,1,0,0.001m-6,-6h6a1.7,1.7,0,1,1,0,0.001"/%3E%3C/svg%3E'>
+   <style>
+      body { width:100svw; height:100vh; height:100svh; overflow:hidden; margin:0px; }
+      .Html { width:100svw; height:100vh; height:100svh; overflow-x:auto; overflow-y:hidden; }
+      .Body { width:100svw; height:100%; display:flex; flex-direction:row; overflow:hidden; background:linear-gradient(90deg,white 100px,#EFF5FE 258px); }
+      .Content { flex-shrink:0; flex-grow:1; border:0px none; margin:0px; padding:0px; height:100%; }
+      .Left {
+         display:none; position:sticky; width:24px; height:24px; margin:4px 0px -28px 267px; z-index:1; cursor:pointer; border-radius:20px; opacity:0.5;
+         background:white url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTIwIDYtNiA2IDYgNm0tOS0xMi02IDYgNiA2Ii8+PC9zdmc+) left center no-repeat;
+         }
+      .Right {
+         display:none; position:sticky; width:24px; height:24px; margin:4px 0px -28px 230px; z-index:1; cursor:pointer; border-radius:20px; opacity:0.5;
+         background:white url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTUgNiA2IDYtNiA2bTktMTIgNiA2LTYgNiIvPjwvc3ZnPg==) left center no-repeat;
+         }
+      .TreeParent { 
+         color:#333; background:linear-gradient(180deg,#f8fafc 0%,#eef2f7 100%); width:250px; border-radius:10px; margin:5px 5px 10px 5px; padding:5px 0px 10px 0px; 
+         border:1px solid #E0E0D0; overflow:auto; box-shadow:rgba(0,0,0,0.2) 0px 4px 6px -1px, rgba(0,0,0,0.2) 0px 2px 4px -2px; 
+         }
+      @media (hover: hover) {
+         .TreeParent::-webkit-scrollbar { width:21px; }
+         .TreeParent::-webkit-scrollbar-track { margin-top:5px; margin-bottom:5px; }
+         .TreeParent::-webkit-scrollbar-button { display:none; }
+         .TreeParent::-webkit-scrollbar-thumb:vertical { border:5px solid transparent; background:transparent; border-radius:20px; box-shadow:inset 0 0 5px rgba(0,0,0,0.3); }
+         .TreeParent::-webkit-scrollbar-thumb:hover { box-shadow:inset 0 0 5px rgba(0,0,0,0.5); }
+         .TreeParent::-webkit-scrollbar-thumb:active { box-shadow:inset 0 0 5px rgba(0,0,0,0.8); }
+         }
+      .Tree { flex-shrink:0; flex-grow:0; padding-left:5px; font-family:Arial,sans-serif; user-select:none; }
+      .Tree h5 { font-size:16px; padding:5px 0px 5px 0px; margin:0px; text-align:center; background:white; border:1px solid #E0E8EC; border-radius:6px; margin:5px 8px 5px 8px; cursor:default; }
+      .Tree h5 span { font-size:11px; vertical-align:middle; }
+      .Tree h1 { font-size:20px; padding:5px 0px 5px 0px; margin:0px; text-align:center; background:white; cursor:default; }
+      .Tree div { 
+         background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTkgNiA2IDYtNiA2Ij48L3BhdGg+PC9zdmc+) left center no-repeat;
+         padding-left:24px; margin-bottom:3px; font-size:15px; line-height:20px; cursor:pointer; white-space:nowrap; background-size:20px 20px; 
+         }
+      .Tree div.TreeExpanded {
+         background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTYgOSA2IDYgNi02Ij48L3BhdGg+PC9zdmc+) left center no-repeat;
+         color: black; font-weight:bold;
+         }
+      .Tree div:hover { text-decoration: none; color:#2563eb; }
+      .Tree a { display:block; padding:4px 2px 4px 0px; color:#333; text-decoration:none; border-radius:4px; font-size:14px; margin:0px 8px 0px 6px; }
+      .Tree a b { font-weight:600; }
+      .Tree a[target="_top"], .Tree a[target="fastgrid"] { padding:2px 0px 0px 16px; color:#33F!important; font-size:14px; line-height:20px; }
+      .Tree a.Disabled { color:#AAA!important; }
+      .Tree a.Deprecated { color:#999!important; }
+      .Tree a:hover { background: #e8e8e8; }
+      .Tree a.Disabled.TreeActive { color:#BBB!important; }
+      .Tree a.TreeActive { background:#1976d2; color:white; }
+      .Tree span { font-size:12px; }
+      .Tree p { display:none; padding:5px 0px 10px 0px; margin:0px 0px 0px 9px; border-left:1px solid #E3E3E3; }
+      .Tree p > a { padding-left:7px; }
+      .Tree ins { display:none; padding:10px 0px 10px 14px; text-decoration:none; font-style:normal; font-size:12px; border-left:1px solid #E3E3E3; }
+      .Tree u  { height:20px; width:20px; overflow:hidden; display:block; cursor:pointer; float:right; }
+      .Tree .Sep { padding-top:4px; border-top:1px solid #CCC; background-position:left calc(50% + 2px); }
+      @media (max-width:1023px) {
+         .Body { width:calc(100vw + 267px); }
+         .Left, .Right { display:block; }
+         .Tree h5 { font-size:16px; }
+         .Content { margin:0px; }
+         }
+   </style>
+</head>
+<body>
+   <div class="Html" id="Html">
+   <div class="Left" onclick="Scroll(1);"></div>
+   <div class="Right" onclick="Scroll(0);"></div>
+   <div class="Body">
+   <div class="TreeParent">
+   <div id="Tree" class="Tree">
+      <h1>FastGrid examples<br />HTML + Node</h1>
+      <a href='https://www.treegrid.com/FDoc/Glossary.htm' target="fastgrid">Documentation Index</a>
+      <a href='https://www.treegrid.com/FDoc/SearchAttr.html' target="fastgrid">Documentation Search</a>
+
+      <h5>Local tutorials</h5>
+      <div onclick="Expand(this)" class="Tree">Quick start</div><p>
+         <a href='Tutorials/Start/01-Quick_start_grid.html'>1. Quick Start - Grid</a>
+         <a href='Tutorials/Start/02-Advanced_start_grid.html'>2. Advanced Start - Grid + API</a>
+         <a href='Tutorials/Start/03-Quick_start_sheet.html'>3. Quick Start - Sheet</a>
+         <a href='Tutorials/Start/04-Quick_start_xlsx.html' class="Server">4. Quick Start - XLSX</a>
+      </p>                                                                         
+      <div onclick="Expand(this)">Basic <span>(rows and columns)</span></div><p>
+         <a href='Tutorials/Basic/01-Basic_grid.html'>1. Basic grid</a>
+         <a href='Tutorials/Basic/02-Rows.html'>2. Rows</a>
+         <a href='Tutorials/Basic/03-Columns.html'>3. Columns</a>
+         <a href='Tutorials/Basic/04-Column_sets.html'>4. Column sets</a>
+         <a href='Tutorials/Basic/05-Row_sets.html'>5. Row sets</a>
+         <a href='Tutorials/Basic/06-Defaults.html'>6. Default rows, columns</a>
+         <a href='Tutorials/Basic/07-Manipulate.html'>7. Rows manipulation</a>
+         <a href='Tutorials/Basic/08-Csv_grid.html' class="Server">8. CSV grid</a>
+      </p>                                                                         
+      <div onclick="Expand(this)">Cells <span>(types, formats, edit)</span></div><p>
+         <a href='Tutorials/Cells/01-Values.html'>1. Values</a>
+         <a href='Tutorials/Cells/02-Attributes.html'>2. Attributes</a>
+         <a href='Tutorials/Cells/03-Types.html'>3. Cell types, formats &amp; wrap</a>
+         <a href='Tutorials/Cells/04-List.html'>4. Cell popups List &amp; Suggest</a>
+         <a href='Tutorials/Cells/05-Images.html'>5. Cell images and charts</a>
+         <a href='Tutorials/Cells/06-Styles.html'>6. Cell style and border</a>
+         <a href='Tutorials/Cells/07-Sizes.html'>7. Cell sizes, margins &amp; span</a>
+         <a href='Tutorials/Cells/08-Toolbars.html'>8. Toolbar size &amp; position</a>
+         <a href='Tutorials/Cells/09-Permissions.html'>9. Permissions &amp; validation</a>
+         <a href='Tutorials/Cells/10-Conditional_format.html'>10. Conditional formatting</a>
+      </p>
+      <div onclick="Expand(this)">Tree <span>(rows, columns, groups)</span></div><p>
+         <a href='Tutorials/Tree/01-Row_tree.html'>1. Row tree</a>
+         <a href='Tutorials/Tree/02-Column_tree.html'>2. Column tree</a>
+         <a href='Tutorials/Tree/03-Grouping_rows.html'>3. Grouping rows to tree</a>
+         <a href='Tutorials/Tree/04-Grouping_cols.html'>4. Grouping columns to tree</a>
+         <a href='Tutorials/Tree/05-Load_children.html'>5. Loading rows on demand</a>
+      </p>
+      <div onclick="Expand(this)">Sorting</div><p>
+         <a href='Tutorials/Sort/01-Sorting_rows.html'>1. Sorting rows</a>
+         <a href='Tutorials/Sort/02-Sorting_columns.html'>2. Sorting columns</a>
+      </p>
+      <div onclick="Expand(this)">Filter and search</div><p>
+         <a href='Tutorials/Filter/01-Filtering_rows.html'>1. Filtering rows</a>
+         <a href='Tutorials/Filter/02-Filtering_columns.html'>2. Filtering columns</a>
+         <a href='Tutorials/Filter/03-Filtering_tree.html'>3. Filtering in tree</a>
+         <a href='Tutorials/Filter/04-Search.html'>4. Searching in cells</a>
+      </p>
+      <div onclick="Expand(this)">Dragging</div><p>
+         <a href='Tutorials/Drag/01-Dragging_rows.html'>1. Dragging &amp; pasting rows</a>
+         <a href='Tutorials/Drag/02-Dragging_columns.html'>2. Dragging &amp; pasting cols</a>
+         <a href='Tutorials/Drag/03-Dragging_external.html'>3. Dragging from / to outside</a>
+      </p>
+      <div onclick="Expand(this)">AI</div><p>
+         <a href='Tutorials/AI/01-AI_Grid.html'>1. Grid with AI</a>
+         <a href='Tutorials/AI/02-AI_Sheet.html' class="Server">2. Sheets with AI</a>
+      </p>
+
+      <h5>Complex local examples</h5>
+      <div onclick="Expand(this)">Grids and tree grids</div><p>
+         <a href='Examples/Local_Grid/01-Spans/Spans.html'>Spanned cells</a>
+         <a href='Examples/Local_Grid/02-Sets/Sets.html'>Column sets</a>
+         <a href='Examples/Local_Grid/03-Pivot/Pivot.html'>Pivot grid</a>
+         <a href='Examples/Local_Grid/04-Gantt/Gantt.html'>With TreeGrid Gantt chart</a>
+      </p>
+      <div onclick="Expand(this)">Sheets</div><p>
+         <a href='Examples/Local_Sheet/05-Excel/Excel.html' class="Server">Complex MS Excel sheet</a>
+         <a href='Examples/Local_Sheet/06-Excel100k/Excel100k.html' class="Server">Excel sheet with 100k rows</a>
+         <a href='Examples/Local_Sheet/07-Excel1M/Excel1M.html' class="Server">Excel sheet with million rows</a>
+         <a href='Examples/Local_Sheet/08-Empty/Empty.html'>Empty JSON sheet</a>
+      </p>
+
+      <h5>Node server examples</h5>
+      <div onclick="Expand(this)">SQL Database</div><p>
+         <a href='Examples/Server_SQL/01-SQL-Table.html' target='Content'>Table in SQL database</a>
+         <a href='Examples/Server_SQL/02-SQL-Table-UTF8Store.html' target='Content'>Table in SQL database<br />&nbsp; and using UF8Store</a>
+         <a href='Examples/Server_SQL/03-SQL-Tree.html' target='Content'>Tree in SQL database</a>
+         <a href='Examples/Server_SQL/04-SQL-Tree-UTF8Store.html' target='Content'>Tree in SQL database<br />&nbsp; and using UF8Store</a>
+         <a href='Examples/Server_SQL/05-SQL-Grid.html' target='Content'>Grid in SQL database</a>
+         <a href='Examples/Server_SQL/06-SQL-Schools.html' target='Content'>Schools lists and ratings<br />Complex app. in SQL db.</a>
+      </p>
+      <div onclick="Expand(this)">Static file store</div><p>
+         <a href='Examples/Server_File/01-File-Json.html' target='Content'>Grid in JSON file</a>
+         <a href='Examples/Server_File/02-File-UTF8Store.html' target='Content'>Grid in UTF8Store file</a>
+         <a href='Examples/Server_File/03-File-Sheets.html' target='Content'>Sheets in JSON file</a>
+         <a href='Examples/Server_File/04-File-Xlsx.html' target='Content'>Sheets in XLSX file</a>
+      </p>
+   </div>
+   </div>
+   <iframe src="Tutorials/Start/01-Quick_start_grid.html" name="Content" class="Content" scrolling="auto"></iframe>
+</div>
+</div>
+
+<script>
+var LastActive = null;
+var BTablet = navigator.userAgent.search(/Mobile|Android/)>=0 || navigator.maxTouchPoints;
+
+function Scroll(left){
+var S = document.getElementById("Html");
+//S.scrollLeft = left&&S.scrollLeft ? 0 : 267;
+//. Smooth scroll
+var pos = S.scrollLeft, start = null, time = 100, end = left&&S.scrollLeft ? 0 : 267;
+window.requestAnimationFrame(function step(ctime) {
+   start = !start ? ctime : start;
+   var progress = ctime - start;
+   S.scrollLeft = pos<end ? ((end - pos) * progress / time) + pos : pos - ((pos - end) * progress / time);
+   if (progress<time) window.requestAnimationFrame(step);
+   else S.scrollLeft = end;
+   });
+}
+
+function SetActive(a){
+   a.className += " TreeActive";
+   LastActive = a;
+   a.parentNode.style.display = "block";
+   a.parentNode.previousSibling.className = "TreeExpanded";
+   if(!a.parentNode.parentNode.offsetWidth){
+      a.parentNode.parentNode.style.display = "block";
+      a.parentNode.parentNode.previousSibling.className = "TreeExpanded";
+      }
+   }
+
+function OnClick(){
+   if(LastActive) LastActive.className = LastActive.className.replace(/\s*TreeActive/,"");
+   this.className += " TreeActive";
+   if(window.localStorage) localStorage.FGExampleUrl = this.href;
+   LastActive = this;
+   if(window.history && history.pushState) try {
+      var url = top.location.pathname.replace(/\/index[^/]*/i,"");
+      var pos = this.pathname.indexOf(url);
+      if(pos>=0) top.history.pushState({},"",top.location.href.replace(/#.*/g,"")+"#"+this.pathname.slice(pos+url.length));
+      } catch(e){ } 
+   Scroll();
+   }
+      
+function Expand(O){
+   var exp = O.className.indexOf("TreeExpanded")>=0;
+   O.className = exp ? O.className.replace(/\s*TreeExpanded\s*/,"") : O.className+" TreeExpanded";
+   O = O.nextSibling;
+   O.style.display = exp ? "": "block";
+   }
+
+function Start(){
+   var url = ""; 
+   try { if(top.location.hash) url = top.location.hash.slice(1); } catch(e) { }
+   if(!url&&window.localStorage&&localStorage.FGExampleUrl) url = localStorage.FGExampleUrl;
+   var A = document.body.getElementsByTagName("a");
+   for(var i=0;i<A.length;i++) if(A[i].target!="_top"&&A[i].target!="fastgrid"){
+      A[i].onclick = OnClick;
+      A[i].target = 'Content';
+      var href = unescape(A[i].href);
+      A[i].href += "?"+Math.random();
+      if(url && href.indexOf(url)>=0) {
+         try {
+            SetActive(A[i]);
+            Scroll();
+            top.frames.Content.location.href = A[i].href;
+            } 
+         catch(e) { }
+         url = "";
+         }
+      }
+   if(url) for(var i=0;i<A.length;i++) if(A[i].href.indexOf("/Tutorials/Start/01-Quick_start_grid.html")>=0){ SetActive(A[i]); break; } //. Initial example
+   if(location.protocol=="file:") { //. Run locally, not from server
+      var A = document.body.getElementsByClassName("Server");
+      for(var i=0;i<A.length;i++){ A[i].className += " Disabled"; A[i].title = "This example cannot be run directly from file system.\nRun the package index.html from your http server, e.g. localhost."; }
+      }
+   }   
+
+Start();
+
+</script>
+</body>
+</html>

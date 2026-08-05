@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>4. Grouping columns to tree</h1>
+   <h5>Grouping columns according to the same values in selected rows</h5>
+
+   <div class="Src">Source: <a href='04-Grouping_cols.js'>04-Grouping_cols.js</a></div>
+   <section>
+      <fast-grid Src="04-Grouping_cols.js"></fast-grid>
+   </section>
+   
+   <ul>
+      <li><h4>Setting grouping</h4><br />
+         Column grouping can be set per <b>column part</b> as list of row ids in <dfn>Group</dfn> attribute.<br />
+         To assign an object to column part that already defined colums in array use the part id with "_" suffix, e.g. <b>Cols: [...], Cols_Cfg: { Group:"C,D" }</b><br />
+      </li>
+      <li><h4>Changing grouping</h4><br />
+         To permit users to change grouping use some <b>Toolbar</b>.<br />
+         To permit dropping rows to group by them, define <b>Toolbar</b> with <b>D:</b> <dfn>Group</dfn>, <dfn>Accept</dfn><b>: "Row"</b>, <dfn>Part</dfn><b>: "Cols"</b> or another column part(s). This toolbar shows cells with <b>D: "DragGroup"</b>.<br />
+         To let users to choose some predefined grouping, add <b>Tool</b> cell with <b>D:</b> <dfn>GroupList</dfn> to any Toolbar and define its <b>List</b> attribute with the predefined groupings. It also requires the <b>Part</b> attribute.<br />
+         To let users to change grouping settings and / or switch grouping on / off add <b>Tool</b> cell with <b>D:</b> <dfn>Group</dfn> to any Toolbar.<br />
+      </li>
+      <li><h4>Where to show tree</h4><br />
+         Column tree can be shown in the independent row part by Cfg attribute <dfn>ColTree</dfn><b>: 1</b>.<br />
+         The main row showing the values the columns are grouped by is defined by <b>column part</b> <dfn>GroupTree</dfn>. To show expand / collapse buttons in this row, use <b>LeftIcons</b> / <b>RightIcons</b> = <b>Collapse</b><br />
+      </li>
+      <li><h4>Grouping settings</h4><br />
+      Some of the global grouping setting can be changed by users in popup menu for <b>Tool</b> cell <b>D: </b> <dfn>Group</dfn>.<br />
+      When comparing values for grouping it is possible to ignore <b>case</b> (Cfg <dfn>GroupCaseSensitive</dfn>, row <dfn>CaseSensitive</dfn>), 
+      <b>diacritics</b> (Cfg <dfn>GroupLocaleCompare</dfn>, row <dfn>LocaleCompare</dfn>), 
+      some characters (usually <b>spaces</b>) (Cfg <dfn>GroupWhiteChars </dfn>, row <dfn>WhiteChars</dfn>), etc.<br />
+      To change the way the cell values are compared, set cell attribute <dfn>SortValue</dfn> to use this value instead of the cell value for comparing.<br />
+      </li>
+      <li><h4>Grouping restrictions</h4><br />
+         To restrict some row to group by it set its attribute <dfn>NoGroupBy</dfn>.<br />
+         To restrict some column to be grouped set its attribute <dfn>NoGroup</dfn>.<br />
+      </li>
+      <li><h4>Creating group columns</h4><br />
+         When grouping, new parent column with <b>D:</b> <dfn>Group</dfn> is created for every group level and different group.<br />
+         To not create the parent group columns set Cfg attribute <dfn>GroupAdd</dfn> = <b>0</b>. In this case the first data column in the group becomes parent of the next columns in the same group.<br />
+         To not create the parent group columns for some values, set them in Cfg <dfn>GroupExclude</dfn>.<br />
+         To not create the parent group columns with only one child set Cfg <dfn>GroupSingle</dfn> = <b>0</b>.<br />
+         To not create the parent group columns as the only child of their parent set Cfg <dfn>GroupSole</dfn> = <b>0</b>.<br />
+      </li>
+      <li>
+      <h4>Create more group levels per one row</h4><br />
+         The cell value can be split for grouping to more values to be used as standalone grouping levels by separator in row attribute <dfn>GroupChar</dfn> 
+         or by number of characters set by row attribute <dfn>GroupMaxChars</dfn>.<br />
+      </li>
+   </ul>
+</body>
+</html>

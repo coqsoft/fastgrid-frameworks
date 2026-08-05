@@ -1,0 +1,30 @@
+{
+  "name": "fastgrid-react-tutorials",
+  "private": true,
+  "version": "3.2.1",
+  "description": "React project demonstrating FastGrid and FastSheet with the fastgrid-react wrapper.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "devt": "npm run typecheck && vite",
+    "buildt": "npm run typecheck && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "fastgrid-react": "file:../../fastgrid-react",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "typescript": "~6.0.0",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  }
+}

@@ -1,0 +1,9 @@
+﻿/* Styles special for '03-dragging-external' example */
+.dragparent { border:1px solid #CDD8E4; border-radius:10px; padding:6px 6px 1px 6px; cursor:default; user-select:none; width:100%; }
+.dropparent { border:1px solid #D88; border-radius:10px; padding:6px 6px 1px 6px; cursor:default; user-select:none; width:100%; }
+.dropparent > i { display:inline-block; padding-bottom:5px; }
+.drag,.drop { padding:3px 8px 0px 8px; margin:0px 10px 5px 0px; display:inline-block; white-space:nowrap; font-size:12px; color:#586980; }
+.drag { cursor:pointer; }
+.cell { border:1px solid #586980; border-radius:10px; }
+.row { border:1px solid #66F; border-radius:10px; }
+.col { border:1px solid #0D0; border-radius:10px; }

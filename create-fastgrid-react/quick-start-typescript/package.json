@@ -1,0 +1,27 @@
+{
+  "name": "fastgrid-react-quick-start-typescript",
+  "private": true,
+  "version": "3.2.1",
+  "description": "React project demonstrating FastGrid and FastSheet with the fastgrid-react wrapper.",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "npm run typecheck && vite",
+    "start": "npm run typecheck && vite",
+    "build": "npm run typecheck && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "fastgrid-react": "file:../../fastgrid-react",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "typescript": "~6.0.0",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  }
+}

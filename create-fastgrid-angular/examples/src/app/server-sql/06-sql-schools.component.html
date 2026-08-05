@@ -1,0 +1,47 @@
+<h1>6. School list and ratings</h1>
+   <h5>Demonstration of framework of item list with ratings and reviews. Using SQLite database table on Node server</h5>
+   <ul>
+      <li>
+         Sample Node server must be running on <b>http://localhost:8000</b>. The sample Node server package is located at <b>./server/</b>.<br/>
+         The sample data are loaded from <b><a href="http://localhost:8000/SQLSchools.js?func=get" target="_blank">http://localhost:8000/SQLSchools.js?func=get</a></b>
+         and saved to url <b>http://localhost:8000/SQLSchools.js?func=set</b>.
+         PDF is generated on url <b>http://localhost:8000/Pdf.js?func=getpdf</b>.<br/>
+         The reviews are loaded from <b>http://localhost:8000/SQLSchools.js?func=getratings</b>. The review is added on <b>http://localhost:8000/SQLSchools.js?func=setreview</b>.<br/>
+         The sample data on server are stored in <b>./server/sqlite.db</b> database file in tables <b>Schools_Schools</b>, <b>Schools_Ratings</b>, <b>Schools_Reviews</b>
+         and the script loading and saving data is located at <b>./server/SQLSchools.js</b>
+      </li>
+      <li>
+         There are three modes to work with data:<br />
+         a) <strong><em>View all data and rate</em></strong> and review the schools.
+         Default mode, without log in.<br/>
+         b) <strong><em>Edit data as user</em></strong>. Every user has his own data.
+         You can log in as <strong>Jan</strong>, <strong>Magda</strong>, <strong>David</strong>,
+         <strong>Adam</strong>, <strong>Linda</strong>, all without password.
+         Or you can add new user by entering new name and password.<br/>
+         c) <strong><em>Edit all data as administrator</em></strong>. You can edit all data or even assign it to another user.
+         You can log in as <strong>Admin</strong>, without password.<br/>
+      </li>
+      <li>
+         <i>Log in to add or edit your events</i>
+         <span class="school-login">
+            Name: <input [value]="name" (input)="name=$any($event.target).value" type="text" id="IName"/>
+            Password: <input [value]="password" (input)="password=$any($event.target).value" type="password" id="IPass"/>
+            <button (click)="reload(0)" title="Edit mode for users and admin">Edit</button>
+            <button (click)="reload(1)" title="Read only mode for visitors">View</button>
+            <button (click)="reload(2)" title="Adds new user to add events, with name and password">New user</button>
+         </span>
+      </li>
+   </ul>
+
+   <fast-grid [src]="src" #gridRef [onLoadError]="onLoadError" (tag)="onTag($event)" style="height:100%; min-height:500px; width:100%;"></fast-grid>
+
+   <ul>
+      <li>
+         <button [hidden]="!editMode" (click)="getGrid()?.ActionSave()">Save changes</button>
+         <button [hidden]="!editMode" (click)="getGrid()?.ActionReload()">Cancel changes</button>
+         <button [hidden]="!editMode" (click)="addSchool()">Add record</button>
+         <button (click)="expandAll()">Expand all</button>
+         <button (click)="collapseAll()">Collapse all</button>
+         <button (click)="chooseColumns()">Choose columns</button>
+      </li>
+   </ul>

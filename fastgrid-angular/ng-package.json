@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "dist",
+  "lib": {
+    "entryFile": "trial/public-api.ts"
+  },
+  "assets": [
+    "README.md",
+    {
+      "input": "types",
+      "glob": "FastGrid.TypeScript.API.d.ts",
+      "output": "types"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://www.treegrid.com/FDoc/FastGridVue.html#package",
+      "url": "https://www.treegrid.com/FDoc/FastGridVue.html",
+      "name": "fastgrid-vue",
+      "alternateName": "FastGrid Vue integration",
+      "description": "fastgrid-vue is the official Vue wrapper for FastGrid and FastSheet by COQsoft. It provides a high-performance Vue data grid, Vue tree grid and spreadsheet integration for large datasets, virtual scrolling, editing, sorting, filtering, grouping, pivoting, XLSX and AI-assisted operations.",
+      "codeRepository": "https://github.com/coqsoft/fastgrid-frameworks/tree/main/fastgrid-vue",
+      "downloadUrl": "https://www.npmjs.com/package/fastgrid-vue",
+      "programmingLanguage": [
+        "TypeScript",
+        "JavaScript",
+        "Vue"
+      ],
+      "runtimePlatform": "Vue",
+      "license": "https://github.com/coqsoft/fastgrid-frameworks/blob/main/fastgrid-vue/LICENSE.md",
+      "version": "3.2.0",
+      "about": [
+        {
+          "@id": "https://www.treegrid.com/FastGrid#software"
+        },
+        {
+          "@id": "https://www.treegrid.com/FastSheet#software"
+        }
+      ],
+      "author": {
+        "@id": "https://www.treegrid.com/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.treegrid.com/FastGrid#software",
+      "name": "FastGrid",
+      "alternateName": "FastGrid JavaScript data grid",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web browser",
+      "url": "https://www.treegrid.com/FastGrid",
+      "softwareVersion": "3.2",
+      "publisher": {
+        "@id": "https://www.treegrid.com/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.treegrid.com/FastSheet#software",
+      "name": "FastSheet",
+      "alternateName": "FastSheet web spreadsheet",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web browser",
+      "url": "https://www.treegrid.com/FastSheet",
+      "softwareVersion": "3.2",
+      "publisher": {
+        "@id": "https://www.treegrid.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.treegrid.com/#organization",
+      "name": "COQsoft",
+      "url": "https://www.treegrid.com",
+      "sameAs": [
+        "https://github.com/coqsoft",
+        "https://www.npmjs.com/~coqsoft"
+      ]
+    }
+  ]
+}

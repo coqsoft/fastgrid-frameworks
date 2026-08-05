@@ -1,0 +1,33 @@
+<h1>5. Loading child rows on demand</h1>
+      <h5>Loading child rows on parent expand</h5>
+      <section>
+         <fast-grid [src]="src" [onDataSend]="onDataSend" style="display:inline-block; height:550px; max-width:100%;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li>
+            A row can download its child rows on its expand when it has set attribute <dfn>Children</dfn>. It can be set to count of loaded children or simply to 1.<br />
+            If the row has some children already, the loaded children are added to them on the end.<br />
+            Note the <b>Children</b> attribute is applied only for <b>Collapsed</b> rows.<br />
+            If the row contains deep tree, the children with their children, set attribute <dfn>ChildrenL</dfn> of the parent row to the tree deepness.<br />
+         </li>
+         <li>
+            The rows are loaded from url set by <b>Cfg</b> attribute <dfn>ChildrenUrl</dfn>. Or every row can have set its <dfn>ChildrenUrl</dfn>.<br />
+            The <b>ChildrenUrl</b> is standard FastGrid <b>Source</b> object or string with server url.<br />
+            The server url can contain keyword <b>*Row</b> to be replaced by the parent row that downloads its children.<br />
+         </li>
+         <li>
+            The data with the loading children rows is standard FastGrid JSON object with <b>Body</b> or <b>ChangedRows</b>.<br />
+            The rows should contain <dfn>Parent</dfn> attribute to be placed to the correct parent row.<br />
+            If the loaded data contains row in tree, the rows should not contain <b>L</b> attribute, but rather the <b>Parent</b> to be included to the given parent row.<br />
+         </li>
+         <li>
+            The row children are loaded only on its first expand. After the expand the <b>Children</b> attribute is cleared.<br />
+            To load children on every expand, set <b>Cfg</b> attribute <dfn>ChildrenReload</dfn>.<br />
+         </li>
+         <li>
+            To restrict loading all children on expand all set <b>Cfg</b> <dfn>ChildrenExpandAll</dfn> = <b>0</b>. It will expand and load only the first collapsed level.<br /> 
+            To expand all children on print / export with collapsed rows set <b>Cfg</b> attribute <dfn>PrintLoadChildren</dfn> / <dfn>ExportLoadChildren</dfn>.<br />
+         </li>
+      </ul>

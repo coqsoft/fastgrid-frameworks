@@ -1,0 +1,17 @@
+<div class="tutorial-layout">
+   <aside class="tutorial-sidebar">
+      <h2>FastGrid examples<br />Angular</h2>
+      <nav class="tutorial-menu">
+         <section *ngFor="let group of exampleGroups" class="tutorial-group">
+            <h3 class="tutorial-group-title" [textContent]="group.title"></h3>
+            <div class="tutorial-group-links">
+               <a *ngFor="let item of group.items" [routerLink]="'/'+item.fullPath" routerLinkActive="active" class="tutorial-link" [textContent]="item.title"></a>
+            </div>
+         </section>
+      </nav>
+   </aside>
+
+   <main class="tutorial-content">
+      <router-outlet />
+   </main>
+</div>

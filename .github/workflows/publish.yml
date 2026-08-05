@@ -1,0 +1,43 @@
+name: Publish npm package
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package to publish
+        required: true
+        type: choice
+        options:
+          - fastgrid-angular
+          - create-fastgrid-angular
+      tag:
+        description: npm dist-tag
+        required: true
+        default: latest
+        type: choice
+        options:
+          - latest
+          - next
+          - beta
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22.22.3
+          registry-url: https://registry.npmjs.org/
+          cache: npm
+      - name: Install npm with Trusted Publishing support
+        run: npm install --global npm@11
+      - run: npm ci
+      - name: Verify package
+        run: npm pack --workspace "${{ inputs.package }}" --dry-run
+      - name: Publish package
+        run: npm publish --workspace "${{ inputs.package }}" --tag "${{ inputs.tag }}" --access public

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="GenSources.js"></script>
+      <script src="../../../../Grid/FGridE.js"></script>
+   </head>
+   <body>
+      <h1>Generates data for 2. Large example with column sets</h1>
+      <span style="display:inline-block;width:300px;">Row count: </span>
+      <input style="width:100px;text-align:right;" type="text" id="IRowCount" value="10000" /><br /><br />
+      <span style="display:inline-block;width:300px;">Split for background loading: </span>
+      <input type="checkbox" id="ISplit" /><br /><br />
+      <span style="display:inline-block;width:300px;">Quote attribute names: </span>
+      <input type="checkbox" id="IQuote" checked="1" /><br /><br />
+      <span style="display:inline-block;width:300px;">File name: </span>
+      <input id="IFile" value="SetsData" /><br /><br />
+      <button onclick="GenData()"><b>Generate data</b></button>
+   </body>
+   <script>
+// -----------------------------------------------------------------------------------------------------------
+//. Generates data for the 1st Large example - spans
+//. rowcount is number of rows to generate in the grid data
+//. if set split, splits the data to two files, the first with split count rows and the other with rowcount-split count rows. By default for split = 1 is set 10000.
+//. if set Q, quotes the attribute names by "
+function GenData() {
+var rowcount = document.getElementById('IRowCount').value-0;
+if(!rowcount) rowcount = 1000000; 
+var split = document.getElementById('ISplit').checked ? 10000 : 0; if(split>=rowcount) split = 0;
+var Q = document.getElementById('IQuote').checked ? '"' : '';
+var FNames = []; //. First names, Surnames
+for(var i=0;i<Male.length;i++) FNames.push(Male[i][0]+Male[i].slice(1).toLowerCase(),Female[i][0]+Female[i].slice(1).toLowerCase());
+for(;i<Female.length;i++) FNames.push(Female[i][0]+Female[i].slice(1).toLowerCase());
+var AA = {}, E = window.TextEncoder ? new TextEncoder() : null;
+var A = [], B = "", p = 0, FN = [], SN = [];
+A[p++] = 'FGrid.Data = {'+Q+'Body'+Q+':"';
+var c1 = [], c2 = []; for(var i=0;i<12;i++) c2.push(0x0B,0x08,0x807); //. Verified, Amount, Price
+//.              Calls,    Region,      Partner,   Country,    State,  Rabat,    Since,                                    Name
+c1.push(0x0D,   0x08,   0x0B,   0x08, 0x01, 0x01, FGrid.GetUCode(2,1,12),0xD1); //. Since bez Base, generuje se uz jako cislo
+var R1All = [0,0,0,0,0,0,0,0,0,0,0,0], R1Ver = [0,0,0,0,0,0,0,0,0,0,0,0], R2All = [0,0,0,0,0,0,0,0,0,0,0,0], R2Ver = [0,0,0,0,0,0,0,0,0,0,0,0];
+for(var ri=0;ri<rowcount;ri++){
+   var V = [];
+   var Calls = Math.floor(Math.random()*5);
+   var Region = Math.floor(Math.random()*CRegion); if(!CState[Region]) Region = Math.floor(Math.random()*CRegion);
+   var Country = null; for(var i=0;i<10&&(!i||CState[Region]&&CState[Region][Country]==null);i++) Country = Math.floor(Math.random()*CCountry[Region]);
+   var State = null; if(CState[Region]&&CState[Region][Country]) while(State==null||CState[Region][Country][State]=="-") State = Math.floor(Math.random()*CState[Region][Country]);
+   var First = Math.floor(Math.random()*FNames.length*Math.random()*Math.random()*Math.random());
+   var Sur = Math.floor(Math.random()*(Surnames.length*Math.random()*Math.random()*Math.random()));
+   var Partner = Math.random()>0.6 ? 1 : 0;
+   var Since = Math.floor((Math.random()*4380-3650))*24*3600000;
+   var Rabat = Math.floor(Math.random()*30);
+   V.push(Calls,Region,Partner,Country,State,Rabat,Since,Surnames[Sur][0]+Surnames[Sur].slice(1).toLowerCase()+" "+FNames[First]);
+   A[p++] = FGrid.WriteValues(V,c1,0,SN,FN);
+   for(var j=0;j<2;j++){
+      var V = [];
+      for(var i=0;i<36;i+=3) {
+         V[i] = Math.random()>0.4 ? 1 : 0; //V[i] = 1;
+         var v = Math.random(); // v = 0.5;
+         if(v>0.95){ V[i+1] = 0; V[i+2] = 0; }
+         else {
+            V[i+1] = Math.ceil(v>0.9 ? (v-0.9)*200 : v>0.7 ? v*50 : v*10);
+            var vv = Math.random(); //vv = 0.99;
+            V[i+2] = vv>0.95&&v<0.4 ? Math.ceil((vv-0.95)*200)*10000 : Math.ceil(vv*95)*100;
+            //V[i+1] = 1; V[i+2] = 100;
+            }
+         if(j){ R2All[i/3] += V[i+1]*V[i+2]; if(V[i]) R2Ver[i/3] += V[i+1]*V[i+2]; }
+         else { R1All[i/3] += V[i+1]*V[i+2]; if(V[i]) R1Ver[i/3] += V[i+1]*V[i+2]; }
+         }
+      A[p++] = FGrid.WriteValues(V,c2,0,SN,FN);
+      }
+   if(split&&ri==split){ B = A.join(""); A.length = 1; p = 1; }
+   }
+var cols = '",'+Q+'LeftCols'+Q+':[{'+Q+'id'+Q+':"Name",'+Q+'Texts'+Q+':["'+SN.join('","')+'"],'+Q+'UTexts'+Q+':["'+FN.join('","')+'"]}],';
+A[p++] = cols; if(B) B += cols;
+for(var s="",i=0;i<12;i++) s += Q+"R1All"+(i+1)+Q+":"+R1All[i]+","+Q+"R1Ver"+(i+1)+Q+":"+R1Ver[i]+",";
+for(var i=0;i<12;i++) s += Q+"R2All"+(i+1)+Q+":"+R2All[i]+","+Q+"R2Ver"+(i+1)+Q+":"+R2Ver[i]+",";
+A[p++] = Q+'Script'+Q+":{"+s.slice(0,-1)+"}";
+A[p++] = '};'; if(B) B = "\ufeff" + B + '};';
+var s = "\ufeff"+A.join("");
+var n = document.getElementById('IFile').value;
+if(!B){ TGSaveFile(s,n+rowcount+".js"); return; }
+AA[n+rowcount+"D1.js"] = E.encode(B);
+AA[n+rowcount+"D2.js"] = E.encode(s);
+TGSaveFile(FGrid.UZIP.encode(AA),n+rowcount+".zip");
+}
+// -----------------------------------------------------------------------------------------------------------
+   </script>
+</html>

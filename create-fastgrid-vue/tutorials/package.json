@@ -1,0 +1,32 @@
+{
+  "name": "fastgrid-vue-tutorials",
+  "description": "Vue project demonstrating FastGrid and FastSheet with the fastgrid-vue wrapper.",
+  "private": true,
+  "version": "3.2.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "devt": "npm run typecheck && vite",
+    "buildt": "npm run typecheck && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "fastgrid-vue": "file:../../fastgrid-vue",
+    "vue-router": "latest",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "latest",
+    "@vitejs/plugin-vue": "latest",
+    "eslint": "latest",
+    "eslint-plugin-vue": "latest",
+    "globals": "latest",
+    "typescript": "~6.0.0",
+    "vite": "latest",
+    "vue-tsc": "^3.3.5"
+  }
+}

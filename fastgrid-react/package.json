@@ -1,0 +1,144 @@
+{
+  "name": "fastgrid-react",
+  "version": "3.2.1",
+  "description": "Official React wrapper for FastGrid and FastSheet, a high-performance TypeScript data grid and web spreadsheet for large datasets, virtual scrolling, tree data, pivoting, XLSX and AI.",
+  "keywords": [
+    "fastgrid",
+    "fast-grid",
+    "fastsheet",
+    "fast-sheet",
+    "react",
+    "react-grid",
+    "react grid",
+    "react-data-grid",
+    "react data grid",
+    "react-datagrid",
+    "react-table",
+    "react table",
+    "react-data-table",
+    "react-datatable",
+    "react-tree-grid",
+    "react tree grid",
+    "react-spreadsheet",
+    "react spreadsheet",
+    "react-component",
+    "react-library",
+    "react-wrapper",
+    "react-standalone",
+    "standalone-component",
+    "typescript",
+    "typescript-grid",
+    "data-grid",
+    "data grid",
+    "datagrid",
+    "data-table",
+    "datatable",
+    "tree-grid",
+    "tree grid",
+    "hierarchical-grid",
+    "hierarchical-data",
+    "spreadsheet",
+    "web-spreadsheet",
+    "javascript-spreadsheet",
+    "excel-like-grid",
+    "xlsx",
+    "xlsx-editor",
+    "csv",
+    "virtual-scrolling",
+    "virtual-scroll",
+    "virtualization",
+    "large-datasets",
+    "large-data-grid",
+    "big-data-grid",
+    "million-rows",
+    "million-columns",
+    "high-performance-grid",
+    "editable-grid",
+    "cell-editing",
+    "sorting",
+    "filtering",
+    "grouping",
+    "aggregation",
+    "pivot-grid",
+    "pivot-table",
+    "tree-table",
+    "formulas",
+    "excel-formulas",
+    "conditional-formatting",
+    "copy-paste",
+    "xlsx-export",
+    "csv-export",
+    "pdf-export",
+    "enterprise-grid",
+    "enterprise-data-grid",
+    "ai-grid",
+    "ai-data-grid",
+    "ai-spreadsheet",
+    "ai-assisted-grid",
+    "openai-integration"
+  ],
+  "author": {
+    "name": "COQsoft",
+    "email": "support@coqsoft.com",
+    "url": "https://www.treegrid.com"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "homepage": "https://www.treegrid.com/FDoc/FastGridReact.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coqsoft/fastgrid-frameworks.git",
+    "directory": "fastgrid-react"
+  },
+  "bugs": {
+    "url": "https://github.com/coqsoft/fastgrid-frameworks/issues"
+  },
+  "type": "module",
+  "main": "./dist/fastgrid-react.cjs",
+  "module": "./dist/fastgrid-react.js",
+  "types": "./types/fastgrid-react.d.ts",
+  "sideEffects": [
+    "**/FGridE.js",
+    "./dist/fastgrid-react.js",
+    "./dist/fastgrid-react.cjs"
+  ],
+  "peerDependencies": {
+    "react": ">=16.14",
+    "react-dom": ">=16.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "scripts": {
+    "build": "vite build",
+    "prepack": "npm run build",
+    "prepare": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "http://localhost:4873"
+  },
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "import": "./dist/fastgrid-react.js",
+      "require": "./dist/fastgrid-react.cjs",
+      "types": "./types/fastgrid-react.d.ts"
+    },
+    "./registered": {
+      "import": "./dist/registered.js",
+      "require": "./dist/registered.cjs",
+      "types": "./types/fastgrid-react.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "types",
+    "README.md",
+    "LICENSE.md",
+    "NOTICE.md"
+  ]
+}

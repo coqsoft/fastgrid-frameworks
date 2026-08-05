@@ -1,0 +1,27 @@
+<h1>5. Row sets</h1>
+      <h5>Column parts with different rows</h5>
+      <section>
+         <fast-grid [src]="src" style="max-width:800px; height:550px;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li><h4>Row sets</h4><br />
+         It is possible to define more row sets in grid. These row sets are <b>not</b> defined explicitly, there are only defined by rows in the new row sets.<br />
+         The rows in the second and next row sets are defined in the row part name + $ + row set name. 
+         For example <span class="inline-code">&lt;b&gt;Body$Set2&lt;/b&gt;: [ &#123; id:"R1" &#125;, &#123; id:"R2" &#125; ]</span><br />
+         This example contains three sets, the first set without name, "Set2" and "Set3".<br />
+         </li>   
+         <li>
+         If the second and next row sets contain rows only in some row parts, the other row parts share rows with the first row set.<br />
+         In this example there is shared top Header row with all three sets and bottom foot row with the first and third sets.<br />
+         </li>
+         <li>Every column part can have assigned its row set by <dfn>S</dfn> attribute. Every column part has always one row set, without <b>S</b> attribute has the first row set.<br />
+         <i><b>It is the major difference between row sets and column sets, column set can be different per row, but row set can be different only per the whole column part, not per column!</b></i><br />
+         </li>
+         <li>The rows in the row sets can be sorted, grouped and filtered independently on the other row sets.</li>
+         <li>The rows can be also dragged between the row sets, after that the moved row will show its different columns!</li>
+         <li>Every the row set can show its tree for row levels in different column, set by Cfg <b>RowTree</b> = <b>2</b> and row <b>Tree</b> attribute.<br />
+         To show the tree in different columns for grouping set the Cfg <b>RowTree</b> = <b>2</b> and <b>GroupTree</b> to object with column ids.<br />
+         </li>
+      </ul>

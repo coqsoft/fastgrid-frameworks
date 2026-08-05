@@ -1,0 +1,31 @@
+<h1>2. Column tree</h1>
+      <h5>Nesting columns to tree levels</h5>
+      <section>
+         <fast-grid [src]="src" style="display:inline-block; max-width:100%;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li>
+            Every column can have defined its level of nesting in tree by <dfn>L</dfn> attribute.<br />
+            The root level, that can be expanded, has <b>L</b> = <b>0</b>, the not expandable level outside the tree is defined by <b>L</b> = <b>-1</b>.<br />
+            The next column should have defined the <b>L</b> maximally as <b>L + 1</b> of its previous column to be its child.<br />
+         </li>
+         <li>
+            Column tree must be permitted by Cfg <dfn>ColTree</dfn> = <b>1</b>.<br />
+            The column tree is displayed in row part of <b>Type</b> = "<b>Tree</b>". By default there is one such part with id="Tree" placed on top of the grid.<br />
+            The expand / collapse button can be shown also in any cell in <b>LeftIcons</b> / <b>RightIcons</b> / <b>TextIcons</b> by adding <b>CollapseCol</b> button.<br />
+         </li>
+         <li>
+            Column can hide its children if it has set <dfn>Collapsed</dfn> = <b>0</b>.<br />
+            To restrict collapsing or expanding column children set <dfn>NoCollapse</dfn> = <b>1</b>.
+         </li>
+         <li>To display Level buttons to expand particular tree level set <b>column</b> attribute <dfn>LevelsPart</dfn> to the column part ids to control.</li>
+         <li>To collapse / expand the columns on start or on grouping set <b>part</b> attribute <dfn>CollapseLevel</dfn> to the level of expanding. It is also shown in the <b>LevelsPart</b> button.</li>
+         <li>The expand button can show plus or it can show the count of collapsed children according to various conditions set by Cfg <dfn>ExpandDigits</dfn>.</li>
+         <li>The column tree can be shown also in reversed order, the children shown above parents, if set Cfg <dfn>ReversedTree</dfn> &amp; <b>2</b>.</li>
+         <li>The height of the tree level in the Tree part (how much the next level is indendented in pixels) is set by Cfg <dfn>ColTreeHeight</dfn>.</li>
+         <li>It is possible to hide lines in the tree and show only expand / collapse buttons by Cfg <dfn>ColTreeLines</dfn>.</li>
+         <li>Horizontal position of the expand button in the Tree part is set by Cfg <dfn>ColTreePaddingLeft</dfn>, and position of the line ends by Cfg <dfn>ColTreePaddingRight</dfn>.</li>
+         <li>It is possible to also show / hide particular row(s) when showing / hiding particular column level, define these rows per column level in Cfg <dfn>ColLevelsRows</dfn>.</li>
+      </ul>

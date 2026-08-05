@@ -1,0 +1,40 @@
+# FastGrid and FastSheet by COQsoft
+
+> Official resources for FastGrid, a high-performance JavaScript data grid, and
+> FastSheet, a browser-based web spreadsheet using the same FGridE.js runtime.
+
+## Products
+
+- [FastGrid](https://www.treegrid.com/FastGrid): JavaScript and TypeScript data
+  grid for large datasets, virtual scrolling, editing, sorting, filtering,
+  grouping, pivoting, tree data, export and AI-assisted operations.
+- [FastSheet](https://www.treegrid.com/FastSheet): Web spreadsheet for XLSX,
+  CSV, formulas, workbook editing and large sheets.
+
+## Framework integrations
+
+- [Angular](https://www.treegrid.com/FDoc/FastGridAngular.html):
+  `fastgrid-angular`, `create-fastgrid-angular`
+- [React](https://www.treegrid.com/FDoc/FastGridReact.html):
+  `fastgrid-react`, `create-fastgrid-react`
+- [Vue](https://www.treegrid.com/FDoc/FastGridVue.html):
+  `fastgrid-vue`, `create-fastgrid-vue`
+- [Svelte](https://www.treegrid.com/FDoc/FastGridSvelte.html):
+  `fastgrid-svelte`, `create-fastgrid-svelte`
+- [HTML and JavaScript](https://www.treegrid.com/FDoc/FastGridHtml.html):
+  `create-fastgrid-html`
+
+## Documentation
+
+- [Documentation index](https://www.treegrid.com/FDoc/Glossary.htm)
+- [API and attribute search](https://www.treegrid.com/FDoc/SearchAttr.html)
+- [Examples](https://www.treegrid.com/Examples)
+- [Licensing](https://www.treegrid.com/Licensing)
+- [GitHub source](https://github.com/coqsoft/fastgrid-frameworks)
+
+## Licensing summary
+
+The framework wrappers, generators and example source code are open source.
+The FastGrid/FastSheet runtime `FGridE.js` is commercially licensed. Public npm
+packages contain a trial runtime for evaluation; registered runtimes are
+supplied separately.

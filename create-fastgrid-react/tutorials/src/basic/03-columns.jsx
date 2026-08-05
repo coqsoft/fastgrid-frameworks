@@ -1,0 +1,103 @@
+﻿import React, { useMemo, useRef } from "react";
+import { FastGrid } from "fastgrid-react";
+import "../Tutorial.css";
+
+export default function App() {
+
+   const src = useMemo(() => ({ //. All layout and data for grid. Memo is used for simple object created inside the App function to avoid re-creating grid on every React App render
+      Cfg: { id:"Cols", ColTree:1, OverScroll:2 },
+      ColParts:[
+         { Clear:1 },
+         { id:"C1", Type:"Cols" },
+         { id:"S1", Type:"Scroll" },
+         { id:"C2", Type:"Cols", Rel:1 },
+         { id:"C3", Type:"Cols",Rel:1 },
+         { id:"S2", Type:"Scroll" },
+         { id:"C4", Type:"Cols" },
+         { id:"C5", Type:"Cols" },
+         { id:"S3", Type:"Scroll" },
+         ],
+      C1: [
+         { id:"1-1" },
+         { id:"1-2" },
+         ],
+      C2: [
+         { id:"2-1" },
+         { id:"2-2",L:1 },
+         { id:"2-3",L:2 },
+         { id:"2-4",L:1 },
+         { id:"2-5" },
+         { id:"2-6",L:1 },
+         ],
+      C3: [
+         { id:"3-1" },
+         { id:"3-2",L:1 },
+         { id:"3-3" },
+         { id:"3-4" },
+         { id:"3-5",L:1 },
+         { id:"3-6",L:2 },
+         ],
+      C4: [
+         { id:"4-1" },
+         { id:"4-2" },
+         ],
+      C5: [
+         { id:"5-1" },
+         { id:"5-2", L:1 },
+         { id:"5-3", L:2 },
+         ],
+      Head:[
+         { D:"Header" }
+         ],
+      Body: [
+         {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, 
+         ]
+   }), []);
+
+   return (<>
+      <h1>3. Columns</h1>
+      <h5>FastGrid columns and column parts</h5>
+      <section>
+         <FastGrid src={src} style={{maxWidth:"600px"}}/>
+      </section>
+
+      {/*. Description */}
+      <ul>
+         <li><h4>ColParts</h4><br />
+            The column parts and their order are defined in <b>ColParts</b> array. Default ColParts definition is in <b>Defaults.js</b>:<br />
+            <pre><b>ColParts</b>: [<br />
+               &#x7B; id:"<b>LeftScroll</b>",Type:"<b>Scroll</b>", Item:"$ItemLeftScroll", Hidden:1 &#x7D;,   <i>//. Left vertical scrollbar, hidden by default</i><br />
+               &#x7B; id:"<b>LeftCols</b>", Type:"<b>Cols</b>", Rel:100000, MinWidth:70, MinWidthResize:0, ExportFixed:1 &#x7D;, <i>//. Left columns</i><br />
+               &#x7B; id:"<b>Cols</b>", Type:"<b>Cols</b>", Rel:2, MinWidth:70, MaxAuto:475254, AcceptImages:1 &#x7D;, <i>//. Middle columns</i><br />
+               &#x7B; id:"<b>RightCols</b>",Type:"<b>Cols</b>", Rel:100000, MinWidth:70, MinWidthResize:0 &#x7D;,      <i>//. Right columns</i><br />
+               &#x7B; id:"<b>RightScroll</b>",Type:"<b>Scroll</b>", Item:"$ItemRightScroll" &#x7D;            <i>//. Right vertical scrollbar</i><br />
+               ],<br /></pre>
+         It is possible to move, add or delete only some column parts in other <b>ColParts</b> definition, e.g. <pre>ColParts: [ &#x7B; id:"RightScroll", Next:"RightCols" &#x7D; ] </pre><br />
+         Or it is possible to redefine all row parts by adding first item in <b>ColParts</b> as <pre>&#x7B; Clear:1 &#x7D;</pre><br />
+         </li> 
+         <li><h4>Columns</h4><br />
+            <ul>
+               <li>The columns are defined only for <b>table rows</b>. The <b>toolbar rows</b> have defined their cells in <b>Cells</b> array instead of columns.</li>
+               <li>The columns define column and cell attributes for whole columns. The cell values and attributes are usually defined in rows, although it is possible also in columns, in arrays <b>V</b>, <b>U</b>, <b>A</b> and <b>B</b>.</li>
+               <li>The columns contain cells in rows. Cells can be spanned in both directions, similarly to HTML &lt;TABLE&gt; tag.</li>
+               <li>The columns can be scrolled in both directions, vertically and horizontally. Although in some sections like LeftCols or RightCols the columns are usually fixed, not scrolled horizontally.</li>
+               <li>The columns can be nested in tree, sorted, filtered, grouped, added, deleted, moved (dragged), in the same way as table rows.</li>
+               <li>The columns are defined in in ColPart <b>Type</b> = "<b>Cols</b>", by default in <b>LeftCols</b>, <b>RightCols</b> and <b>Cols</b> parts.</li>
+               <li>The columns can contain data without special meaning and there are also predefined some feature columns:
+                  <ul>
+                     <li><dfn>Header</dfn> column defined by D: "Header". Shows row captions (ids). Provides row resizing and moving. Controls sorting settings.<br />
+                     Header column has cells like any data column, it is possible to define Type, Format and other cell attributes.<br />
+                     The Header cells are not editable, but can be changed from popup list like List. The default cell Type for Header column is Text, new line can be added by '&amp;#x0a;' or can be retyped to Html and used &lt;br&gt;.
+                     </li>
+                     <li><dfn>Index</dfn> column defined by D: "Index". The same as <b>Header</b>, but shows row indexes instead of captions.</li>
+                     <li><dfn>Filter</dfn> column defined by D: "Filter". Controls filter settings.</li>
+                     <li><dfn>Panel</dfn> column defined by D: "Panel". It usually shows control icons in LeftIcons to manipulate rows.</li>
+                  </ul>
+                  The feature columns have set <b>Important</b> attribute, so their cell attributes are prefered to the attributes set in rows.<br />
+                  The normal columns have <b>not</b> set <b>Important</b> by default, so cell attributes set in row are prefered to cell attributes set in columns.<br />
+               </li>
+            </ul>
+         </li>
+      </ul>
+   </>);
+}

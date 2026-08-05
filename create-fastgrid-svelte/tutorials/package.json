@@ -1,0 +1,31 @@
+{
+  "name": "fastgrid-svelte-tutorials",
+  "description": "Svelte project demonstrating FastGrid and FastSheet with the fastgrid-svelte wrapper.",
+  "private": true,
+  "version": "3.2.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "typecheck": "svelte-check --tsconfig ./tsconfig.json",
+    "devt": "npm run typecheck && vite",
+    "buildt": "npm run typecheck && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "fastgrid-svelte": "file:../../fastgrid-svelte",
+    "svelte": "latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "latest",
+    "@sveltejs/vite-plugin-svelte": "latest",
+    "eslint": "latest",
+    "eslint-plugin-svelte": "latest",
+    "globals": "latest",
+    "svelte-check": "latest",
+    "typescript": "~6.0.0",
+    "vite": "latest"
+  }
+}

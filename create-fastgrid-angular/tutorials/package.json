@@ -1,0 +1,34 @@
+{
+  "name": "fastgrid-angular-tutorials",
+  "private": true,
+  "version": "3.2.1",
+  "description": "Angular project demonstrating FastGrid and FastSheet with the fastgrid-angular wrapper.",
+  "scripts": {
+    "dev": "ng serve",
+    "start": "ng serve",
+    "build": "ng build",
+    "typecheck": "ng build --configuration development",
+    "watch": "ng build --watch --configuration development"
+  },
+  "dependencies": {
+    "@angular/common": "latest",
+    "@angular/compiler": "latest",
+    "@angular/core": "latest",
+    "@angular/platform-browser": "latest",
+    "@angular/router": "latest",
+    "fastgrid-angular": "*",
+    "tslib": "latest",
+    "zone.js": "latest"
+  },
+  "devDependencies": {
+    "@angular/build": "latest",
+    "@angular/cli": "latest",
+    "@angular/compiler-cli": "latest"
+  },
+  "allowScripts": {
+    "esbuild1": true,
+    "lmdb": true,
+    "msgpackr-extract": true,
+    "@parcel/watcher": true
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>5. Cell images and charts</h1>
+   <h5>Cell side images, floating images, mark images and mark charts</h5>
+
+   <div class='Src'>Source: <a href='05-Images.js'>05-Images.js</a></div>
+   <section>
+      <fast-grid Src='05-Images.js'></fast-grid>
+   </section>
+
+   <ul>
+      <li><h4>Side icons</h4><br />
+         For more information see <a href="../../Doc/CellImage.htm#Icons">Side icons</a>.<br />
+         <ul>
+            <li><h4>Icons in grid cell</h4><br />
+            <ul>
+            <li>There can be three icon sets in every cell, left side by <dfn>LeftIcons</dfn>, right side by <dfn>RightSide</dfn> and inside cell next to cell text by <dfn>TextIcons</dfn>.</li>
+            <li>Every icon set can contain one or more icons, comma separated. The more icons in one set can be displayed horizontally, vertically or wrapped according to vertical space, set by attribute <dfn>IconWrap</dfn></li>
+            <li>The displayed icon can be defined by <dfn>{name}Icon</dfn>, where the {name} is the icon name used in the Left/Right/TextIcons. If not set, the {name} is used as the displayed icon.</li>
+            <li>The icon button can be defined by <dfn>{name}Button</dfn>, where the {name} is the icon name used in the Left/Right/TextIcons. If not set, the {name} is used as the icon button. 
+            To the defined button can be assigned event hadlers specific for the icon e.g. OnClickXXX="alert(1)"</li>
+            </ul>
+            </li>
+            <li><h4>Icon in toolbar cell</h4><br />
+            <ul>
+               <li>Toolbar cell can have defined only one icon by <dfn>Icon</dfn> attribute. The icon can be displayed on left or right side of the cell, specified by <dfn>IconAlign</dfn> attribute.</li>
+               <li>The icon button can be defined by <dfn>IconButton</dfn>. If not set, the icon name is used as the icon button. To the defined button can be assigned event hadlers specific for the icon e.g. OnClickXXX="alert(1)"</li>
+               <li>By default the toolbar cell has set button as the icon name for the whole cell, to specify button to only the icon set <dfn>Button</dfn> = "".</li>
+               <li>Toolbar cell can display next special popup icon if set <dfn>Popup</dfn>, to show the cell <b>List</b> on click.</li>
+               <li>The toolbar icons can be scalled by <dfn>IconZoom</dfn>, default is <b>1.25</b> as 125% zoom.</li>
+            </ul>
+            </li>
+            <li><h4>Defining icons</h4><br />
+            The icons are defined in <dfn>Icons</dfn> root tag. Default FastGrid icons are defined in source file <b>Style.js</b>.<br />
+            The icons are defined in special format, as SVG image part, with only <b>&lt;path></b> tags.<br />
+            All the icons should have the same size defined by <b>Cfg</b> <dfn>IconWidth</dfn> / <dfn>IconHeight</dfn>. The icon can be defined bigger or smaller, but the reserved space and the clickable area is still the <b>IconWidth</b> / <b>IconHeight</b>.<br />
+            For more information see <a href="../../Doc/CellImage.htm#IconsDef">Defining icons</a>.<br />
+            </li>
+            <li><h4>External icons</h4><br />
+            The <b>{name}Icon</b> in grid cells and <b>Icon</b> in toolbar cells accept also external image files defined as their url or as direct "data:...".<br />
+            The relative urls are relative to the main page url, <b>not</b> to FastGrid url.<br />
+            Size of the external image can be set by <b>{name}IconHeight</b> in grid cell or <b>IconHeight</b> in toolbar cell. If not set, the image is shown on its original size. 
+            The external image is shrunk, if the image default or explicit height is higher than the row height. It does <b>not</b> change the width reserved for the icon by the <b>IconWidth</b>.<br />
+            <b style="color:red;">Using external icons can slow down paint!</b> <span style="color:red;">External icons can blink during some actions like resizing.</span><br />
+            <span style="color:red;">External icons should be used only for development; in production they should be converted to internal images in <a href="../../Doc/CellImage.htm#GridIcons">Icons</a>.</span><br />
+            </li>
+         </ul>
+      </li>
+      <li><h4>Floating images</h4><br />
+      Floating images are external image files (svg, jpg, ...) displayed outside cells. The image can be also included directly using "data:" protocol in url.<br />
+      The images are fully interactive, they can be added (local or remote files), deleted, copied, moved, resized, rotated, cropped, made transparent, have assigned link and tip, controlled by z-index.
+      Both directly by users or by API.<br />
+      The floating images can be displayed only on grid rows, not on toolbars.<br />
+      <span style="color:red;">Floating images should be used only for interactive images changeable by users. For static images in cells use the <b>Side icons</b> instead, they are much faster.</span><br />
+      The images are stored in root array <dfn>Images</dfn>.<br />
+      For more information see <a href="../../Doc/CellImage.htm#Images">Floating images</a>.<br />
+      </li>
+      <li><h4>Cell inner border</h4><br />
+      Cell inner border is indepenent on the cell outer border (grid) and is defined by <dfn>CellBorder</dfn> attribute. In toolbar it is the only border the toolbar cell can have.<br />
+      Cell inner border is always rectangle, although it can hide some its edges and can have rounded corners.<br />
+      By the <dfn>CellBorder</dfn> is possible to specify line color, width, dasharray and background color and defined cell border icon.<br />
+      The cell border icon is defined in <dfn>CellBorders</dfn> root tag and can specify the position and size of rectangle, rounded corners, interactivity and the background image.<br />
+      The background image in cell border is usually the rectangle, but in fact it can be any background image.<br />
+      For more information see <a href="../../Doc/CellStyle.htm#Inner">CellBorder</a>.<br />
+      </li>
+      <li><h4>Mark icons</h4><br />
+      Mark icons are icons displayed in specified cell corner, in specified direction. Or the mark icons can be displayed on whole cell background.<br />
+      Mark icons are inactive and do not generate mouse events, except special icons like <b>Chart</b>.<br />
+      Mark icons are defined the same as <b>side icons</b> in <dfn>Icons</dfn>, but unlike the <b>side icons</b> the mark icons can have defined their width and height.<br />
+      Mark icons can be set to cells in two similar ways, in row attribute <dfn>M</dfn> and in cell attribute <dfn>Marks</dfn>. Both ways can be used together in one cell.<br />
+      Mark icon can be set with parameters in (), the parameters depends on the mark icon definition, every icon can have different parameters. In the () is possible also to use JavaScript code to calculate the parameter value.<br />
+      For more information see <a href="../../Doc/CellImage.htm#Marks">Mark icons</a>.<br />
+      There is special mark icon <dfn>Chart()</dfn>, this icon is used to generate bar and line chart in cells. See <a href="../../Doc/CellImage.htm#MarkIcons">Chart</a>.<br />
+      </li>
+   </ul>
+</body>
+</html>

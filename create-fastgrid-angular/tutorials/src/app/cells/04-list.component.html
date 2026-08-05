@@ -1,0 +1,71 @@
+<h1>4. Cell popup menus - List &amp; Suggest</h1>
+      <h5>Combo boxes - choosing cell values from popup list</h5>
+      <section>
+         <fast-grid [src]="src" [onDataSend]="onDataSend" style="display:inline-block; max-width:100%;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li>For more information see <a target="FGDoc" href="https://www.treegrid.com/FDoc/Menu.htm#List">List</a>.</li>
+         <li><h4>Defining popup list</h4><br />
+            The popup list can be defined by cell attribute <dfn>List</dfn> or <dfn>ListMenu</dfn>.<br />
+            <ul>
+               <li><dfn>List</dfn><br />
+               <b>List</b> affects the value in the cell. The Cell value contain(s) the <b>List</b> key(s) and shows the <b>List</b> value(s).<br />
+               <b>List</b> can set also other text attributes like <b>TextColor</b> with the individual items.<br />
+               <b>List</b> can be defined by three ways:
+               <ul>
+                  <li>As first character separated string or array. In this case the keys are the values themselves. Or their indexes if set <dfn>IndexList</dfn>.</li>
+                  <li>By object with key / value pairs.</li>
+                  <li>By object with key / object pairs, where the object contains attribute <b>Value</b> for the cell value and optionally <b>Text</b> for menu text and / or <b>Suggest</b> for suggest menu text and text attributes like <b>TextColor</b> to be applied to cell text.</li>
+               </ul>
+               </li>
+               <li><dfn>ListMenu</dfn><br />
+               <b>ListMenu</b> does <b>not</b> affect the cell value, it just defines the popup menu and can set only cell value, not any other attribute.<br />
+               It can be used to define the list instead of the <b>List</b> attribute or 
+               to change the popup menu setting showing the list defined by <b>List</b> or by the <b>ListMenu</b>.<br />
+               <b>ListMenu</b> can be defined in three ways:
+               <ul>
+                  <li>As first character separated string or array as simple menu defition with only values.</li>
+                  <li>Array of objects, where the object contains attribute <b>Value</b> for the cell value and optionally <b>Text</b> for menu text and / or <b>Suggest</b> for suggest menu text and / or other attributes affecting the menu item display.</li>
+                  <li>Full FastGrid menu definition with <b>Script</b> tag.</li>
+               </ul>
+               <b>ListMenu</b> can be downloaded also from server on demand by setting <b>Cfg</b> or cell attribute <dfn>ListMenuUrl</dfn>. It can be loaded once or on every show by setting <dfn>ListMenuReload</dfn> attribute.<br />
+               </li>
+            </ul>
+         </li>
+      
+         <li><h4>Showing popup list</h4><br />
+            The popup list can be shown by:
+            <ul>
+               <li>adding "<b>List</b>" to icons in <dfn>LeftIcons</dfn> / <dfn>RightIcons</dfn> / <dfn>TextIcons</dfn> or <b>toolbar</b> cell <dfn>Icon</dfn>.</li>
+               <li>on <b>toolbar</b> setting <dfn>D</dfn> to "<b>List</b>" or "<b>ListSmall</b>".</li>
+               <li>adding the "<b>List</b>" to cell attribute <dfn>Button</dfn>.</li>
+               <li>assigning <b>action</b> <dfn>ShowList</dfn> to some event (e.g. <span class="inline-code">Actions: &#123; OnRightClick:"ShowList()" &#125;</span>.</li>
+               <li>calling <b>API method</b> <dfn>ShowList</dfn>.</li>
+               <li>setting cell attribute <dfn>Suggest</dfn>.</li>
+            </ul>
+            The cell with list can be visually marked by inner border set by <dfn>CellBorder</dfn>. On toolbar it is already set by <b>D:"List"</b>.<br />
+         </li>
+         <li><h4>Related popup lists</h4><br />
+         The <b>List</b> and / or <b>ListMenu</b> can be related to another cell value, usually also with <b>List</b> / <b>ListMenu</b>, to use specific list according the value in the related cell.<br />
+         There can be more related cells in the chain. In the sample there are three related cells in LIST1 / LIST2 / LIST3 columns. LIST2 is related to LIST1 and LIST3 is related to LIST2 (and to LIST1).<br />
+         The related cell is set by attribute <dfn>ListRelated</dfn> containing column to id to refer another cell in the same row or it can contain row and column ids to refer another cell.<br />
+         If the cell is related to more cells, their ids are listed all, comma separated, starting by the most distant one in the chain.<br />
+         After change of the related cell, the next cells in related chain should be cleared using <dfn>ClearCells</dfn> attribute, its format is the same as <b>ListRelated</b>.<br />
+         </li>
+         <li><h4>Not existing items in popup list</h4><br />
+            If the cell contains value not included in the <b>List</b>, it is normally shown or there can be shown <dfn>NoListValue</dfn> if defined.<br />
+            The cell with popup list is still editable, to restrict editing and show the list always set <dfn>Button</dfn> = "<b>List</b>.<br />
+            To restrict entering not existing values or enter case sensitive or without white space set <dfn>ListEdit</dfn> to appropriate value.<br />
+         </li>
+         <li><h4>Suggest items in popup list during editing</h4><br />
+            To show popup list with suggested items for entered text set <dfn>Suggest</dfn> attribute, it also controls when the suggest list is shown.<br />
+            The suggest list shows subset of <dfn>List</dfn> or <dfn>SuggestMenu</dfn> items that pass search settings set by <dfn>SuggestSearch</dfn> and <dfn>SuggestType</dfn> attributes for actually entered text. 
+            The suggest list is updated whenever the entered text changes during editing.<br />
+            It is possible to show suggest list only for part of the entered text, separated by <dfn>SuggestSeparator</dfn> character, often set to ";" like for <b>Range</b> cells.<br />
+            <b>SuggestMenu</b> can be downloaded also from server on demand by setting <b>Cfg</b> or cell attribute <dfn>SuggestMenuUrl</dfn>. 
+            The server can return full suggest menu once or can return different suggest menu per edited value, according to <dfn>SuggestMenuReload</dfn> attribute.<br />
+            There are various other attributes for Suggest, see <a target="FGDoc" href="https://www.treegrid.com/FDoc/Menu.htm#Suggest">Suggest</a>.<br />
+         </li>
+      </ul>

@@ -1,0 +1,15 @@
+<h1>2. Data in static UTF8Store file</h1>
+   <h5>Loads data from static UTF8Store file and loads and saves changes back to the next JSON file on Node server</h5>
+   <ul>
+      <li>
+         Sample Node server must be running on <b>http://localhost:8000</b>. The sample Node server package is located at <b>./server/</b>.<br/>
+         The sample data are loaded from <b><a href="http://localhost:8000/File.js?func=get&file=UTF8StoreData.js" target="_blank">http://localhost:8000/File.js?func=get&file=UTF8StoreData.js</a></b> 
+         and from also <b><a href="http://localhost:8000/File.js?func=get&file=UTF8StoreChanges.js" target="_blank">http://localhost:8000/File.js?func=get&file=UTF8StoreChanges.js</a></b> 
+         and saved to url <b>http://localhost:8000/File.js?func=set&file=UTF8StoreChanges.js</b>. PDF is generated on url <b>http://localhost:8000/Pdf.js?func=getpdf</b>.<br/>
+         The sample data on server are stored in file <b><a href="http://localhost:8000/File.js?func=get&file=UTF8StoreData.js" target="_blank">./server/UTF8StoreData.js</a></b>
+         and changes are stored in file <b><a href="http://localhost:8000/File.js?func=get&file=UTF8StoreChanges.js" target="_blank">./server/UTF8StoreChanges.js</a></b> 
+         and the script loading and saving data is located at <b>./server/File.js</b>
+      </li>
+   </ul>
+   <fast-grid [src]="[ src, 'http://localhost:8000/File.js?func=get&file=UTF8StoreData.js', 'http://localhost:8000/File.js?func=get&file=UTF8StoreChanges.js', { Cfg: { SaveUrl: 'http://localhost:8000/File.js?func=set&file=UTF8StoreChanges.js', SaveFlags:'Changed,State,NoO,AddBOM,AddData', PdfUrl:'http://localhost:8000/Pdf.js?func=getpdf' } } ]" #gridRef [onLoadError]="onLoadError" style="height:100%; min-height:500px; width:100%"
+      ></fast-grid>

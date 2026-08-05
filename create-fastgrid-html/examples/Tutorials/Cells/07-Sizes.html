@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>7. Cell sizes, margins and span</h1>
+   <h5>Row, column and cells sizes, paddings, margins and spanning cells together</h5>
+
+   <div class='Src'>Source: <a href='07-Sizes.js'>07-Sizes.js</a></div>
+   <section>
+      <fast-grid Src='07-Sizes.js'></fast-grid>
+   </section>
+
+   <ul>
+      <li>
+         <h4>Row height</h4><br />
+         Row height is set by its <dfn>Height</dfn> attribute.<br />
+         By default, when the row <b>Height</b> is not set or is 0, the row calculates its height according to the cell contents. But not less than Cfg <dfn>RowHeight</dfn> value.<br />
+         The calculated row height and the resized or relative row height can be limited by its <dfn>MinHeight</dfn> and <dfn>MaxHeight</dfn> attributes.<br />
+         The row can be automatically resized to fill all the part available vertical space by <dfn>Rel</dfn> attribute.<br />
+         Too narrow row cuts texts in cells from bottom. It is possible to shift the text up and not cut it from top by <dfn>OverflowTop</dfn> and <dfn>OverflowShift</dfn> attributes.<br />
+      </li>
+      <li>
+         <h4>Column width</h4><br />
+         Column width is set by its <dfn>Width</dfn> attribute.<br />
+         By default, when the column <b>Width</b> is not set or is 0, the column calculates its width according to the cell contents. Column without cells or with cells with no content gets zero width.<br />
+         The calculated column width and the resized or relative column width can be limited by its <dfn>MinWidth</dfn> and <dfn>MaxWidth</dfn> attributes.<br />
+         The column can be automatically resized to fill all the part available horizontal space by <dfn>Rel</dfn> attribute.<br />
+      </li>
+      <li><h4>Resizing</h4><br />
+      Column width or row height can be resized by mouse dragging or by API if permitted by Cfg <dfn>ResizingRows</dfn> / <dfn>ResizingCols</dfn> attributes.<br />
+      The cell that permits dragging its edge to resize the row or column has set <dfn>UseResize</dfn> attribute. By default it is set for <b>Header</b> / <b>Index</b> rows and columns.<br />
+      To restrict resizing particular row or column set its <dfn>NoResize</dfn> attribute.<br />
+      </li>
+      <li>
+         <h4>Padding</h4><br />
+         Padding is space inside cell between text and cell border or edge.<br />
+         Vertical padding can be set only for the whole row by row attributes <dfn>PaddingTop</dfn> and <dfn>PaddingBottom</dfn>.<br />
+         Horizontal padding can be set to any cell by cell attributes <dfn>PaddingLeft</dfn> and <dfn>PaddingRight</dfn>.<br />
+      </li>
+      <li>
+         <h4>Margin</h4><br />
+         Margin is space outside cells between columns and rows. <br />
+         This margin space is empty and inactive. It can have set only background color by <dfn>MarginTopColor</dfn>, <dfn>MarginBottomColor</dfn>, <dfn>MarginLeftColor</dfn>, <dfn>MarginRightColor</dfn> attributes.<br />
+         Vertical margin can be set only to the whole row by row attributes <dfn>MargingTop</dfn> and <dfn>MarginBottom</dfn>. 
+         It is possible to define next margin if the row is 
+         a) first / last row in part by <b>TopMarginTop</b> and <b>BottomMarginBottom</b>,
+         b) first / last child row in its parent by <b>FirstMarginTop</b> and <b>LastMarginBottom</b>,
+         c) first / last row in its block by <b>BlockMarginTop</b> and <b>BlockMarginBottom</b>.<br />
+         Horizontal margin can be set only to the whole column by column attributes <dfn>MargingLeft</dfn> and <dfn>MarginRight</dfn>. 
+         It is possible to define next margin if the column is 
+         a) first / last column in part by <b>LeftMarginLeft</b> and <b>RightMarginRight</b>,
+         b) first / last child column in its parent by <b>FirstMarginLeft</b> and <b>LastMarginRight</b>,
+         c) first / last column in its block by <b>BlockMarginLeft</b> and <b>BlockMarginRight</b>.<br />
+         If set margin, the surrounding rows / columns show their borders separate. It is possible to show only one border by Cfg attribute <dfn>BorderCollapse</dfn>.<br />
+         It is possible to show two margins with different colors between any rows or columns.<br />
+      </li>
+      <li><h4>Spanned cells</h4><br />
+      It is possible to span one cell to the next cells horizontally and vertically like in normal HTML table.<br />
+      Row span is set by <b>row</b> attribute <dfn>RS</dfn> as object with column ids and their rowspan values. The span value includes also hidden rows.<br />
+      Column span is set by <b>row</b> attribute <dfn>CS</dfn> as object with column ids and their colspan values. The span value includes also hidden columns.<br />
+      For column span it is possible to show more or all values from the spanned cells together, outside the table columns structure, using <dfn>SpanWidth</dfn> attribute.<br />
+      The cells can be spanned and split also <b>dynamically</b> by focusing the cells and clicking <b>Span</b> / <b>Split</b> buttons on toolbar or by API / actions.<br />
+      The columns / rows with spanned cells are by default merged to blocks to manipulate them together to not break the span. It can be controlled by Cfg <dfn>BlockSpan</dfn> attribute.<br />
+      </li>
+      <li><h4>Align on scroll</h4><br />
+      If cell is wider than the part width, it is possible to show its value always visible regardless on scroll by <dfn>Align</dfn> value <b>16</b> (left aligned), <b>17</b> (right aligned), <b>18</b> (centered).<br />
+      </li>
+   </ul>
+</body>
+</html>

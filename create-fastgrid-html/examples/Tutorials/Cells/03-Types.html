@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>3. Cell types, formats and wrap</h1>
+   <h5>Basic editable cells for direct editing in input, textarea or contentEditable div</h5>
+
+   <div class='Src'>Source: <a href='03-Types.js'>03-Types.js</a></div>
+   <section>
+      <fast-grid Src='03-Types.js'></fast-grid>
+   </section>
+
+   <ul>
+      <li>
+         <h4>Cell Type</h4><br />
+         FastGrid supports these cell and tool types: 
+         <ul>
+            <li>
+               <h4>Auto</h4> - default cell type for normal cells. See <a href="../../Doc/TypeAuto.htm">Auto type</a>.<br />
+               Automatic type chosen according to cell value and <a href="../../Doc/CellType.htm#CellFormat">Format</a>. It chooses among <b>Bool</b> (as TRUE / FALSE, not checkbox), <b>Number</b>, <b>Date</b> and <b>String</b> / <b>Html</b> types.
+            </li>
+            <li>
+               <h4>Bool</h4> - Boolean cell type as 0 or 1. See <a href="../../Doc/TypeBool.htm">Bool type</a>.<br />
+               Boolean type with value <b>0</b>/null/false or <b>1</b>/true or <b>-1</b> as unknown. It is displayed as <b>checkbox</b>.<br />
+               It supports also values from -999 to 999 as number inside the checkbox.<br />
+            </li>
+            <li>
+               <h4>Number</h4> - Formatted integer or float number. See <a href="../../Doc/TypeNumber.htm">Number type</a>.<br />
+               Integer or floating point number. It is formatted by <a href="../../Doc/TypeNumber.htm#CellFormat">Format</a>.
+            </li>
+            <li>
+               <h4>Date</h4> - Formatted date and or time. See <a href="../../Doc/TypeDate.htm">Date type</a>.<br />
+               Date and/or time. It can be set as number of millisecond since 1/1/1970 (if set <a href="../../Doc/TypeDate.htm#CfgExcelDates">ExcelDates</a> to count of days since 12/31/1899) or date string "M/d/yyyy h:m:s". It is formatted by <a href="../../Doc/TypeDate.htm#CellFormat">Format</a>.<br />
+               It can show calendar to pickup the date, date range or date and time. Show the calendard icon by adding <b>Date</b> icon in <b>LeftIcons</b> / <b>RightIcons</b> / <b>TextIcons</b>.<br />
+            </li>
+            <li>
+               <h4>String</h4> - Unformatted plain text with no special settings.<br />
+               It cannot contain HTML code - any HTML code is escaped.
+            </li>
+            <li>
+               <h4>Html</h4> - Unformatted html / rich text. See <a href="../../Doc/CellType.htm#Html">Html type</a>.<br />
+               It permits font and text color attributes and links for individual text parts.
+            </li>
+         </ul>
+         For more information see <a href="../../Doc/CellType.htm">Cell Type</a>.<br />
+      </li>
+      <li><h4>Format</h4><br />
+         Formatted can be types <b>Auto</b>, <b>Number</b> and <b>Format</b>.<br />
+         The format is specified by <dfn>Format</dfn> attribute string. The Format string has similar format like MS Excel or C# date and number formats.<br />
+         In <b>Auto</b> type the date <b>Format</b> can be chosen automatically according to the entered value.<br />
+         Different format for editing types <b>Number</b> and <b>Date</b> can be specified by <dfn>EditFormat</dfn> attribute.<br />
+         For more information see <a href="../../Doc/TypeNumber.htm">Number format</a> and <a href="../../Doc/TypeDate.htm">Date format</a>.<br />
+      </li>
+      <li><h4>Empty value</h4><br />
+         The empty cell can display string defined <dfn>EmptyString</dfn> or formatted string defined by <dfn>EmptyValue</dfn>.<br />
+      </li>
+      <li><h4>Multiline text - wrapping</h4><br />
+         The wrapping long text can be permitted for any cell Type by setting <dfn>Wrap</dfn> attribute (bits).<br />
+         To permit wrapping on CR/LF or &lt;br> tag add value <b>4</b> to the <b>Wrap</b>.<br />
+         <b>Wrap</b>&amp;<b>3</b> controls automatice wrapping (<b>1</b> - wraps on spaces, <b>2</b> - wraps on spaces if possible otherwise wraps words, <b>3</b> - wraps on words).<br />
+         For more information see <a href="../../Doc/CellStyle.htm#CellWrap">Wrap attribute</a>.<br />
+      </li>
+      <li><h4>HTML</h4><br />
+      HTML code can be placed in <b>Html type</b>, in <b>Auto type</b> if set <b>Cfg</b> <dfn>AutoHtml</dfn>, in <b>Format</b> attribute if set <b>Cfg</b> <dfn>HtmlFormat</dfn>.<br />
+      Permitted <b>HTML</b> tags: 
+      <b>&lt;span></b>, <b>&lt;b></b>  / <b>&lt;strong></b> (font-weight:bold), <b>&lt;i></b> / <b>&lt;em></b> (font-style:italic), 
+      <b>&lt;u></b> / <b>&lt;ins></b> (text-decoration:underline), <b>&lt;s></b> / <b>&lt;strike></b> / <b>&lt;del></b> (text-decoration:line-through), 
+      <b>&lt;small></b> (font-size:10px),  <b>&lt;code></b> (font-family:monospace), 
+      <b>&lt;br></b>, <b>&lt;a></b>.<br />
+      Permitted <b>CSS</b> attributes: <b>font-weight</b>, <b>font-style</b>, <b>font-variant</b>, <b>text-decoration</b>, <b>font-size</b>, <b>font-family</b>, <b>color</b>, <b>text-shadow</b>.<br />
+      After editing all the HTML tags (except &lt;a> and &lt;br>) are converted to <b>&lt;span></b> tag with appropriate CSS attributes.<br />
+      To use cell with HTML code to calculate column width set <b>Cfg</b> <dfn>HtmlWidth</dfn>, to control row height set <b>Cfg</b> <dfn>HtmlHeight</dfn>.<br />
+      The HTML code can contain custom JavaScript events like <b>onclick</b>, to permit them set <b>Cfg</b> <dfn>HtmlEvents</dfn>.<br />
+      For more information see <a href="../../Doc/CellType.htm#Html">Html Type</a>.<br />
+      </li>
+   </ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "fastgrid-svelte-quick-start",
+  "description": "Svelte project demonstrating FastGrid and FastSheet with the fastgrid-svelte wrapper.",
+  "private": true,
+  "version": "3.2.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "fastgrid-svelte": "file:../../fastgrid-svelte",
+    "svelte": "latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "latest",
+    "@sveltejs/vite-plugin-svelte": "latest",
+    "eslint": "latest",
+    "eslint-plugin-svelte": "latest",
+    "globals": "latest",
+    "vite": "latest"
+  }
+}

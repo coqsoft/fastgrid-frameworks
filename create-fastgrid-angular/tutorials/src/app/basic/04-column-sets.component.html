@@ -1,0 +1,43 @@
+<h1>4. Column sets</h1>
+      <h5>Table rows with different columns</h5>
+      <section>
+         <fast-grid [src]="src" style="max-width:600px;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li><h4>Column sets</h4><br />
+         It is possible to define more column sets in grid. These column sets are <b>not</b> defined explicitly, there are only defined by columns in the new column sets.<br />
+         The columns in the second and next column sets are defined in the column part name + $ + column set name. 
+         For example <span class="inline-code">&lt;b&gt;Cols$Set2&lt;/b&gt;: [ &#123; id:"Col1" &#125;, &#123; id:"Col2" &#125; ]</span><br />
+         This example contains three sets, the first set without name, "Set2" and "Set3".<br />
+         </li>   
+         <li>
+         If the second and next column sets contain columns only in some column parts, the other column parts share columns with the first column set.<br />
+         In this example there are shared L_1 and L_2 columns with all three sets and R1_1 and R1_2 columns with the first two sets.<br />
+         </li>
+         <li>Every table row can have assigned its column set by <dfn>S</dfn> attribute. Every row has always one column set, without <b>S</b> attribute has the first column set.</li>
+         <li>The rows with different column sets are often in different tree level, but it is not required. In this example the Set2 on the second level and Set3 on the third level.</li>
+         <li>The column sets are often used for <b>master / detail</b> relationship or for visually <b>nesting grids</b> - FastGrid does not support real nesting of FastGrids or FastGrid inside another FastGrid cell.</li>
+
+         <li><h4>Margin</h4><br />
+         With the column sets there is usually defined also row and column margin to visually separate the sets or visually display another grid inside FastGrid.<br />
+         </li>
+         <li>
+            Every row can have defined <dfn>MarginTop</dfn> and <dfn>MarginBottom</dfn>.<br />
+            It is possible to set different or only margin for the first / last row in part <dfn>TopMarginTop</dfn> and <dfn>TopMarginBottom</dfn>, 
+            for for the first and last row in tree (children on the same level <b>L</b>) by <dfn>FirstMarginTop</dfn> and <dfn>LastMarginTop</dfn> 
+            and for the first and last row in <b>Block</b> by <dfn>BlockMarginTop</dfn> and <dfn>BlockMarginBottom</dfn>.<br />
+            The color of the margin can be set by <dfn>MarginTopColor</dfn> and <dfn>MarginBottomColor</dfn>, they can be also different per column part.<br />
+         </li>
+         <li>
+            Every column can have defined <dfn>MarginLeft</dfn> and <dfn>MarginRight</dfn>. <br />
+            It is possible to set different or only margin for the first / last column in part <dfn>LeftMarginLeft</dfn> and <dfn>RightMarginRight</dfn>, 
+            for for the first and last column in tree (children on the same level <b>L</b>) by <dfn>FirstMarginLeft</dfn> and <dfn>LastMarginRight</dfn> 
+            and for the first and last column in <b>Block</b> by <dfn>BlockMarginLeft</dfn> and <dfn>BlockMarginRight</dfn>.<br />
+            The color of the margin can be set by <dfn>MarginLeftColor</dfn> and <dfn>MarginRightColor</dfn>, they can be also different per row part.<br />
+         </li>
+         <li>
+            The space after the last column in the column set, when the column sets have different widths is controlled by Cfg attribute <dfn>FillRest</dfn> and cell attribute <dfn>MarginRestColor</dfn>.<br />
+         </li>
+      </ul>

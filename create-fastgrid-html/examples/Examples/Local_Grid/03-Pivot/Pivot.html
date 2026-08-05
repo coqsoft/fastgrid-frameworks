@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>    
+      <script src="../../../Grid/FGridE.js"> </script>
+      <link href="../../Tutorial.css" rel="stylesheet" />
+   </head>
+   <body class="Tutorial">
+      <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Examples\/)([^\/]+)\/([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/<i>$4</i>/$5").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+      <h1>3. Large example with pivot grid</h1>
+      <h5>Complex grid with huge data sets with creating pivot grid and many other features. Only HTML without saving changes.</h5>
+
+      <fast-grid src="['PivotDef.js','Data/PivotData100000.js']"></fast-grid>
+
+      <script>
+      FGrid.OnLoadError = function(G,source,code,message,index){ //. Called when trying to download large data that are not included in the base examples package
+         if(index==1&&(code==-6||code==404)) alert("The large data '"+source+"' was not found, you need to download this file in separate package from www.treegrid.com" );
+         }
+      </script>
+   </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>1. Grid with AI</h1>
+   <h5>Basic grid with integrated AI</h5>
+
+   <div class="Src">Source: <a href='01-AI_grid.js' target="_blank">01-AI_grid.js</a></div>
+   <section>
+      <fast-grid Src="01-AI_grid.js"></fast-grid>
+   </section>
+
+   <ul>
+      <li> 
+         <h4>Set up AI</h4>
+         <ul>
+            <li>Now implemented communication and API for <b>OpenAI</b> <b>ChatGPT</b>.</li>
+            <li>There are two ways to use OpenAI with FastGrid: <b>purchase AI credit from COQsoft</b> or <b>purchase API key from OpenAI</b></li>
+            <li>
+               <h4>Purchase AI credit from COQsoft</h4>
+               <ul>
+                  <li>Purchase AI credit in our e-shop at <a href="https://www.treegrid.com/Purchase?ai=100">https://www.treegrid.com/Purchase?ai=100</a></li>
+                  <li>Pass the purchased AI credit to FastGrid in <b>AI</b> tag <dfn><a href="../../Doc/AI.htm#AICredit">Credit</a></dfn> or enter it directly to FastGrid in <b>AI settings</b> menu.<br /></li>
+               </ul>
+            </li>
+            <li>
+               <h4>Create OpenAI API key</h4>
+               <ul>
+                  <li>Create your own <b>API</b> account on OpenAI (<a href="https://platform.openai.com/docs/quickstart">https://platform.openai.com/docs/quickstart</a>).</li>
+                  <li>Create your <b>API key</b> and set it to FastGrid AI communication settings.</li>
+                  <li>
+                     For <h4>development</h4> you can set it directly to OpenAI Responses API as 
+                     <dfn>AI: { <a href="../../Doc/AI.htm#AIUrl">Url</a>: "https://api.openai.com/v1/responses", <a href="../../Doc/AI.htm#AIHeader">Header</a>: { Authorization: "Bearer ..." } }</dfn>.
+                  </li>
+                  <li>
+                     For <h4>production</h4> you should create your server side url to use as a bridge between FastGrid and OpenAI, use the API key in your server code, and pass its url to <dfn>AI: { <a href="../../Doc/AI.htm#AIUrl">Url</a>:"..." }</dfn>. 
+                     To not reveal your secret API key to your visitors.
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </li>
+      <li> <h4>Set up grid for AI</h4>
+         <ul>
+            <li>
+               Add <b>AI toolbar</b> to the grid, usually to grid Bottom by <dfn>Bottom:["AI"]</dfn>.<br />
+               To split the AI toolbar to two rows, use <dfn>Bottom:["AIInput","AIOutput"]</dfn>.<br />
+               In <b>Sheet</b> the AI toolbar is shown (on top) by default, <i>if you want to <b>not</b> use AI</i>, hide it by <b>Bottom:[{id:"AI",Hidden:1}]</b>.
+            </li>
+            <li>
+               Next you should precisely describe your grid to AI, its structure, data, sense and behavior, in <dfn>AI: { <a href="#AIStaticInstructions">StaticInstructions</a>:"..." }</dfn> 
+               or dynamically in API event <a href="../../Doc/AI.htm#OnAIGetStaticInstructions">OnAIGetStaticInstructions</a>.<br />
+               For start and base testing you can use built-in instructions and set only grid <a href="#AIDescription">Description</a>.
+            </li>
+            <li>
+               Next you should precisely describe your grid actual state and settings to AI in <dfn>AI: { <a href="#AIDynamicInstructions">DynamicInstructions</a>:"..." }</dfn> 
+               or dynamically in API event <a href="../../Doc/AI.htm#OnAIGetDynamicInstructions">OnAIGetDynamicInstructions</a>.<br />
+               For start and base testing you can use built-in instructions.
+            </li>
+            <li>If AI is permitted to <b>search Internet</b> by <a href="../../Doc/AI.htm#CfgAIWebSearch">WebSearch</a>, set or clear the AI <a href="../../Doc/AI.htm#AIUrlDownload">UrlDownload</a> as URL for downloading files without CORS.</li>
+         </ul>
+      </li>
+      <li> <h4>More AI settings</h4>
+         <ul>
+            <li>By default is used <b>gpt-nano</b> model. To use different model or its version, set it by <b>Cfg</b> <dfn><a href="../../Doc/AI.htm#CfgAIModel">AIModel</a></dfn> and optionally add and define it in <b>AI</b> <dfn><a href="../../Doc/AI.htm#AIModels">Models</a></dfn>.</li>
+            <li>
+               By default the prompt input is sent to AI by clicking to <b>Accept</b> button next to the prompt or by pressing <b>Enter</b> during the prompt editing.<br />
+               To send the prompt input on any end editing (e.g. click outside) or not by pressing single enter, set appropriate value to <b>Cfg</b> attribute <dfn><a href="../../Doc/AI.htm#CfgAIAccept">AIAccept</a></dfn>.<br />
+            </li>
+            <li>
+               By default the AI can search Internet and download text files from web sources to fulfill the requests. 
+               To restrict it, set <b>Cfg</b> attribute <dfn><a href="../../Doc/AI.htm#CfgAIWebSearch">AIWebSearch</a></dfn> = 0.<br />
+               To limit the downloaded file size and downloading time set <b>AI</b> attributes <a href="../../Doc/AI.htm#AIMaxDownloadSize">MaxDownloadSize</a> and <a href="../../Doc/AI.htm#AIMaxDownloadSize">MaxDownloadTime</a>.<br />
+            </li>
+            <li>
+               The AI can have full control on the grid or can change only its view or can only read the grid data. It can be chosen by <b>Cfg</b> attribute <dfn><a href="../../Doc/AI.htm#CfgAIPermissions">AIPermissions</a></dfn> 
+               and the individual permission levels can be set up by locks in <a href="../../Doc/AI.htm#AILockAI0">AILockAI0</a>, <a href="../../Doc/AI.htm#AILockAI1">AILockAI1</a>, ...
+            </li>
+            <li>
+               During AI communication the grid can be disabled and show progress message or just locked and be still accessible. Control it by <b>Cfg</b> attribute <dfn><a href="../../Doc/AI.htm#CfgAIDisableGrid">AIDisableGrid</a></dfn>.<br />
+            </li>
+            <li>For debug purposes is possible to display the grid tool calls done by AI by setting <b>Cfg</b> attribute <dfn><a href="../../Doc/AI.htm#CfgAIOutputFunction">AIOutputFunction</a></dfn></li>
+            <li>These settings can be also controlled by users via <b>AI settings menu</b>, the items in this menu can be chosen by <b>Cfg</b> attribute <dfn><a href="../../Doc/AI.htm#CfgAIMenu">AIMenu</a></dfn></li>
+         </ul>
+      </li>
+   </ul>
+</body>
+</html>

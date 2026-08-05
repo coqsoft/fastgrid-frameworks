@@ -1,0 +1,21 @@
+{
+  "name": "fastgrid-html-examples-server",
+  "private": true,
+  "version": "3.2.1",
+  "description": "Localhost-only demonstration server for FastGrid HTML + JavaScript SQL, file and PDF export examples. Not intended for production.",
+  "main": "Index.js",
+  "scripts": {
+    "start": "node Index.js",
+    "dev": "node Index.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "latest",
+    "formidable": "latest",
+    "he": "^1.2.0",
+    "puppeteer": "latest"
+  },
+  "allowScripts": {
+    "puppeteer": true,
+    "better-sqlite3": true
+  }
+}

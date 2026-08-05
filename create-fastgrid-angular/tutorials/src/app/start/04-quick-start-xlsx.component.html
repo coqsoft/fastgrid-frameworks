@@ -1,0 +1,81 @@
+<!--. --- HTML definition --- -->
+<h1>Quick Start - FastSheet from XLSX in Angular</h1>
+<section>
+   <!--. Places the grid with configuration in src to page and data in public/Excel.xlsx file. More information about the src attribute at https://www.treegrid.com/FDoc/Data.htm#Create -->
+   <!--. This simple sheet is displayed width fixed height and maximal width. More information about FastGrid positioning at https://www.treegrid.com/FDoc/GridSize.htm -->
+   <!--. There are assigned three FastGrid API event handlers onSetValue, onReady and onClick. The event names start by lowercase and are translated to FastGrid API event names starting uppercase -->
+   <!--. More information about the assigned events at https://www.treegrid.com/FDoc/Cell.htm#OnSetValue , https://www.treegrid.com/FDoc/Data.htm#OnReady , https://www.treegrid.com/FDoc/Events.htm#OnClick -->
+   <fast-grid [src]="[src,'/Excel.xlsx']" #grid id="Book1" [onSetValue]="onSetValue" [onReady]="onReady" (click)="onClick($event)" style="height:550px; width:100%;" ></fast-grid>
+</section>
+<button (click)="readValue()">Read value [1,A]</button> <!--. Button to run dedicated API function in grid -->
+<button (click)="changeValue(grid,1,'A','XXX')">Change value [1,A]</button> <!--. Button to run universal API function with parameters in grid. -->
+
+<!--. README in html -->
+<p>
+   All items used in this tutorial are explained in comments in the tutorial source Angular component files at 
+   <dfn>./src/app/start/04-quick-start-xlsx.component.html</dfn> and <dfn>./src/app/start/04-quick-start-xlsx.component.ts</dfn>
+</p>
+
+<h2>Installation</h2>
+<p>
+   FastGrid library can be added to Angular project by
+   <code>npm install fastgrid-angular</code>
+</p>
+<h2>Import</h2>
+<p>
+   FastGrid library can be imported to Angular by
+   <code>import &#123; FastGridComponent &#125; from "fastgrid-angular";</code>
+</p>
+<h2>Usage</h2>
+<p>
+   FastGrid as FastSheet can be created and shown in Angular app as tag <code>&lt;fast-grid src=&#123;sources&#125; /></code>
+   where <b>sources</b> is JavaScript object that defines grid layout and data, for example:
+   <code>&lt;fast-grid src="&#123; Cfg:&#123; SheetJs:1, Book:'QuickSheet' &#125;, Body:[ &#123; V:[1,2,3] &#125;, &#123; V:&#123;A:4,B:5,C:6&#125; &#125; ] &#125;" style="height:500px;" /></code>
+</p>
+<h2>API methods and events</h2>
+<p>
+   Created FastGrid object can be accessed by Angular <b>@ViewChild</b> like <code>@ViewChild(FastGridComponent) grid! : FastGridComponent;</code>
+   and this object can be used to invoke FastGrid API methods.<br />
+   The FastGrid API event handlers can be assigned directly to &lt;FastGrid/&gt; tag like normal DOM events.<br />
+   There are two ways of assigning events to FastGrid, input and output. <br />
+   Input events are assigned as function object: <b>[event] = "func"</b> and can return value.<br />
+   Output events are assigned as function call: <b>(event) = "func($event)"</b> and its return value is ignored.<br />
+   The full simple Angular application using FastGrid API methods and events:
+   <code>
+      <b>html</b>:<br />
+      &lt;fast-grid [src]="src" (setValue)="onSetValue($event)" (click)="onClick($event)" (ready)="onReady($event)" [onEndEdit]="onEndEdit"<br />
+      &nbsp; style="display:inline-block;max-width:100%">&lt;/fast-grid><br />
+      &lt;button (click)="readValue()">Read value [1,A]&lt;/button><br />
+      &lt;button (click)="changeValue(grid, 1, 'A', 'XXX')">Change value [1,A]&lt;/button><br />
+      <b>ts</b>:<br />
+      import &#123; Component, ViewChild &#125; from "@angular/core";<br />
+      import &#123; FastGridComponent, type FastGridOutputEvent &#125; from "fastgrid-angular";<br />
+      @Component(&#123; selector:"app-root", standalone:true, imports:[ FastGridComponent ], templateUrl:"./app.component.html" &#125;)<br />
+      export class AppComponent &#123;<br />
+         &nbsp; readonly src = &#123; Cfg:&#123; SheetJs:1, Book:'QuickSheet' &#125;, Body:[ &#123; V:[1,2,3] &#125;, &#123; V:&#123;A:4,B:5,C:6&#125; &#125; ] &#125;;<br />
+         &nbsp; @ViewChild(FastGridComponent) grid! : FastGridComponent;<br />
+         &nbsp; readValue() : void &#123; alert("Read value from cell [1,A]: "+this.grid.Get(1,"A")); &#125;<br />
+         &nbsp; changeValue(grid:FastGridComponent,row:TRow|string|number,col:TCol|string|number,val:any) : void &#123; grid.Set(row,col,"",val,1); &#125; <br />
+         &nbsp; onSetValue(event:FastGridOutputEvent<"setValue">) : void &#123; if(event.changes) console.log("Value set",event); &#125;<br />
+         &nbsp; onEndEdit: TFGrid["OnEndEdit"] = (grid,row,col,value,save) => &#123;<br />
+            &nbsp; &nbsp; if(!save||!value||!isNaN(Number(value))) return null;<br />
+            &nbsp; &nbsp; grid.ShowMessage("Enter string?","Confirm",(but:string) => &#123; if(but==="Ok") grid.EndEdit(1,1); &#125;); return true;<br />
+            &nbsp; &nbsp; &#125;;<br />
+         &nbsp; onClick(event:FastGridOutputEvent<"click">) : void &#123; if(event.row&&event.col) console.log("Clicked",event.row.id,event.col.id); &#125;<br />
+         &nbsp; onReady(event:FastGridOutputEvent<"ready">) : void &#123; console.log("FastGrid "+event.grid.id+" is ready"); &#125;<br />
+         &nbsp; &#125;<br />
+   </code>
+</p>
+<h2>Documentation</h2>
+<p>
+   FastGrid documentation index and glossary is at <a target="FGDoc" href="https://www.treegrid.com/FDoc/Glossary.htm">https://www.treegrid.com/FDoc/Glossary.htm</a><br/>
+   Search FastGrid attributes, API methods and events in doc at <a target="FGDoc" href="https://www.treegrid.com/FDoc/SearchAttr.html">https://www.treegrid.com/FDoc/SearchAttr.html</a><br/>
+</p>
+<h2>License & commercial use</h2>
+<p>
+   FastGrid is commercial software.<br/>
+   A license is required to use it in production.<br/>
+   Information about licensing is at <a target="FGDoc" href="https://www.treegrid.com/Licensing">https://www.treegrid.com/Licensing</a><br/>
+   License prices are at <a target="FGDoc" href="https://www.treegrid.com/Prices">https://www.treegrid.com/Prices</a><br/>
+   Online purchase can be done in e-shop at <a target="FGDoc" href="https://www.treegrid.com/Purchase">https://www.treegrid.com/Purchase</a>
+</p>

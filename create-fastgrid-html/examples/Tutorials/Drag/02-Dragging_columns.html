@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <style>
+      .Tutorial .Sample { vertical-align:bottom; display:inline-block; margin-bottom:10px; margin-right:10px; }
+      .Tutorial .Sample:last-child { margin-right:0px; }
+      .Tutorial .Src { padding-bottom:8px; }
+   </style>
+
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>2. Dragging and pasting columns</h1>
+   <h5>Dragging columns inside grid and between grids and copying &amp; pasting columns via clipboard</h5>
+
+   <section>
+      <div>
+         <div class="Sample">
+            <div class="Src">Source: <a href='02-Tree.js'>02-Tree.js</a></div>
+            <fast-grid Src="02-Tree.js"></fast-grid>
+         </div>
+         <div class="Sample">
+            <div class="Src">Source: <a href='02-Nodes.js'>02-Nodes.js</a></div>
+            <fast-grid Src="02-Nodes.js"></fast-grid>
+         </div>
+         <div class="Sample">
+            <div class="Src">Source: <a href='02-Items.js'>02-Items.js</a></div>
+            <fast-grid Src="02-Items.js"></fast-grid>
+         </div>
+         <div class="Sample">
+            <div class="Src">Source: <a href='02-Subitems.js'>02-Subitems.js</a></div>
+            <fast-grid Src="02-Subitems.js"></fast-grid>
+         </div>
+      </div>
+   </section>
+   <ul>
+      <li>
+        <h4>Example description</h4><br />
+        <ul>
+        <li><i><b>Move</b> column with children by dragging by <b>left</b> mouse button, <b>copy</b> column by dragging by <b>shift+right</b> mouse button, <b>copy</b> column with <b>children</b> by dragging by <b>ctrl+right</b> mouse button.
+        <b>Select</b> more columns (by panel column panel button) and drag them together.</i></li>
+        <li><i>There are three column types (default columns), NODE, ITEM and SUBITEM. The NODE can contain only ITEM. The ITEM can contain ITEM and SUBITEM. The SUBITEM can contain only SUBITEM.</i></li>
+        <li><i>New child in NODE is ITEM. New child in ITEM is SUBITEM. New child in SUBITEM is SUBITEM.</i></li>
+        <li><i>The Tree and Nodes grids can contain all columns (NODE, ITEM, SUBITEM), root columns are NODE. The Items grid can contain ITEM and SUBITEM columns, root columns are ITEM. 
+        The Subitems grid does not accept new columns.</i></li>
+        <li><i>Columns dragged from Tree, Nodes and Items grids are moved (or copied if dragged by right or middle mouse button) and columns dragged from Subitems grid are always copied.</i></li>
+        <li><i>Columns are copied to clipboard always with children, preserves their tree structure and default columns.</i></li>
+        <li><i>To Tree are pasted columns fully with tree, before focused or in children of focused depending on default column of the copied columns.</i></li>
+        <li><i>To Nodes and Items are pasted only with appropriate default columns, NODE or ITEM, always before focused column.</i></li>
+        <li><i>All the grids share the same <b>undo</b> queue</i> to correctly undo / redo the moves between grids.</li>
+        </ul>
+      </li>
+      <li><h4>Dragging</h4><br />
+      Dragging columns in grid can be controlled by Cfg <dfn>DraggingCols</dfn>, it can permit or restrict dragging inside row part, between parts, between parts, etc.<br />
+      By which cell can be column caught and dragged is set by row attribute <dfn>UseMove</dfn>, by default set in row <b>D</b>: <b>Header</b> / <b>Index</b>.<br />
+      Dragging columns can be more controlled by Cfg <dfn>MoveColTypw</dfn> and in tree by Cfg <dfn>MoveColTree</dfn>. The column tree must be permitted by Cfg <dfn>ColTree</dfn>.<br />
+      To drop column(s) from another grid there must be set also Cfg <dfn>AddingCols</dfn> to <b>2</b> or <b>3</b> in the destination grid.<br />
+      To drag and move column(s) to another grid there must be set also Cfg <dfn>DeletingCols</dfn> in the source grid.<br />
+      </li>
+      <li><h4>Dropping permissions</h4><br />
+      Dropping permissions are specified by <b>parent</b> column or <b>column part</b> <dfn>Accept</dfn> attribute. It specifies which columns can be dropped to children of the column or column part.<br />
+      The columns for the <b>Accept</b> are identified by column attribute <dfn>DragId</dfn>. By default all columns have set <b>DragId</b> = "<b>Col</b> and <b>Accept</b> = "<b>Col</b>".<br />
+      The <b>Accept</b> and <b>DragId</b> are usually set in column default, aassigned to column by <dfn>D</dfn> or parent <dfn>CD</dfn> attribute.<br />
+      </li>
+      <li><h4>Copying columns to clipboard</h4><br />
+      To copy whole columns to clipboard set <dfn>Copying</dfn> = <b>3</b> and restrict row selection by <dfn>SelectingRows</dfn> = <b>0</b> and permit column selection by <dfn>SelectingCols</dfn> = <b>1</b><br />
+      To copy required information for pasting restrictions use Cfg attribute <dfn>CopyStyles</dfn> with values like <b>D</b> or <b>L</b>. And set also <dfn>CopyHtml</dfn> = <b>1</b>.<br />
+      In tree is possible to copy also parents and / or children of selected / focused columns adding <b>Parent</b> or <b>Children</b> to Cfg <dfn>CopyPasteColsType</dfn>.<br />
+      </li>
+      <li><h4>Pasting columns from clipboard</h4><br />
+      To add new columns by pasting from clipboard, set Cfg <dfn>PasteFillCols</dfn> = <b>0</b>, <dfn>PasteAddCols</dfn> = <b>2</b>, <dfn>PasteFillRows</dfn> = <b>3</b>
+      and optionally <dfn>PasteFillSingle</dfn> = <b>0</b>.<br />
+      To use information copied for pasting restrictions use Cfg attribute <dfn>PasteStyles</dfn> with values like <b>D</b> or <b>L</b>. And set also <dfn>PasteHtml</dfn> = <b>1</b>.<br />
+      To more control which columns are where pasted, use API event <dfn>OnPaste</dfn>, here is possible to move or delete the newly added columns.<br />
+      </li>
+   </ul>
+</body>
+</html>

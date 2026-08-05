@@ -1,0 +1,67 @@
+<h1>3. Dragging from and to external sources</h1>
+<h5>Dragging rows, columns and cell values from and to outside</h5>
+<section>
+   <fast-grid [src]="src" #grid style="display:inline-block; max-width:100%;"></fast-grid>
+</section>
+
+<style>
+   .dragparent { border:1px solid #CDD8E4; border-radius:10px; padding:6px 6px 1px 6px; cursor:default; user-select:none; width:100%; }
+   .dropparent { border:1px solid #D88; border-radius:10px; padding:6px 6px 1px 6px; cursor:default; user-select:none; width:100%; }
+   .dropparent > i { display:inline-block; padding-bottom:5px; }
+   .drag,.drop { padding:3px 8px 0px 8px; margin:0px 10px 5px 0px; display:inline-block; white-space:nowrap; font-size:12px; color:#586980; }
+   .drag { cursor:pointer; }
+   .cell { border:1px solid #586980; border-radius:10px; }
+   .row { border:1px solid #66F; border-radius:10px; }
+   .col { border:1px solid #0D0; border-radius:10px; }
+</style>
+
+<!--. Cells, rows, columns dropped  from grid -->
+<section>
+   <div id='Drop' (mousedown)="blockevent($event)" class="dropparent">
+      <i id='DropInfo' style="color:gray; font-size:12px;">Drag grid rows, columns or cells here. To drag grid cell on touch screen, focus it first.</i>
+   </div>
+</section>
+
+<!--. Cells,rows, columns to drag into grid -->
+<section>
+   <div (mousedown)="blockevent($event)" (touchstart)="blockevent($event)" class="dragparent"> 
+      <span (mousedown)="CustomDragCell($event)" (touchstart)="CustomDragCell($event)" class='drag cell'>Cell XXX</span>
+      <span (mousedown)="CustomDragCell($event)" (touchstart)="CustomDragCell($event)" class='drag cell' style="color:red;">Cell YYY</span>
+      <span (mousedown)="CustomDragCell($event)" (touchstart)="CustomDragCell($event)" class='drag cell' style="color:green;">Cell ZZZ</span>
+      <span (mousedown)="CustomDragRow($event)" (touchstart)="CustomDragRow($event)" class='drag row'>Row RRR</span>
+      <span (mousedown)="CustomDragRow($event,1)" (touchstart)="CustomDragRow($event,1)" class='drag row' style="color:blue;">2 rows SSS,TTT</span>
+      <span (mousedown)="CustomDragCol($event)" (touchstart)="CustomDragCol($event)" class='drag col'>Column UUU</span>
+      <span (mousedown)="CustomDragCol($event,1)" (touchstart)="CustomDragCol($event,1)" class='drag col' style="color:orange;">2 columns VVV,WWW</span>
+      <i id='DropInfo' style="color:gray; font-size:12px; white-space:nowrap;">Drag these items to grid</i>
+   </div>
+</section>
+
+<!--. Description -->
+<ul>
+   <li><h4>Dragging cell to external source</h4><br />
+   To permit dragging individual cells assign action <dfn>DragCell</dfn> to <b>OnDragAny</b> event in Actions or in individual cell / row / column attribute. 
+   If used in Actions, to preserve dragging whole rows / columns by Header, preserve here also the <b>Drag</b> action, e.g. <i>OnDragAny:"Focus(), Drag(0,15,1) || DragCell()"</i>.<br />
+   And define API event <dfn>OnDropCell</dfn> to do the required action after the cell is dropped inside or outside the grid.<br />
+   Optionally define also API event <dfn>OnDragCell</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+   </li>
+   <li><h4>Dragging row(s) / column(s) to external source</h4><br />
+   Rows and columns can be dragged outside grid by default set by <b>DraggingRows</b> / <b>DraggingCols</b>.<br />
+   Define API event <dfn>OnDrop</dfn> or <dfn>OnDropped</dfn> to do the required action after the row or column is dropped outside (or inside) the grid.<br />
+   If permitted dragging more selected rows or columns, get the dragged selection by API method <b>GetSelection</b>.<br />
+   Optionally define also API event <dfn>OnDragging</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+   </li>
+   <li><h4>Dragging cell from external source to grid</h4><br />
+   To start dragging cell from outside call API method <dfn>DragCell</dfn>. It behaves like the action <b>DragCell</b> for dragging from grid.<br />
+   Define API event <dfn>OnDropCell</dfn> to do the required action after the cell is dropped inside or outside the grid.<br />
+   Optionally define also API event <dfn>OnDragCell</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+   </li>
+   <li><h4>Dragging row / column from external source to grid</h4><br />
+   To start dragging row(s) from outside call API method <dfn>DragRow</dfn>.
+   To start dragging column(s) from outside call API method <dfn>DragCol</dfn>.<br />
+   These methods add hidden row(s) or column(s) to grid and start their dragging.<br />
+   Define API event <dfn>OnDrop</dfn> or <dfn>OnDropped</dfn> to do the required action after the row or column is dropped inside (or outside) the grid.
+   If drop is accepted, show the dropped row(s) or column(s) by <b>Hide</b> API method. 
+   If drop is rejected, remove the temporary row(s) or column(s) from grid by <b>Delete</b> API method.<br />
+   Optionally define also API event <dfn>OnDragging</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+   </li>
+</ul>

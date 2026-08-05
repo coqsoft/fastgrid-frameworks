@@ -1,0 +1,14 @@
+<h1>1. Plain table from SQL server</h1>
+   <h5>Loading data from and saving data to SQLite database table on Node server</h5>
+   <ul>
+      <li>
+         Sample Node server must be running on <b>http://localhost:8000</b>. The sample Node server package is located at <b>./server/</b>.<br/>
+         The sample data are loaded from <b><a href="http://localhost:8000/SQLTable.js?func=get" target="_blank">http://localhost:8000/SQLTable.js?func=get</a></b> 
+         and saved to url <b>http://localhost:8000/SQLTable.js?func=set</b>.
+         PDF is generated on url <b>http://localhost:8000/Pdf.js?func=getpdf</b>.<br/>
+         The sample data on server are stored in <b>./server/sqlite.db</b> database file in table <b>TableData</b>
+         and the script loading and saving data is located at <b>./server/SQLTable.js</b>
+      </li>
+   </ul>
+   <fast-grid [src]="[src,'http://localhost:8000/SQLTable.js?func=get', { Cfg:{ SaveUrl:'http://localhost:8000/SQLTable.js?func=set', PdfUrl:'http://localhost:8000/Pdf.js?func=getpdf' } }]" #gridRef [onLoadError]="onLoadError" style="height:100%; min-height:500px; width:100%"
+      ></fast-grid>

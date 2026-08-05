@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>2. Sheets with AI</h1>
+   <h5>Basic workbook with two sheets in CSV and with AI</h5>
+
+   <div class="Src">Source: <a href='02-AI_Sheet.js' target="_blank">02-AI_Sheet.js</a>, <a href='02-AI_Sheet1.csv' target="_blank">02-AI_Sheet1.csv</a>, <a href='02-AI_Sheet2.csv' target="_blank">02-AI_Sheet2.csv</a></div>
+
+   <fast-grid Src="['02-AI_Sheet.js',{ Sheet:'Csv 1' },'02-AI_Sheet1.csv',{ Sheet:'Csv 2' },'02-AI_Sheet2.csv']" style="min-height:100px;"></fast-grid>
+
+   <ul class="Error">
+      <li>
+         <script> if(location.protocol=="file:") document.write("<style>.Tutorial ul { display:none; } .Tutorial .Error { display:block; } </style>"); </script>
+         Do <b>not</b> run this file locally!<br />Run it from your local or remote web http server (e.g. localhost).<br>
+      </li>
+   </ul>
+</body>
+</html>

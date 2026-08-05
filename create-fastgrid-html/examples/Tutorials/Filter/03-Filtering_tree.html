@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>3. Filtering in tree </h1>
+   <h5>Various ways to filter rows in parent / child relation</h5>
+
+   <div class="Src">Source: <a href='03-Filtering_tree.js'>03-Filtering_tree.js</a></div>
+   <section>
+      <fast-grid style="height:550px;" Src="03-Filtering_tree.js"></fast-grid>
+   </section>
+
+   <ul>
+      <li>Cfg <dfn>FilterTree</dfn><br />
+         The attribute Cfg <b>FilterTree</b> specifies how the rows or columns will be filtered in tree, if the parents and children of the found rows will shown, hidden or filtered.<br />
+         <ul>
+         <li><b>0</b> - <b>Show only found.</b> Shows only rows that fulfill the condition, regardless on tree.</li>
+         <li><b>1</b> - <b>Show only found, with all children.</b> If some row fulfills the condition, all its children are shown too and not iterated.</li>
+         <li><b>2</b> - <b>Show all found.</b> If some row fulfills the condition, all its parents are shown too. </li>
+         <li><b>3</b> - <b>Show all found, with all children.</b> If some row fulfills the condition, all its parents and all its children are shown too. The children are not iterated.</li>
+         <li><b>4</b> - <b>Hide all not found.</b> If some row does not fulfill the condition, it hides all its children and does not iterate them.</li>
+         <li><b>5</b> - <b>Hide all not found, with all children.</b> If row does not fulfill the condition, it hides all its children. If row fulfills the condition, it shows all its children. The children are not iterated.</li>
+         </ul>
+     </li>
+     <li><h4>FilterTree setting</h4><br />
+        The Cfg <b>FilterTree</b> attribute can be changed by users by toolbar combo cell <b>D:</b> <dfn>FilterTree</dfn>.<br />
+        It shows popup list with all the available options.<br />
+     </li>
+     <li><h4>Filter only specified defaults</h4><br />
+        It is possible to apply the filter set in the <b>Filter</b> cell to only particular rows, set their default row id(s) to cell <dfn>FilterD</dfn>. Rows with other default rows will not be affected by this filter and will be always shown.<br />
+        To let users to choose the <b>FilterD</b>, define cell attribute <dfn>FilterDList</dfn> to add these options to the filter operators menu.<br />
+      </li>
+   </ul>
+</body>
+</html>

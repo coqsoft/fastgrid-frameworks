@@ -1,0 +1,43 @@
+<h1>6. Default rows and columns</h1>
+      <h5>Predefined values for more rows and columns</h5>
+      <section>
+         <fast-grid [src]="src" style="height:550px;"></fast-grid>
+      </section>
+
+      
+      <ul>
+         <li>See <a target="FGDoc" href="https://www.treegrid.com/FDoc/Defaults.htm">Defaults documentation</a>.</li>
+         <li>
+         Default object can be row, column, cell, toolbar, toolbar cell or image.<br />
+         The default rows are defined in <b>DefRows</b>.<br />
+         The default columns are defined in <b>DefCols</b>.<br />
+         The default cells are defined in <b>DefCells</b>.<br />
+         The default toolbars are defined in <b>DefToolbars</b>.<br />
+         The default toolbar cells are defined in <b>DefTools</b>.<br />
+         The default images are defined in <b>DefImages</b>.<br />
+         </li>
+         <li>
+         Default object predefines all object attributes that the object does not explitly set. <br />
+         Setting object attribute to empty string still overrides the default value.
+         Setting attribute to null or undefined uses the default value.
+         </li>
+         <li>The object refers to its default object by <dfn>D</dfn> attribute as the <dfn>id</dfn> of the default object.<br />
+         If the object is defined as number or string instead of object, it is the reference to default object. For example object "C1" is the same as &#123; D:"C1" &#125;.<br />
+         </li>
+         <li>Default row or column can be defined also by <dfn>CD</dfn> attribute that defined default object for children of the object.</li>
+         <li>If object has not set its default object by <b>D</b> or parent <b>CD</b> attribute it is automatically set to <b>Row</b> / <b>Col</b> / <b>Cell</b> / <b>Toolbar</b> / <b>Tool</b> / <b>Image</b> according to the object.</li>
+         <li><h4>Predefined default rows and columns</h4><br />
+            <ul>
+               <li><dfn>Header</dfn> - row or column in different color and background displaying column or row ids.</li>
+               <li><dfn>Index</dfn> - row or column in different color and background displaying column or row indexes.</li>
+               <li><dfn>Panel</dfn> - row or column prepared to display row / column icons. The icons must be defined explicitly, e.g. in <b>LeftIcons</b>.</li>
+               <li><dfn>Filter</dfn> - row or column displaying filter operators and permits filtering rows / columns by its values.</li>
+               <li><dfn>Group</dfn> - row or column created by grouping. It has <b>Group</b> attribute.</li>
+               <li><dfn>PivotGroup</dfn>, <dfn>PivotData</dfn> - row or column created by pivot.</li>
+            </ul>
+         </li>
+         <li><h4>API</h4><br />
+         Default attributes can be got / set by methods <dfn>GetDefAttr</dfn> / <dfn>SetDefAttr</dfn>.<br />
+         The default object can be got / set by methods <dfn>GetD</dfn> / <dfn>SetD</dfn>.<br />
+         </li>
+      </ul>

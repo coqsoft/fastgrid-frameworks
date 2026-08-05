@@ -1,0 +1,40 @@
+.Tutorial {
+   box-sizing:border-box; margin:0 auto; padding:28px 24px 48px;
+   font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; font-size:14px; line-height:1.6; color:#1f2937;
+   background:radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 32%), linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+   }
+.Tutorial *, .Tutorial *::before, .Tutorial *::after { box-sizing:inherit; }
+.Tutorial h1, .Tutorial h2, .Tutorial ul, .Tutorial .Desc, .Tutorial .Path, .Tutorial .Src { max-height:999999px; }
+.Tutorial h1 { margin:0; padding:10px 0 4px; font-size:clamp(24px, 3vw, 38px); line-height:1.15; font-weight:700; letter-spacing:-0.04em; text-align:center; color:#0f172a; }
+.Tutorial h5 { margin:0 0 24px; padding:0; font-size:15px; line-height:1.5; font-weight:400; text-align:center; color:#64748b; }
+.Tutorial h2 { margin:0; padding:28px 0 8px; font-size:22px; line-height:1.25; font-weight:700; letter-spacing:-0.02em; color:#111827; }
+.Tutorial > section { /*. flex display is used to center the grid in this parent section */
+   display: flex; justify-content: center; margin:22px 0 28px; padding:18px; backdrop-filter:blur(8px);
+   background:rgba(255, 255, 255, 0.84); border:1px solid #e5e7eb; border-radius:18px; box-shadow:0 16px 40px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+   }
+.Tutorial > ul { clear:both; display:grid; gap:14px; margin:0; padding:0; list-style:none; }
+.Tutorial > ul > li { padding:18px 20px; background:#ffffff; border:1px solid #e5e7eb; border-radius:16px; box-shadow:0 8px 24px rgba(15, 23, 42, 0.055); }
+.Tutorial li ul { margin:10px 0 0 0; padding-left:20px; font-size:14px; }
+.Tutorial li li { padding-bottom:9px; }
+.Tutorial li li:last-child { padding-bottom:0; }
+.Tutorial dfn, .Tutorial h4 { 
+   display:inline-flex; align-items:center; max-width:100%; margin:2px 3px; padding:2px 8px; border-radius:6px; font-size:13px; line-height:1.45;
+   font-weight:700; font-style:normal; vertical-align:baseline; white-space:nowrap;
+   }
+.Tutorial dfn { color:#075985; background:#e0f2fe; border:1px solid #bae6fd; }
+.Tutorial h4 { color:#5b21b6; background:#ede9fe; border:1px solid #ddd6fe; }
+.Tutorial p { margin:0; padding:0; }
+.Tutorial b { font-weight:700; }
+.Tutorial ul b { color:#0369a1; }
+.Tutorial a { color:#2563eb; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(37, 99, 235, 0.28); transition:color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease; }
+.Tutorial a:hover { color:#1d4ed8; border-bottom-color:rgba(29, 78, 216, 0.7); background:rgba(37, 99, 235, 0.06); }
+.Tutorial code { 
+   display:block; max-width:100%; margin:10px 0; padding:12px 14px; overflow-x:auto; background:#0f172a; color:#e5e7eb; border:1px solid rgba(148, 163, 184, 0.22);
+   border-radius:12px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.06); font:13px/1.55 "JetBrains Mono", "SFMono-Regular", Consolas, Monaco, monospace; white-space:pre;
+   }
+.Tutorial button { 
+   margin:0 4px 20px 4px; padding:8px 12px; color:#ffffff; background:#1976D2; border:1px solid #1d4ed8; border-radius:10px; box-shadow:0 4px 12px rgba(37, 99, 235, 0.25); cursor:pointer;
+   font:600 13px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;  transition:transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+   }
+.Tutorial button:hover { background:#1d4ed8; box-shadow:0 6px 18px rgba(37, 99, 235, 0.32); transform:translateY(-1px); }
+.Tutorial button:active { transform:translateY(0); box-shadow:0 3px 10px rgba(37, 99, 235, 0.24); }

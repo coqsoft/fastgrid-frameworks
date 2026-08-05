@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <script src="../../Grid/FGridE.js"> </script>
+   <link href="../Tutorial.css" rel="stylesheet" />
+</head>
+<body class="Tutorial">
+   <style>
+      .dragparent { border:1px solid #CDD8E4; border-radius:10px; padding:6px 6px 1px 6px; cursor:default; }
+      .dropparent { border:1px solid #D88; border-radius:10px; padding:6px 6px 1px 6px; cursor:default; }
+      .dropparent > i { display:inline-block; padding-bottom:5px; }
+      .drag,.drop { padding:3px 8px 0px 8px; margin:0px 10px 5px 0px; display:inline-block; white-space:nowrap; font-size:12px; color:#586980; }
+      .drag { cursor:pointer; }
+      .cell { border:1px solid #586980; border-radius:10px; }
+      .row { border:1px solid #66F; border-radius:10px; }
+      .col { border:1px solid #0D0; border-radius:10px; }
+   </style>
+
+   <script>
+
+//. -- Starts dragging cell from outside ---
+function CustomDragCell(tag,event){
+var A = tag.getBoundingClientRect();
+FGrid.Grids[0].DragCell(event,null,[tag.innerHTML.replace(/.*cells?\s*/i,""),tag.style.color],[A.left,A.top,A.width,A.height]);
+}
+
+//. -- Starts dragging row from outside ---
+function CustomDragRow(tag,event,more){
+var G = FGrid.Grids[0], val = tag.innerHTML.replace(/.*rows?\s*/i,""), clr = tag.style.color;
+if(more) G.DragRow(event,[{ Value:val.split(",")[0], TextColor:clr },{ Value: val.split(",")[1], TextColor:clr }]);
+else G.DragRow(event,{ Value: val, TextColor:clr });
+}
+
+//. -- Starts dragging column from outside ---
+function CustomDragCol(tag,event,more){
+var G = FGrid.Grids[0], val = tag.innerHTML.replace(/.*columns?\s*/i,""), clr = tag.style.color;
+if(more) G.DragCol(event,null,[{ Value:val.split(",")[0], TextColor:clr },{ Value: val.split(",")[1], TextColor:clr }]);
+else G.DragCol(event,null,{ Value: val, TextColor:clr });
+}
+
+   </script>
+
+   <div class="Path"><script>document.getElementsByClassName("Path")[0].innerHTML = location.href.replace(/(.*)\/F?(Tutorials\/)([^\/]+)\/([^\/]+)$/,"$2<b>$3</b>/$4").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>").replace(/[?#].*$/,"");</script></div>
+   <h1>3. Dragging from and to external sources</h1>
+   <h5>Dragging rows, columns and cell values from and to outside</h5>
+
+   <div class="Src">Source: <a href='03-Dragging_external.js'>03-Dragging_external.js</a></div>
+   <section>
+      <fast-grid style="height: 550px;" Src="03-Dragging_external.js"></fast-grid>
+   </section>
+
+   <!-- Cells, rows, columns dropped  from grid -->
+   <div id='Drop' onselectstart='return false;' onmousedown='return false;' class="dropparent">
+      <i id='DropInfo' style='color:gray;font-size:12px;'>Drag grid rows, columns or cells here. To drag grid cell on touch screen, focus it first.</i>
+   </div>
+   <br />
+
+   <!-- Cells,rows, columns to drag into grid -->
+   <div onselectstart='return false;' onmousedown='return false;' ontouchstart='return false' class="dragparent"> 
+      <span onmousedown='CustomDragCell(this,event);' ontouchstart='CustomDragCell(this,event);' class='drag cell'>Cell XXX</span>
+      <span onmousedown='CustomDragCell(this,event);' ontouchstart='CustomDragCell(this,event);' class='drag cell' style="color:red">Cell YYY</span>
+      <span onmousedown='CustomDragCell(this,event);' ontouchstart='CustomDragCell(this,event);' class='drag cell' style="color:green">Cell ZZZ</span>
+      <span onmousedown='CustomDragRow(this,event);' ontouchstart='CustomDragRow(this,event);' class='drag row'>Row RRR</span>
+      <span onmousedown='CustomDragRow(this,event,1);' ontouchstart='CustomDragRow(this,event,1);' class='drag row' style="color:blue;">2 rows SSS,TTT</span>
+      <span onmousedown='CustomDragCol(this,event);' ontouchstart='CustomDragCol(this,event);' class='drag col'>Column UUU</span>
+      <span onmousedown='CustomDragCol(this,event,1);' ontouchstart='CustomDragCol(this,event,1);' class='drag col' style="color:orange;">2 columns VVV,WWW</span>
+      <i id='DropInfo' style='color:gray;font-size:12px;white-space:nowrap;'>Drag these items to grid</i>
+   </div>
+   <br />
+   
+   <ul>
+      <li><h4>Dragging cell to external source</h4><br />
+      To permit dragging individual cells assign action <dfn>DragCell</dfn> to <b>OnDragAny</b> event in Actions or in individual cell / row / column attribute. 
+      If used in Actions, to preserve dragging whole rows / columns by Header, preserve here also the <b>Drag</b> action, e.g. <i>OnDragAny:"Focus(), Drag(0,15,1) || DragCell()"</i>.<br />
+      And define API event <dfn>OnDropCell</dfn> to do the required action after the cell is dropped inside or outside the grid.<br />
+      Optionally define also API event <dfn>OnDragCell</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+      </li>
+      <li><h4>Dragging row(s) / column(s) to external source</h4><br />
+      Rows and columns can be dragged outside grid by default set by <b>DraggingRows</b> / <b>DraggingCols</b>.<br />
+      Define API event <h4>OnDrop</h4> or <h4>OnDropped</h4> to do the required action after the row or column is dropped outside (or inside) the grid.<br />
+      If permitted dragging more selected rows or columns, get the dragged selection by API method <b>GetSelection</b>.<br />
+      Optionally define also API event <dfn>OnDragging</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+      </li>
+      <li><h4>Dragging cell from external source to grid</h4><br />
+      To start dragging cell from outside call API method <dfn>DragCell</dfn>. It behaves like the action <b>DragCell</b> for dragging from grid.<br />
+      Define API event <dfn>OnDropCell</dfn> to do the required action after the cell is dropped inside or outside the grid.<br />
+      Optionally define also API event <dfn>OnDragCell</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+      </li>
+      <li><h4>Dragging row / column from external source to grid</h4><br />
+      To start dragging row(s) from outside call API method <dfn>DragRow</dfn>.
+      To start dragging column(s) from outside call API method <dfn>DragCol</dfn>.<br />
+      These methods add hidden row(s) or column(s) to grid and start their dragging.<br />
+      Define API event <h4>OnDrop</h4> or <h4>OnDropped</h4> to do the required action after the row or column is dropped inside (or outside) the grid.
+      If drop is accepted, show the dropped row(s) or column(s) by <b>Hide</b> API method. 
+      If drop is rejected, remove the temporary row(s) or column(s) from grid by <b>Delete</b> API method.<br />
+      Optionally define also API event <dfn>OnDragging</dfn> to control something during dragging, e.g. visually highlight tags with dropping permissions.<br />
+      </li>
+   </ul>
+</body>
+</html>

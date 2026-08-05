@@ -1,6 +1,17 @@
-# fastgrid
+# fastgrid - FastGrid framework detection CLI
 
 `DO NOT RUN 'npm install fastgrid', RUN 'npx fastgrid' INSTEAD`
+
+This directory contains the source code of the FastGrid framework detection
+CLI.
+
+The unscoped npm package name `fastgrid` is not published because npm rejects it
+as too similar to the existing `fast-grid` package.
+
+This source remains available in the public GitHub repository for transparency,
+future development and possible publication under a scoped package name.
+
+## Install
 
 Install the official FastGrid wrapper for the frontend framework detected in the
 current project.

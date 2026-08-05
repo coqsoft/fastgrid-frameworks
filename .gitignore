@@ -20,6 +20,7 @@
 /Zip*
 /.verdaccio*
 /.npmrc
+/token.cmd
 
 # Generated, local and private files
 **/build/

@@ -1,7 +1,7 @@
 {
   "name": "fastgrid-html-examples-server",
   "private": true,
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Localhost-only demonstration server for FastGrid HTML + JavaScript SQL, file and PDF export examples. Not intended for production.",
   "main": "Index.js",
   "scripts": {

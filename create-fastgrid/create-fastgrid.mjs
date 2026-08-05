@@ -19,7 +19,7 @@ async function askFramework(rl) {
    while(true) {
       const answer = (await rl.question("Framework: ")).trim().toLowerCase();
       const index = Number(answer) - 1;
-      if(FRAMEWORKS[index]) return FRAMEWORKS[index];
+      if(index >= 0 && index < FRAMEWORKS.length) return FRAMEWORKS[index];
       if(FRAMEWORKS.includes(answer)) return answer;
       console.error("Choose 1, 2, 3, 4, 5, angular, react, vue, svelte or html.");
       }
@@ -51,12 +51,13 @@ function runNpx(projectName, generator, forwarded, cwd) {
 async function main() {
    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
    try {
-      let framework = await askFramework(rl);
+      const framework = await askFramework(rl);
       const generator = GENERATORS[framework];
       console.log(`\nSelected generator: ${generator}`);
+      rl.close(); // The parent readline must be closed before the child generator starts. Otherwise both readline instances read from the same stdin on Windows.
       await runNpx(process.argv[2], generator, process.argv.slice(3), process.cwd());
       } 
-   finally { rl?.close(); }
+   finally { rl.close(); }
    }
 
 main().catch((error) => { console.error(`\ncreate-fastgrid: ${error.message}\n`); process.exitCode = 1; });

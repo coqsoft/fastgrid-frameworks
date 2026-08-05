@@ -1,6 +1,6 @@
 {
   "name": "fastgrid-react",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Official React wrapper for FastGrid and FastSheet, a high-performance TypeScript data grid and web spreadsheet for large datasets, virtual scrolling, tree data, pivoting, XLSX and AI.",
   "keywords": [
     "fastgrid",

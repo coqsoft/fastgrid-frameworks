@@ -21,6 +21,7 @@
 /.verdaccio*
 /.npmrc
 /token.cmd
+/Stats.html
 
 # Generated, local and private files
 **/build/

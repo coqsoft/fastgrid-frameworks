@@ -449,6 +449,7 @@ async function createGrid(){
    if(disposed || token!==createToken || !root) return;
    const FG = globalThis.FGrid;
    if(!FG || typeof(FG.FastGrid)!=="function") throw new Error("FastGrid script is not loaded. Import from 'fastgrid-svelte' for the trial version, or load the registered FGridE.js before importing 'fastgrid-svelte/registered'.");
+   FG.SvelteId = FG.SvelteId+1||1;
    dispose();
 
    var E = { Sheet:".", Events:{} };

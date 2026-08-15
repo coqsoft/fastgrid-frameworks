@@ -3,8 +3,9 @@
 [![npm version](https://img.shields.io/npm/v/create-fastgrid-html.svg)](https://www.npmjs.com/package/create-fastgrid-html)
 [![npm downloads](https://img.shields.io/npm/dm/create-fastgrid-html.svg)](https://www.npmjs.com/package/create-fastgrid-html)
 
-`create-fastgrid-html` creates ready-to-run HTML and JavaScript projects for
-**FastGrid** and **FastSheet**.
+`create-fastgrid-html` creates ready-to-run HTML and JavaScript projects 
+for [**FastGrid**](https://www.treegrid.com/FastGrid.html) 
+and [**FastSheet**](https://www.treegrid.com/FastSheet.html).
 
 Use it when you want a browser data grid or spreadsheet without Angular, React,
 Vue or Svelte. The generated projects demonstrate FastGrid custom elements,
@@ -32,7 +33,7 @@ The generator provides:
 | Template | Purpose |
 | --- | --- |
 | `quick-start` | Minimal HTML page with one FastGrid and JavaScript API examples |
-| `examples` | FastGrid and FastSheet tutorials, large grids, spreadsheets, XLSX and optional local Node server examples |
+| `examples` | FastGrid and FastSheet tutorials, large grids, spreadsheets, XLSX, SQL database and optional local Node server examples |
 
 ## Run the generated project
 
@@ -165,7 +166,7 @@ The registered runtime and serial code must not be published to npm or GitHub.
 ## Local example server
 
 The advanced examples may contain an optional local Node.js server for
-demonstrating file, SQLite and PDF integration.
+demonstrating file, SQL and PDF integration.
 
 The example server is for localhost development only. Do not deploy it to the
 public internet without adding authentication, authorization, path validation,
@@ -175,8 +176,8 @@ isolation.
 ## Documentation
 
 - [FastGrid HTML](https://www.treegrid.com/FDoc/FastGridHtml.html)
-- [FastGrid](https://www.treegrid.com/FastGrid)
-- [FastSheet](https://www.treegrid.com/FastSheet)
+- [FastGrid](https://www.treegrid.com/FastGrid) with full product description and online examples
+- [FastSheet](https://www.treegrid.com/FastSheet) with full product description and online examples
 - [Documentation index](https://www.treegrid.com/FDoc/Glossary.htm)
 - [API and attribute search](https://www.treegrid.com/FDoc/SearchAttr.html)
 - [Live examples](https://www.treegrid.com/Examples)

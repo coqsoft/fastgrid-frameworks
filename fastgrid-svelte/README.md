@@ -2,8 +2,12 @@
 
 [![npm version](https://img.shields.io/npm/v/fastgrid-svelte.svg)](https://www.npmjs.com/package/fastgrid-svelte)
 [![npm downloads](https://img.shields.io/npm/dm/fastgrid-svelte.svg)](https://www.npmjs.com/package/fastgrid-svelte)
+[![TypeScript](https://img.shields.io/badge/TypeScript-yes-DDFF00.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Svelte 5+](https://img.shields.io/badge/Svelte-5%2B-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev/)
 
-`fastgrid-svelte` is the official Svelte 5 wrapper for **FastGrid** and FastSheet
+`fastgrid-svelte` is the official Svelte wrapper 
+for [**FastGrid**](https://www.treegrid.com/FastGrid.html) 
+and [**FastSheet**](https://www.treegrid.com/FastSheet.html)
 by COQsoft.
 
 Use it to add a high-performance Svelte data grid, Svelte tree grid or Svelte
@@ -208,12 +212,61 @@ server-side bridge.
 
 ## Documentation
 
-- [FastGrid](https://www.treegrid.com/FastGrid)
-- [FastSheet](https://www.treegrid.com/FastSheet)
-- [Documentation index](https://www.treegrid.com/FDoc/Glossary.htm)
+- [FastGrid Svelte integration](https://www.treegrid.com/FDoc/FastGridSvelte.html)
+- [FastGrid product page](https://www.treegrid.com/FastGrid)
+- [FastSheet product page](https://www.treegrid.com/FastSheet)
+- [Documentation index and glossary](https://www.treegrid.com/FDoc/Glossary.htm)
 - [API and attribute search](https://www.treegrid.com/FDoc/SearchAttr.html)
 - [Live examples](https://www.treegrid.com/Examples)
 - [Licensing](https://www.treegrid.com/Licensing)
+- [Prices](https://www.treegrid.com/Prices)
+- [Purchase](https://www.treegrid.com/Purchase)
+
+## FAQ
+
+### Is `fastgrid-svelte` the official Svelte wrapper for FastGrid?
+
+Yes. It is the official Svelte integration maintained for FastGrid and
+FastSheet by COQsoft.
+
+### Is the Svelte wrapper open source?
+
+Yes. The Svelte wrapper source code is open source. The included trial runtime
+and externally supplied registered `FGridE.js` are covered by separate
+FastGrid/FastSheet trial or commercial terms.
+
+### Does the package include FastGrid?
+
+The default entry point includes an evaluation runtime. Licensed production
+applications use the `fastgrid-svelte/registered` entry point with a separately
+supplied registered `FGridE.js`.
+
+### Can the wrapper display FastSheet spreadsheets?
+
+Yes. FastGrid and FastSheet use the same runtime and Svelte component.
+Available functionality depends on the runtime license and enabled features.
+
+### Does it work with the latest Svelte version?
+
+The peer dependency intentionally supports Svelte 5 and newer without an
+upper version limit. Current and future Svelte versions should still be tested
+because a future Svelte release can introduce breaking changes.
+
+### Can FastGrid handle millions of rows?
+
+FastGrid is designed for very large datasets and virtual scrolling. Actual
+limits and performance depend on the grid configuration, browser, data format
+and application logic.
+
+### Does FastGrid replace an HTML table?
+
+FastGrid is intended for interactive data-grid and spreadsheet applications.
+For a small static table, a standard HTML `<table>` may be simpler.
+
+### Can I use FastGrid without AI?
+
+Yes. AI integration is optional. FastGrid can be controlled entirely through
+its user interface and JavaScript/TypeScript API.
 
 ## License
 

@@ -11,14 +11,14 @@
             <ul>
                <li>CSV data or its url can be directly passed to FastGrid like JSON, like <dfn>&lt;fast-grid src="08-Csv_grid.csv"/&gt;</dfn></li>
                <li>If the CSV file url has not extension <b>csv</b>, set also Format="csv" like <dfn>&lt;fast-grid  src=&#123;Format:'csv',Url:'08-Csv_grid.csv'&#125;/&gt;</dfn></li>
-               <li>If passing CSV directly in string, set also Format="csv" like <dfn>&lt;fast-grid src=&#123;Format:'csv',Data:'...'&#125;/&gt;</dfn></li>
+               <li>If passing CSV directly in string, set also Format="csv" like <dfn>&lt;fast-grid [src]=&#123;Format:'csv',Data:'...'&#125;/&gt;</dfn></li>
             </ul>
          </li>
          <li> <h4>CSV separators</h4>
             <ul>
                <li>By default the input CSV has separated columns by comma, the rows by CR or LF or CRLF and quoted valued by double quote.</li>
                <li>To specify different separators, set <b>Cfg</b> attributes <dfn>CsvRowSeparator</dfn>, <dfn>CsvValueSeparator</dfn> and <dfn>CsvQuote</dfn></li>
-               <li>For example <dfn>&lt;fast-grid src=[&#123;Cfg:&#123;CsvValueSeparator:';'&#125;&#125;,&#123;Format:'csv',Data:'a;b;c\nd;e;f'&#125;]/&gt;</dfn></li>
+               <li>For example <dfn>&lt;fast-grid [src]=[&#123;Cfg:&#123;CsvValueSeparator:';'&#125;&#125;,&#123;Format:'csv',Data:'a;b;c\nd;e;f'&#125;]/&gt;</dfn></li>
             </ul>
          </li>
          <li>

@@ -30,6 +30,7 @@ export default defineComponent({
          if(!FG || typeof(FG.FastGrid)!=="function") {
             throw new Error("FastGrid script is not loaded. Import from 'fastgrid-vue' for the trial version, or load the registered FGridE.js before importing 'fastgrid-vue/registered'.");
             }
+         FG.VueId = FG.VueId+1||1;
          disposeGrid();
 
          const setGrid = function(G){

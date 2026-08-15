@@ -1,6 +1,6 @@
 {
   "name": "create-fastgrid-angular",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Create Angular starter projects, tutorials and advanced examples for FastGrid and FastSheet, including data grids, tree grids, virtual scrolling, XLSX spreadsheets and AI.",
   "keywords": [
     "create-fastgrid",
@@ -83,7 +83,7 @@
   },
   "type": "module",
   "bin": {
-    "create-fastgrid-angular": "./create-fastgrid-angular.js"
+    "create-fastgrid-angular": "create-fastgrid-angular.js"
   },
   "dependencies": {},
   "engines": {

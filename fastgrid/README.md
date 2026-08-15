@@ -1,6 +1,6 @@
 # fastgrid - FastGrid framework detection CLI
 
-`DO NOT RUN 'npm install fastgrid', RUN 'npx fastgrid' INSTEAD`
+`DO NOT RUN 'npm install fastgrid' → RUN 'npx fastgrid' INSTEAD`
 
 This directory contains the source code of the FastGrid framework detection
 CLI.

@@ -2,10 +2,13 @@
 
 [![npm version](https://img.shields.io/npm/v/fastgrid-angular.svg)](https://www.npmjs.com/package/fastgrid-angular)
 [![npm downloads](https://img.shields.io/npm/dm/fastgrid-angular.svg)](https://www.npmjs.com/package/fastgrid-angular)
-[![Angular](https://img.shields.io/badge/Angular-17%2B-DD0031.svg)](https://angular.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-yes-DDFF00.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Angular 17+](https://img.shields.io/badge/Angular-17%2B-FF3E00.svg?logo=angular&logoColor=white)](https://angular.dev/)
 
-`fastgrid-angular` is the **official Angular wrapper for FastGrid and
-FastSheet by COQsoft**.
+`fastgrid-angular` is the official Angular wrapper 
+for [**FastGrid**](https://www.treegrid.com/FastGrid.html) 
+and [**FastSheet**](https://www.treegrid.com/FastSheet.html)
+by COQsoft.
 
 Use it to add a high-performance Angular data grid, Angular tree grid or Angular
 spreadsheet to a TypeScript application. FastGrid supports virtual scrolling,

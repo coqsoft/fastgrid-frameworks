@@ -35,7 +35,7 @@ The newest FastGrid script can be downloaded from https://www.treegrid.com/attac
 
 ### Minimal usage:
 ```html
-<fast-grid src="{ Cols:["A","B","C"], Head:[ "Header" ], Body:[ { V:[1,2,3] }, { V:[4,5,6] }, { V:[7,8,9] } ] }" style="height:500px;"></fast-grid>
+<fast-grid src='{ Cols:["A","B","C"], Head:[ "Header" ], Body:[ { V:[1,2,3] }, { V:[4,5,6] }, { V:[7,8,9] } ] }' style="height:500px;"></fast-grid>
 ```
 
 ### Dynamic create:

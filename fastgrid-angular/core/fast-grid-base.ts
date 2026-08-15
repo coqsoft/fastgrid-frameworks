@@ -51,8 +51,9 @@ export abstract class FastGridComponentBase extends FastGridEventBindings implem
       if(!isPlatformBrowser(this.platformId) || this.destroyed) return;
       const token = ++this.createToken;
       this.dispose();
-      const FG = await this.ensureEngine();
+      const FG = await this.ensureEngine() as TFGrid & { AngularId?: number; };
       if(this.destroyed || token!==this.createToken) return;
+      FG.AngularId = (FG.AngularId ?? 0) + 1;
       const setGridReference = (grid:TGrid|null|undefined) : void => {
          if(!grid) return;
          if(this.destroyed || token!==this.createToken){ grid.Dispose(1); return; }
@@ -74,7 +75,7 @@ export abstract class FastGridComponentBase extends FastGridEventBindings implem
             }
          }
       const setGrid = (grid:TGrid|null|undefined) : void => { setGridReference(grid); };
-      const grid = this.runOutsideAngular(() => FG.FastGrid(FGrid.MergeSources(FGrid.RunSources(src),E),this.element.nativeElement,setGrid));
+      const grid = this.runOutsideAngular(() => FG.FastGrid(FG.MergeSources(FG.RunSources(src),E),this.element.nativeElement,setGrid));
       setGrid(grid);
       }
 

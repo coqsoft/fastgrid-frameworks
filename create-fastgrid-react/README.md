@@ -1,6 +1,13 @@
 # create-fastgrid-react
 
-Create ready-to-run React projects for **FastGrid** and **FastSheet**.
+[![npm version](https://img.shields.io/npm/v/create-fastgrid-react.svg)](https://www.npmjs.com/package/fastgrid-react)
+[![npm downloads](https://img.shields.io/npm/dm/create-fastgrid-react.svg)](https://www.npmjs.com/package/fastgrid-react)
+[![TypeScript](https://img.shields.io/badge/TypeScript-yes-DDFF00.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React 16.14+](https://img.shields.io/badge/React-16.14%2B-FF3E00?logo=react&logoColor=white)](https://react.dev/)
+
+Create ready-to-run React projects
+for [**FastGrid**](https://www.treegrid.com/FastGrid.html) 
+and [**FastSheet**](https://www.treegrid.com/FastSheet.html).
 
 The generated projects use the official `fastgrid-react` wrapper and include
 an evaluation version of the FastGrid/FastSheet runtime.
@@ -24,7 +31,7 @@ The CLI asks you to select one of these templates:
 | 1 | `quick-start` | Minimal React application with one FastGrid |
 | 2 | `quick-start-typescript` | Minimal React application with one FastGrid and TypeScript |
 | 3 | `tutorials` | Individual FastGrid and FastSheet feature tutorials |
-| 4 | `examples` | Advanced grids, spreadsheets, XLSX and optional local Node server examples |
+| 4 | `examples` | Advanced grids, spreadsheets, XLSX, large grids, SQL database and optional local Node server examples |
 
 
 ## After generation
@@ -73,7 +80,7 @@ The registered runtime and serial code must not be published to npm or GitHub.
 ## Local example server
 
 The advanced examples may contain an optional local Node.js server for
-demonstrating file, SQLite and PDF integration.
+demonstrating file, SQL and PDF integration.
 
 The example server is for localhost development only. Do not deploy it to the
 public internet without adding authentication, authorization, path validation,
@@ -82,13 +89,15 @@ isolation.
 
 ## Documentation
 
-- [FastGrid React](https://www.treegrid.com/FDoc/FastGridReact.html)
-- [FastGrid](https://www.treegrid.com/FastGrid)
-- [FastSheet](https://www.treegrid.com/FastSheet)
-- [Documentation index](https://www.treegrid.com/FDoc/Glossary.htm)
+- [FastGrid React integration](https://www.treegrid.com/FDoc/FastGridReact.html)
+- [FastGrid product page](https://www.treegrid.com/FastGrid)
+- [FastSheet product page](https://www.treegrid.com/FastSheet)
+- [Documentation index and glossary](https://www.treegrid.com/FDoc/Glossary.htm)
 - [API and attribute search](https://www.treegrid.com/FDoc/SearchAttr.html)
 - [Live examples](https://www.treegrid.com/Examples)
 - [Licensing](https://www.treegrid.com/Licensing)
+- [Prices](https://www.treegrid.com/Prices)
+- [Purchase](https://www.treegrid.com/Purchase)
 
 ## License
 

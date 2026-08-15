@@ -1,6 +1,6 @@
 {
   "name": "create-fastgrid",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Create Angular, React, Vue, Svelte or HTML starter projects, tutorials and advanced examples for FastGrid and FastSheet, including data grids, tree grids, virtual scrolling, XLSX spreadsheets and AI.",
   "keywords": [
     "create-fastgrid",
@@ -139,7 +139,7 @@
   },
   "type": "module",
   "bin": {
-    "create-fastgrid": "./create-fastgrid.mjs"
+    "create-fastgrid": "create-fastgrid.mjs"
   },
   "engines": {
     "node": ">=18.0.0"

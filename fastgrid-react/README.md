@@ -2,8 +2,12 @@
 
 [![npm version](https://img.shields.io/npm/v/fastgrid-react.svg)](https://www.npmjs.com/package/fastgrid-react)
 [![npm downloads](https://img.shields.io/npm/dm/fastgrid-react.svg)](https://www.npmjs.com/package/fastgrid-react)
+[![TypeScript](https://img.shields.io/badge/TypeScript-yes-DDFF00.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React 16.14+](https://img.shields.io/badge/React-16.14%2B-FF3E00?logo=react&logoColor=white)](https://react.dev/)
 
-`fastgrid-react` is the official React wrapper for **FastGrid** and **FastSheet**
+`fastgrid-react` is the official React wrapper for 
+for [**FastGrid**](https://www.treegrid.com/FastGrid.html) 
+and [**FastSheet**](https://www.treegrid.com/FastSheet.html)
 by COQsoft.
 
 Use it to add a high-performance React data grid, React tree grid or React
@@ -251,12 +255,61 @@ runtime and application architecture.
 
 ## Documentation
 
-- [FastGrid](https://www.treegrid.com/FastGrid)
-- [FastSheet](https://www.treegrid.com/FastSheet)
-- [Documentation index](https://www.treegrid.com/FDoc/Glossary.htm)
+- [FastGrid React integration](https://www.treegrid.com/FDoc/FastGridReact.html)
+- [FastGrid product page](https://www.treegrid.com/FastGrid)
+- [FastSheet product page](https://www.treegrid.com/FastSheet)
+- [Documentation index and glossary](https://www.treegrid.com/FDoc/Glossary.htm)
 - [API and attribute search](https://www.treegrid.com/FDoc/SearchAttr.html)
 - [Live examples](https://www.treegrid.com/Examples)
 - [Licensing](https://www.treegrid.com/Licensing)
+- [Prices](https://www.treegrid.com/Prices)
+- [Purchase](https://www.treegrid.com/Purchase)
+
+## FAQ
+
+### Is `fastgrid-react` the official React wrapper for FastGrid?
+
+Yes. It is the official React integration maintained for FastGrid and
+FastSheet by COQsoft.
+
+### Is the React wrapper open source?
+
+Yes. The React wrapper source code is open source. The included trial runtime
+and externally supplied registered `FGridE.js` are covered by separate
+FastGrid/FastSheet trial or commercial terms.
+
+### Does the package include FastGrid?
+
+The default entry point includes an evaluation runtime. Licensed production
+applications use the `fastgrid-react/registered` entry point with a separately
+supplied registered `FGridE.js`.
+
+### Can the wrapper display FastSheet spreadsheets?
+
+Yes. FastGrid and FastSheet use the same runtime and React component.
+Available functionality depends on the runtime license and enabled features.
+
+### Does it work with the latest React version?
+
+The peer dependency intentionally supports React 16.14 and newer without an
+upper version limit. Current and future React versions should still be tested
+because a future React release can introduce breaking changes.
+
+### Can FastGrid handle millions of rows?
+
+FastGrid is designed for very large datasets and virtual scrolling. Actual
+limits and performance depend on the grid configuration, browser, data format
+and application logic.
+
+### Does FastGrid replace an HTML table?
+
+FastGrid is intended for interactive data-grid and spreadsheet applications.
+For a small static table, a standard HTML `<table>` may be simpler.
+
+### Can I use FastGrid without AI?
+
+Yes. AI integration is optional. FastGrid can be controlled entirely through
+its user interface and JavaScript/TypeScript API.
 
 ## License
 

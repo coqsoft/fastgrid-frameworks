@@ -98,7 +98,7 @@ function copyDirectory(source, destination) {
          }
       else if(entry.name === "vite.config.js"){
          let txt = fs.readFileSync(sourcePath,"utf8");
-         txt = txt.replace(/[\t ]*cacheDir:\s*path\.resolve\(__dirname,\s*["']\.\.\/\.\.\/node_modules\/\.vite["']\s*\),[\t ]*\r?\n/g,"");
+         txt = txt.replace(/^[\t ]*cacheDir\s*:[^\r\n]*(?:\r?\n|$)/gm,"");
          fs.writeFileSync(destinationPath, txt);
          }
       else if(entry.name === "_gitignore") fs.copyFileSync(sourcePath, path.join(destination, ".gitignore"));

@@ -59,6 +59,7 @@ export function Get(...args){ return requireGrid().Get(...args); }
 export function Set(...args){ return requireGrid().Set(...args); }
 export function GetValue(...args){ return requireGrid().GetValue(...args); }
 export function GetValueSimple(...args){ return requireGrid().GetValueSimple(...args); }
+export function GetValueOrig(...args){ return requireGrid().GetValueOrig(...args); }
 export function GetNumber(...args){ return requireGrid().GetNumber(...args); }
 export function GetRange(...args){ return requireGrid().GetRange(...args); }
 export function GetNumbers(...args){ return requireGrid().GetNumbers(...args); }

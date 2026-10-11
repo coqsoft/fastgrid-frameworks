@@ -55,6 +55,7 @@ export class FastGrid extends SvelteComponent<FastGridProps> {
    Set(...args:any[]):any;
    GetValue(...args:any[]):any;
    GetValueSimple(...args:any[]):any;
+   GetValueOrig(...args:any[]):any;
    GetNumber(...args:any[]):any;
    GetRange(...args:any[]):any;
    GetNumbers(...args:any[]):any;

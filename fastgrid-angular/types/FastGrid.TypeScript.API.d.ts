@@ -89,6 +89,7 @@ interface TGrid {
    Set(row: any, col: any, attr: any, value: any, changes?: number): number;
    GetValue(row: TRow, col: TCol, direct?: number): any;
    GetValueSimple(row: TRow, col: TCol): any;
+   GetValueOrig(row: TRow, col: TCol, always?: number|boolean): any;
    GetNumber(row: TRow, col: TCol, ret?: number, def?: any, val?: any): any;
    GetRange(row: TRow, col: TCol, ret?: number, def?: number, val?: number): any;
    GetNumbers(row1: TRow, col1: TCol, row2: TRow, col2: TCol, ret?: number, def?: number, direct?: number): any;

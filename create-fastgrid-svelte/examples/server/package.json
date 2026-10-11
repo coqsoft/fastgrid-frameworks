@@ -1,7 +1,7 @@
 {
   "name": "fastgrid-svelte-examples-server",
   "private": true,
-  "version": "3.2.2",
+  "version": "3.3.1",
   "description": "Localhost-only demonstration server for FastGrid Svelte SQL, file and PDF export examples. Not intended for production.",
   "main": "Index.js",
   "scripts": {

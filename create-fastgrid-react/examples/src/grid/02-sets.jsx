@@ -20,7 +20,7 @@ export default function App() {
                if(r.L<=L) return true; 
                if(r.D==D&&~r.O&4) { var v = G.GetValueSimple(r,amount) * G.GetValueSimple(r,price); if(v){ sum += v; if(G.GetValueSimple(r,ver)>0) sumver += v; } }
                },!row);
-            return "all: <b>"+G.NumberToString(sum,",0.##")+"</b>; verified: <b>"+G.NumberToString(sumver,",0.##")+"</b>";
+            return G.Text["$Xall"]+": <b>"+G.NumberToString(sum,",0.##")+"</b>; "+G.Text["$Xverified"]+": <b>"+G.NumberToString(sumver,",0.##")+"</b>";
             },
 
          //. --- subtract Total1 - Total2 values to Total3 row ---
@@ -28,7 +28,8 @@ export default function App() {
             var r2 = G.GetPrev(row), r1 = G.GetPrev(r2), sep = G.Format.DecimalSeparator, rep = new RegExp("[^\\d\\;\\-\\"+sep+"]","g");
             var v1 = G.GetValue(r1,col).replace(rep,"").replace(rep,"").split(";"), v2 = G.GetValue(r2,col).replace(/\#\w+/g,"").replace(rep,"").split(";");
             if(sep!="."){ v1[0] = v1[0].replace(sep,".");  v1[1] = v1[1].replace(sep,".");  v2[0] = v2[0].replace(sep,".");  v2[1] = v2[1].replace(sep,"."); }
-            return "all: <b style='color:"+(v1[0]-v2[0]>0?G.Colors.blue:G.Colors.red)+"'>"+G.NumberToString(v1[0]-v2[0],",0.##")+"</b>; verified: <b style='color:"+(v1[1]-v2[1]>0?G.Colors.blue:G.Colors.red)+"'>"+G.NumberToString(v1[1]-v2[1],",0.##")+"</b>";
+            return G.Text["$Xall"]+": <b style='color:"+(v1[0]-v2[0]>0?G.Colors.blue:G.Colors.red)+"'>"+G.NumberToString(v1[0]-v2[0],",0.##")+"</b>; "+G.Text["$Xverified"]
+                 + ": <b style='color:"+(v1[1]-v2[1]>0?G.Colors.blue:G.Colors.red)+"'>"+G.NumberToString(v1[1]-v2[1],",0.##")+"</b>";
             },
 
          //. --- sums all and verified results in Group and Total rows to Total column ---
@@ -45,7 +46,9 @@ export default function App() {
          rowstotal: function(G){
             var ra = G.Count("Body"), rv = G.Count("Body",15), ca = 0, cv = 0, f = Math.round(G.IconZoom*11), br = "<br/>"; if(f>15) f = 15; else if(f<11){ f = 11; br = ""; }
             for(var c in G.Cols){ ca++; if(!G.IsHidden(G.Cols[c])) cv++; }
-            return "<span style='font-size:"+f+"px;line-height:"+(f+1)+"px;display:inline-block;text-align:left;'>Shown <b>"+G.NumberToString(rv*160/4,",0")+(rv!=ra?"</b> / <b>"+G.NumberToString(ra*160/4,",0"):"")+"</b> cells in"+br+"<b>"+G.NumberToString(rv,",0")+(ra!=rv?"</b> / <b>"+G.NumberToString(ra,",0"):"")+"</b> rows, <b>"+cv+(cv!=ca?"</b> / <b>"+ca:"")+"</b> columns</span>";
+            return "<span style='font-size:"+f+"px;line-height:"+(f+1)+"px;display:inline-block;text-align:left;'>"+G.Text["$XShown"]+" <b>"+G.NumberToString(rv*160/4,",0")
+                 + (rv!=ra?"</b> / <b>"+G.NumberToString(ra*160/4,",0"):"")+"</b> "+G.Text["$Xcells"]+br+"<b>"+G.NumberToString(rv,",0")+(ra!=rv?"</b> / <b>"+G.NumberToString(ra,",0"):"")
+                 + "</b> "+G.Text["$Xrows"]+", <b>"+cv+(cv!=ca?"</b> / <b>"+ca:"")+"</b> "+G.Text["$Xcolumns"]+"</span>&nbsp; &nbsp;";
             },
 
          //. --- Returns 12 values for chart ---
@@ -68,9 +71,9 @@ export default function App() {
             var st = " style='text-align:right;font-weight:bold;";
             var v1 = G.GetString(row,G.Cols["T"+idx]), v2 = G.GetString(G.GetNext(row),G.Cols["T"+idx]), v3 = G.GetString(G.GetNext(G.GetNext(row)),G.Cols["T"+idx]);
             var s = "<table><tr><td colspan=2 style='text-align:center;'>"+month+"</td></tr>";
-            s += "<tr><td>Total 2023: </td><td"+st+"'>"+v1+"</td></tr>";
-            s += "<tr><td>Total 2022: </td><td"+st+"color:gray;'>"+v2+"</td></tr>";
-            s += "<tr><td>Gain:</td><td"+st+"color:"+(v3[0]=="-"?G.Colors.red:G.Colors.blue)+"'>"+v3+"</td></tr></table>";
+            s += "<tr><td>"+G.Text["$XTotal2023"]+": </td><td"+st+"'>"+v1+"</td></tr>";
+            s += "<tr><td>"+G.Text["$XTotal2022"]+": </td><td"+st+"color:gray;'>"+v2+"</td></tr>";
+            s += "<tr><td>"+G.Text["$XGain"]+":</td><td"+st+"color:"+(v3[0]=="-"?G.Colors.red:G.Colors.blue)+"'>"+v3+"</td></tr></table>";
             return s;
             },
 
@@ -406,6 +409,8 @@ export default function App() {
          ResetCookie:1,    //. Permits resetting configuration to defaults
          Version:2,        //. Clears all previously saved configuration with different layout version
          Style:"Bare",     //. Presets Bare style
+         Language: "EN",   //. Preset language
+         LanguageFiles:["/FGridText.js",'/02-sets/SetsLang.js'], //. Language texts, FastGrid default and example specific texts
          ResizingTag:3,    //. Permits resizing main tag in both directions
          IndexList:1,      //. List is set by index instead of key, to shorten the data by using only numbers
          SelectAllType:2+16, //. Shows the number of selected rows in the header select button
@@ -457,26 +462,6 @@ export default function App() {
       AI:{
          StaticInstructions:"",  //. To avoid generating default static instructions
          DynamicInstructions:"", //. To avoid generating default dynamic instructions
-         //. Sample input history to demonstrate various AI tasks
-         InputHistory: "|-|What is in table?|What can you do?|What is in the charts?"
-                     + "|What is the highest value in Amount in January?|What is the highest Price?"
-                     + "|What is the total price of vendors registered after year 2011 in Brazil?"
-                     + "|What is the most common surname?"
-                     + "|Select all contractors from Countries starting by B|Choose all vendors from countries in Asia|Select contractors registered after 2/1/2014"
-                     + "|Filter the top 10 rows by Total gain"
-                     + "|Mark and focus the highest and lowest not zero values in Amount columns"
-                     + "|Double values in Amount columns|Add 3 months to dates in America"
-                     + "|Set February prices in Canada to 1,234.56|Change all rows with surname Smith to surname Mallory"
-                     + "|Set all contractors data verified|Set all vendors data as not verified and next select all vendors that were changed in every month"
-                     + "|Change Brazil to Germany in all contractors"
-                     + "|Delete all contractors from Europe|Delete all rows"
-                     + "|Add 100 vendors to Berlin|Add 10000 contractors and fill their data with meaningful random values, including their details"
-                     + "|Copy contractors from USA below the sources each|Copy contractors from Brazil, with values in main rows and empty details"
-                     + "|Show only Wisconsin|Show dates between 10/1/2005 and 7/6/2010|Show only names with are least 20 characters|Filter and mark all Amounts less than -20 or higher than 40"
-                     + "|Group by month from Since|Sort by Total Gain descending"
-                     + "|Hide Amount and Price|Move March to the left section|Undo it"
-                     + "|Export data to xlsx"
-                     ,
          APIFunctions: { //. Description of custom AI API functions. The custom JavaScript functions are defined in Script.
             setsortbychild: { 
                Param:"child", Use:"Do",
@@ -540,9 +525,9 @@ export default function App() {
          R0Year: { NoFilterRow:2 },
          R0SinceWeekDay: { SortValueFormula:"new Date(Grid.GetValue(Row,Grid.Cols.Since)).getUTCDay()" },
          R0SinceMonth: { SortValueFormula:"var v=new Date(Grid.GetValue(Row,Grid.Cols.Since)).getUTCMonth();return v<10?'0'+v:v;" },
-         R1Year: { Value:2023, NoSearch:1 },
-         R2Year: { Value:2022, NoSearch:1 },
-         R3Year: { Value:"Gain", NoSearch:1 },
+         R1Year: { Value:"$X2023", NoSearch:1 },
+         R2Year: { Value:"$X2022", NoSearch:1 },
+         R3Year: { Value:"$XGain", NoSearch:1 },
          R3Base: {  //. Amount / Price / Total columns in R3 rows
             ValueFormula:"Grid.GetNumber(Grid.GetPrev(Grid.GetPrev(Row)),Col) - Grid.GetNumber(Grid.GetPrev(Row),Col)",
             TextColorFormula:"CValue>0?'blue':CValue<0?'red':'gray'"
@@ -570,9 +555,9 @@ export default function App() {
          R1: { D:"R", DA:"R1", AIKind:"2023", RS: { Chart:3 } },
          R2: { D:"R", DA:"R2", AIKind:"2022", NoEdit:1, TextColor:"gray", RowBorder:"rowborder" },
          R3: { D:"R", DA:"R3", AIKind:"Gain", NoEdit:1, Formula:"", NoSave:1 },
-         Total: { AIKind:"Total", NoEdit:1, NoIndex:1, NoSelect:3, NoSearch:1, NoDelete:1, Item:"Totals" },
-         Header: { AIKind:"Header", Height:25, Item:"Headers", MarginRestColor : "marginheader" },
-         Filter: { FilterBlock:1, FilterAction:1, Range:1, DefaultFilter:1, NoSelect:3, MinHeight:18, Item:"Filters" },
+         Total: { AIKind:"Total", NoEdit:1, NoIndex:1, NoSelect:3, NoSearch:1, NoDelete:1, Item:"$CTotals" },
+         Header: { AIKind:"Header", Height:25, Item:"$CHeaders", MarginRestColor : "marginheader" },
+         Filter: { FilterBlock:1, FilterAction:1, Range:1, DefaultFilter:1, NoSelect:3, MinHeight:18, Item:"$CFilters" },
          R0Filter: { D:"R0,Filter", AIKind:"Filter" }, R1Filter: { D:"R1,Filter", AIKind:"Filter" }, R2Filter: { D:"R2,Filter", AIKind:"Filter" }, R3Filter: { D:"R3,Filter", AIKind:"Filter" },
          Group: { DA:"G", CD:"R0", Accept:"Row,R0", S:2, AIKind:"Group", Formula:""/*, F: { Total:"Grid.Script.fulltotal(Grid,Row,Col,0)" }*/, NoCalc:1, NoIndex:1, NoFilterRow:2, NoSelect:1, NoEdit:1, NoPaste:2, Tree:"Year", DHeight:1,
             A: { 
@@ -584,16 +569,18 @@ export default function App() {
          },
       Head:[
          { id:"Header3", D:"Header", Wrap:4, Index:0, LevelsPart:"Body", TopMarginTop:5, MarginTopColor:"marginheader", FE:3,
-            V: { Name:"Name", Region:"Region", Country:"Country", State:"State or Province", Partner:"Partner", Since:"Since", Calls:"Calls per", Rabat:"Rabat", Year:"Year", Total:"Total", SinceMonthDay:"Since Day", SinceWeekDay:"Since Weekday", SinceMonth:"Since Month", SinceYear:"Since Year" }, 
+            V: { Name:"$CName", Region:"$CRegion", Country:"$CCountry", State:"$CState", Partner:"$CPartner", Since:"$CSince", Calls:"$CCalls", Rabat:"$CRabat", Year:"$CYear", Total:"$CTotal", SinceMonthDay:"$CSinceMonthDay", SinceWeekDay:"$CSinceWeekDay", SinceMonth:"$CSinceMonth", SinceYear:"$CSinceYear" }, 
             A: { Panel: { LeftIcons:"SelectRows,DeleteRows" }, Name: { RightIconsFormula:"Grid.IsHidden(Grid.Rows.Header) ? 'ExpandRow' : 'CollapseRow'", ExpandRowButton:"ExpandHeader", CollapseRowButton:"ExpandHeader" } },
             OnClickExpandHeader:"Grid.Hide([Grid.Rows.Header,Grid.Rows.Header2,Grid.Rows.Total1,Grid.Rows.Total2,Grid.Rows.Total3]); return 1;"
             },
-         { id:"Header2", D:"Header", DA:"H2", S:2, MarginTop:5, MarginTopColor:"marginheader", Index:0, RS: { Chart:2, Year:2, Total:2 }, A: { Year: { SortCol:"" } }, V: { Chart:"Chart", Year:"Year", Total:"Total" } },
+         { id:"Header2", D:"Header", DA:"H2", S:2, MarginTop:5, MarginTopColor:"marginheader", Index:0, RS: { Chart:2, Year:2, Total:2 }, A: { Year: { SortCol:"" } }, 
+            V: { Chart:"$CChart", Year:"$CYear", Total:"$CTotal" } 
+            },
          { id:"Header", D:"Header", S:2, MarginBottom:5, MarginBottomColor:"marginheader", RS: { Year:0, Total:0 } },
          ],
       Head2:[
          { id:"Filter", D:"R0Filter", L:0, Block:4, FilterD:"R0", Collapsed:1,
-            V: { Index:"Filter" },
+            V: { Index:"$CFilters" },
             A: { 
                Panel: { D:"FilterAction" },
                Name: { DefaultFilter:11 },
@@ -609,7 +596,7 @@ export default function App() {
             A: { 
                Panel: { D:"FilterAction" },
                Chart: { NoFilterBy:1, NoEdit:1, LeftIcons:"" },
-               Year: { Value:"", LeftIcons:"", RightIcons:"List", Button:"List", Range:1, Wrap:1, FilterBlock:0, FilterD:"", List:"|2023|2022|Gain" }
+               Year: { Value:"", LeftIcons:"", RightIcons:"List", Button:"List", Range:1, Wrap:1, FilterBlock:0, FilterD:"", List:"|$X2023|$X2022|$XGain" }
                },
             },
          { id:"Filter2", D:"R2Filter", DA:"Filter2", FilterD:"R2", NoEdit:-2, A: { Panel: { D:"FilterAction" } } },
@@ -617,106 +604,106 @@ export default function App() {
          ],
       Foot: [
          { id:"Total1", S:2, D:"Total", DA:"T1", Block:3, Formula:"", F: { Total:"Grid.Script.fulltotal(Grid,Row,Col,0)" }, MarginTop:5, MarginTopColor:"marginbody",
-            V: { Name:"Total", Year:"Total 2023" }, CS: { A1:4,  A2:4, A3:4, A4:4, A5:4, A6:4, A7:4, A8:4, A9:4, A10:4, A11:4, A12:4 },
+            V: { Name:"Total", Year:"$XTotal2023" }, CS: { A1:4,  A2:4, A3:4, A4:4, A5:4, A6:4, A7:4, A8:4, A9:4, A10:4, A11:4, A12:4 },
             A: { Total: { TextStyle:5, TextColor:"dark" }, Year: { Align:0 } } 
             },
          { id:"Total2", S:2, D:"Total", DA:"T2", TextColor:"gray", Formula:"", F: { Total:"Grid.Script.fulltotal(Grid,Row,Col,0)" }, 
-            V: { Year:"Total 2022" }, CS: { A1:4,  A2:4, A3:4, A4:4, A5:4, A6:4, A7:4, A8:4, A9:4, A10:4, A11:4, A12:4 },
+            V: { Year:"$XTotal2022" }, CS: { A1:4,  A2:4, A3:4, A4:4, A5:4, A6:4, A7:4, A8:4, A9:4, A10:4, A11:4, A12:4 },
             A: { Total: { TextStyle:5 }, Year: { Align:0 } } 
             },
          { id:"Total3", S:2, D:"Total", DA:"T3", Formula:"", F: { Total:"Grid.Script.fulltotal(Grid,Row,Col,0)" }, MarginBottom:5, MarginBottomColor:"marginbody",
             CS: { A1:4,  A2:4, A3:4, A4:4, A5:4, A6:4, A7:4, A8:4, A9:4, A10:4, A11:4, A12:4 }, 
-            A: { Year: { Value:"Total gain", Align:0 }, Total: { TextStyle:5, TextColorFormula:"CValue>0?'blue':CValue<0?'red':'dark'" } }   
+            A: { Year: { Value:"$XTotalGain", Align:0 }, Total: { TextStyle:5, TextColorFormula:"CValue>0?'blue':CValue<0?'red':'dark'" } }   
             }
          ],
       DefCols:{
          Base: { Item:0 },
-         Location: { Type:"String", RightIcons:"List", Button:"List", IndexList:1, Item2:"Location" },
+         Location: { Type:"String", RightIcons:"List", Button:"List", IndexList:1, Item2:"$CLocation" },
          Margin: { 
             RightMarginRight:5, MarginRightColor: { Head:"marginheader", Head2:"marginbody", Body:"marginbody", Foot:"marginbody" },
             BlockMarginLeft:5, MarginLeftColor: { Head:"marginheader", Head2:"marginbody", Body:"marginbody", Foot:"marginbody" } 
             },
          Number:    { D:"Margin", Type:"Number", Format:",0.##", ExportFormat:"#,0" },
-         Amount:    { D:"Number", DA:"A", Item1:"A", Width:65, ResizeWidth:1, DWidth:1, UCode:0x08, FE:1+2+256, V: { Header:"Amount" }, CS: { Header2: 4 } },
-         Price:     { D:"Number", DA:"P", Item1:"P", Width:70, ResizeWidth:1, DWidth:1, UCode:0x807, V: { Header:"Price" } },
-         Total:     { D:"Number", DA:"T", Item1:"T", Width:90, ResizeWidth:1, DWidth:1, NoEdit:1, TextColor:"green", V: { Header:"Total" } },
-         Verified:  { D:"Margin", DA:"V", Item1:"V", Width:65, ResizeWidth:1, DWidth:1, UCode:0x0B, FE:1+2+256, Type:"Bool", V: { Header:"Verified" }, A: { Total: { Type:"String" } } },
+         Amount:    { D:"Number", DA:"A", Item1:"A", Width:65, ResizeWidth:1, DWidth:1, UCode:0x08, FE:1+2+256, V: { Header:"$CAmount" }, CS: { Header2: 4 } },
+         Price:     { D:"Number", DA:"P", Item1:"P", Width:70, ResizeWidth:1, DWidth:1, UCode:0x807, V: { Header:"$CPrice" } },
+         Total:     { D:"Number", DA:"T", Item1:"T", Width:90, ResizeWidth:1, DWidth:1, NoEdit:1, TextColor:"green", V: { Header:"$CTotal" } },
+         Verified:  { D:"Margin", DA:"V", Item1:"V", Width:65, ResizeWidth:1, DWidth:1, UCode:0x0B, FE:1+2+256, Type:"Bool", V: { Header:"$CVerified" }, A: { Total: { Type:"String" } } },
          },
       LeftCols:[
-         { id:"Index", D:"Index", Block:"Panel", Width:68, Button:"", SortIcons:0, NoExport:0, Item:"", Item2:"Chart + Index", ItemSearch2:"Index", NoMove:1, Fix:1, FE:258 },
-         { id:"Panel", D:"Panel", Block:"Panel", DA:"Panel", LeftIcons:"SelectRow,DeleteRow,AddRow", IconWrap:1, Width:62, Item2:"Chart + Index", ItemSearch2:"Panel", NoMove:1, Fix:1, NoPrint:0, NoExport:1, NoSearch:1 },
-         { id:"Name", UCode:0xD1, UIndex:6, Type:"String", Width:250, ExportWidth:150, MinWidth:10, Names:1, Item2:"Name + Year", ItemSearch2:"Name", NoMove:3, Fix:1 } //. Surname is in Texts, first name in UTexts
+         { id:"Index", D:"Index", Block:"Panel", Width:68, Button:"", SortIcons:0, NoExport:0, Item:"", Item2:"$CChartIndex", ItemSearch2:"Index", NoMove:1, Fix:1, FE:258 },
+         { id:"Panel", D:"Panel", Block:"Panel", DA:"Panel", LeftIcons:"SelectRow,DeleteRow,AddRow", IconWrap:1, Width:62, Item2:"$CChartIndex", ItemSearch2:"Panel", NoMove:1, Fix:1, NoPrint:0, NoExport:1, NoSearch:1 },
+         { id:"Name", UCode:0xD1, UIndex:6, Type:"String", Width:250, ExportWidth:150, MinWidth:10, Names:1, Item2:"$CNameYear", ItemSearch2:"Name", NoMove:3, Fix:1 } //. Surname is in Texts, first name in UTexts
          ],
       LeftCols$2:[
-         { id:"Chart", D:"Margin", Block:"Chart", DA:"C", Width:125, Color:"marginbody", RowBorder:"marginbody", ColBorder:"marginbody", Item2:"Chart + Index", ItemSearch2:"Chart", NoColor:7,
+         { id:"Chart", D:"Margin", Block:"Chart", DA:"C", Width:125, Color:"marginbody", RowBorder:"marginbody", ColBorder:"marginbody", Item2:"$CChartIndex", ItemSearch2:"Chart", NoColor:7,
            Marks: " Chart({ Chart:'Bar', Values: Grid.Script.GetChartValues(Grid,Row,0), Max:300000, Min:-50000, Fill:Grid.Colors.cafd, Stroke:Grid.Colors.c0a0, OverFill:Grid.Colors.c4d8, OverStroke:Grid.Colors.c0a0, Padding:[0,2,0,0], Axis:Grid.Colors.caxis, Count:2, Order:0 }); "
                  +" Chart({ Chart:'Bar', Values: Grid.Script.GetChartValues(Grid,Row,1), Max:300000, Min:-50000, Fill:Grid.Colors.cddd, Stroke:Grid.Colors.c888, OverFill:Grid.Colors.caaa, OverStroke:Grid.Colors.c888, Padding:[0,2,0,0], Axis:Grid.Colors.caxis, Count:2, Order:1 }); "
                  +" Chart({ Chart:'Line', Button:'Chart', Values: Grid.Script.GetChartValues(Grid,Row,2), Max:300000, Min:-50000, LineStroke:Grid.Colors.cbbb, Point:9, Fill:Grid.Colors.c66f, NegFill:Grid.Colors.cf66, OverFill:Grid.Colors.c00a, NegOverFill:Grid.Colors.ca00, Axis:'', Padding:[0,1,0,0] }); ",
            OnTip: "ShowTip(0,Grid.Script.GetChartTip(Grid,Row,Col,Event.Button)),1", Tip:"dummy", NoEdit:1, NoSortBy:1, NoSearch:1, NoMove:3, Fix:1, UseResize:2, ResizeHeight:1, ShortColBorder:0
            },
-         { id:"Year",  D:"Number", Block:"Year", DA:"Year",  Width:128, Type:"String", Align:0, Format:"", ExportFormat:"", ExportWidth:63, Item2:"Name + Year", ItemSearch2:"Year", NoGroupBy:1, NoEdit:1, NoMove:1, Fix:1 },
-         { id:"Total", D:"Number", Block:"Year", DA:"Total", Width:112, Formula:"T1+T2+T3+T4+T5+T6+T7+T8+T9+T10+T11+T12", TextColor:"green", Item2:"Name + Year", ItemSearch2:"Total", NoEdit:1, NoMove:1, Fix:1 }
+         { id:"Year",  D:"Number", Block:"Year", DA:"Year",  Width:128, Type:"String", Align:0, Format:"", ExportFormat:"", ExportWidth:63, Item2:"$CNameYear", ItemSearch2:"Year", NoGroupBy:1, NoEdit:1, NoMove:1, Fix:1 },
+         { id:"Total", D:"Number", Block:"Year", DA:"Total", Width:112, Formula:"T1+T2+T3+T4+T5+T6+T7+T8+T9+T10+T11+T12", TextColor:"green", Item2:"$CNameYear", ItemSearch2:"Total", NoEdit:1, NoMove:1, Fix:1 }
          ],
       Cols: [
-         { id:"Region", D:"Location", UCode:0x08, UIndex:0.5, ClearCells:"Country,State", Width:200, ExportWidth:230, DA:"Region",
-            List:"|Central & South Asia|East Asia & the Pacific|East Europe|Middle East & North Africa|North & Central America|South America|Sub-Saharan Africa|West Europe" },
-         { id:"Country", D:"Location", UCode:0x08, UIndex:1.1, ListRelated:"Region", ClearCells:"State", Width:150, ExportWidth:130, DA:"Country", SortList:2, List:[
-            "|Armenia|Azerbaijan|Bangladesh|India|Kazakstan|Pakistan|Sri Lanka", 
-            "|Australia|Brunei|China|Hong Kong|Indonesia|Japan|Korea, dpr|Malaysia|Mongolia|Myanmar|New Zealand|Papua New Guinea|Philippines|Singapore|South Korea|Taiwan|Thailand|Vietnam", 
-            "|Albania|Belarus|Bulgaria|Croatia|Czech Republic|Estonia|Hungary|Latvia|Lithuania|Moldova|Poland|Romania|Russia|Serbia-Montenegro|Slovak Republic|Slovenia|Ukraine", 
-            "|Algeria|Bahrain|Egypt|Iran|Iraq|Israel|Jordan|Kuwait|Lebanon|Libya|Morocco|Oman|Qatar|Saudi Arabia|Syria|Tunisia|UAE|Yemen", 
-            "|Bahamas|Canada|Costa Rica|Cuba|Dominican Republic|El Salvador|Guatemala|Haiti|Honduras|Jamaica|Mexico|Nicaragua|Panama|Trinidad & Tobago|United States", 
-            "|Argentina|Bolivia|Brazil|Chile|Colombia|Ecuador|Guyana|Paraguay|Peru|Suriname|Uruguay|Venezuela", 
-            "|Angola|Botswana|Burkina Faso|Cameroon|Congo|Congo dr|Cote d'Ivoire|Ethiopia|Gabon|Gambia|Ghana|Guinea|Guinea-Bissau|Kenya|Liberia|Madagascar|Malawi|Mali|Mozambique|Namibia|Niger|Nigeria|Senegal|Sierra Leone|Somalia|South Africa|Sudan|Tanzania|Togo|Uganda|Zambia|Zimbabwe", 
-            "|Austria|Belgium|Cyprus|Denmark|Finland|France|Germany|Greece|Iceland|Ireland|Italy|Luxembourg|Malta|Netherlands|Norway|Portugal|Spain|Sweden|Switzerland|Turkey|United Kingdom"
+         { id:"Region", D:"Location", UCode:0x08, UIndex:0.5, ClearCells:"Country,State", Width:200, ExportWidth:230, DA:"Region", Translate:3,
+            List:"|$CentralSouthAsia|$EastAsia|$EastEurope|$MiddleEast|$NorthCentralAmerica|$SouthAmerica|$SubSaharanAfrica|$WestEurope" },
+         { id:"Country", D:"Location", UCode:0x08, UIndex:1.1, ListRelated:"Region", ClearCells:"State", Width:150, ExportWidth:130, DA:"Country", SortList:2, Translate:3, List:[
+            "|$Armenia|$Azerbaijan|$Bangladesh|$India|$Kazakstan|$Pakistan|$SriLanka", 
+            "|$Australia|$Brunei|$China|$HongKong|$Indonesia|$Japan|$KoreaNorth|$Malaysia|$Mongolia|$Myanmar|$NewZealand|$PapuaNewGuinea|$Philippines|$Singapore|$SouthKorea|$Taiwan|$Thailand|$Vietnam", 
+            "|$Albania|$Belarus|$Bulgaria|$Croatia|$CzechRepublic|$Estonia|$Hungary|$Latvia|$Lithuania|$Moldova|$Poland|$Romania|$Russia|$SerbiaMontenegro|$SlovakRepublic|$Slovenia|$Ukraine", 
+            "|$Algeria|$Bahrain|$Egypt|$Iran|$Iraq|$Israel|$Jordan|$Kuwait|$Lebanon|$Libya|$Morocco|$Oman|$Qatar|$SaudiArabia|$Syria|$Tunisia|$UAE|$Yemen", 
+            "|$Bahamas|$Canada|$CostaRica|$Cuba|$DominicanRepublic|$ElSalvador|$Guatemala|$Haiti|$Honduras|$Jamaica|$Mexico|$Nicaragua|$Panama|$TrinidadTobago|$UnitedStates", 
+            "|$Argentina|$Bolivia|$Brazil|$Chile|$Colombia|$Ecuador|$Guyana|$Paraguay|$Peru|$Suriname|$Uruguay|$Venezuela", 
+            "|$Angola|$Botswana|$BurkinaFaso|$Cameroon|$Congo|$Congodr|$CoteIvoire|$Ethiopia|$Gabon|$Gambia|$Ghana|$Guinea|$GuineaBissau|$Kenya|$Liberia|$Madagascar|$Malawi|$Mali|$Mozambique|$Namibia|$Niger|$Nigeria|$Senegal|$SierraLeone|$Somalia|$SouthAfrica|$Sudan|$Tanzania|$Togo|$Uganda|$Zambia|$Zimbabwe", 
+            "|$Austria|$Belgium|$Cyprus|$Denmark|$Finland|$France|$Germany|$Greece|$Iceland|$Ireland|$Italy|$Luxembourg|$Malta|$Netherlands|$Norway|$Portugal|$Spain|$Sweden|$Switzerland|$Turkey|$UnitedKingdom"
             ]},
-         { id:"State", D:"Location", UCode:0x01, UIndex:2, ListRelated:"Region,Country", Width:180, DA:"State", SortList:2, List:{
+         { id:"State", D:"Location", UCode:0x01, UIndex:2, ListRelated:"Region,Country", Width:180, DA:"State", SortList:2, Translate:3, List:{
             0: { 
-                  3: "|Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chhattisgarh|Goa|Gujarat|Haryana|Himachal Pradesh|Jharkhand|Karnataka|Kerala|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Odisha|Punjab|Rajasthan|Sikkim|Tamil Nadu|Telangana|Tripura|Uttar Pradesh|Uttarakhand|West Bengal|-|Andaman and Nicobar Islands|Chandigarh|Dadra and Nagar Haveli and Daman and Diu|Delhi|Jammu and Kashmir|Ladakh|Lakshadweep|Puducherry" 
+                  3: "|$AndhraPradesh|$ArunachalPradesh|$Assam|$Bihar|$Chhattisgarh|$Goa|$Gujarat|$Haryana|$HimachalPradesh|$Jharkhand|$Karnataka|$Kerala|$MadhyaPradesh|$Maharashtra|$Manipur|$Meghalaya|$Mizoram|$Nagaland|$Odisha|$Punjab|$Rajasthan|$Sikkim|$TamilNadu|$Telangana|$Tripura|$UttarPradesh|$Uttarakhand|$WestBengal|-|$AndamanandNicobarIslands|$Chandigarh|$DadraandNagarHaveliandDamanandDiu|$Delhi|$JammuandKashmir|$Ladakh|$Lakshadweep|$Puducherry" 
                },
             1: { 
-                  0: "|New South Wales|Queensland|South Australia|Tasmania|Victoria|Western Australia|-|Australian Capital Territory|Jervis Bay Territory|Northern Territory|Australian Antarctic Territory|Christmas Island|Cocos (Keeling) Islands|Heard Island and McDonald Islands|Norfolk Island",
-                  2: "|Anhui|Beijing|Chongqing|Fujian|Guangdong|Gansu|Guizhou|Henan|Hubei|Hebei|Hainan|Heilongjiang|Hunan|Jilin|Jiangsu|Jiangxi|Liaoning|Qinghai|Sichuan|Shandong|Shanghai|Shaanxi|Shanxi|Tianjin|Yunnan|Zhejiang|-|Guangxi Zhuang|Inner Mongolia|Ningxia Hui|Xinjiang Uyghur|Tibet",
-                  5: "|Chūbu|Chūgoku|Hokkaidō|Kansai|Kantō|Kyūshū|Shikoku|Tōhoku" 
+                  0: "|$NewSouthWales|$Queensland|$SouthAustralia|$Tasmania|$Victoria|$WesternAustralia|-|$AustralianCapitalTerritory|$JervisBayTerritory|$NorthernTerritory|$AustralianAntarcticTerritory|$ChristmasIsland|$CocosKeelingIslands|$HeardIslandandMcDonaldIslands|$NorfolkIsland",
+                  2: "|$Anhui|$Beijing|$Chongqing|$Fujian|$Guangdong|$Gansu|$Guizhou|$Henan|$Hubei|$Hebei|$Hainan|$Heilongjiang|$Hunan|$Jilin|$Jiangsu|$Jiangxi|$Liaoning|$Qinghai|$Sichuan|$Shandong|$Shanghai|$Shaanxi|$Shanxi|$Tianjin|$Yunnan|$Zhejiang|-|$GuangxiZhuang|$InnerMongolia|$NingxiaHui|$XinjiangUyghur|$Tibet",
+                  5: "|$Chubu|$Chugoku|$Hokkaido|$Kansai|$Kanto|$Kyushu|$Shikoku|$Tohoku" 
                },
             4: { 
-                  1: "|Alberta|British Columbia|Manitoba|New Brunswick|Newfoundland and Labrador|Nova Scotia|Ontario|Prince Edward Island|Quebec|Saskatchewan",
-                  14: "|Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming|-|District of Columbia|-|American Samoa|Guam|Northern Mariana Islands|Puerto Rico|U.S. Virgin Islands" 
+                  1: "|$Alberta|$BritishColumbia|$Manitoba|$NewBrunswick|$NewfoundlandandLabrador|$NovaScotia|$Ontario|$PrinceEdwardIsland|$Quebec|$Saskatchewan",
+                  14: "|$Alabama|$Alaska|$Arizona|$Arkansas|$California|$Colorado|$Connecticut|$Delaware|$Florida|$Georgia|$Hawaii|$Idaho|$Illinois|$Indiana|$Iowa|$Kansas|$Kentucky|$Louisiana|$Maine|$Maryland|$Massachusetts|$Michigan|$Minnesota|$Mississippi|$Missouri|$Montana|$Nebraska|$Nevada|$NewHampshire|$NewJersey|$NewMexico|$NewYork|$NorthCarolina|$NorthDakota|$Ohio|$Oklahoma|$Oregon|$Pennsylvania|$RhodeIsland|$SouthCarolina|$SouthDakota|$Tennessee|$Texas|$Utah|$Vermont|$Virginia|$Washington|$WestVirginia|$Wisconsin|$Wyoming|-|$DistrictofColumbia|-|$AmericanSamoa|$Guam|$NorthernMarianaIslands|$PuertoRico|$USVirginIslands" 
                },
             5: {
-                  2: "|Acre|Alagoas|Amapá|Amazonas|Bahia|Ceará|Distrito Federal|Espírito Santo|Goiás|Maranhão|Mato Grosso|Mato Grosso do Sul|Minas Gerais|Pará|Paraíba|Paraná|Pernambuco|Piauí|Rio de Janeiro|Rio Grande do Norte|Rio Grande do Sul|Rondônia|Roraima|Santa Catarina|São Paulo|Sergipe|Tocantins",
+                  2: "|$Acre|$Alagoas|$Amapa|$Amazonas|$Bahia|$Ceara|$DistritoFederal|$EspiritoSanto|$Goias|$Maranhao|$MatoGross|$MatoGrossodoSul|$MinasGerais|$Para|$Paraiba|$Parana|$Pernambuco|$Piaui|$RiodeJaneiro|$RiodoNort|$RiodoSul|$Rondonia|$Roraima|$SantaCatarina|$SaoPaulo|$Sergipe|$Tocantins",
                },
             7: {
-                  5: "|Alsace|Aquitaine|Auvergne|Brittany|Burgundy|Centre-Val de Loire|Champagne-Ardenne|Franche-Comté|Île-de-France|Languedoc-Roussillon|Limousin|Lorraine|Lower Normandy|Midi-Pyrénées|Nord-Pas-de-Calais|Pays de la Loire|Picardy|Poitou-Charentes|Provence-Alpes-Côte d'Azur|Rhône-Alpes|Upper Normandy",
-                  6: "|Baden-Württemberg|Bavaria|Berlin|Brandenburg|Bremen|Hamburg|Hesse|Lower Saxony|Mecklenburg-Western Pomerania|North Rhine-Westphalia|Rhineland-Palatinate|Saarland|Saxony|Saxony-Anhalt|Schleswig-Holstein|Thuringia",
-                  10: "|Abruzzo|Aosta Valley|Apulia|Basilicata|Calabria|Campania|Emilia-Romagna|Friuli Venezia Giulia|Lazio|Liguria|Lombardy|Marche|Molise|Piedmont|Sardinia|Sicily|Trentino-South Tyrol|Tuscany|Umbria|Veneto",
-                  16: "|Andalusia|Aragon|Asturias|Balearic Islands|Basque Country|Canary Islands|Cantabria|Castile and León|Castilla–La Mancha|Catalonia|Community of Madrid|Extremadura|Galicia|La Rioja|Navarre|Region of Murcia|Valencian Community|-|Ceuta|Melilla",
-                  20: "|England|Northern Ireland|Scotland|Wales",
+                  5: "|$Alsace|$Aquitaine|$Auvergne|$Brittany|$Burgundy|$CentreValdeLoire|$ChampagneArdenne|$FrancheComte|$IledeFrance|$LanguedocRoussillon|$Limousin|$Lorraine|$LowerNormandy|$MidiPyrenees|$NordPasdeCalais|$PaysdelaLoire|$Picardy|$PoitouCharentes|$ProvenceAlpesCotedAzur|$RhoneAlpes|$UpperNormandy",
+                  6: "|$BadenWurttemberg|$Bavaria|$Berlin|$Brandenburg|$Bremen|$Hamburg|$Hesse|$LowerSaxony|$MecklenburgWesternPomerania|$NorthRhineWestphalia|$RhinelandPalatinate|$Saarland|$Saxony|$SaxonyAnhalt|$SchleswigHolstein|$Thuringia",
+                  10: "|$Abruzzo|$AostaValley|$Apulia|$Basilicata|$Calabria|$Campania|$EmiliaRomagna|$FriuliVeneziaGiulia|$Lazio|$Liguria|$Lombardy|$Marche|$Molise|$Piedmont|$Sardinia|$Sicily|$TrentinoSouthTyrol|$Tuscany|$Umbria|$Veneto",
+                  16: "|$Andalusia|$Aragon|$Asturias|$BalearicIslands|$BasqueCountry|$CanaryIslands|$Cantabria|$CastileandLeon|$CastillaLaMancha|$Catalonia|$CommunityofMadrid|$Extremadura|$Galicia|$LaRioja|$Navarre|$RegionofMurcia|$ValencianCommunity|-|$Ceuta|$Melilla",
+                  20: "|$England|$NorthernIreland|$Scotland|$Wales",
                }
             }},
-         { id:"Partner", UCode:0x0B, UIndex:1, Type:"Bool", Width:60, Item2:-1, FE:256 },
-         { id:"Since", UCode:FGrid.GetUCode(2,1,12,1,0,0,0,Date.UTC(2020,1,1)), UIndex:4, Width:230, Type:"Date", Format:"dddd, dddddd MMMM yyyy", EditFormat:"d/MMMM/yyyy", RightIcons:"Date", FE:1+2+256, Align:2, Item2:-1 }, //. UCode = 0x45C + base 1/1/2020
-         { id:"Calls", UCode:0x0D, UIndex:0, Type:"Auto", Width:90, IndexList:1, RightIcons:"List", Button:"List", List:"|week|month|quarter|half year|year", Item2:-1 },
-         { id:"Rabat", UCode:0x01, UIndex:3, Type:"Number", Format:"0.##\\%", ExportFormat:"General\\%", FE:1+2+256+512, Width:50, ExportWidth:70, Item2:-1 },
+         { id:"Partner", UCode:0x0B, UIndex:1, Type:"Bool", Width:60, FE:256, Item2:"$CPartner" },
+         { id:"Since", UCode:FGrid.GetUCode(2,1,12,1,0,0,0,Date.UTC(2020,1,1)), UIndex:4, Width:230, Type:"Date", Format:"dddd, dddddd MMMM yyyy", EditFormat:"d/MMMM/yyyy", RightIcons:"Date", FE:1+2+256, Align:2, Item2:"$CSince" }, //. UCode = 0x45C + base 1/1/2020
+         { id:"Calls", UCode:0x0D, UIndex:0, Type:"Auto", Width:90, IndexList:1, RightIcons:"List", Button:"List", List:"|$Lweek|$Lmonth|$Lquarter|$Lhalfyear|$Lyear", Translate:3, Item2:"$CCalls" },
+         { id:"Rabat", UCode:0x01, UIndex:3, Type:"Number", Format:"0.##\\%", ExportFormat:"General\\%", FE:1+2+256+512, Width:50, ExportWidth:70, Item2:"$CRabat" },
          //. Hidden columns with parsed Since date, usable for grouping, sorting or filtering by AI
-         { id:"SinceWeekDay", Type:"String", Formula:"Grid.DateToString(Since,'dddd')", NoEdit:1, Item2:"Since Weekday", Hidden:1, DA:"SinceWeekDay" },
-         { id:"SinceMonthDay", Type:"String", Formula:"Grid.DateToString(Since,'dd')", NoEdit:1, Item2:"Since Day", Hidden:1 },
-         { id:"SinceMonth", Type:"String", Formula:"Grid.DateToString(Since,'MMMM')", NoEdit:1, Item2:"Since Month", Hidden:1, DA:"SinceMonth" },
-         { id:"SinceYear", Type:"String", Formula:"Grid.DateToString(Since,'yyyy')", NoEdit:1, Item2:"Since Year", Hidden:1 }
+         { id:"SinceWeekDay", Type:"String", Formula:"Grid.DateToString(Since,'dddd')", NoEdit:1, Item2:"$CSinceWeekDay", Hidden:1, DA:"SinceWeekDay" },
+         { id:"SinceMonthDay", Type:"String", Formula:"Grid.DateToString(Since,'dd')", NoEdit:1, Item2:"$CSinceMonthDay", Hidden:1 },
+         { id:"SinceMonth", Type:"String", Formula:"Grid.DateToString(Since,'MMMM')", NoEdit:1, Item2:"$CSinceMonth", Hidden:1, DA:"SinceMonth" },
+         { id:"SinceYear", Type:"String", Formula:"Grid.DateToString(Since,'yyyy')", NoEdit:1, Item2:"$CSinceYear", Hidden:1 }
          ],
       Cols$2:[
-         { id:"A1",  D:"Amount", UIndex:0.1,  Item:1,  V: { Header2:"January" } },  { id:"P1",  D:"Price", UIndex:1,  Item:1 },  { id:"T1",  D:"Total", Item:1,  Formula:"A1*P1" },   { id:"V1",  D:"Verified", UIndex:0,  Item:1 },
-         { id:"A2",  D:"Amount", UIndex:2.1,  Item:2,  V: { Header2:"February" } }, { id:"P2",  D:"Price", UIndex:3,  Item:2 },  { id:"T2",  D:"Total", Item:2,  Formula:"A2*P2" },   { id:"V2",  D:"Verified", UIndex:2,  Item:2 },
-         { id:"A3",  D:"Amount", UIndex:4.1,  Item:3,  V: { Header2:"March" } },    { id:"P3",  D:"Price", UIndex:5,  Item:3 },  { id:"T3",  D:"Total", Item:3,  Formula:"A3*P3" },   { id:"V3",  D:"Verified", UIndex:4,  Item:3 },
-         { id:"A4",  D:"Amount", UIndex:6.1,  Item:4,  V: { Header2:"April" } },    { id:"P4",  D:"Price", UIndex:7,  Item:4 },  { id:"T4",  D:"Total", Item:4,  Formula:"A4*P4" },   { id:"V4",  D:"Verified", UIndex:6,  Item:4 },
-         { id:"A5",  D:"Amount", UIndex:8.1,  Item:5,  V: { Header2:"May" } },      { id:"P5",  D:"Price", UIndex:9,  Item:5 },  { id:"T5",  D:"Total", Item:5,  Formula:"A5*P5" },   { id:"V5",  D:"Verified", UIndex:8,  Item:5 },
-         { id:"A6",  D:"Amount", UIndex:10.1, Item:6,  V: { Header2:"June" } },     { id:"P6",  D:"Price", UIndex:11, Item:6 },  { id:"T6",  D:"Total", Item:6,  Formula:"A6*P6" },   { id:"V6",  D:"Verified", UIndex:10, Item:6 },
-         { id:"A7",  D:"Amount", UIndex:12.1, Item:7,  V: { Header2:"July" } },     { id:"P7",  D:"Price", UIndex:13, Item:7 },  { id:"T7",  D:"Total", Item:7,  Formula:"A7*P7" },   { id:"V7",  D:"Verified", UIndex:12, Item:7 },
-         { id:"A8",  D:"Amount", UIndex:14.1, Item:8,  V: { Header2:"August" } },   { id:"P8",  D:"Price", UIndex:15, Item:8 },  { id:"T8",  D:"Total", Item:8,  Formula:"A8*P8" },   { id:"V8",  D:"Verified", UIndex:14, Item:8 },
-         { id:"A9",  D:"Amount", UIndex:16.1, Item:9,  V: { Header2:"September" } },{ id:"P9",  D:"Price", UIndex:17, Item:9 },  { id:"T9",  D:"Total", Item:9,  Formula:"A9*P9" },   { id:"V9",  D:"Verified", UIndex:16, Item:9 },
-         { id:"A10", D:"Amount", UIndex:18.1, Item:10, V: { Header2:"October" } },  { id:"P10", D:"Price", UIndex:19, Item:10 }, { id:"T10", D:"Total", Item:10, Formula:"A10*P10" }, { id:"V10", D:"Verified", UIndex:18, Item:10 },
-         { id:"A11", D:"Amount", UIndex:20.1, Item:11, V: { Header2:"November" } }, { id:"P11", D:"Price", UIndex:21, Item:11 }, { id:"T11", D:"Total", Item:11, Formula:"A11*P11" }, { id:"V11", D:"Verified", UIndex:20, Item:11 },
-         { id:"A12", D:"Amount", UIndex:22.1, Item:12, V: { Header2:"December" } }, { id:"P12", D:"Price", UIndex:23, Item:12 }, { id:"T12", D:"Total", Item:12, Formula:"A12*P12" }, { id:"V12", D:"Verified", UIndex:22, Item:12 },
+         { id:"A1",  D:"Amount", UIndex:0.1,  Item:1,  V: { Header2:"$CJanuary" } },  { id:"P1",  D:"Price", UIndex:1,  Item:1 },  { id:"T1",  D:"Total", Item:1,  Formula:"A1*P1" },   { id:"V1",  D:"Verified", UIndex:0,  Item:1 },
+         { id:"A2",  D:"Amount", UIndex:2.1,  Item:2,  V: { Header2:"$CFebruary" } }, { id:"P2",  D:"Price", UIndex:3,  Item:2 },  { id:"T2",  D:"Total", Item:2,  Formula:"A2*P2" },   { id:"V2",  D:"Verified", UIndex:2,  Item:2 },
+         { id:"A3",  D:"Amount", UIndex:4.1,  Item:3,  V: { Header2:"$CMarch" } },    { id:"P3",  D:"Price", UIndex:5,  Item:3 },  { id:"T3",  D:"Total", Item:3,  Formula:"A3*P3" },   { id:"V3",  D:"Verified", UIndex:4,  Item:3 },
+         { id:"A4",  D:"Amount", UIndex:6.1,  Item:4,  V: { Header2:"$CApril" } },    { id:"P4",  D:"Price", UIndex:7,  Item:4 },  { id:"T4",  D:"Total", Item:4,  Formula:"A4*P4" },   { id:"V4",  D:"Verified", UIndex:6,  Item:4 },
+         { id:"A5",  D:"Amount", UIndex:8.1,  Item:5,  V: { Header2:"$CMay" } },      { id:"P5",  D:"Price", UIndex:9,  Item:5 },  { id:"T5",  D:"Total", Item:5,  Formula:"A5*P5" },   { id:"V5",  D:"Verified", UIndex:8,  Item:5 },
+         { id:"A6",  D:"Amount", UIndex:10.1, Item:6,  V: { Header2:"$CJune" } },     { id:"P6",  D:"Price", UIndex:11, Item:6 },  { id:"T6",  D:"Total", Item:6,  Formula:"A6*P6" },   { id:"V6",  D:"Verified", UIndex:10, Item:6 },
+         { id:"A7",  D:"Amount", UIndex:12.1, Item:7,  V: { Header2:"$CJuly" } },     { id:"P7",  D:"Price", UIndex:13, Item:7 },  { id:"T7",  D:"Total", Item:7,  Formula:"A7*P7" },   { id:"V7",  D:"Verified", UIndex:12, Item:7 },
+         { id:"A8",  D:"Amount", UIndex:14.1, Item:8,  V: { Header2:"$CAugust" } },   { id:"P8",  D:"Price", UIndex:15, Item:8 },  { id:"T8",  D:"Total", Item:8,  Formula:"A8*P8" },   { id:"V8",  D:"Verified", UIndex:14, Item:8 },
+         { id:"A9",  D:"Amount", UIndex:16.1, Item:9,  V: { Header2:"$CSeptember" } },{ id:"P9",  D:"Price", UIndex:17, Item:9 },  { id:"T9",  D:"Total", Item:9,  Formula:"A9*P9" },   { id:"V9",  D:"Verified", UIndex:16, Item:9 },
+         { id:"A10", D:"Amount", UIndex:18.1, Item:10, V: { Header2:"$COctober" } },  { id:"P10", D:"Price", UIndex:19, Item:10 }, { id:"T10", D:"Total", Item:10, Formula:"A10*P10" }, { id:"V10", D:"Verified", UIndex:18, Item:10 },
+         { id:"A11", D:"Amount", UIndex:20.1, Item:11, V: { Header2:"$CNovember" } }, { id:"P11", D:"Price", UIndex:21, Item:11 }, { id:"T11", D:"Total", Item:11, Formula:"A11*P11" }, { id:"V11", D:"Verified", UIndex:20, Item:11 },
+         { id:"A12", D:"Amount", UIndex:22.1, Item:12, V: { Header2:"$CDecember" } }, { id:"P12", D:"Price", UIndex:23, Item:12 }, { id:"T12", D:"Total", Item:12, Formula:"A12*P12" }, { id:"V12", D:"Verified", UIndex:22, Item:12 },
          ],
       RightCols$2:{ }, //. Defines the second set in RightCols to permit dropping the second set columns here
       Cols_Cfg:{ MinWidth:200 },
@@ -737,43 +724,37 @@ export default function App() {
          OnClickAddRow:"AddRow(0,0,3)",
          OnClickDeleteRows:"DeleteRows(1,1,3)",
          },
-      Text: {
-         $ConfirmDelete: "Do you want to delete {Count>4 ? '<b>'+Math.floor(Count/4)+'</b> selected contractors' : 'contractor <b>'+Name+'</b>'}?",
-         $Item1: "January", $Item2: "February", $Item3: "March", $Item4: "April", $Item5: "May", $Item6: "June", $Item7: "July", $Item8: "August", $Item9: "September", $Item10: "October", $Item11: "November", $Item12: "December", 
-         $ItemA: "Amount", $ItemP:"Price", $ItemT:"Total", $ItemV:"Verified", $ItemCaptionC:"Months", $ItemCaptionC1:"Month values", $ItemCaptionC2:"Base columns",
-         $NormalCookie: "Settings"
-         },
       Dialogs: { Layout: { Script: { Options:16, Grouped:2 } } },  //. Permits hiding individual columns from block in the Layout menu and shows Grouped column in Base columns
       DefTools: { 
-         SearchText: { Width:50 },               //. Decreases width of the Search combo on toolbar
-         Cookies: { Width:50 },                  //. Decreases width of the Cookies combo on toolbar
+         //SearchText: { Width:50 },               //. Decreases width of the Search combo on toolbar
+         Cookies: { MinWidth:50, Width:0 },                  //. Decreases width of the Cookies combo on toolbar
          Drag: { MinWidth:50, MaxWidth:110 },    //. Increases minimal width of the grouped column caption on toolbar
+         AIInput: { MinWidth:210, Rel:1, },
+         AIOutput: { MinWidth:300, Rel:3 }
          },
       Top: [
          "Search",
          { id:"Toolbar1", Cells:[ "Save","Reload","Print","Pdf","Export" ], Item:"Data" }, 
-         { id:"Toolbar2", Cells:[ "Copy","PasteOnly" ], Item:"Clipboard" }, 
-         { id:"Toolbar3", Cells:[ "Undo","Redo","AddRowEnd","ExpandRows","CollapseRows" ], Item:"Manipulation" }, 
-         { id:"Toolbar4", Cells:[ "Settings","Filter","Sort","TipAction","Lock" ], Item:"Settings" }, 
-         "Layout", 
-         { id:"GroupList", D:"Group", Cells: [ { id:"GroupList", D:"GroupList", Width:55, List:{"":"none","Region,Country,State":"Location", "Calls":"Calls per"}, DisabledFormula:"Grid.IsLocked('group')" }, "Group" ], Item:"Group list" },
-         { id:"DataSet", Cells: [ { id:"Data", D:"List", Width:275, Align:1, Label:"Data", TextColor:"blue", UseResize:2,
-            Formula: "Grid.GetSources(1)[1].match(/SetsData\\d+\\w*/)[0]", DisabledFormula:"Grid.IsLocked('Data')",
+         { id:"Toolbar2", Cells:[ "Copy","PasteOnly" ], Item:"$CClipboard" }, 
+         { id:"Toolbar3", Cells:[ "Undo","Redo","AddRowEnd","ExpandRows","CollapseRows" ], Item:"$CManipulation" }, 
+         { id:"Toolbar4", Cells:[ "Settings","Filter","Sort","TipAction","Lock" ], Item:"$CSettings" }, 
+         "Layout", "Styles", 
+         { id:"DataSet", Item:"$CDataSet", Cells: [ { id:"Data", D:"List", MinWidth:275, Width:0, Align:1, Label:"$XData", TextColor:"blue", UseResize:2,
+            Formula: "Grid.GetSources(1)[1].match(/SetsData\\d+\\w*/)[0]", DisabledFormula:"Grid.IsLocked('Data')", Translate:3, 
             List: { 
-               SetsData10: { Value: "40 rows / 1,600 cells (2 kB)", Text:"40 rows /            1,600 cells     (2 kB)" }, 
-               SetsData100: { Value: "400 rows / 16,000 cells (9 kB)", Text:"400 rows /          16,000 cells     (9 kB)" }, 
-               SetsData1000: { Value: "4,000 rows / 160,000 cells (75 kB)", Text:"4,000 rows /        160,000 cells   (75 kB)" }, 
-               SetsData2500: { Value: "10,000 rows / 400,000 cells (0.2 MB)", Text:"10,000 rows /        400,000 cells (0.2 MB)" }, 
-               SetsData10000: { Value: "40,000 rows / 1,600,000 cells (0.7 MB)", Text:"40,000 rows /     1,600,000 cells (0.7 MB)" }, 
-               SetsData25000: { Value: "100,000 rows / 4,000,000 cells (1.6 MB)", Text:"100,000 rows /     4,000,000 cells (1.6 MB)<br><span style=\"color:silver;\">download from treegrid.com</span>" }, 
-               SetsData100000: { Value: "400,000 rows / 16,000,000 cells (6.5 MB)", Text:"400,000 rows /   16,000,000 cells (6.5 MB)<br><span style=\"color:silver;\">download from treegrid.com</span>" }, 
-               SetsData250000: { Value: "1,000,000 rows / 40,000,000 cells (15 MB)", Text:"1,000,000 rows /   40,000,000 cells  (15 MB)<br><span style=\"color:silver;\">download from treegrid.com</span>" }, 
-               SetsData250000D1: { Value: "1,000,000 rows / 40,000,000 cells (15 MB)", Text:'1,000,000 rows /   40,000,000 cells  (15 MB)<br><span style=\"color:silver;\">download <span style=\"color:gray;\">on background</span> from treegrid.com</span>' },
-               SetsData1000000: { Value: "4,000,000 rows / 160,000,000 cells (62 MB)", Text:"4,000,000 rows / 160,000,000 cells  (62 MB)<br><span style=\"color:silver;\">download from treegrid.com</span>" },
-               SetsData1000000D1: { Value: "4,000,000 rows / 160,000,000 cells (62 MB)", Text:'4,000,000 rows / 160,000,000 cells  (62 MB)<br><span style=\"color:silver;\">download <span style=\"color:gray;\">on background</span> from treegrid.com</span>' },
+               SetsData10: { Value: "40 $Nrows / 1,600 $Ncells (2 kB)", Text:"40 $Nrows /            1,600 $Ncells     (2 kB)" }, 
+               SetsData100: { Value: "400 $Nrows / 16,000 $Ncells (9 kB)", Text:"400 $Nrows /          16,000 $Ncells     (9 kB)" }, 
+               SetsData1000: { Value: "4,000 $Nrows / 160,000 $Ncells (75 kB)", Text:"4,000 $Nrows /        160,000 $Ncells   (75 kB)" }, 
+               SetsData2500: { Value: "10,000 $Nrows / 400,000 $Ncells (0.2 MB)", Text:"10,000 $Nrows /        400,000 $Ncells (0.2 MB)" }, 
+               SetsData10000: { Value: "40,000 $Nrows / 1,600,000 $Ncells (0.7 MB)", Text:"40,000 $Nrows /     1,600,000 $Ncells (0.7 MB)" }, 
+               SetsData25000: { Value: "100,000 $Nrows / 4,000,000 $Ncells (1.6 MB)", Text:"100,000 $Nrows /     4,000,000 $Ncells (1.6 MB)<br><span style=\"color:silver;\">$Ndownload</span>" }, 
+               SetsData100000: { Value: "400,000 $Nrows / 16,000,000 $Ncells (6.5 MB)", Text:"400,000 $Nrows /   16,000,000 $Ncells (6.5 MB)<br><span style=\"color:silver;\">$Ndownload</span>" }, 
+               SetsData250000: { Value: "1,000,000 $Nrows / 40,000,000 $Ncells (15 MB)", Text:"1,000,000 $Nrows /   40,000,000 $Ncells  (15 MB)<br><span style=\"color:silver;\">$Ndownload</span>" }, 
+               SetsData250000D1: { Value: "1,000,000 $Nrows / 40,000,000 $Ncells (15 MB)", Text:'1,000,000 $Nrows /   40,000,000 $Ncells  (15 MB)<br><span style=\"color:silver;\">$Ndownload <span style=\"color:gray;\">$Nbackground</span></span>' },
+               SetsData1000000: { Value: "4,000,000 $Nrows / 160,000,000 $Ncells (62 MB)", Text:"4,000,000 $Nrows / 160,000,000 $Ncells  (62 MB)<br><span style=\"color:silver;\">$Ndownload</span>" },
+               SetsData1000000D1: { Value: "4,000,000 $Nrows / 160,000,000 $Ncells (62 MB)", Text:'4,000,000 $Nrows / 160,000,000 $Ncells  (62 MB)<br><span style=\"color:silver;\">$Ndownload <span style=\"color:gray;\">$Nbackground</span></span>' },
                },
             //OnChange:"Grid.GetSources().D = null; Grid.Disable(); Grid.GetSources(1)[1] = Grid.GetSources(1)[1].replace(/SetsData\\d+\\w*/,Value); Grid.GetSources(1)[2] = Value.indexOf('D1')>=0 ? { Url:Grid.GetSources(1)[1].replace(/D1\./,'D2.'), Defer: { Row:'Info', Col:'Count', Max:Value=='SetsData1000000D1' ? 621e5 : 152e5 } } : ''; Grid.GetSources(0).Progress = {SetsData25000:16e5,SetsData100000:65e5,SetsData250000:158e5,SetsData1000000:627e5}[Value]; Grid.ActionReload();"
-
             OnChange: function(Grid,Row,Col,Event){
                var Value = Grid.GetValue(Row,Col,1), S0 = Grid.GetSources(0), S1 = Grid.GetSources(1);
                S0.D = null; Grid.Disable(); 
@@ -787,10 +768,14 @@ export default function App() {
                Grid.ActionReload();
                }
             } ] },
-         "Styles", "Cookies",    
-         { id:"Info", PaddingTop:0, PaddingBottom:0, Cells: [{ id:"Count", NoHover:1, NoEdit:1, NoFocus:3, Type:"Html", MinWidth:230, Rel:1, Align:1, Wrap:5, Formula:"Grid.IsBusy()==6 ? '<span style=\"color:'+Grid.Colors.blue+';\">'+Value+'</span>' : Grid.Script.rowstotal(Grid)" }], Item:"Information" },
+         { id:"GroupList", D:"Group", Cells: [ { id:"GroupList", D:"GroupList", MinWidth:55, Width:0, Translate:3, List:{ "": "$Xnone","Region,Country,State": "$XLocation", "Calls": "$XCalls" }, DisabledFormula:"Grid.IsLocked('group')" }, "Group" ], Item:"$CGroupList" },
+         "Cookies",    
+         { id:"Languages", Cells:["Languages"], Item:"$CLanguages" }
          ],
-      Bottom:["AI"],
+      Bottom:[
+         "AIInput",{ D:"AIOutput", NewLine:0 },
+         { id:"Info", PaddingTop:0, PaddingBottom:0, Cells: [{ id:"Count", NoHover:1, NoEdit:1, NoFocus:3, Type:"Html", Width:-2, Rel:1, Align:1, Wrap:4, Formula:"Grid.IsBusy()==6 ? '<span style=\"color:'+Grid.Colors.blue+';\">'+Value+'</span>' : Grid.Script.rowstotal(Grid)" }], Item:"$CInformation" },
+         ],
       Par: {
          P1: ["U",0x2000+10], //. 0x2000 + 10 characters (10)
          P2: ["U",0x2000+24]  //. 0x2000 + 24 characters (2*12)
@@ -814,6 +799,137 @@ export default function App() {
             Top: [{ id:"Cookies", Next:"GroupList" }]
             }
          },
+
+      Languages: {
+
+         //. --- Base English texts ---
+         Base: {
+
+            Text: {
+               $ConfirmDelete: "Do you want to delete {Count>4 ? '<b>'+Math.floor(Count/4)+'</b> selected contractors' : 'contractor <b>'+Name+'</b>'}?",
+               $Item1: "January", $Item2: "February", $Item3: "March", $Item4: "April", $Item5: "May", $Item6: "June", $Item7: "July", $Item8: "August", $Item9: "September", $Item10: "October", $Item11: "November", $Item12: "December", 
+               $ItemA: "Amount", $ItemP:"Price", $ItemT:"Total", $ItemV:"Verified", $ItemCaptionC:"Months", $ItemCaptionC1:"Month values", $ItemCaptionC2:"Base columns",
+               $NormalCookie: "Settings",
+               $Xall:"all", $Xverified:"verified", $XShown:"Shown", $Xcells:"cells in", $Xrows:"rows", $Xcolumns:"columns", $XData:"Data",
+               $Xnone:"none", $XLocation: "Location", $XCalls:"Calls per", $XTotal:"Total", $X2023:"2023", $X2022:"2022", $XGain:"Gain", $XTotal2022:"Total 2022", $XTotal2023:"Total 2023", $XTotalGain:"Total gain",
+               $Nrows:"rows", $Ncells: "cells", $Ndownload: "download from treegrid.com", $Nbackground:"on background",
+               $Lweek:"week", $Lmonth:"month", $Lquarter:"quarter", $Lhalfyear:"half year", $Lyear:"year",
+   
+               $CName:"Name", $CRegion:"Region", $CCountry:"Country", $CState:"State or Province", $CPartner:"Partner", $CSince:"Since", $CCalls:"Calls per", $CRabat:"Rabat", $CYear:"Year", $CTotal:"Total", $CSinceMonthDay:"Since Day", $CSinceWeekDay:"Since Weekday", $CSinceMonth:"Since Month", $CSinceYear:"Since Year",
+               $CJanuary:"January", $CFebruary: "February", $CMarch: "March", $CApril: "April", $CMay:"May", $CJune: "June", $CJuly: "July", $CAugust:"August", 
+               $CSeptember: "September", $COctober: "October", $CNovember: "November", $CDecember: "December", 
+               $CChart:"Chart", $CAmount:"Amount", $CPrice:"Price", $CVerified:"Verified",
+               $CChartIndex:"Chart + Index", $CNameYear:"Name + Year", $CLocation: "Location", 
+               $CHeaders:"Headers", $CFilters:"Filters", $CTotals:"Totals", $CLanguages:"Language",
+               $CManipulation:"Manipulation", $CSettings:"Settings", $CGroupList:"Group list", $CInformation:"Information", $CClipboard:"Clipboard", $CDataSet:"Data set",
+
+               $CentralSouthAsia: "Central & South Asia", $EastAsia: "East Asia & the Pacific", $EastEurope: "East Europe", $MiddleEast: "Middle East & North Africa",
+               $NorthCentralAmerica:"North & Central America", $SouthAmerica:"South America", $SubSaharanAfrica:"Sub-Saharan Africa", $WestEurope:"West Europe",
+
+               $Armenia: "Armenia", $Azerbaijan: "Azerbaijan", $Bangladesh: "Bangladesh", $India: "India", $Kazakstan: "Kazakstan", $Pakistan: "Pakistan", $SriLanka: "Sri Lanka", 
+               $Australia: "Australia", $Brunei: "Brunei", $China: "China", $HongKong: "Hong Kong", $Indonesia: "Indonesia", $Japan: "Japan", $KoreaNorth: "Korea, dpr", $Malaysia: "Malaysia",
+               $Mongolia: "Mongolia", $Myanmar: "Myanmar", $NewZealand: "New Zealand", $PapuaNewGuinea: "Papua New Guinea", $Philippines: "Philippines", $Singapore: "Singapore", 
+               $SouthKorea: "South Korea", $Taiwan: "Taiwan", $Thailand: "Thailand", $Vietnam: "Vietnam",
+               $Albania: "Albania", $Belarus: "Belarus", $Bulgaria: "Bulgaria", $Croatia: "Croatia", $CzechRepublic: "Czech Republic", $Estonia: "Estonia", $Hungary: "Hungary",
+               $Latvia: "Latvia", $Lithuania: "Lithuania", $Moldova: "Moldova", $Poland: "Poland", $Romania: "Romania", $Russia: "Russia", $SerbiaMontenegro: "Serbia-Montenegro",
+               $SlovakRepublic: "Slovak Republic", $Slovenia: "Slovenia", $Ukraine: "Ukraine",
+               $Algeria: "Algeria", $Bahrain: "Bahrain", $Egypt: "Egypt", $Iran: "Iran", $Iraq: "Iraq", $Israel: "Israel", $Jordan: "Jordan", $Kuwait: "Kuwait", $Lebanon: "Lebanon",
+               $Libya: "Libya", $Morocco: "Morocco", $Oman: "Oman", $Qatar: "Qatar", $SaudiArabia: "Saudi Arabia", $Syria: "Syria", $Tunisia: "Tunisia", $UAE: "UAE", $Yemen: "Yemen",
+               $Bahamas: "Bahamas", $Canada: "Canada", $CostaRica: "Costa Rica", $Cuba: "Cuba", $DominicanRepublic: "Dominican Republic", $ElSalvador: "El Salvador", $Guatemala: "Guatemala",
+               $Haiti: "Haiti", $Honduras: "Honduras", $Jamaica: "Jamaica", $Mexico: "Mexico", $Nicaragua: "Nicaragua", $Panama: "Panama", $TrinidadTobago: "Trinidad & Tobago", 
+               $UnitedStates: "United States",
+               $Argentina: "Argentina", $Bolivia: "Bolivia", $Brazil: "Brazil", $Chile: "Chile", $Colombia: "Colombia", $Ecuador: "Ecuador", $Guyana: "Guyana", $Paraguay: "Paraguay", $Peru: "Peru",
+               $Suriname: "Suriname", $Uruguay: "Uruguay", $Venezuela: "Venezuela",
+               $Angola: "Angola", $Botswana: "Botswana", $BurkinaFaso: "Burkina Faso", $Cameroon: "Cameroon", $Congo: "Congo", $Congodr: "Congo dr", $CoteIvoire: "Cote d'Ivoire", 
+               $Ethiopia: "Ethiopia", $Gabon: "Gabon", $Gambia: "Gambia", $Ghana: "Ghana", $Guinea: "Guinea", $GuineaBissau: "Guinea-Bissau", $Kenya: "Kenya", $Liberia: "Liberia",
+               $Madagascar: "Madagascar", $Malawi: "Malawi", $Mali: "Mali", $Mozambique: "Mozambique", $Namibia: "Namibia", $Niger: "Niger", $Nigeria: "Nigeria", $Senegal: "Senegal",
+               $SierraLeone: "Sierra Leone", $Somalia: "Somalia", $SouthAfrica: "South Africa", $Sudan: "Sudan", $Tanzania: "Tanzania", $Togo: "Togo", $Uganda: "Uganda", $Zambia: "Zambia",
+               $Zimbabwe: "Zimbabwe",
+               $Austria: "Austria", $Belgium: "Belgium", $Cyprus: "Cyprus", $Denmark: "Denmark", $Finland: "Finland", $France: "France", $Germany: "Germany", $Greece: "Greece", $Iceland: "Iceland",
+               $Ireland: "Ireland", $Italy: "Italy", $Luxembourg: "Luxembourg", $Malta: "Malta", $Netherlands: "Netherlands", $Norway: "Norway", $Portugal: "Portugal", $Spain: "Spain",
+               $Sweden: "Sweden", $Switzerland: "Switzerland", $Turkey: "Turkey", $UnitedKingdom: "United Kingdom",
+
+               $AndhraPradesh: "Andhra Pradesh", $ArunachalPradesh: "Arunachal Pradesh", $Assam: "Assam", $Bihar: "Bihar", $Chhattisgarh: "Chhattisgarh", $Goa: "Goa", $Gujarat: "Gujarat",
+               $Haryana: "Haryana", $HimachalPradesh: "Himachal Pradesh", $Jharkhand: "Jharkhand", $Karnataka: "Karnataka", $Kerala: "Kerala", $MadhyaPradesh: "Madhya Pradesh",
+               $Maharashtra: "Maharashtra", $Manipur: "Manipur", $Meghalaya: "Meghalaya", $Mizoram: "Mizoram", $Nagaland: "Nagaland", $Odisha: "Odisha", $Punjab: "Punjab", 
+               $Rajasthan: "Rajasthan", $Sikkim: "Sikkim", $TamilNadu: "Tamil Nadu", $Telangana: "Telangana", $Tripura: "Tripura", $UttarPradesh: "Uttar Pradesh", $Uttarakhand: "Uttarakhand",
+               $WestBengal: "West Bengal", $AndamanandNicobarIslands: "Andaman and Nicobar Islands", $Chandigarh: "Chandigarh", $DadraandNagarHaveliandDamanandDiu: "Dadra and Nagar Haveli and Daman and Diu",
+               $Delhi: "Delhi", $JammuandKashmir: "Jammu and Kashmir", $Ladakh: "Ladakh", $Lakshadweep: "Lakshadweep", $Puducherry: "Puducherry", 
+   
+               $NewSouthWales: "New South Wales", $Queensland: "Queensland", $SouthAustralia: "South Australia", $Tasmania: "Tasmania", $Victoria: "Victoria", $WesternAustralia: "Western Australia",
+               $AustralianCapitalTerritory: "Australian Capital Territory", $JervisBayTerritory: "Jervis Bay Territory", $NorthernTerritory: "Northern Territory", 
+               $AustralianAntarcticTerritory: "Australian Antarctic Territory", $ChristmasIsland: "Christmas Island", $CocosKeelingIslands: "Cocos (Keeling) Islands",
+               $HeardIslandandMcDonaldIslands: "Heard Island and McDonald Islands", $NorfolkIsland: "Norfolk Island", 
+   
+               $Anhui: "Anhui", $Beijing: "Beijing", $Chongqing: "Chongqing", $Fujian: "Fujian", $Guangdong: "Guangdong", $Gansu: "Gansu", $Guizhou: "Guizhou", $Henan: "Henan", $Hubei: "Hubei",
+               $Hebei: "Hebei", $Hainan: "Hainan", $Heilongjiang: "Heilongjiang", $Hunan: "Hunan", $Jilin: "Jilin", $Jiangsu: "Jiangsu", $Jiangxi: "Jiangxi", $Liaoning: "Liaoning", $Qinghai: "Qinghai",
+               $Sichuan: "Sichuan", $Shandong: "Shandong", $Shanghai: "Shanghai", $Shaanxi: "Shaanxi", $Shanxi: "Shanxi", $Tianjin: "Tianjin", $Yunnan: "Yunnan", $Zhejiang: "Zhejiang",
+               $GuangxiZhuang: "Guangxi Zhuang", $InnerMongolia: "Inner Mongolia", $NingxiaHui: "Ningxia Hui", $XinjiangUyghur: "Xinjiang Uyghur", $Tibet: "Tibet",
+
+               $Chubu: "Chūbu", $Chugoku: "Chūgoku", $Hokkaido: "Hokkaidō", $Kansai: "Kansai", $Kanto: "Kantō", $Kyushu: "Kyūshū", $Shikoku: "Shikoku", $Tohoku: "Tōhoku", 
+
+               $Alberta: "Alberta", $BritishColumbia: "British Columbia", $Manitoba: "Manitoba", $NewBrunswick: "New Brunswick", $NewfoundlandandLabrador: "Newfoundland and Labrador",
+               $NovaScotia: "Nova Scotia", $Ontario: "Ontario", $PrinceEdwardIsland: "Prince Edward Island", $Quebec: "Quebec", $Saskatchewan: "Saskatchewan",
+
+               $Alabama: "Alabama", $Alaska: "Alaska", $Arizona: "Arizona", $Arkansas: "Arkansas", $California: "California", $Colorado: "Colorado", $Connecticut: "Connecticut",
+               $Delaware: "Delaware", $Florida: "Florida", $Georgia: "Georgia", $Hawaii: "Hawaii", $Idaho: "Idaho", $Illinois: "Illinois", $Indiana: "Indiana", $Iowa: "Iowa", $Kansas: "Kansas",
+               $Kentucky: "Kentucky", $Louisiana: "Louisiana", $Maine: "Maine", $Maryland: "Maryland", $Massachusetts: "Massachusetts", $Michigan: "Michigan", $Minnesota: "Minnesota",
+               $Mississippi: "Mississippi", $Missouri: "Missouri", $Montana: "Montana", $Nebraska: "Nebraska", $Nevada: "Nevada", $NewHampshire: "New Hampshire", $NewJersey: "New Jersey",
+               $NewMexico: "New Mexico", $NewYork: "New York", $NorthCarolina: "North Carolina", $NorthDakota: "North Dakota", $Ohio: "Ohio", $Oklahoma: "Oklahoma", $Oregon: "Oregon",
+               $Pennsylvania: "Pennsylvania", $RhodeIsland: "Rhode Island", $SouthCarolina: "South Carolina", $SouthDakota: "South Dakota", $Tennessee: "Tennessee", $Texas: "Texas",
+               $Utah: "Utah", $Vermont: "Vermont", $Virginia: "Virginia", $Washington: "Washington", $WestVirginia: "West Virginia", $Wisconsin: "Wisconsin", $Wyoming: "Wyoming",
+               $DistrictofColumbia: "District of Columbia", $AmericanSamoa: "American Samoa", $Guam: "Guam", $NorthernMarianaIslands: "Northern Mariana Islands", $PuertoRico: "Puerto Rico",
+               $USVirginIslands: "U.S. Virgin Islands",
+
+               $Acre: "Acre", $Alagoas: "Alagoas", $Amapa: "Amapá", $Amazonas: "Amazonas", $Bahia: "Bahia", $Ceara: "Ceará", $DistritoFederal: "Distrito Federal", $EspiritoSanto: "Espírito Santo",
+               $Goias: "Goiás", $Maranhao: "Maranhão", $MatoGross: "Mato Grosso", $MatoGrossodoSul: "Mato Grosso do Sul", $MinasGerais: "Minas Gerais", $Para: "Pará", $Paraiba: "Paraíba",
+               $Parana: "Paraná", $Pernambuco: "Pernambuco", $Piaui: "Piauí", $RiodeJaneiro: "Rio de Janeiro", $RiodoNort: "Rio Grande do Norte", $RiodoSul: "Rio Grande do Sul", $Rondonia: "Rondônia",
+               $Roraima: "Roraima", $SantaCatarina: "Santa Catarina", $SaoPaulo: "São Paulo", $Sergipe: "Sergipe", $Tocantins: "Tocantins", 
+
+               $Alsace: "Alsace", $Aquitaine: "Aquitaine", $Auvergne: "Auvergne", $Brittany: "Brittany", $Burgundy: "Burgundy", $CentreValdeLoire: "Centre-Val de Loire", $ChampagneArdenne: "Champagne-Ardenne",
+               $FrancheComte: "Franche-Comté", $IledeFrance: "Île-de-France", $LanguedocRoussillon: "Languedoc-Roussillon", $Limousin: "Limousin", $Lorraine: "Lorraine", $LowerNormandy: "Lower Normandy",
+               $MidiPyrenees: "Midi-Pyrénées", $NordPasdeCalais: "Nord-Pas-de-Calais", $PaysdelaLoire: "Pays de la Loire", $Picardy: "Picardy", $PoitouCharentes: "Poitou-Charentes",
+               $ProvenceAlpesCotedAzur: "Provence-Alpes-Côte d'Azur", $RhoneAlpes: "Rhône-Alpes", $UpperNormandy: "Upper Normandy", 
+   
+               $BadenWurttemberg: "Baden-Württemberg", $Bavaria: "Bavaria", $Berlin: "Berlin", $Brandenburg: "Brandenburg", $Bremen: "Bremen", $Hamburg: "Hamburg", $Hesse: "Hesse",
+               $LowerSaxony: "Lower Saxony", $MecklenburgWesternPomerania: "Mecklenburg-Western Pomerania", $NorthRhineWestphalia: "North Rhine-Westphalia", 
+               $RhinelandPalatinate: "Rhineland-Palatinate", $Saarland: "Saarland", $Saxony: "Saxony", $SaxonyAnhalt: "Saxony-Anhalt", $SchleswigHolstein: "Schleswig-Holstein", $Thuringia: "Thuringia",
+
+               $Abruzzo: "Abruzzo", $AostaValley: "Aosta Valley", $Apulia: "Apulia", $Basilicata: "Basilicata", $Calabria: "Calabria", $Campania: "Campania", $EmiliaRomagna: "Emilia-Romagna",
+               $FriuliVeneziaGiulia: "Friuli Venezia Giulia", $Lazio: "Lazio", $Liguria: "Liguria", $Lombardy: "Lombardy", $Marche: "Marche", $Molise: "Molise", $Piedmont: "Piedmont",
+               $Sardinia: "Sardinia", $Sicily: "Sicily", $TrentinoSouthTyrol: "Trentino-South Tyrol", $Tuscany: "Tuscany", $Umbria: "Umbria", $Veneto: "Veneto", 
+
+               $Andalusia: "Andalusia", $Aragon: "Aragon", $Asturias: "Asturias", $BalearicIslands: "Balearic Islands", $BasqueCountry: "Basque Country", $CanaryIslands: "Canary Islands",
+               $Cantabria: "Cantabria", $CastileandLeon: "Castile and León", $CastillaLaMancha: "Castilla–La Mancha", $Catalonia: "Catalonia", $CommunityofMadrid: "Community of Madrid",
+               $Extremadura: "Extremadura", $Galicia: "Galicia", $LaRioja: "La Rioja", $Navarre: "Navarre", $RegionofMurcia: "Region of Murcia", $ValencianCommunity: "Valencian Community",
+               $Ceuta: "Ceuta", $Melilla: "Melilla",
+
+               $England: "England", $NorthernIreland: "Northern Ireland", $Scotland: "Scotland", $Wales: "Wales",
+               },
+
+            AI: {
+               //. Sample input history to demonstrate various AI tasks
+               InputHistory: "|-|What is in table?|What can you do?|What is in the charts?"
+                           + "|What is the highest value in Amount in January?|What is the highest Price?"
+                           + "|What is the total price of vendors registered after year 2011 in Brazil?"
+                           + "|What is the most common surname?"
+                           + "|Select all contractors from Countries starting by B|Choose all vendors from countries in Asia|Select contractors registered after 2/1/2014"
+                           + "|Filter the top 10 rows by Total gain"
+                           + "|Mark and focus the highest and lowest not zero values in Amount columns"
+                           + "|Double values in Amount columns|Add 3 months to dates in America"
+                           + "|Set February prices in Canada to 1,234.56|Change all rows with surname Smith to surname Mallory"
+                           + "|Set all contractors data verified|Set all vendors data as not verified and next select all vendors that were changed in every month"
+                           + "|Change Brazil to Germany in all contractors"
+                           + "|Delete all contractors from Europe|Delete all rows"
+                           + "|Add 100 vendors to Berlin|Add 10000 contractors and fill their data with meaningful random values, including their details"
+                           + "|Copy contractors from USA below the sources each|Copy contractors from Brazil, with values in main rows and empty details"
+                           + "|Show only Wisconsin|Show dates between 10/1/2005 and 7/6/2010|Show only names with are least 20 characters|Filter and mark all Amounts less than -20 or higher than 40"
+                           + "|Group by month from Since|Sort by Total Gain descending"
+                           + "|Hide Amount and Price|Move March to the left section|Undo it"
+                           + "|Export data to xlsx"
+               }
+            }
+         }
 
    }), []);
    const gridRef = useRef(null); //. Grid reference received for grid, access the grid object as grid.current

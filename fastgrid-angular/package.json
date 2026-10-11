@@ -1,6 +1,6 @@
 {
    "name": "fastgrid-angular",
-   "version": "3.2.3",
+   "version": "3.3.1",
    "description": "Official Angular wrapper for FastGrid and FastSheet, a high-performance TypeScript data grid and web spreadsheet for large datasets, virtual scrolling, tree data, pivoting, XLSX and AI.",
    "keywords": [
       "fastgrid",

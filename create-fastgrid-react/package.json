@@ -1,6 +1,6 @@
 {
   "name": "create-fastgrid-react",
-  "version": "3.2.4",
+  "version": "3.3.1",
   "description": "Create React starter projects, tutorials and advanced examples for FastGrid and FastSheet, including data grids, tree grids, virtual scrolling, XLSX spreadsheets and AI.",
   "keywords": [
     "create-fastgrid",

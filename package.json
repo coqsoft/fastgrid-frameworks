@@ -1,6 +1,6 @@
 {
   "name": "fastgrid-frameworks",
-  "version": "3.2.4",
+  "version": "3.3.1",
   "private": true,
   "description": "Official open-source framework wrappers, project generators, examples and tutorials for the FastGrid data grid and FastSheet web spreadsheet.",
   "keywords": [

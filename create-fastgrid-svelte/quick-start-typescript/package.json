@@ -2,7 +2,7 @@
   "name": "fastgrid-svelte-quick-start-typescript",
   "description": "Svelte project demonstrating FastGrid and FastSheet with the fastgrid-svelte wrapper.",
   "private": true,
-  "version": "3.2.2",
+  "version": "3.3.1",
   "type": "module",
   "scripts": {
     "typecheck": "svelte-check --tsconfig ./tsconfig.json",

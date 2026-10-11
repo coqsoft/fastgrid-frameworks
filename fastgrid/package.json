@@ -1,7 +1,7 @@
 {
   "name": "fastgrid",
   "private": true,
-  "version": "3.2.2",
+  "version": "3.3.1",
   "description": "npx fastgrid - Install the official FastGrid wrapper for the detected Angular, React, Vue or Svelte project for FastGrid and FastSheet, a high-performance TypeScript data grid and web spreadsheet for large datasets, virtual scrolling, tree data, pivoting, XLSX and AI.",
   "keywords": [
     "fastgrid",

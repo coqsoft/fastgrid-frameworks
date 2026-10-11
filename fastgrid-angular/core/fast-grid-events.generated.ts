@@ -2197,6 +2197,9 @@ export abstract class FastGridEventBindings {
    GetValue(row: TRow, col: TCol, direct?: number) : any;
    GetValue(...args:any[]) : any { const grid = this.requireGrid(); return (grid.GetValue as any).apply(grid,args); }
 
+   GetValueOrig(row: TRow, col: TCol, always?: number|boolean) : any;
+   GetValueOrig(...args:any[]) : any { const grid = this.requireGrid(); return (grid.GetValueOrig as any).apply(grid,args); }
+
    GetValueSimple(row: TRow, col: TCol) : any;
    GetValueSimple(...args:any[]) : any { const grid = this.requireGrid(); return (grid.GetValueSimple as any).apply(grid,args); }
 

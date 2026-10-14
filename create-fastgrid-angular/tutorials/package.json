@@ -1,7 +1,7 @@
 {
   "name": "fastgrid-angular-tutorials",
   "private": true,
-  "version": "3.3.2",
+  "version": "3.3.3",
   "description": "Angular project demonstrating FastGrid and FastSheet with the fastgrid-angular wrapper.",
   "scripts": {
     "dev": "ng serve",

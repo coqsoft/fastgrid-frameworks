@@ -2,7 +2,7 @@
   "name": "fastgrid-vue-examples",
   "description": "Vue project demonstrating FastGrid and FastSheet with the fastgrid-vue wrapper.",
   "private": true,
-  "version": "3.3.2",
+  "version": "3.3.3",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,6 +1,6 @@
 {
   "name": "fastgrid-vue",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "description": "Official Vue wrapper for FastGrid and FastSheet, a high-performance TypeScript data grid and web spreadsheet for large datasets, virtual scrolling, tree data, pivoting, XLSX and AI.",
   "keywords": [
     "fastgrid",

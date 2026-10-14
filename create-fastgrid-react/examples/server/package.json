@@ -1,7 +1,7 @@
 {
   "name": "fastgrid-react-examples-server",
   "private": true,
-  "version": "3.3.2",
+  "version": "3.3.3",
   "description": "Localhost-only demonstration server for FastGrid React SQL, file and PDF export examples. Not intended for production.",
   "main": "Index.js",
   "scripts": {

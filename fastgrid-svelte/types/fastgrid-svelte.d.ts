@@ -302,6 +302,8 @@ export class FastGrid extends SvelteComponent<FastGridProps> {
    MergeBooks(...args:any[]):any;
    Translate(...args:any[]):any;
    SetLanguage(...args:any[]):any;
+   ToDigits(...args:any[]):any;
+   FromDigits(...args:any[]):any;
    GetPartAttr(...args:any[]):any;
    SetPartAttr(...args:any[]):any;
    AddPart(...args:any[]):any;

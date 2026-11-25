@@ -306,6 +306,8 @@ export function ActionImport(...args){ return requireGrid().ActionImport(...args
 export function MergeBooks(...args){ return requireGrid().MergeBooks(...args); }
 export function Translate(...args){ return requireGrid().Translate(...args); }
 export function SetLanguage(...args){ return requireGrid().SetLanguage(...args); }
+export function ToDigits(...args){ return requireGrid().ToDigits(...args); }
+export function FromDigits(...args){ return requireGrid().FromDigits(...args); }
 export function GetPartAttr(...args){ return requireGrid().GetPartAttr(...args); }
 export function SetPartAttr(...args){ return requireGrid().SetPartAttr(...args); }
 export function AddPart(...args){ return requireGrid().AddPart(...args); }

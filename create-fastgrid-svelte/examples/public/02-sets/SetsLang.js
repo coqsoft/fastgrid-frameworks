@@ -4321,6 +4321,641 @@ Languages: {
                      + "|隱藏數量及單價|將三月移至左側區域|復原"
                      + "|將資料匯出為 xlsx"
          }
+      },
+
+   //. --- Hindi texts ---
+   HI: {
+      Text: {
+         $ConfirmDelete: "क्या आप {Count>4 ? '<b>'+Math.floor(Count/4)+'</b> चयनित ठेकेदारों' : 'ठेकेदार <b>'+Name+'</b>'} को हटाना चाहते हैं?",
+         $Item1: "जनवरी", $Item2: "फ़रवरी", $Item3: "मार्च", $Item4: "अप्रैल", $Item5: "मई", $Item6: "जून", $Item7: "जुलाई", $Item8: "अगस्त", $Item9: "सितंबर", $Item10: "अक्टूबर", $Item11: "नवंबर", $Item12: "दिसंबर", 
+         $ItemA: "मात्रा", $ItemP:"मूल्य", $ItemT:"कुल", $ItemV:"सत्यापित", $ItemCaptionC:"महीने", $ItemCaptionC1:"मासिक मान", $ItemCaptionC2:"मूल स्तंभ",
+         $NormalCookie: "सेटिंग्स",
+         $Xall:"सभी", $Xverified:"सत्यापित", $XShown:"दिखाए गए", $Xcells:"सेल, इनमें", $Xrows:"पंक्तियाँ", $Xcolumns:"स्तंभ", $XData:"डेटा",
+         $Xnone:"कोई नहीं", $XLocation: "स्थान", $XCalls:"कॉल प्रति", $XTotal:"कुल", $XGain:"लाभ", $X2023:"२०२३", $X2022:"२०२२", $XTotal2022:"कुल २०२२", $XTotal2023:"कुल २०२३", $XTotalGain:"कुल लाभ", 
+         $Nrows:"पंक्तियाँ", $Ncells: "सेल", $Ndownload: "पृष्ठभूमि में डाउनलोड",
+         $Lweek:"सप्ताह", $Lmonth:"माह", $Lquarter:"तिमाही", $Lhalfyear:"छमाही", $Lyear:"वर्ष",
+   
+         $CName:"नाम", $CRegion:"क्षेत्र", $CCountry:"देश", $CState:"राज्य या प्रांत", $CPartner:"साझेदार", $CSince:"कब से", $CCalls:"कॉल प्रति", $CRabat:"छूट", $CYear:"वर्ष", $CSinceMonthDay:"आरंभ दिन", $CSinceWeekDay:"आरंभ वार", $CSinceMonth:"आरंभ माह", $CSinceYear:"आरंभ वर्ष",
+         $CJanuary:"जनवरी", $CFebruary: "फ़रवरी", $CMarch: "मार्च", $CApril: "अप्रैल", $CMay:"मई", $CJune: "जून", $CJuly: "जुलाई", $CAugust:"अगस्त", 
+         $CSeptember: "सितंबर", $COctober: "अक्टूबर", $CNovember: "नवंबर", $CDecember: "दिसंबर", 
+         $CChart:"चार्ट", $CYear:"वर्ष", $CTotal:"कुल", $CAmount:"मात्रा", $CPrice:"मूल्य", $CVerified:"सत्यापित",
+         $CChartIndex:"चार्ट + सूचकांक", $CNameYear:"नाम + वर्ष", $CLocation: "स्थान", 
+         $CHeaders:"शीर्षक", $CFilters:"फ़िल्टर", $CTotals:"कुल योग", $CLanguages:"भाषा",
+         $CManipulation:"संचालन", $CSettings:"सेटिंग्स", $CGroupList:"समूह सूची", $CInformation:"जानकारी", $CClipboard:"क्लिपबोर्ड", $CDataSet:"डेटा सेट",
+
+         $CentralSouthAsia: "मध्य व दक्षिण एशिया", $EastAsia: "पूर्वी एशिया व प्रशांत", $EastEurope: "पूर्वी यूरोप", $MiddleEast: "मध्य पूर्व व उत्तरी अफ़्रीका",
+         $NorthCentralAmerica:"उत्तरी व मध्य अमेरिका", $SouthAmerica:"दक्षिण अमेरिका", $SubSaharanAfrica:"उप-सहारा अफ़्रीका", $WestEurope:"पश्चिमी यूरोप",
+
+         $Armenia: "आर्मेनिया", $Azerbaijan: "अज़रबैजान", $Bangladesh: "बांग्लादेश", $India: "भारत", $Kazakstan: "कज़ाख़स्तान", $Pakistan: "पाकिस्तान", $SriLanka: "श्रीलंका", 
+         $Australia: "ऑस्ट्रेलिया", $Brunei: "ब्रुनेई", $China: "चीन", $HongKong: "हांगकांग", $Indonesia: "इंडोनेशिया", $Japan: "जापान", $KoreaNorth: "उत्तर कोरिया", $Malaysia: "मलेशिया",
+         $Mongolia: "मंगोलिया", $Myanmar: "म्यांमार", $NewZealand: "न्यूज़ीलैंड", $PapuaNewGuinea: "पापुआ न्यू गिनी", $Philippines: "फ़िलीपींस", $Singapore: "सिंगापुर", 
+         $SouthKorea: "दक्षिण कोरिया", $Taiwan: "ताइवान", $Thailand: "थाईलैंड", $Vietnam: "वियतनाम",
+         $Albania: "अल्बानिया", $Belarus: "बेलारूस", $Bulgaria: "बुल्गारिया", $Croatia: "क्रोएशिया", $CzechRepublic: "चेक गणराज्य", $Estonia: "एस्टोनिया", $Hungary: "हंगरी",
+         $Latvia: "लातविया", $Lithuania: "लिथुआनिया", $Moldova: "मोल्दोवा", $Poland: "पोलैंड", $Romania: "रोमानिया", $Russia: "रूस", $SerbiaMontenegro: "सर्बिया-मोंटेनेग्रो",
+         $SlovakRepublic: "स्लोवाक गणराज्य", $Slovenia: "स्लोवेनिया", $Ukraine: "यूक्रेन",
+         $Algeria: "अल्जीरिया", $Bahrain: "बहरीन", $Egypt: "मिस्र", $Iran: "ईरान", $Iraq: "इराक़", $Israel: "इज़राइल", $Jordan: "जॉर्डन", $Kuwait: "कुवैत", $Lebanon: "लेबनान",
+         $Libya: "लीबिया", $Morocco: "मोरक्को", $Oman: "ओमान", $Qatar: "क़तर", $SaudiArabia: "सऊदी अरब", $Syria: "सीरिया", $Tunisia: "ट्यूनीशिया", $UAE: "संयुक्त अरब अमीरात", $Yemen: "यमन",
+         $Bahamas: "बहामास", $Canada: "कनाडा", $CostaRica: "कोस्टा रिका", $Cuba: "क्यूबा", $DominicanRepublic: "डोमिनिकन गणराज्य", $ElSalvador: "अल सल्वाडोर", $Guatemala: "ग्वाटेमाला",
+         $Haiti: "हैती", $Honduras: "होंडुरास", $Jamaica: "जमैका", $Mexico: "मेक्सिको", $Nicaragua: "निकारागुआ", $Panama: "पनामा", $TrinidadTobago: "त्रिनिदाद व टोबैगो", 
+         $UnitedStates: "संयुक्त राज्य अमेरिका",
+         $Argentina: "अर्जेंटीना", $Bolivia: "बोलीविया", $Brazil: "ब्राज़ील", $Chile: "चिली", $Colombia: "कोलंबिया", $Ecuador: "इक्वाडोर", $Guyana: "गयाना", $Paraguay: "पराग्वे", $Peru: "पेरू",
+         $Suriname: "सूरीनाम", $Uruguay: "उरुग्वे", $Venezuela: "वेनेज़ुएला",
+         $Angola: "अंगोला", $Botswana: "बोत्सवाना", $BurkinaFaso: "बुर्किना फ़ासो", $Cameroon: "कैमरून", $Congo: "कांगो", $Congodr: "कांगो लोकतांत्रिक गणराज्य", $CoteIvoire: "कोट डी आइवर", 
+         $Ethiopia: "इथियोपिया", $Gabon: "गैबॉन", $Gambia: "गाम्बिया", $Ghana: "घाना", $Guinea: "गिनी", $GuineaBissau: "गिनी-बिसाऊ", $Kenya: "केन्या", $Liberia: "लाइबेरिया",
+         $Madagascar: "मेडागास्कर", $Malawi: "मलावी", $Mali: "माली", $Mozambique: "मोज़ाम्बिक", $Namibia: "नामीबिया", $Niger: "नाइजर", $Nigeria: "नाइजीरिया", $Senegal: "सेनेगल",
+         $SierraLeone: "सिएरा लियोन", $Somalia: "सोमालिया", $SouthAfrica: "दक्षिण अफ़्रीका", $Sudan: "सूडान", $Tanzania: "तंज़ानिया", $Togo: "टोगो", $Uganda: "युगांडा", $Zambia: "ज़ाम्बिया",
+         $Zimbabwe: "ज़िम्बाब्वे",
+         $Austria: "ऑस्ट्रिया", $Belgium: "बेल्जियम", $Cyprus: "साइप्रस", $Denmark: "डेनमार्क", $Finland: "फ़िनलैंड", $France: "फ़्रांस", $Germany: "जर्मनी", $Greece: "यूनान", $Iceland: "आइसलैंड",
+         $Ireland: "आयरलैंड", $Italy: "इटली", $Luxembourg: "लक्ज़मबर्ग", $Malta: "माल्टा", $Netherlands: "नीदरलैंड", $Norway: "नॉर्वे", $Portugal: "पुर्तगाल", $Spain: "स्पेन",
+         $Sweden: "स्वीडन", $Switzerland: "स्विट्ज़रलैंड", $Turkey: "तुर्की", $UnitedKingdom: "यूनाइटेड किंगडम",
+
+         $AndhraPradesh: "आंध्र प्रदेश", $ArunachalPradesh: "अरुणाचल प्रदेश", $Assam: "असम", $Bihar: "बिहार", $Chhattisgarh: "छत्तीसगढ़", $Goa: "गोवा", $Gujarat: "गुजरात",
+         $Haryana: "हरियाणा", $HimachalPradesh: "हिमाचल प्रदेश", $Jharkhand: "झारखंड", $Karnataka: "कर्नाटक", $Kerala: "केरल", $MadhyaPradesh: "मध्य प्रदेश",
+         $Maharashtra: "महाराष्ट्र", $Manipur: "मणिपुर", $Meghalaya: "मेघालय", $Mizoram: "मिज़ोरम", $Nagaland: "नागालैंड", $Odisha: "ओडिशा", $Punjab: "पंजाब", 
+         $Rajasthan: "राजस्थान", $Sikkim: "सिक्किम", $TamilNadu: "तमिलनाडु", $Telangana: "तेलंगाना", $Tripura: "त्रिपुरा", $UttarPradesh: "उत्तर प्रदेश", $Uttarakhand: "उत्तराखंड",
+         $WestBengal: "पश्चिम बंगाल", $AndamanandNicobarIslands: "अंडमान और निकोबार द्वीपसमूह", $Chandigarh: "चंडीगढ़", $DadraandNagarHaveliandDamanandDiu: "दादरा और नगर हवेली और दमन और दीव",
+         $Delhi: "दिल्ली", $JammuandKashmir: "जम्मू और कश्मीर", $Ladakh: "लद्दाख", $Lakshadweep: "लक्षद्वीप", $Puducherry: "पुदुच्चेरी", 
+   
+         $NewSouthWales: "न्यू साउथ वेल्स", $Queensland: "क्वींसलैंड", $SouthAustralia: "दक्षिण ऑस्ट्रेलिया", $Tasmania: "तस्मानिया", $Victoria: "विक्टोरिया", $WesternAustralia: "पश्चिमी ऑस्ट्रेलिया",
+         $AustralianCapitalTerritory: "ऑस्ट्रेलियाई राजधानी क्षेत्र", $JervisBayTerritory: "जर्विस बे क्षेत्र", $NorthernTerritory: "उत्तरी क्षेत्र", 
+         $AustralianAntarcticTerritory: "ऑस्ट्रेलियाई अंटार्कटिक क्षेत्र", $ChristmasIsland: "क्रिसमस द्वीप", $CocosKeelingIslands: "कोकोस (कीलिंग) द्वीपसमूह",
+         $HeardIslandandMcDonaldIslands: "हर्ड द्वीप और मैकडॉनल्ड द्वीपसमूह", $NorfolkIsland: "नॉरफ़ॉक द्वीप", 
+   
+         $Anhui: "आनहुई", $Beijing: "बीजिंग", $Chongqing: "छोंगछिंग", $Fujian: "फ़ूजियान", $Guangdong: "गुआंगदोंग", $Gansu: "गांसू", $Guizhou: "गुइझोउ", $Henan: "हेनान", $Hubei: "हुबेई",
+         $Hebei: "हेबेई", $Hainan: "हाइनान", $Heilongjiang: "हेइलोंगजियांग", $Hunan: "हुनान", $Jilin: "जिलिन", $Jiangsu: "जियांगसू", $Jiangxi: "जियांग्शी", $Liaoning: "लियाओनिंग", $Qinghai: "छिंगहाई",
+         $Sichuan: "सिचुआन", $Shandong: "शानदोंग", $Shanghai: "शंघाई", $Shaanxi: "शान्शी", $Shanxi: "शानसी", $Tianjin: "तियानजिन", $Yunnan: "युन्नान", $Zhejiang: "झेजियांग",
+         $GuangxiZhuang: "गुआंग्शी झुआंग", $InnerMongolia: "भीतरी मंगोलिया", $NingxiaHui: "निंग्शिया हुई", $XinjiangUyghur: "शिनजियांग उइग़ुर", $Tibet: "तिब्बत",
+
+         $Chubu: "चूबू", $Chugoku: "चूगोकू", $Hokkaido: "होक्काइडो", $Kansai: "कंसाई", $Kanto: "कांतो", $Kyushu: "क्यूशू", $Shikoku: "शिकोकू", $Tohoku: "तोहोकू", 
+
+         $Alberta: "अल्बर्टा", $BritishColumbia: "ब्रिटिश कोलंबिया", $Manitoba: "मैनिटोबा", $NewBrunswick: "न्यू ब्रंसविक", $NewfoundlandandLabrador: "न्यूफ़ाउंडलैंड और लैब्राडोर",
+         $NovaScotia: "नोवा स्कोशिया", $Ontario: "ओंटारियो", $PrinceEdwardIsland: "प्रिंस एडवर्ड द्वीप", $Quebec: "क्यूबेक", $Saskatchewan: "सस्कैचेवान",
+
+         $Alabama: "अलाबामा", $Alaska: "अलास्का", $Arizona: "एरिज़ोना", $Arkansas: "आर्कन्सॉ", $California: "कैलिफ़ोर्निया", $Colorado: "कोलोराडो", $Connecticut: "कनेक्टिकट",
+         $Delaware: "डेलावेयर", $Florida: "फ़्लोरिडा", $Georgia: "जॉर्जिया", $Hawaii: "हवाई", $Idaho: "आइडहो", $Illinois: "इलिनॉय", $Indiana: "इंडियाना", $Iowa: "आयोवा", $Kansas: "कैनसस",
+         $Kentucky: "केंटकी", $Louisiana: "लुइज़ियाना", $Maine: "मेन", $Maryland: "मैरीलैंड", $Massachusetts: "मैसाचुसेट्स", $Michigan: "मिशिगन", $Minnesota: "मिनेसोटा",
+         $Mississippi: "मिसिसिपी", $Missouri: "मिसूरी", $Montana: "मोंटाना", $Nebraska: "नेब्रास्का", $Nevada: "नेवाडा", $NewHampshire: "न्यू हैम्पशायर", $NewJersey: "न्यू जर्सी",
+         $NewMexico: "न्यू मेक्सिको", $NewYork: "न्यू यॉर्क", $NorthCarolina: "नॉर्थ कैरोलाइना", $NorthDakota: "नॉर्थ डकोटा", $Ohio: "ओहायो", $Oklahoma: "ओक्लाहोमा", $Oregon: "ओरेगन",
+         $Pennsylvania: "पेंसिल्वेनिया", $RhodeIsland: "रोड आइलैंड", $SouthCarolina: "साउथ कैरोलाइना", $SouthDakota: "साउथ डकोटा", $Tennessee: "टेनेसी", $Texas: "टेक्सस",
+         $Utah: "यूटा", $Vermont: "वरमॉन्ट", $Virginia: "वर्जीनिया", $Washington: "वॉशिंगटन", $WestVirginia: "वेस्ट वर्जीनिया", $Wisconsin: "विस्कॉन्सिन", $Wyoming: "वायोमिंग",
+         $DistrictofColumbia: "डिस्ट्रिक्ट ऑफ़ कोलंबिया", $AmericanSamoa: "अमेरिकी समोआ", $Guam: "गुआम", $NorthernMarianaIslands: "उत्तरी मारियाना द्वीपसमूह", $PuertoRico: "प्यूर्टो रिको",
+         $USVirginIslands: "अमेरिकी वर्जिन द्वीपसमूह",
+
+         $Acre: "आक्री", $Alagoas: "अलागोआस", $Amapa: "अमापा", $Amazonas: "अमाज़ोनास", $Bahia: "बाहिया", $Ceara: "सिआरा", $DistritoFederal: "संघीय ज़िला", $EspiritoSanto: "एस्पिरितु सांतु",
+         $Goias: "गोयास", $Maranhao: "मारान्याओ", $MatoGross: "मातो ग्रोसो", $MatoGrossodoSul: "मातो ग्रोसो दो सुल", $MinasGerais: "मिनास जेराइस", $Para: "पारा", $Paraiba: "पाराइबा",
+         $Parana: "पराना", $Pernambuco: "पेरनाम्बुको", $Piaui: "पियाउई", $RiodeJaneiro: "रियो डी जनेरियो", $RiodoNort: "रियो ग्रांडे दो नोर्ते", $RiodoSul: "रियो ग्रांडे दो सुल", $Rondonia: "रोंडोनिया",
+         $Roraima: "रोराइमा", $SantaCatarina: "सांता कैटरीना", $SaoPaulo: "साओ पाउलो", $Sergipe: "सेर्जिपे", $Tocantins: "तोकांतिंस", 
+
+         $Alsace: "अल्सास", $Aquitaine: "अकितेन", $Auvergne: "ओवेरन्य", $Brittany: "ब्रिटनी", $Burgundy: "बर्गंडी", $CentreValdeLoire: "सांत्र-वैल द लोआर", $ChampagneArdenne: "शांपान्य-आर्देन",
+         $FrancheComte: "फ़्रांश-कॉंते", $IledeFrance: "ईल-द-फ़्रांस", $LanguedocRoussillon: "लांगदोक-रूसियों", $Limousin: "लिमूज़ैं", $Lorraine: "लोरेन", $LowerNormandy: "निचली नॉर्मंडी",
+         $MidiPyrenees: "मिदी-पिरेने", $NordPasdeCalais: "नोर-पा-द-काले", $PaysdelaLoire: "पेई द ला लोआर", $Picardy: "पिकार्डी", $PoitouCharentes: "प्वातू-शारांत",
+         $ProvenceAlpesCotedAzur: "प्रोवांस-आल्प्स-कोत दाज़ूर", $RhoneAlpes: "रोन-आल्प्स", $UpperNormandy: "ऊपरी नॉर्मंडी", 
+   
+         $BadenWurttemberg: "बाडेन-वुर्टेमबर्ग", $Bavaria: "बवेरिया", $Berlin: "बर्लिन", $Brandenburg: "ब्रांडेनबर्ग", $Bremen: "ब्रेमेन", $Hamburg: "हैम्बर्ग", $Hesse: "हेसे",
+         $LowerSaxony: "निचला सैक्सोनी", $MecklenburgWesternPomerania: "मेक्लेनबर्ग-पश्चिमी पोमेरेनिया", $NorthRhineWestphalia: "उत्तरी राइन-वेस्टफ़ेलिया", 
+         $RhinelandPalatinate: "राइनलैंड-पलाटिनेट", $Saarland: "सारलैंड", $Saxony: "सैक्सोनी", $SaxonyAnhalt: "सैक्सोनी-अन्हाल्ट", $SchleswigHolstein: "श्लेसविग-होल्स्टीन", $Thuringia: "थुरिंगिया",
+
+         $Abruzzo: "अब्रूज़ो", $AostaValley: "आओस्ता घाटी", $Apulia: "अपुलिया", $Basilicata: "बासिलिकाता", $Calabria: "कालाब्रिया", $Campania: "काम्पानिया", $EmiliaRomagna: "एमिलिया-रोमाग्ना",
+         $FriuliVeneziaGiulia: "फ़्रिउली वेनेज़िया जूलिया", $Lazio: "लात्सियो", $Liguria: "लिगूरिया", $Lombardy: "लोम्बार्डी", $Marche: "मार्के", $Molise: "मोलिज़े", $Piedmont: "पीडमोंट",
+         $Sardinia: "सार्डिनिया", $Sicily: "सिसिली", $TrentinoSouthTyrol: "त्रेंतिनो-दक्षिण टिरोल", $Tuscany: "टस्कनी", $Umbria: "उम्ब्रिया", $Veneto: "वेनेतो", 
+
+         $Andalusia: "अंदलूसिया", $Aragon: "आरागॉन", $Asturias: "आस्तूरियास", $BalearicIslands: "बलेआरिक द्वीपसमूह", $BasqueCountry: "बास्क देश", $CanaryIslands: "कैनरी द्वीपसमूह",
+         $Cantabria: "कान्ताब्रिया", $CastileandLeon: "कास्तील और लियोन", $CastillaLaMancha: "कास्तिया–ला मांचा", $Catalonia: "कातालोनिया", $CommunityofMadrid: "माद्रिद समुदाय",
+         $Extremadura: "एक्स्त्रेमादुरा", $Galicia: "गालिसिया", $LaRioja: "ला रियोखा", $Navarre: "नावार्रा", $RegionofMurcia: "मुर्सिया क्षेत्र", $ValencianCommunity: "वालेंसिया समुदाय",
+         $Ceuta: "सेउता", $Melilla: "मेलिया",
+
+         $England: "इंग्लैंड", $NorthernIreland: "उत्तरी आयरलैंड", $Scotland: "स्कॉटलैंड", $Wales: "वेल्स"
+         },
+
+      AI: {
+         //. Sample input history to demonstrate various AI tasks
+         InputHistory: "|-|तालिका में क्या है?|आप क्या कर सकते हैं?|चार्ट में क्या है?"
+                     + "|जनवरी में मात्रा का अधिकतम मान क्या है?|अधिकतम मूल्य क्या है?"
+                     + "|ब्राज़ील में वर्ष 2011 के बाद पंजीकृत विक्रेताओं का कुल मूल्य क्या है?"
+                     + "|सबसे आम उपनाम क्या है?"
+                     + "|B से शुरू होने वाले देशों के सभी ठेकेदार चुनें|एशिया के देशों के सभी विक्रेता चुनें|2/1/2014 के बाद पंजीकृत ठेकेदार चुनें"
+                     + "|कुल लाभ के आधार पर शीर्ष 10 पंक्तियाँ फ़िल्टर करें"
+                     + "|मात्रा स्तंभों में शून्येतर अधिकतम और न्यूनतम मान चिह्नित करें और उन पर फ़ोकस करें"
+                     + "|मात्रा स्तंभों के मान दोगुने करें|अमेरिका की तारीखों में 3 महीने जोड़ें"
+                     + "|कनाडा में फ़रवरी के मूल्य 1,234.56 पर सेट करें|Smith उपनाम वाली सभी पंक्तियों में उपनाम Mallory करें"
+                     + "|सभी ठेकेदारों का डेटा सत्यापित करें|सभी विक्रेताओं का डेटा असत्यापित करें और फिर हर महीने बदले गए सभी विक्रेता चुनें"
+                     + "|सभी ठेकेदारों में ब्राज़ील को जर्मनी में बदलें"
+                     + "|यूरोप के सभी ठेकेदार हटाएँ|सभी पंक्तियाँ हटाएँ"
+                     + "|बर्लिन में 100 विक्रेता जोड़ें|10000 ठेकेदार जोड़ें और विवरण सहित उनका डेटा सार्थक यादृच्छिक मानों से भरें"
+                     + "|संयुक्त राज्य अमेरिका के हर ठेकेदार की प्रति उसकी मूल पंक्ति के नीचे बनाएँ|ब्राज़ील के ठेकेदारों की प्रति बनाएँ, मुख्य पंक्तियों में मान रखें और विवरण खाली रखें"
+                     + "|केवल विस्कॉन्सिन दिखाएँ|10/1/2005 और 7/6/2010 के बीच की तारीखें दिखाएँ|केवल कम से कम 20 अक्षरों वाले नाम दिखाएँ|-20 से कम या 40 से अधिक सभी मात्राएँ फ़िल्टर करें और चिह्नित करें"
+                     + "|कब से स्तंभ के महीने के अनुसार समूह बनाएँ|कुल लाभ को घटते क्रम में छाँटें"
+                     + "|मात्रा और मूल्य छिपाएँ|मार्च को बाएँ खंड में ले जाएँ|इसे पूर्ववत करें"
+                     + "|डेटा xlsx में निर्यात करें"
+         }
+      },
+
+   //. --- Thai texts ---
+   TH: {
+      Text: {
+         $ConfirmDelete: "ต้องการลบ{Count>4 ? 'ผู้รับเหมาที่เลือก <b>'+Math.floor(Count/4)+'</b> ราย' : 'ผู้รับเหมา <b>'+Name+'</b>'}หรือไม่?",
+         $Item1: "มกราคม", $Item2: "กุมภาพันธ์", $Item3: "มีนาคม", $Item4: "เมษายน", $Item5: "พฤษภาคม", $Item6: "มิถุนายน", $Item7: "กรกฎาคม", $Item8: "สิงหาคม", $Item9: "กันยายน", $Item10: "ตุลาคม", $Item11: "พฤศจิกายน", $Item12: "ธันวาคม", 
+         $ItemA: "ปริมาณ", $ItemP:"ราคา", $ItemT:"รวม", $ItemV:"ตรวจแล้ว", $ItemCaptionC:"เดือน", $ItemCaptionC1:"ค่ารายเดือน", $ItemCaptionC2:"คอลัมน์หลัก",
+         $NormalCookie: "ตั้งค่า",
+         $Xall:"ทั้งหมด", $Xverified:"ตรวจแล้ว", $XShown:"แสดง", $Xcells:"เซลล์ใน", $Xrows:"แถว", $Xcolumns:"คอลัมน์", $XData:"ข้อมูล",
+         $Xnone:"ไม่มี", $XLocation: "ที่ตั้ง", $XCalls:"โทรต่อ", $XTotal:"รวม", $XGain:"กำไร", $X2023:"๒๐๒๓", $X2022:"๒๐๒๒", $XTotal2022:"รวม ๒๐๒๒", $XTotal2023:"รวม ๒๐๒๓", $XTotalGain:"กำไรรวม", 
+         $Nrows:"แถว", $Ncells: "เซลล์", $Ndownload: "ดาวน์โหลดเบื้องหลัง",
+         $Lweek:"สัปดาห์", $Lmonth:"เดือน", $Lquarter:"ไตรมาส", $Lhalfyear:"ครึ่งปี", $Lyear:"ปี",
+   
+         $CName:"ชื่อ", $CRegion:"ภูมิภาค", $CCountry:"ประเทศ", $CState:"รัฐหรือจังหวัด", $CPartner:"คู่ค้า", $CSince:"ตั้งแต่", $CCalls:"โทรต่อ", $CRabat:"ส่วนลด", $CYear:"ปี", $CSinceMonthDay:"วันเริ่มต้น", $CSinceWeekDay:"วันในสัปดาห์ที่เริ่ม", $CSinceMonth:"เดือนเริ่มต้น", $CSinceYear:"ปีเริ่มต้น",
+         $CJanuary:"มกราคม", $CFebruary: "กุมภาพันธ์", $CMarch: "มีนาคม", $CApril: "เมษายน", $CMay:"พฤษภาคม", $CJune: "มิถุนายน", $CJuly: "กรกฎาคม", $CAugust:"สิงหาคม", 
+         $CSeptember: "กันยายน", $COctober: "ตุลาคม", $CNovember: "พฤศจิกายน", $CDecember: "ธันวาคม", 
+         $CChart:"กราฟ", $CYear:"ปี", $CTotal:"รวม", $CAmount:"ปริมาณ", $CPrice:"ราคา", $CVerified:"ตรวจแล้ว",
+         $CChartIndex:"กราฟ + ดัชนี", $CNameYear:"ชื่อ + ปี", $CLocation: "ที่ตั้ง", 
+         $CHeaders:"หัวตาราง", $CFilters:"ตัวกรอง", $CTotals:"ยอดรวม", $CLanguages:"ภาษา",
+         $CManipulation:"จัดการ", $CSettings:"ตั้งค่า", $CGroupList:"รายการกลุ่ม", $CInformation:"ข้อมูล", $CClipboard:"คลิปบอร์ด", $CDataSet:"ชุดข้อมูล",
+
+         $CentralSouthAsia: "เอเชียกลางและใต้", $EastAsia: "เอเชียตะวันออกและแปซิฟิก", $EastEurope: "ยุโรปตะวันออก", $MiddleEast: "ตะวันออกกลางและแอฟริกาเหนือ",
+         $NorthCentralAmerica:"อเมริกาเหนือและกลาง", $SouthAmerica:"อเมริกาใต้", $SubSaharanAfrica:"แอฟริกาใต้สะฮารา", $WestEurope:"ยุโรปตะวันตก",
+
+         $Armenia: "อาร์เมเนีย", $Azerbaijan: "อาเซอร์ไบจาน", $Bangladesh: "บังกลาเทศ", $India: "อินเดีย", $Kazakstan: "คาซัคสถาน", $Pakistan: "ปากีสถาน", $SriLanka: "ศรีลังกา", 
+         $Australia: "ออสเตรเลีย", $Brunei: "บรูไน", $China: "จีน", $HongKong: "ฮ่องกง", $Indonesia: "อินโดนีเซีย", $Japan: "ญี่ปุ่น", $KoreaNorth: "เกาหลีเหนือ", $Malaysia: "มาเลเซีย",
+         $Mongolia: "มองโกเลีย", $Myanmar: "เมียนมา", $NewZealand: "นิวซีแลนด์", $PapuaNewGuinea: "ปาปัวนิวกินี", $Philippines: "ฟิลิปปินส์", $Singapore: "สิงคโปร์", 
+         $SouthKorea: "เกาหลีใต้", $Taiwan: "ไต้หวัน", $Thailand: "ไทย", $Vietnam: "เวียดนาม",
+         $Albania: "แอลเบเนีย", $Belarus: "เบลารุส", $Bulgaria: "บัลแกเรีย", $Croatia: "โครเอเชีย", $CzechRepublic: "สาธารณรัฐเช็ก", $Estonia: "เอสโตเนีย", $Hungary: "ฮังการี",
+         $Latvia: "ลัตเวีย", $Lithuania: "ลิทัวเนีย", $Moldova: "มอลโดวา", $Poland: "โปแลนด์", $Romania: "โรมาเนีย", $Russia: "รัสเซีย", $SerbiaMontenegro: "เซอร์เบีย-มอนเตเนโกร",
+         $SlovakRepublic: "สาธารณรัฐสโลวัก", $Slovenia: "สโลวีเนีย", $Ukraine: "ยูเครน",
+         $Algeria: "แอลจีเรีย", $Bahrain: "บาห์เรน", $Egypt: "อียิปต์", $Iran: "อิหร่าน", $Iraq: "อิรัก", $Israel: "อิสราเอล", $Jordan: "จอร์แดน", $Kuwait: "คูเวต", $Lebanon: "เลบานอน",
+         $Libya: "ลิเบีย", $Morocco: "โมร็อกโก", $Oman: "โอมาน", $Qatar: "กาตาร์", $SaudiArabia: "ซาอุดีอาระเบีย", $Syria: "ซีเรีย", $Tunisia: "ตูนิเซีย", $UAE: "สหรัฐอาหรับเอมิเรตส์", $Yemen: "เยเมน",
+         $Bahamas: "บาฮามาส", $Canada: "แคนาดา", $CostaRica: "คอสตาริกา", $Cuba: "คิวบา", $DominicanRepublic: "สาธารณรัฐโดมินิกัน", $ElSalvador: "เอลซัลวาดอร์", $Guatemala: "กัวเตมาลา",
+         $Haiti: "เฮติ", $Honduras: "ฮอนดูรัส", $Jamaica: "จาเมกา", $Mexico: "เม็กซิโก", $Nicaragua: "นิการากัว", $Panama: "ปานามา", $TrinidadTobago: "ตรินิแดดและโตเบโก", 
+         $UnitedStates: "สหรัฐอเมริกา",
+         $Argentina: "อาร์เจนตินา", $Bolivia: "โบลิเวีย", $Brazil: "บราซิล", $Chile: "ชิลี", $Colombia: "โคลอมเบีย", $Ecuador: "เอกวาดอร์", $Guyana: "กายอานา", $Paraguay: "ปารากวัย", $Peru: "เปรู",
+         $Suriname: "ซูรินาม", $Uruguay: "อุรุกวัย", $Venezuela: "เวเนซุเอลา",
+         $Angola: "แองโกลา", $Botswana: "บอตสวานา", $BurkinaFaso: "บูร์กินาฟาโซ", $Cameroon: "แคเมอรูน", $Congo: "คองโก", $Congodr: "สาธารณรัฐประชาธิปไตยคองโก", $CoteIvoire: "โกตดิวัวร์", 
+         $Ethiopia: "เอธิโอเปีย", $Gabon: "กาบอง", $Gambia: "แกมเบีย", $Ghana: "กานา", $Guinea: "กินี", $GuineaBissau: "กินี-บิสเซา", $Kenya: "เคนยา", $Liberia: "ไลบีเรีย",
+         $Madagascar: "มาดากัสการ์", $Malawi: "มาลาวี", $Mali: "มาลี", $Mozambique: "โมซัมบิก", $Namibia: "นามิเบีย", $Niger: "ไนเจอร์", $Nigeria: "ไนจีเรีย", $Senegal: "เซเนกัล",
+         $SierraLeone: "เซียร์ราลีโอน", $Somalia: "โซมาเลีย", $SouthAfrica: "แอฟริกาใต้", $Sudan: "ซูดาน", $Tanzania: "แทนซาเนีย", $Togo: "โตโก", $Uganda: "ยูกันดา", $Zambia: "แซมเบีย",
+         $Zimbabwe: "ซิมบับเว",
+         $Austria: "ออสเตรีย", $Belgium: "เบลเยียม", $Cyprus: "ไซปรัส", $Denmark: "เดนมาร์ก", $Finland: "ฟินแลนด์", $France: "ฝรั่งเศส", $Germany: "เยอรมนี", $Greece: "กรีซ", $Iceland: "ไอซ์แลนด์",
+         $Ireland: "ไอร์แลนด์", $Italy: "อิตาลี", $Luxembourg: "ลักเซมเบิร์ก", $Malta: "มอลตา", $Netherlands: "เนเธอร์แลนด์", $Norway: "นอร์เวย์", $Portugal: "โปรตุเกส", $Spain: "สเปน",
+         $Sweden: "สวีเดน", $Switzerland: "สวิตเซอร์แลนด์", $Turkey: "ตุรกี", $UnitedKingdom: "สหราชอาณาจักร",
+
+         $AndhraPradesh: "อานธรประเทศ", $ArunachalPradesh: "อรุณาจัลประเทศ", $Assam: "อัสสัม", $Bihar: "พิหาร", $Chhattisgarh: "ฉัตตีสครห์", $Goa: "กัว", $Gujarat: "คุชราต",
+         $Haryana: "หรยาณา", $HimachalPradesh: "หิมาจัลประเทศ", $Jharkhand: "ฌารขัณฑ์", $Karnataka: "กรณาฏกะ", $Kerala: "เกรละ", $MadhyaPradesh: "มัธยประเทศ",
+         $Maharashtra: "มหาราษฏระ", $Manipur: "มณีปุระ", $Meghalaya: "เมฆาลัย", $Mizoram: "มิโซรัม", $Nagaland: "นาคาแลนด์", $Odisha: "โอฑิศา", $Punjab: "ปัญจาบ", 
+         $Rajasthan: "ราชสถาน", $Sikkim: "สิกขิม", $TamilNadu: "ทมิฬนาฑู", $Telangana: "เตลังคานา", $Tripura: "ตริปุระ", $UttarPradesh: "อุตตรประเทศ", $Uttarakhand: "อุตตราขัณฑ์",
+         $WestBengal: "เบงกอลตะวันตก", $AndamanandNicobarIslands: "หมู่เกาะอันดามันและนิโคบาร์", $Chandigarh: "จัณฑีครห์", $DadraandNagarHaveliandDamanandDiu: "ดาดราและนครหเวลีและดามันและดีอู",
+         $Delhi: "เดลี", $JammuandKashmir: "ชัมมูและกัศมีร์", $Ladakh: "ลาดักห์", $Lakshadweep: "ลักษทวีป", $Puducherry: "ปุทุจเจรี", 
+   
+         $NewSouthWales: "นิวเซาท์เวลส์", $Queensland: "ควีนส์แลนด์", $SouthAustralia: "เซาท์ออสเตรเลีย", $Tasmania: "แทสเมเนีย", $Victoria: "วิกตอเรีย", $WesternAustralia: "เวสเทิร์นออสเตรเลีย",
+         $AustralianCapitalTerritory: "ออสเตรเลียนแคพิทอลเทร์ริทอรี", $JervisBayTerritory: "ดินแดนอ่าวเจอร์วิส", $NorthernTerritory: "นอร์เทิร์นเทร์ริทอรี", 
+         $AustralianAntarcticTerritory: "ดินแดนแอนตาร์กติกออสเตรเลีย", $ChristmasIsland: "เกาะคริสต์มาส", $CocosKeelingIslands: "หมู่เกาะโคโคส (คีลิง)",
+         $HeardIslandandMcDonaldIslands: "เกาะเฮิร์ดและหมู่เกาะแมกดอนัลด์", $NorfolkIsland: "เกาะนอร์ฟอล์ก", 
+   
+         $Anhui: "อานฮุย", $Beijing: "ปักกิ่ง", $Chongqing: "ฉงชิ่ง", $Fujian: "ฝูเจี้ยน", $Guangdong: "กวางตุ้ง", $Gansu: "กานซู่", $Guizhou: "กุ้ยโจว", $Henan: "เหอหนาน", $Hubei: "หูเป่ย์",
+         $Hebei: "เหอเป่ย์", $Hainan: "ไห่หนาน", $Heilongjiang: "เฮย์หลงเจียง", $Hunan: "หูหนาน", $Jilin: "จี๋หลิน", $Jiangsu: "เจียงซู", $Jiangxi: "เจียงซี", $Liaoning: "เหลียวหนิง", $Qinghai: "ชิงไห่",
+         $Sichuan: "เสฉวน", $Shandong: "ชานตง", $Shanghai: "เซี่ยงไฮ้", $Shaanxi: "ส่านซี", $Shanxi: "ชานซี", $Tianjin: "เทียนจิน", $Yunnan: "ยูนนาน", $Zhejiang: "เจ้อเจียง",
+         $GuangxiZhuang: "กว่างซีจ้วง", $InnerMongolia: "มองโกเลียใน", $NingxiaHui: "หนิงเซี่ยหุย", $XinjiangUyghur: "ซินเจียงอุยกูร์", $Tibet: "ทิเบต",
+
+         $Chubu: "ชูบุ", $Chugoku: "ชูโงกุ", $Hokkaido: "ฮอกไกโด", $Kansai: "คันไซ", $Kanto: "คันโต", $Kyushu: "คิวชู", $Shikoku: "ชิโกกุ", $Tohoku: "โทโฮกุ", 
+
+         $Alberta: "แอลเบอร์ตา", $BritishColumbia: "บริติชโคลัมเบีย", $Manitoba: "แมนิโทบา", $NewBrunswick: "นิวบรันสวิก", $NewfoundlandandLabrador: "นิวฟันด์แลนด์และแลบราดอร์",
+         $NovaScotia: "โนวาสโกเชีย", $Ontario: "ออนแทรีโอ", $PrinceEdwardIsland: "พรินซ์เอ็ดเวิร์ดไอแลนด์", $Quebec: "ควิเบก", $Saskatchewan: "ซัสแคตเชวัน",
+
+         $Alabama: "แอละแบมา", $Alaska: "อะแลสกา", $Arizona: "แอริโซนา", $Arkansas: "อาร์คันซอ", $California: "แคลิฟอร์เนีย", $Colorado: "โคโลราโด", $Connecticut: "คอนเนตทิคัต",
+         $Delaware: "เดลาแวร์", $Florida: "ฟลอริดา", $Georgia: "จอร์เจีย", $Hawaii: "ฮาวาย", $Idaho: "ไอดาโฮ", $Illinois: "อิลลินอยส์", $Indiana: "อินดีแอนา", $Iowa: "ไอโอวา", $Kansas: "แคนซัส",
+         $Kentucky: "เคนทักกี", $Louisiana: "ลุยเซียนา", $Maine: "เมน", $Maryland: "แมริแลนด์", $Massachusetts: "แมสซาชูเซตส์", $Michigan: "มิชิแกน", $Minnesota: "มินนิโซตา",
+         $Mississippi: "มิสซิสซิปปี", $Missouri: "มิสซูรี", $Montana: "มอนแทนา", $Nebraska: "เนแบรสกา", $Nevada: "เนวาดา", $NewHampshire: "นิวแฮมป์เชียร์", $NewJersey: "นิวเจอร์ซีย์",
+         $NewMexico: "นิวเม็กซิโก", $NewYork: "นิวยอร์ก", $NorthCarolina: "นอร์ทแคโรไลนา", $NorthDakota: "นอร์ทดาโคตา", $Ohio: "โอไฮโอ", $Oklahoma: "โอคลาโฮมา", $Oregon: "ออริกอน",
+         $Pennsylvania: "เพนซิลเวเนีย", $RhodeIsland: "โรดไอแลนด์", $SouthCarolina: "เซาท์แคโรไลนา", $SouthDakota: "เซาท์ดาโคตา", $Tennessee: "เทนเนสซี", $Texas: "เท็กซัส",
+         $Utah: "ยูทาห์", $Vermont: "เวอร์มอนต์", $Virginia: "เวอร์จิเนีย", $Washington: "วอชิงตัน", $WestVirginia: "เวสต์เวอร์จิเนีย", $Wisconsin: "วิสคอนซิน", $Wyoming: "ไวโอมิง",
+         $DistrictofColumbia: "ดิสตริกต์ออฟโคลัมเบีย", $AmericanSamoa: "อเมริกันซามัว", $Guam: "กวม", $NorthernMarianaIslands: "หมู่เกาะนอร์เทิร์นมาเรียนา", $PuertoRico: "ปวยร์โตรีโก",
+         $USVirginIslands: "หมู่เกาะเวอร์จินของสหรัฐ",
+
+         $Acre: "อากรี", $Alagoas: "อาลาโกอัส", $Amapa: "อามาปา", $Amazonas: "อามาโซนัส", $Bahia: "บาเอีย", $Ceara: "เซอารา", $DistritoFederal: "เฟเดอรัลดิสตริกต์", $EspiritoSanto: "เอสปีรีตูซานตู",
+         $Goias: "โกยาส", $Maranhao: "มารันเยา", $MatoGross: "มาตูโกรสซู", $MatoGrossodoSul: "มาตูโกรสซูดูซูล", $MinasGerais: "มีนัสเชไรส์", $Para: "ปารา", $Paraiba: "ปาราอีบา",
+         $Parana: "ปารานา", $Pernambuco: "เปร์นัมบูกู", $Piaui: "ปีเอาอี", $RiodeJaneiro: "รีโอเดจาเนโร", $RiodoNort: "รีอูกรันดีดูนอร์ตี", $RiodoSul: "รีอูกรันดีดูซูล", $Rondonia: "รอนโดเนีย",
+         $Roraima: "โฮไรมา", $SantaCatarina: "ซานตากาตารีนา", $SaoPaulo: "เซาเปาลู", $Sergipe: "เซร์ชีปี", $Tocantins: "โตกันชีนส์", 
+
+         $Alsace: "อาลซัส", $Aquitaine: "อากีแตน", $Auvergne: "โอแวร์ญ", $Brittany: "บริตทานี", $Burgundy: "เบอร์กันดี", $CentreValdeLoire: "ซ็องทร์-วาลเดอลัวร์", $ChampagneArdenne: "ช็องปาญ-อาร์แดน",
+         $FrancheComte: "ฟร็องช์-กงเต", $IledeFrance: "อีล-เดอ-ฟร็องส์", $LanguedocRoussillon: "ล็องก์ด็อก-รูซียง", $Limousin: "ลีมูแซ็ง", $Lorraine: "ลอแรน", $LowerNormandy: "นอร์ม็องดีตอนล่าง",
+         $MidiPyrenees: "มีดี-ปีเรเน", $NordPasdeCalais: "นอร์-ปา-เดอ-กาแล", $PaysdelaLoire: "เปอีเดอลาลัวร์", $Picardy: "ปีการ์ดี", $PoitouCharentes: "ปัวตู-ชาร็องต์",
+         $ProvenceAlpesCotedAzur: "พรอว็องซาลป์-โกตดาซูร์", $RhoneAlpes: "โรนาลป์", $UpperNormandy: "นอร์ม็องดีตอนบน", 
+   
+         $BadenWurttemberg: "บาเดิน-เวือร์ทเทิมแบร์ค", $Bavaria: "บาวาเรีย", $Berlin: "เบอร์ลิน", $Brandenburg: "บรันเดินบวร์ค", $Bremen: "เบรเมิน", $Hamburg: "ฮัมบูร์ก", $Hesse: "เฮ็สเซิน",
+         $LowerSaxony: "โลเวอร์แซกโซนี", $MecklenburgWesternPomerania: "เมคเลินบวร์ค-ฟอร์พ็อมเมิร์น", $NorthRhineWestphalia: "นอร์ทไรน์-เว็สท์ฟาเลิน", 
+         $RhinelandPalatinate: "ไรน์ลันท์-ฟัลทซ์", $Saarland: "ซาร์ลันท์", $Saxony: "แซกโซนี", $SaxonyAnhalt: "แซกโซนี-อันฮัลท์", $SchleswigHolstein: "ชเลสวิช-ฮ็อลชไตน์", $Thuringia: "ทือริงเงิน",
+
+         $Abruzzo: "อาบรุซโซ", $AostaValley: "วัลเลดาออสตา", $Apulia: "ปุลยา", $Basilicata: "บาซีลีกาตา", $Calabria: "คาลาเบรีย", $Campania: "คัมปาเนีย", $EmiliaRomagna: "เอมีเลีย-โรมัญญา",
+         $FriuliVeneziaGiulia: "ฟรีอูลี-เวเน็ตเซียจูเลีย", $Lazio: "ลัตซีโย", $Liguria: "ลีกูเรีย", $Lombardy: "ลอมบาร์เดีย", $Marche: "มาร์เค", $Molise: "โมลีเซ", $Piedmont: "ปีเยมอนเต",
+         $Sardinia: "ซาร์ดิเนีย", $Sicily: "ซิซิลี", $TrentinoSouthTyrol: "เตรนตีโน-เซาท์ไทรอล", $Tuscany: "ทัสคานี", $Umbria: "อุมเบรีย", $Veneto: "เวเนโต", 
+
+         $Andalusia: "อันดาลูเซีย", $Aragon: "อารากอน", $Asturias: "อัสตูเรียส", $BalearicIslands: "หมู่เกาะแบลีแอริก", $BasqueCountry: "แคว้นบาสก์", $CanaryIslands: "หมู่เกาะคะแนรี",
+         $Cantabria: "กันตาเบรีย", $CastileandLeon: "กัสติยาและเลออน", $CastillaLaMancha: "กัสติยา–ลามันชา", $Catalonia: "กาตาลุญญา", $CommunityofMadrid: "แคว้นมาดริด",
+         $Extremadura: "เอกซ์เตรมาดูรา", $Galicia: "กาลิเซีย", $LaRioja: "ลารีโอฆา", $Navarre: "นาวาร์", $RegionofMurcia: "แคว้นมูร์เซีย", $ValencianCommunity: "แคว้นบาเลนเซีย",
+         $Ceuta: "เซวตา", $Melilla: "เมลียา",
+
+         $England: "อังกฤษ", $NorthernIreland: "ไอร์แลนด์เหนือ", $Scotland: "สกอตแลนด์", $Wales: "เวลส์"
+         },
+
+      AI: {
+         //. Sample input history to demonstrate various AI tasks
+         InputHistory: "|-|ในตารางมีอะไรบ้าง?|คุณทำอะไรได้บ้าง?|ในกราฟมีอะไรบ้าง?"
+                     + "|ค่าปริมาณสูงสุดในเดือนมกราคมคือเท่าไร?|ราคาสูงสุดคือเท่าไร?"
+                     + "|ราคารวมของผู้ขายในบราซิลที่ลงทะเบียนหลังปี 2011 คือเท่าไร?"
+                     + "|นามสกุลใดพบบ่อยที่สุด?"
+                     + "|เลือกผู้รับเหมาทั้งหมดจากประเทศที่ขึ้นต้นด้วย B|เลือกผู้ขายทั้งหมดจากประเทศในเอเชีย|เลือกผู้รับเหมาที่ลงทะเบียนหลัง 2/1/2014"
+                     + "|กรอง 10 แถวแรกตามกำไรรวมสูงสุด"
+                     + "|ทำเครื่องหมายและโฟกัสค่าสูงสุดและต่ำสุดที่ไม่ใช่ศูนย์ในคอลัมน์ปริมาณ"
+                     + "|เพิ่มค่าในคอลัมน์ปริมาณเป็นสองเท่า|เพิ่ม 3 เดือนให้วันที่ในอเมริกา"
+                     + "|ตั้งราคาเดือนกุมภาพันธ์ในแคนาดาเป็น 1,234.56|เปลี่ยนนามสกุลในทุกแถวที่มีนามสกุล Smith เป็น Mallory"
+                     + "|ตั้งข้อมูลผู้รับเหมาทั้งหมดเป็นตรวจแล้ว|ตั้งข้อมูลผู้ขายทั้งหมดเป็นยังไม่ตรวจ แล้วเลือกผู้ขายทั้งหมดที่มีการเปลี่ยนแปลงในทุกเดือน"
+                     + "|เปลี่ยนบราซิลเป็นเยอรมนีในผู้รับเหมาทั้งหมด"
+                     + "|ลบผู้รับเหมาทั้งหมดจากยุโรป|ลบทุกแถว"
+                     + "|เพิ่มผู้ขาย 100 รายในเบอร์ลิน|เพิ่มผู้รับเหมา 10000 รายและกรอกข้อมูลด้วยค่าสุ่มที่สมเหตุสมผล รวมทั้งรายละเอียด"
+                     + "|คัดลอกผู้รับเหมาจากสหรัฐอเมริกาไว้ใต้แถวต้นฉบับแต่ละแถว|คัดลอกผู้รับเหมาจากบราซิล โดยคงค่าในแถวหลักและเว้นรายละเอียดว่าง"
+                     + "|แสดงเฉพาะวิสคอนซิน|แสดงวันที่ระหว่าง 10/1/2005 และ 7/6/2010|แสดงเฉพาะชื่อที่มีอย่างน้อย 20 ตัวอักษร|กรองและทำเครื่องหมายค่าปริมาณทั้งหมดที่น้อยกว่า -20 หรือมากกว่า 40"
+                     + "|จัดกลุ่มตามเดือนจากคอลัมน์ตั้งแต่|เรียงกำไรรวมจากมากไปน้อย"
+                     + "|ซ่อนปริมาณและราคา|ย้ายมีนาคมไปส่วนซ้าย|เลิกทำ"
+                     + "|ส่งออกข้อมูลเป็น xlsx"
+         }
+      },
+
+   //. --- Arabic texts ---
+   AR: {
+      Text: {
+         $ConfirmDelete: "هل تريد حذف {Count>4 ? '<b>'+Math.floor(Count/4)+'</b> من المتعاقدين المحددين' : 'المتعاقد <b>'+Name+'</b>'}؟",
+         $Item1: "يناير", $Item2: "فبراير", $Item3: "مارس", $Item4: "أبريل", $Item5: "مايو", $Item6: "يونيو", $Item7: "يوليو", $Item8: "أغسطس", $Item9: "سبتمبر", $Item10: "أكتوبر", $Item11: "نوفمبر", $Item12: "ديسمبر", 
+         $ItemA: "الكمية", $ItemP:"السعر", $ItemT:"الإجمالي", $ItemV:"موثّق", $ItemCaptionC:"الأشهر", $ItemCaptionC1:"قيم الأشهر", $ItemCaptionC2:"الأعمدة الأساسية",
+         $NormalCookie: "الإعدادات",
+         $Xall:"الكل", $Xverified:"موثّق", $XShown:"المعروض", $Xcells:"خلايا في", $Xrows:"صفوف", $Xcolumns:"أعمدة", $XData:"بيانات",
+         $Xnone:"لا شيء", $XLocation: "الموقع", $XCalls:"مكالمات لكل", $XTotal:"الإجمالي",   $XGain:"الربح", $XTotal2022:"إجمالي 2022", $XTotal2023:"إجمالي 2023", $XTotalGain:"إجمالي الربح", 
+         $Nrows:"صفوف", $Ncells: "خلايا", $Ndownload: "تنزيل في الخلفية",
+         $Lweek:"أسبوع", $Lmonth:"شهر", $Lquarter:"ربع سنة", $Lhalfyear:"نصف سنة", $Lyear:"سنة",
+   
+         $CName:"الاسم", $CRegion:"المنطقة", $CCountry:"البلد", $CState:"الولاية أو المقاطعة", $CPartner:"الشريك", $CSince:"منذ", $CCalls:"مكالمات لكل", $CRabat:"الخصم", $CYear:"السنة", $CSinceMonthDay:"يوم البدء", $CSinceWeekDay:"يوم أسبوع البدء", $CSinceMonth:"شهر البدء", $CSinceYear:"سنة البدء",
+         $CJanuary:"يناير", $CFebruary: "فبراير", $CMarch: "مارس", $CApril: "أبريل", $CMay:"مايو", $CJune: "يونيو", $CJuly: "يوليو", $CAugust:"أغسطس", 
+         $CSeptember: "سبتمبر", $COctober: "أكتوبر", $CNovember: "نوفمبر", $CDecember: "ديسمبر", 
+         $CChart:"مخطط", $CYear:"السنة", $CTotal:"الإجمالي", $CAmount:"الكمية", $CPrice:"السعر", $CVerified:"موثّق",
+         $CChartIndex:"مخطط + فهرس", $CNameYear:"الاسم + السنة", $CLocation: "الموقع", 
+         $CHeaders:"العناوين", $CFilters:"المرشحات", $CTotals:"الإجماليات", $CLanguages:"اللغة",
+         $CManipulation:"عمليات", $CSettings:"الإعدادات", $CGroupList:"قائمة التجميع", $CInformation:"معلومات", $CClipboard:"الحافظة", $CDataSet:"مجموعة بيانات",
+
+         $CentralSouthAsia: "آسيا الوسطى والجنوبية", $EastAsia: "شرق آسيا والمحيط الهادئ", $EastEurope: "أوروبا الشرقية", $MiddleEast: "الشرق الأوسط وشمال أفريقيا",
+         $NorthCentralAmerica:"أمريكا الشمالية والوسطى", $SouthAmerica:"أمريكا الجنوبية", $SubSaharanAfrica:"أفريقيا جنوب الصحراء", $WestEurope:"أوروبا الغربية",
+
+         $Armenia: "أرمينيا", $Azerbaijan: "أذربيجان", $Bangladesh: "بنغلاديش", $India: "الهند", $Kazakstan: "كازاخستان", $Pakistan: "باكستان", $SriLanka: "سريلانكا", 
+         $Australia: "أستراليا", $Brunei: "بروناي", $China: "الصين", $HongKong: "هونغ كونغ", $Indonesia: "إندونيسيا", $Japan: "اليابان", $KoreaNorth: "كوريا الشمالية", $Malaysia: "ماليزيا",
+         $Mongolia: "منغوليا", $Myanmar: "ميانمار", $NewZealand: "نيوزيلندا", $PapuaNewGuinea: "بابوا غينيا الجديدة", $Philippines: "الفلبين", $Singapore: "سنغافورة", 
+         $SouthKorea: "كوريا الجنوبية", $Taiwan: "تايوان", $Thailand: "تايلاند", $Vietnam: "فيتنام",
+         $Albania: "ألبانيا", $Belarus: "بيلاروسيا", $Bulgaria: "بلغاريا", $Croatia: "كرواتيا", $CzechRepublic: "جمهورية التشيك", $Estonia: "إستونيا", $Hungary: "المجر",
+         $Latvia: "لاتفيا", $Lithuania: "ليتوانيا", $Moldova: "مولدوفا", $Poland: "بولندا", $Romania: "رومانيا", $Russia: "روسيا", $SerbiaMontenegro: "صربيا والجبل الأسود",
+         $SlovakRepublic: "جمهورية سلوفاكيا", $Slovenia: "سلوفينيا", $Ukraine: "أوكرانيا",
+         $Algeria: "الجزائر", $Bahrain: "البحرين", $Egypt: "مصر", $Iran: "إيران", $Iraq: "العراق", $Israel: "إسرائيل", $Jordan: "الأردن", $Kuwait: "الكويت", $Lebanon: "لبنان",
+         $Libya: "ليبيا", $Morocco: "المغرب", $Oman: "عُمان", $Qatar: "قطر", $SaudiArabia: "السعودية", $Syria: "سوريا", $Tunisia: "تونس", $UAE: "الإمارات", $Yemen: "اليمن",
+         $Bahamas: "باهاماس", $Canada: "كندا", $CostaRica: "كوستاريكا", $Cuba: "كوبا", $DominicanRepublic: "جمهورية الدومينيكان", $ElSalvador: "السلفادور", $Guatemala: "غواتيمالا",
+         $Haiti: "هايتي", $Honduras: "هندوراس", $Jamaica: "جامايكا", $Mexico: "المكسيك", $Nicaragua: "نيكاراغوا", $Panama: "بنما", $TrinidadTobago: "ترينيداد وتوباغو", 
+         $UnitedStates: "الولايات المتحدة",
+         $Argentina: "الأرجنتين", $Bolivia: "بوليفيا", $Brazil: "البرازيل", $Chile: "تشيلي", $Colombia: "كولومبيا", $Ecuador: "الإكوادور", $Guyana: "غيانا", $Paraguay: "باراغواي", $Peru: "بيرو",
+         $Suriname: "سورينام", $Uruguay: "أوروغواي", $Venezuela: "فنزويلا",
+         $Angola: "أنغولا", $Botswana: "بوتسوانا", $BurkinaFaso: "بوركينا فاسو", $Cameroon: "الكاميرون", $Congo: "الكونغو", $Congodr: "الكونغو الديمقراطية", $CoteIvoire: "ساحل العاج", 
+         $Ethiopia: "إثيوبيا", $Gabon: "الغابون", $Gambia: "غامبيا", $Ghana: "غانا", $Guinea: "غينيا", $GuineaBissau: "غينيا بيساو", $Kenya: "كينيا", $Liberia: "ليبيريا",
+         $Madagascar: "مدغشقر", $Malawi: "مالاوي", $Mali: "مالي", $Mozambique: "موزمبيق", $Namibia: "ناميبيا", $Niger: "النيجر", $Nigeria: "نيجيريا", $Senegal: "السنغال",
+         $SierraLeone: "سيراليون", $Somalia: "الصومال", $SouthAfrica: "جنوب أفريقيا", $Sudan: "السودان", $Tanzania: "تنزانيا", $Togo: "توغو", $Uganda: "أوغندا", $Zambia: "زامبيا",
+         $Zimbabwe: "زيمبابوي",
+         $Austria: "النمسا", $Belgium: "بلجيكا", $Cyprus: "قبرص", $Denmark: "الدنمارك", $Finland: "فنلندا", $France: "فرنسا", $Germany: "ألمانيا", $Greece: "اليونان", $Iceland: "آيسلندا",
+         $Ireland: "أيرلندا", $Italy: "إيطاليا", $Luxembourg: "لوكسمبورغ", $Malta: "مالطا", $Netherlands: "هولندا", $Norway: "النرويج", $Portugal: "البرتغال", $Spain: "إسبانيا",
+         $Sweden: "السويد", $Switzerland: "سويسرا", $Turkey: "تركيا", $UnitedKingdom: "المملكة المتحدة",
+
+         $AndhraPradesh: "أندرا براديش", $ArunachalPradesh: "أروناتشال براديش", $Assam: "آسام", $Bihar: "بيهار", $Chhattisgarh: "تشاتيسغار", $Goa: "غوا", $Gujarat: "غوجارات",
+         $Haryana: "هاريانا", $HimachalPradesh: "هيماجال براديش", $Jharkhand: "جهارخاند", $Karnataka: "كارناتاكا", $Kerala: "كيرالا", $MadhyaPradesh: "ماديا براديش",
+         $Maharashtra: "ماهاراشترا", $Manipur: "مانيبور", $Meghalaya: "ميغالايا", $Mizoram: "ميزورام", $Nagaland: "ناغالاند", $Odisha: "أوديشا", $Punjab: "البنجاب", 
+         $Rajasthan: "راجستان", $Sikkim: "سيكيم", $TamilNadu: "تاميل نادو", $Telangana: "تلنغانا", $Tripura: "تريبورا", $UttarPradesh: "أتر براديش", $Uttarakhand: "أوتاراخند",
+         $WestBengal: "البنغال الغربية", $AndamanandNicobarIslands: "جزر أندمان ونيكوبار", $Chandigarh: "شانديغار", $DadraandNagarHaveliandDamanandDiu: "دادرا وناغار هافيلي ودامان وديو",
+         $Delhi: "دلهي", $JammuandKashmir: "جامو وكشمير", $Ladakh: "لداخ", $Lakshadweep: "لكشديب", $Puducherry: "بودوتشيري", 
+   
+         $NewSouthWales: "نيو ساوث ويلز", $Queensland: "كوينزلاند", $SouthAustralia: "جنوب أستراليا", $Tasmania: "تسمانيا", $Victoria: "فيكتوريا", $WesternAustralia: "أستراليا الغربية",
+         $AustralianCapitalTerritory: "إقليم العاصمة الأسترالية", $JervisBayTerritory: "إقليم خليج جيرفيس", $NorthernTerritory: "الإقليم الشمالي", 
+         $AustralianAntarcticTerritory: "الإقليم الأسترالي في أنتاركتيكا", $ChristmasIsland: "جزيرة كريسماس", $CocosKeelingIslands: "جزر كوكوس (كيلينغ)",
+         $HeardIslandandMcDonaldIslands: "جزيرة هيرد وجزر ماكدونالد", $NorfolkIsland: "جزيرة نورفولك", 
+   
+         $Anhui: "آنهوي", $Beijing: "بكين", $Chongqing: "تشونغتشينغ", $Fujian: "فوجيان", $Guangdong: "غوانغدونغ", $Gansu: "قانسو", $Guizhou: "قويتشو", $Henan: "خنان", $Hubei: "خوبي",
+         $Hebei: "خبي", $Hainan: "هاينان", $Heilongjiang: "هيلونغجيانغ", $Hunan: "خونان", $Jilin: "جيلين", $Jiangsu: "جيانغسو", $Jiangxi: "جيانغشي", $Liaoning: "لياونينغ", $Qinghai: "تشينغهاي",
+         $Sichuan: "سيتشوان", $Shandong: "شاندونغ", $Shanghai: "شنغهاي", $Shaanxi: "شنشي", $Shanxi: "شانشي", $Tianjin: "تيانجين", $Yunnan: "يونان", $Zhejiang: "جيجيانغ",
+         $GuangxiZhuang: "قوانغشي تشوانغ", $InnerMongolia: "منغوليا الداخلية", $NingxiaHui: "نينغشيا خوي", $XinjiangUyghur: "شينجيانغ الأويغورية", $Tibet: "التبت",
+
+         $Chubu: "تشوبو", $Chugoku: "تشوغوكو", $Hokkaido: "هوكايدو", $Kansai: "كانساي", $Kanto: "كانتو", $Kyushu: "كيوشو", $Shikoku: "شيكوكو", $Tohoku: "توهوكو", 
+
+         $Alberta: "ألبرتا", $BritishColumbia: "كولومبيا البريطانية", $Manitoba: "مانيتوبا", $NewBrunswick: "نيو برونزويك", $NewfoundlandandLabrador: "نيوفاوندلاند ولابرادور",
+         $NovaScotia: "نوفا سكوشا", $Ontario: "أونتاريو", $PrinceEdwardIsland: "جزيرة الأمير إدوارد", $Quebec: "كيبيك", $Saskatchewan: "ساسكاتشوان",
+
+         $Alabama: "ألاباما", $Alaska: "ألاسكا", $Arizona: "أريزونا", $Arkansas: "أركنساس", $California: "كاليفورنيا", $Colorado: "كولورادو", $Connecticut: "كونيتيكت",
+         $Delaware: "ديلاوير", $Florida: "فلوريدا", $Georgia: "جورجيا", $Hawaii: "هاواي", $Idaho: "أيداهو", $Illinois: "إلينوي", $Indiana: "إنديانا", $Iowa: "آيوا", $Kansas: "كانساس",
+         $Kentucky: "كنتاكي", $Louisiana: "لويزيانا", $Maine: "مين", $Maryland: "ماريلاند", $Massachusetts: "ماساتشوستس", $Michigan: "ميشيغان", $Minnesota: "مينيسوتا",
+         $Mississippi: "ميسيسيبي", $Missouri: "ميزوري", $Montana: "مونتانا", $Nebraska: "نبراسكا", $Nevada: "نيفادا", $NewHampshire: "نيوهامبشير", $NewJersey: "نيوجيرسي",
+         $NewMexico: "نيومكسيكو", $NewYork: "نيويورك", $NorthCarolina: "كارولاينا الشمالية", $NorthDakota: "داكوتا الشمالية", $Ohio: "أوهايو", $Oklahoma: "أوكلاهوما", $Oregon: "أوريغون",
+         $Pennsylvania: "بنسلفانيا", $RhodeIsland: "رود آيلاند", $SouthCarolina: "كارولاينا الجنوبية", $SouthDakota: "داكوتا الجنوبية", $Tennessee: "تينيسي", $Texas: "تكساس",
+         $Utah: "يوتا", $Vermont: "فيرمونت", $Virginia: "فرجينيا", $Washington: "واشنطن", $WestVirginia: "فرجينيا الغربية", $Wisconsin: "ويسكونسن", $Wyoming: "وايومنغ",
+         $DistrictofColumbia: "مقاطعة كولومبيا", $AmericanSamoa: "ساموا الأمريكية", $Guam: "غوام", $NorthernMarianaIslands: "جزر ماريانا الشمالية", $PuertoRico: "بورتوريكو",
+         $USVirginIslands: "جزر العذراء الأمريكية",
+
+         $Acre: "أكري", $Alagoas: "ألاغواس", $Amapa: "أمابا", $Amazonas: "أمازوناس", $Bahia: "باهيا", $Ceara: "سيارا", $DistritoFederal: "المقاطعة الفدرالية", $EspiritoSanto: "إسبيريتو سانتو",
+         $Goias: "غوياس", $Maranhao: "مارانهاو", $MatoGross: "ماتو غروسو", $MatoGrossodoSul: "ماتو غروسو دو سول", $MinasGerais: "ميناس جيرايس", $Para: "بارا", $Paraiba: "بارايبا",
+         $Parana: "بارانا", $Pernambuco: "بيرنامبوكو", $Piaui: "بياوي", $RiodeJaneiro: "ريو دي جانيرو", $RiodoNort: "ريو غراندي دو نورتي", $RiodoSul: "ريو غراندي دو سول", $Rondonia: "روندونيا",
+         $Roraima: "رورايما", $SantaCatarina: "سانتا كاتارينا", $SaoPaulo: "ساو باولو", $Sergipe: "سيرجيبي", $Tocantins: "توكانتينس", 
+
+         $Alsace: "الألزاس", $Aquitaine: "آكيتين", $Auvergne: "أوفرن", $Brittany: "بريتاني", $Burgundy: "بورغونيا", $CentreValdeLoire: "سانتر فال دو لوار", $ChampagneArdenne: "شامبان أردين",
+         $FrancheComte: "فرانش كونتيه", $IledeFrance: "إيل دو فرانس", $LanguedocRoussillon: "لانغدوك روسيون", $Limousin: "ليموزان", $Lorraine: "لورين", $LowerNormandy: "نورماندي السفلى",
+         $MidiPyrenees: "ميدي بيرينيه", $NordPasdeCalais: "نور با دو كاليه", $PaysdelaLoire: "بايي دو لا لوار", $Picardy: "بيكاردي", $PoitouCharentes: "بواتو شارانت",
+         $ProvenceAlpesCotedAzur: "بروفانس ألب كوت دازور", $RhoneAlpes: "رون ألب", $UpperNormandy: "نورماندي العليا", 
+   
+         $BadenWurttemberg: "بادن فورتمبيرغ", $Bavaria: "بافاريا", $Berlin: "برلين", $Brandenburg: "براندنبورغ", $Bremen: "بريمن", $Hamburg: "هامبورغ", $Hesse: "هسن",
+         $LowerSaxony: "ساكسونيا السفلى", $MecklenburgWesternPomerania: "مكلنبورغ فوربومرن", $NorthRhineWestphalia: "شمال الراين وستفاليا", 
+         $RhinelandPalatinate: "راينلاند بالاتينات", $Saarland: "سارلاند", $Saxony: "ساكسونيا", $SaxonyAnhalt: "ساكسونيا أنهالت", $SchleswigHolstein: "شليسفيغ هولشتاين", $Thuringia: "تورينغن",
+
+         $Abruzzo: "أبروتسو", $AostaValley: "وادي أوستا", $Apulia: "بوليا", $Basilicata: "بازيليكاتا", $Calabria: "كالابريا", $Campania: "كامبانيا", $EmiliaRomagna: "إميليا رومانيا",
+         $FriuliVeneziaGiulia: "فريولي فينيتسيا جوليا", $Lazio: "لاتسيو", $Liguria: "ليغوريا", $Lombardy: "لومبارديا", $Marche: "ماركي", $Molise: "موليزي", $Piedmont: "بييمونتي",
+         $Sardinia: "سردينيا", $Sicily: "صقلية", $TrentinoSouthTyrol: "ترينتينو جنوب تيرول", $Tuscany: "توسكانا", $Umbria: "أومبريا", $Veneto: "فينيتو", 
+
+         $Andalusia: "الأندلس", $Aragon: "أراغون", $Asturias: "أستورياس", $BalearicIslands: "جزر البليار", $BasqueCountry: "إقليم الباسك", $CanaryIslands: "جزر الكناري",
+         $Cantabria: "كانتابريا", $CastileandLeon: "قشتالة وليون", $CastillaLaMancha: "قشتالة لا مانتشا", $Catalonia: "كتالونيا", $CommunityofMadrid: "منطقة مدريد",
+         $Extremadura: "إكستريمادورا", $Galicia: "غاليسيا", $LaRioja: "لا ريوخا", $Navarre: "نافارا", $RegionofMurcia: "منطقة مرسية", $ValencianCommunity: "منطقة بلنسية",
+         $Ceuta: "سبتة", $Melilla: "مليلية",
+
+         $England: "إنجلترا", $NorthernIreland: "أيرلندا الشمالية", $Scotland: "اسكتلندا", $Wales: "ويلز"
+         },
+
+      AI: {
+         //. Sample input history to demonstrate various AI tasks
+         InputHistory: "|-|ما محتوى الجدول؟|ماذا يمكنك أن تفعل؟|ما محتوى المخططات؟"
+                     + "|ما أعلى قيمة للكمية في يناير؟|ما أعلى سعر؟"
+                     + "|ما إجمالي سعر الموردين المسجلين بعد عام 2011 في البرازيل؟"
+                     + "|ما اسم العائلة الأكثر شيوعًا؟"
+                     + "|حدّد كل المتعاقدين من البلدان التي تبدأ بحرف B|اختر كل الموردين من بلدان آسيا|حدّد المتعاقدين المسجلين بعد 2/1/2014"
+                     + "|رشّح أعلى 10 صفوف حسب إجمالي الربح"
+                     + "|ميّز أعلى وأدنى قيم غير صفرية في أعمدة الكمية وانقل التركيز إليها"
+                     + "|ضاعف القيم في أعمدة الكمية|أضف 3 أشهر إلى التواريخ في أمريكا"
+                     + "|اضبط أسعار فبراير في كندا على 1,234.56|غيّر اسم العائلة Smith إلى Mallory في كل الصفوف"
+                     + "|اجعل بيانات كل المتعاقدين موثّقة|اجعل بيانات كل الموردين غير موثّقة ثم حدّد كل الموردين الذين عُدّلوا في كل شهر"
+                     + "|غيّر البرازيل إلى ألمانيا لدى كل المتعاقدين"
+                     + "|احذف كل المتعاقدين من أوروبا|احذف كل الصفوف"
+                     + "|أضف 100 مورد إلى برلين|أضف 10000 متعاقد واملأ بياناتهم بقيم عشوائية منطقية، بما فيها تفاصيلهم"
+                     + "|انسخ المتعاقدين من الولايات المتحدة أسفل مصادرهم كلٌّ على حدة|انسخ المتعاقدين من البرازيل مع القيم في الصفوف الرئيسية وتفاصيل فارغة"
+                     + "|اعرض ويسكونسن فقط|اعرض التواريخ بين 10/1/2005 و7/6/2010|اعرض فقط الأسماء التي لا تقل عن 20 محرفًا|رشّح وميّز كل الكميات الأقل من -20 أو الأكبر من 40"
+                     + "|جمّع حسب الشهر من حقل «منذ»|رتّب حسب إجمالي الربح تنازليًا"
+                     + "|أخفِ الكمية والسعر|انقل مارس إلى القسم الأيسر|تراجع عن ذلك"
+                     + "|صدّر البيانات إلى xlsx"
+         }
+      },
+
+   //. --- Persian texts ---
+   FA: {
+      Text: {
+         $ConfirmDelete: "آیا می‌خواهید {Count>4 ? '<b>'+Math.floor(Count/4)+'</b> پیمانکار انتخاب‌شده' : 'پیمانکار <b>'+Name+'</b>'} را حذف کنید؟",
+         $Item1: "ژانویه", $Item2: "فوریه", $Item3: "مارس", $Item4: "آوریل", $Item5: "مه", $Item6: "ژوئن", $Item7: "ژوئیه", $Item8: "اوت", $Item9: "سپتامبر", $Item10: "اکتبر", $Item11: "نوامبر", $Item12: "دسامبر", 
+         $ItemA: "مقدار", $ItemP:"قیمت", $ItemT:"جمع", $ItemV:"تأییدشده", $ItemCaptionC:"ماه‌ها", $ItemCaptionC1:"مقادیر ماه‌ها", $ItemCaptionC2:"ستون‌های پایه",
+         $NormalCookie: "تنظیمات",
+         $Xall:"همه", $Xverified:"تأییدشده", $XShown:"نمایش‌یافته", $Xcells:"سلول در", $Xrows:"ردیف", $Xcolumns:"ستون", $XData:"داده‌ها",
+         $Xnone:"هیچ‌کدام", $XLocation: "مکان", $XCalls:"تماس در", $XTotal:"جمع",   $XGain:"سود", $XTotal2022:"جمع 2022", $XTotal2023:"جمع 2023", $XTotalGain:"کل سود", 
+         $Nrows:"ردیف", $Ncells: "سلول", $Ndownload: "بارگیری در پس‌زمینه",
+         $Lweek:"هفته", $Lmonth:"ماه", $Lquarter:"سه‌ماهه", $Lhalfyear:"نیم‌سال", $Lyear:"سال",
+   
+         $CName:"نام", $CRegion:"منطقه", $CCountry:"کشور", $CState:"ایالت یا استان", $CPartner:"شریک", $CSince:"از تاریخ", $CCalls:"تماس در", $CRabat:"تخفیف", $CYear:"سال", $CSinceMonthDay:"روز شروع", $CSinceWeekDay:"روز هفتهٔ شروع", $CSinceMonth:"ماه شروع", $CSinceYear:"سال شروع",
+         $CJanuary:"ژانویه", $CFebruary: "فوریه", $CMarch: "مارس", $CApril: "آوریل", $CMay:"مه", $CJune: "ژوئن", $CJuly: "ژوئیه", $CAugust:"اوت", 
+         $CSeptember: "سپتامبر", $COctober: "اکتبر", $CNovember: "نوامبر", $CDecember: "دسامبر", 
+         $CChart:"نمودار", $CYear:"سال", $CTotal:"جمع", $CAmount:"مقدار", $CPrice:"قیمت", $CVerified:"تأییدشده",
+         $CChartIndex:"نمودار + شاخص", $CNameYear:"نام + سال", $CLocation: "مکان", 
+         $CHeaders:"سرستون‌ها", $CFilters:"فیلترها", $CTotals:"جمع‌ها", $CLanguages:"زبان",
+         $CManipulation:"عملیات", $CSettings:"تنظیمات", $CGroupList:"فهرست گروه‌بندی", $CInformation:"اطلاعات", $CClipboard:"کلیپ‌بورد", $CDataSet:"مجموعه‌داده",
+
+         $CentralSouthAsia: "آسیای مرکزی و جنوبی", $EastAsia: "شرق آسیا و اقیانوس آرام", $EastEurope: "اروپای شرقی", $MiddleEast: "خاورمیانه و شمال آفریقا",
+         $NorthCentralAmerica:"آمریکای شمالی و مرکزی", $SouthAmerica:"آمریکای جنوبی", $SubSaharanAfrica:"آفریقای جنوب صحرا", $WestEurope:"اروپای غربی",
+
+         $Armenia: "ارمنستان", $Azerbaijan: "جمهوری آذربایجان", $Bangladesh: "بنگلادش", $India: "هند", $Kazakstan: "قزاقستان", $Pakistan: "پاکستان", $SriLanka: "سری‌لانکا", 
+         $Australia: "استرالیا", $Brunei: "برونئی", $China: "چین", $HongKong: "هنگ‌کنگ", $Indonesia: "اندونزی", $Japan: "ژاپن", $KoreaNorth: "کرهٔ شمالی", $Malaysia: "مالزی",
+         $Mongolia: "مغولستان", $Myanmar: "میانمار", $NewZealand: "نیوزیلند", $PapuaNewGuinea: "پاپوآ گینهٔ نو", $Philippines: "فیلیپین", $Singapore: "سنگاپور", 
+         $SouthKorea: "کرهٔ جنوبی", $Taiwan: "تایوان", $Thailand: "تایلند", $Vietnam: "ویتنام",
+         $Albania: "آلبانی", $Belarus: "بلاروس", $Bulgaria: "بلغارستان", $Croatia: "کرواسی", $CzechRepublic: "جمهوری چک", $Estonia: "استونی", $Hungary: "مجارستان",
+         $Latvia: "لتونی", $Lithuania: "لیتوانی", $Moldova: "مولداوی", $Poland: "لهستان", $Romania: "رومانی", $Russia: "روسیه", $SerbiaMontenegro: "صربستان و مونته‌نگرو",
+         $SlovakRepublic: "جمهوری اسلواکی", $Slovenia: "اسلوونی", $Ukraine: "اوکراین",
+         $Algeria: "الجزایر", $Bahrain: "بحرین", $Egypt: "مصر", $Iran: "ایران", $Iraq: "عراق", $Israel: "اسرائیل", $Jordan: "اردن", $Kuwait: "کویت", $Lebanon: "لبنان",
+         $Libya: "لیبی", $Morocco: "مراکش", $Oman: "عمان", $Qatar: "قطر", $SaudiArabia: "عربستان سعودی", $Syria: "سوریه", $Tunisia: "تونس", $UAE: "امارات", $Yemen: "یمن",
+         $Bahamas: "باهاما", $Canada: "کانادا", $CostaRica: "کاستاریکا", $Cuba: "کوبا", $DominicanRepublic: "جمهوری دومینیکن", $ElSalvador: "السالوادور", $Guatemala: "گواتمالا",
+         $Haiti: "هائیتی", $Honduras: "هندوراس", $Jamaica: "جامائیکا", $Mexico: "مکزیک", $Nicaragua: "نیکاراگوئه", $Panama: "پاناما", $TrinidadTobago: "ترینیداد و توباگو", 
+         $UnitedStates: "ایالات متحده",
+         $Argentina: "آرژانتین", $Bolivia: "بولیوی", $Brazil: "برزیل", $Chile: "شیلی", $Colombia: "کلمبیا", $Ecuador: "اکوادور", $Guyana: "گویان", $Paraguay: "پاراگوئه", $Peru: "پرو",
+         $Suriname: "سورینام", $Uruguay: "اروگوئه", $Venezuela: "ونزوئلا",
+         $Angola: "آنگولا", $Botswana: "بوتسوانا", $BurkinaFaso: "بورکینافاسو", $Cameroon: "کامرون", $Congo: "کنگو", $Congodr: "کنگوی دموکراتیک", $CoteIvoire: "ساحل عاج", 
+         $Ethiopia: "اتیوپی", $Gabon: "گابن", $Gambia: "گامبیا", $Ghana: "غنا", $Guinea: "گینه", $GuineaBissau: "گینهٔ بیسائو", $Kenya: "کنیا", $Liberia: "لیبریا",
+         $Madagascar: "ماداگاسکار", $Malawi: "مالاوی", $Mali: "مالی", $Mozambique: "موزامبیک", $Namibia: "نامیبیا", $Niger: "نیجر", $Nigeria: "نیجریه", $Senegal: "سنگال",
+         $SierraLeone: "سیرالئون", $Somalia: "سومالی", $SouthAfrica: "آفریقای جنوبی", $Sudan: "سودان", $Tanzania: "تانزانیا", $Togo: "توگو", $Uganda: "اوگاندا", $Zambia: "زامبیا",
+         $Zimbabwe: "زیمبابوه",
+         $Austria: "اتریش", $Belgium: "بلژیک", $Cyprus: "قبرس", $Denmark: "دانمارک", $Finland: "فنلاند", $France: "فرانسه", $Germany: "آلمان", $Greece: "یونان", $Iceland: "ایسلند",
+         $Ireland: "ایرلند", $Italy: "ایتالیا", $Luxembourg: "لوکزامبورگ", $Malta: "مالت", $Netherlands: "هلند", $Norway: "نروژ", $Portugal: "پرتغال", $Spain: "اسپانیا",
+         $Sweden: "سوئد", $Switzerland: "سوئیس", $Turkey: "ترکیه", $UnitedKingdom: "بریتانیا",
+
+         $AndhraPradesh: "آندرا پرادش", $ArunachalPradesh: "آروناچال پرادش", $Assam: "آسام", $Bihar: "بیهار", $Chhattisgarh: "چتیسگر", $Goa: "گوا", $Gujarat: "گجرات",
+         $Haryana: "هاریانا", $HimachalPradesh: "هیماچال پرادش", $Jharkhand: "جارکند", $Karnataka: "کارناتاکا", $Kerala: "کرالا", $MadhyaPradesh: "مادیا پرادش",
+         $Maharashtra: "مهاراشترا", $Manipur: "مانیپور", $Meghalaya: "مگالایا", $Mizoram: "میزورام", $Nagaland: "ناگالند", $Odisha: "اودیشا", $Punjab: "پنجاب", 
+         $Rajasthan: "راجستان", $Sikkim: "سیکیم", $TamilNadu: "تامیل نادو", $Telangana: "تلانگانا", $Tripura: "تریپورا", $UttarPradesh: "اوتار پرادش", $Uttarakhand: "اوتاراکند",
+         $WestBengal: "بنگال غربی", $AndamanandNicobarIslands: "جزایر آندامان و نیکوبار", $Chandigarh: "چندی‌گر", $DadraandNagarHaveliandDamanandDiu: "دادرا و ناگار هاولی و دامان و دیو",
+         $Delhi: "دهلی", $JammuandKashmir: "جامو و کشمیر", $Ladakh: "لداخ", $Lakshadweep: "لاکشادویپ", $Puducherry: "پودوچری", 
+   
+         $NewSouthWales: "نیو ساوت ولز", $Queensland: "کوئینزلند", $SouthAustralia: "استرالیای جنوبی", $Tasmania: "تاسمانی", $Victoria: "ویکتوریا", $WesternAustralia: "استرالیای غربی",
+         $AustralianCapitalTerritory: "قلمرو پایتخت استرالیا", $JervisBayTerritory: "قلمرو خلیج جرویس", $NorthernTerritory: "قلمرو شمالی", 
+         $AustralianAntarcticTerritory: "قلمرو جنوبگان استرالیا", $ChristmasIsland: "جزیرهٔ کریسمس", $CocosKeelingIslands: "جزایر کوکوس (کیلینگ)",
+         $HeardIslandandMcDonaldIslands: "جزیرهٔ هرد و جزایر مک‌دونالد", $NorfolkIsland: "جزیرهٔ نورفک", 
+   
+         $Anhui: "آن‌هویی", $Beijing: "پکن", $Chongqing: "چونگ‌چینگ", $Fujian: "فوجیان", $Guangdong: "گوانگ‌دونگ", $Gansu: "گانسو", $Guizhou: "گوئیژو", $Henan: "هنان", $Hubei: "هوبئی",
+         $Hebei: "هبئی", $Hainan: "هاینان", $Heilongjiang: "هیلونگ‌جیانگ", $Hunan: "هونان", $Jilin: "جیلین", $Jiangsu: "جیانگسو", $Jiangxi: "جیانگشی", $Liaoning: "لیائونینگ", $Qinghai: "چینگهای",
+         $Sichuan: "سیچوان", $Shandong: "شاندونگ", $Shanghai: "شانگهای", $Shaanxi: "شاآنشی", $Shanxi: "شانشی", $Tianjin: "تیانجین", $Yunnan: "یون‌نان", $Zhejiang: "ژجیانگ",
+         $GuangxiZhuang: "گوانگشی ژوانگ", $InnerMongolia: "مغولستان داخلی", $NingxiaHui: "نینگ‌شیا هوئی", $XinjiangUyghur: "سین‌کیانگ اویغور", $Tibet: "تبت",
+
+         $Chubu: "چوبو", $Chugoku: "چوگوکو", $Hokkaido: "هوکایدو", $Kansai: "کانسای", $Kanto: "کانتو", $Kyushu: "کیوشو", $Shikoku: "شیکوکو", $Tohoku: "توهوکو", 
+
+         $Alberta: "آلبرتا", $BritishColumbia: "بریتیش کلمبیا", $Manitoba: "مانیتوبا", $NewBrunswick: "نیوبرانزویک", $NewfoundlandandLabrador: "نیوفاندلند و لابرادور",
+         $NovaScotia: "نوا اسکوشیا", $Ontario: "انتاریو", $PrinceEdwardIsland: "جزیرهٔ پرنس ادوارد", $Quebec: "کبک", $Saskatchewan: "ساسکاچوان",
+
+         $Alabama: "آلاباما", $Alaska: "آلاسکا", $Arizona: "آریزونا", $Arkansas: "آرکانزاس", $California: "کالیفرنیا", $Colorado: "کلرادو", $Connecticut: "کنتیکت",
+         $Delaware: "دلاور", $Florida: "فلوریدا", $Georgia: "جورجیا", $Hawaii: "هاوایی", $Idaho: "آیداهو", $Illinois: "ایلینوی", $Indiana: "ایندیانا", $Iowa: "آیووا", $Kansas: "کانزاس",
+         $Kentucky: "کنتاکی", $Louisiana: "لوئیزیانا", $Maine: "مین", $Maryland: "مریلند", $Massachusetts: "ماساچوست", $Michigan: "میشیگان", $Minnesota: "مینه‌سوتا",
+         $Mississippi: "میسیسیپی", $Missouri: "میزوری", $Montana: "مونتانا", $Nebraska: "نبراسکا", $Nevada: "نوادا", $NewHampshire: "نیوهمپشایر", $NewJersey: "نیوجرسی",
+         $NewMexico: "نیومکزیکو", $NewYork: "نیویورک", $NorthCarolina: "کارولینای شمالی", $NorthDakota: "داکوتای شمالی", $Ohio: "اوهایو", $Oklahoma: "اکلاهما", $Oregon: "اورگن",
+         $Pennsylvania: "پنسیلوانیا", $RhodeIsland: "رود آیلند", $SouthCarolina: "کارولینای جنوبی", $SouthDakota: "داکوتای جنوبی", $Tennessee: "تنسی", $Texas: "تگزاس",
+         $Utah: "یوتا", $Vermont: "ورمانت", $Virginia: "ویرجینیا", $Washington: "واشینگتن", $WestVirginia: "ویرجینیای غربی", $Wisconsin: "ویسکانسین", $Wyoming: "وایومینگ",
+         $DistrictofColumbia: "ناحیهٔ کلمبیا", $AmericanSamoa: "ساموآی آمریکا", $Guam: "گوام", $NorthernMarianaIslands: "جزایر ماریانای شمالی", $PuertoRico: "پورتوریکو",
+         $USVirginIslands: "جزایر ویرجین آمریکا",
+
+         $Acre: "اکری", $Alagoas: "آلاگواس", $Amapa: "آماپا", $Amazonas: "آمازوناس", $Bahia: "باهیا", $Ceara: "سئارا", $DistritoFederal: "ناحیهٔ فدرال", $EspiritoSanto: "اسپیریتو سانتو",
+         $Goias: "گویاس", $Maranhao: "مارانیائو", $MatoGross: "ماتو گروسو", $MatoGrossodoSul: "ماتو گروسو دو سول", $MinasGerais: "میناس ژرایس", $Para: "پارا", $Paraiba: "پارائیبا",
+         $Parana: "پارانا", $Pernambuco: "پرنامبوکو", $Piaui: "پیاوی", $RiodeJaneiro: "ریو دو ژانیرو", $RiodoNort: "ریو گرانده دو نورته", $RiodoSul: "ریو گرانده دو سول", $Rondonia: "روندونیا",
+         $Roraima: "رورایما", $SantaCatarina: "سانتا کاتارینا", $SaoPaulo: "سائو پائولو", $Sergipe: "سرژیپی", $Tocantins: "توکانتینس", 
+
+         $Alsace: "آلزاس", $Aquitaine: "آکیتن", $Auvergne: "اوورنی", $Brittany: "بریتانی", $Burgundy: "بورگونی", $CentreValdeLoire: "سانتر وال دو لوآر", $ChampagneArdenne: "شامپاین آردن",
+         $FrancheComte: "فرانش کنته", $IledeFrance: "ایل دو فرانس", $LanguedocRoussillon: "لانگدوک روسیون", $Limousin: "لیموزن", $Lorraine: "لورن", $LowerNormandy: "نرماندی سفلی",
+         $MidiPyrenees: "میدی پیرنه", $NordPasdeCalais: "نور پا دو کاله", $PaysdelaLoire: "پی دو لا لوآر", $Picardy: "پیکاردی", $PoitouCharentes: "پواتو شارانت",
+         $ProvenceAlpesCotedAzur: "پروانس آلپ کوت دازور", $RhoneAlpes: "رون آلپ", $UpperNormandy: "نرماندی علیا", 
+   
+         $BadenWurttemberg: "بادن وورتمبرگ", $Bavaria: "بایرن", $Berlin: "برلین", $Brandenburg: "براندنبورگ", $Bremen: "برمن", $Hamburg: "هامبورگ", $Hesse: "هسن",
+         $LowerSaxony: "نیدرزاکسن", $MecklenburgWesternPomerania: "مکلنبورگ فورپومرن", $NorthRhineWestphalia: "نوردراین وستفالن", 
+         $RhinelandPalatinate: "راینلاند فالتس", $Saarland: "زارلاند", $Saxony: "زاکسن", $SaxonyAnhalt: "زاکسن آنهالت", $SchleswigHolstein: "اشلسویگ هولشتاین", $Thuringia: "تورینگن",
+
+         $Abruzzo: "آبروتزو", $AostaValley: "درهٔ آئوستا", $Apulia: "آپولیا", $Basilicata: "بازیلیکاتا", $Calabria: "کالابریا", $Campania: "کامپانیا", $EmiliaRomagna: "امیلیا رومانیا",
+         $FriuliVeneziaGiulia: "فریولی ونتزیا جولیا", $Lazio: "لاتزیو", $Liguria: "لیگوریا", $Lombardy: "لمباردی", $Marche: "مارکه", $Molise: "مولیزه", $Piedmont: "پیمونت",
+         $Sardinia: "ساردینیا", $Sicily: "سیسیل", $TrentinoSouthTyrol: "ترنتینو تیرول جنوبی", $Tuscany: "توسکانی", $Umbria: "اومبریا", $Veneto: "ونتو", 
+
+         $Andalusia: "اندلس", $Aragon: "آراگون", $Asturias: "آستوریاس", $BalearicIslands: "جزایر بالئاری", $BasqueCountry: "سرزمین باسک", $CanaryIslands: "جزایر قناری",
+         $Cantabria: "کانتابریا", $CastileandLeon: "کاستیا و لئون", $CastillaLaMancha: "کاستیا لا مانچا", $Catalonia: "کاتالونیا", $CommunityofMadrid: "بخش مادرید",
+         $Extremadura: "اکسترمادورا", $Galicia: "گالیسیا", $LaRioja: "لاریوخا", $Navarre: "ناوارا", $RegionofMurcia: "منطقهٔ مورسیا", $ValencianCommunity: "بخش والنسیا",
+         $Ceuta: "سبته", $Melilla: "ملیلیه",
+
+         $England: "انگلستان", $NorthernIreland: "ایرلند شمالی", $Scotland: "اسکاتلند", $Wales: "ولز"
+         },
+
+      AI: {
+         //. Sample input history to demonstrate various AI tasks
+         InputHistory: "|-|در جدول چیست؟|چه کارهایی می‌توانی انجام دهی؟|در نمودارها چیست؟"
+                     + "|بیشترین مقدار در ستون مقدار در ژانویه چیست؟|بیشترین قیمت چیست؟"
+                     + "|جمع قیمت فروشندگان ثبت‌شده پس از سال 2011 در برزیل چقدر است؟"
+                     + "|رایج‌ترین نام خانوادگی چیست؟"
+                     + "|همهٔ پیمانکاران کشورهایی را که نامشان با B شروع می‌شود انتخاب کن|همهٔ فروشندگان کشورهای آسیایی را انتخاب کن|پیمانکاران ثبت‌شده پس از 2/1/2014 را انتخاب کن"
+                     + "|10 ردیف برتر را بر اساس کل سود فیلتر کن"
+                     + "|بیشترین و کمترین مقادیر غیرصفر را در ستون‌های مقدار مشخص کن و تمرکز را روی آن‌ها بگذار"
+                     + "|مقادیر ستون‌های مقدار را دو برابر کن|3 ماه به تاریخ‌های آمریکا اضافه کن"
+                     + "|قیمت‌های فوریه در کانادا را روی 1,234.56 تنظیم کن|نام خانوادگی Smith را در همهٔ ردیف‌ها به Mallory تغییر بده"
+                     + "|داده‌های همهٔ پیمانکاران را تأییدشده کن|داده‌های همهٔ فروشندگان را تأییدنشده کن و سپس همهٔ فروشندگانی را که در تک‌تک ماه‌ها تغییر کرده‌اند انتخاب کن"
+                     + "|برزیل را برای همهٔ پیمانکاران به آلمان تغییر بده"
+                     + "|همهٔ پیمانکاران اروپا را حذف کن|همهٔ ردیف‌ها را حذف کن"
+                     + "|100 فروشنده به برلین اضافه کن|10000 پیمانکار اضافه کن و داده‌های آن‌ها، از جمله جزئیاتشان، را با مقادیر تصادفی معنادار پر کن"
+                     + "|پیمانکاران ایالات متحده را هر کدام زیر ردیف اصلی خود کپی کن|پیمانکاران برزیل را با مقادیر ردیف‌های اصلی و جزئیات خالی کپی کن"
+                     + "|فقط ویسکانسین را نمایش بده|تاریخ‌های بین 10/1/2005 و 7/6/2010 را نمایش بده|فقط نام‌های دارای دست‌کم 20 نویسه را نمایش بده|همهٔ مقادیر کمتر از -20 یا بیشتر از 40 را فیلتر و مشخص کن"
+                     + "|بر اساس ماه از ستون «از تاریخ» گروه‌بندی کن|بر اساس کل سود نزولی مرتب کن"
+                     + "|مقدار و قیمت را پنهان کن|مارس را به بخش چپ منتقل کن|واگرد کن"
+                     + "|داده‌ها را به xlsx صادر کن"
+         }
+      },
+
+   //. --- Hebrew texts ---
+   HE: {
+      Text: {
+         $ConfirmDelete: "האם למחוק את {Count>4 ? '<b>'+Math.floor(Count/4)+'</b> הקבלנים שנבחרו' : 'הקבלן <b>'+Name+'</b>'}?",
+         $Item1: "ינואר", $Item2: "פברואר", $Item3: "מרץ", $Item4: "אפריל", $Item5: "מאי", $Item6: "יוני", $Item7: "יולי", $Item8: "אוגוסט", $Item9: "ספטמבר", $Item10: "אוקטובר", $Item11: "נובמבר", $Item12: "דצמבר", 
+         $ItemA: "כמות", $ItemP:"מחיר", $ItemT:"סה״כ", $ItemV:"מאומת", $ItemCaptionC:"חודשים", $ItemCaptionC1:"ערכי חודשים", $ItemCaptionC2:"עמודות בסיס",
+         $NormalCookie: "הגדרות",
+         $Xall:"הכול", $Xverified:"מאומת", $XShown:"מוצגים", $Xcells:"תאים ב־", $Xrows:"שורות", $Xcolumns:"עמודות", $XData:"נתונים",
+         $Xnone:"ללא", $XLocation: "מיקום", $XCalls:"שיחות ל־", $XTotal:"סה״כ",   $XGain:"רווח", $XTotal2022:"סה״כ 2022", $XTotal2023:"סה״כ 2023", $XTotalGain:"סך הרווח", 
+         $Nrows:"שורות", $Ncells: "תאים", $Ndownload: "הורדה ברקע",
+         $Lweek:"שבוע", $Lmonth:"חודש", $Lquarter:"רבעון", $Lhalfyear:"חצי שנה", $Lyear:"שנה",
+   
+         $CName:"שם", $CRegion:"אזור", $CCountry:"מדינה", $CState:"מדינה או מחוז", $CPartner:"שותף", $CSince:"מתאריך", $CCalls:"שיחות ל־", $CRabat:"הנחה", $CYear:"שנה", $CSinceMonthDay:"יום התחלה", $CSinceWeekDay:"יום בשבוע להתחלה", $CSinceMonth:"חודש התחלה", $CSinceYear:"שנת התחלה",
+         $CJanuary:"ינואר", $CFebruary: "פברואר", $CMarch: "מרץ", $CApril: "אפריל", $CMay:"מאי", $CJune: "יוני", $CJuly: "יולי", $CAugust:"אוגוסט", 
+         $CSeptember: "ספטמבר", $COctober: "אוקטובר", $CNovember: "נובמבר", $CDecember: "דצמבר", 
+         $CChart:"תרשים", $CYear:"שנה", $CTotal:"סה״כ", $CAmount:"כמות", $CPrice:"מחיר", $CVerified:"מאומת",
+         $CChartIndex:"תרשים + אינדקס", $CNameYear:"שם + שנה", $CLocation: "מיקום", 
+         $CHeaders:"כותרות", $CFilters:"מסננים", $CTotals:"סיכומים", $CLanguages:"שפה",
+         $CManipulation:"פעולות", $CSettings:"הגדרות", $CGroupList:"רשימת קיבוץ", $CInformation:"מידע", $CClipboard:"לוח העתקה", $CDataSet:"ערכת נתונים",
+
+         $CentralSouthAsia: "מרכז ודרום אסיה", $EastAsia: "מזרח אסיה והאוקיינוס השקט", $EastEurope: "מזרח אירופה", $MiddleEast: "המזרח התיכון וצפון אפריקה",
+         $NorthCentralAmerica:"צפון ומרכז אמריקה", $SouthAmerica:"דרום אמריקה", $SubSaharanAfrica:"אפריקה שמדרום לסהרה", $WestEurope:"מערב אירופה",
+
+         $Armenia: "ארמניה", $Azerbaijan: "אזרבייג׳ן", $Bangladesh: "בנגלדש", $India: "הודו", $Kazakstan: "קזחסטן", $Pakistan: "פקיסטן", $SriLanka: "סרי לנקה", 
+         $Australia: "אוסטרליה", $Brunei: "ברוניי", $China: "סין", $HongKong: "הונג קונג", $Indonesia: "אינדונזיה", $Japan: "יפן", $KoreaNorth: "קוריאה הצפונית", $Malaysia: "מלזיה",
+         $Mongolia: "מונגוליה", $Myanmar: "מיאנמר", $NewZealand: "ניו זילנד", $PapuaNewGuinea: "פפואה גינאה החדשה", $Philippines: "הפיליפינים", $Singapore: "סינגפור", 
+         $SouthKorea: "קוריאה הדרומית", $Taiwan: "טאיוואן", $Thailand: "תאילנד", $Vietnam: "וייטנאם",
+         $Albania: "אלבניה", $Belarus: "בלארוס", $Bulgaria: "בולגריה", $Croatia: "קרואטיה", $CzechRepublic: "הרפובליקה הצ׳כית", $Estonia: "אסטוניה", $Hungary: "הונגריה",
+         $Latvia: "לטביה", $Lithuania: "ליטא", $Moldova: "מולדובה", $Poland: "פולין", $Romania: "רומניה", $Russia: "רוסיה", $SerbiaMontenegro: "סרביה ומונטנגרו",
+         $SlovakRepublic: "הרפובליקה הסלובקית", $Slovenia: "סלובניה", $Ukraine: "אוקראינה",
+         $Algeria: "אלג׳יריה", $Bahrain: "בחריין", $Egypt: "מצרים", $Iran: "איראן", $Iraq: "עיראק", $Israel: "ישראל", $Jordan: "ירדן", $Kuwait: "כווית", $Lebanon: "לבנון",
+         $Libya: "לוב", $Morocco: "מרוקו", $Oman: "עומאן", $Qatar: "קטר", $SaudiArabia: "ערב הסעודית", $Syria: "סוריה", $Tunisia: "תוניסיה", $UAE: "איחוד האמירויות", $Yemen: "תימן",
+         $Bahamas: "איי בהאמה", $Canada: "קנדה", $CostaRica: "קוסטה ריקה", $Cuba: "קובה", $DominicanRepublic: "הרפובליקה הדומיניקנית", $ElSalvador: "אל סלוודור", $Guatemala: "גואטמלה",
+         $Haiti: "האיטי", $Honduras: "הונדורס", $Jamaica: "ג׳מייקה", $Mexico: "מקסיקו", $Nicaragua: "ניקרגואה", $Panama: "פנמה", $TrinidadTobago: "טרינידד וטובגו", 
+         $UnitedStates: "ארצות הברית",
+         $Argentina: "ארגנטינה", $Bolivia: "בוליביה", $Brazil: "ברזיל", $Chile: "צ׳ילה", $Colombia: "קולומביה", $Ecuador: "אקוודור", $Guyana: "גיאנה", $Paraguay: "פרגוואי", $Peru: "פרו",
+         $Suriname: "סורינאם", $Uruguay: "אורוגוואי", $Venezuela: "ונצואלה",
+         $Angola: "אנגולה", $Botswana: "בוטסואנה", $BurkinaFaso: "בורקינה פאסו", $Cameroon: "קמרון", $Congo: "קונגו", $Congodr: "קונגו הדמוקרטית", $CoteIvoire: "חוף השנהב", 
+         $Ethiopia: "אתיופיה", $Gabon: "גבון", $Gambia: "גמביה", $Ghana: "גאנה", $Guinea: "גינאה", $GuineaBissau: "גינאה ביסאו", $Kenya: "קניה", $Liberia: "ליבריה",
+         $Madagascar: "מדגסקר", $Malawi: "מלאווי", $Mali: "מאלי", $Mozambique: "מוזמביק", $Namibia: "נמיביה", $Niger: "ניז׳ר", $Nigeria: "ניגריה", $Senegal: "סנגל",
+         $SierraLeone: "סיירה לאון", $Somalia: "סומליה", $SouthAfrica: "דרום אפריקה", $Sudan: "סודאן", $Tanzania: "טנזניה", $Togo: "טוגו", $Uganda: "אוגנדה", $Zambia: "זמביה",
+         $Zimbabwe: "זימבבואה",
+         $Austria: "אוסטריה", $Belgium: "בלגיה", $Cyprus: "קפריסין", $Denmark: "דנמרק", $Finland: "פינלנד", $France: "צרפת", $Germany: "גרמניה", $Greece: "יוון", $Iceland: "איסלנד",
+         $Ireland: "אירלנד", $Italy: "איטליה", $Luxembourg: "לוקסמבורג", $Malta: "מלטה", $Netherlands: "הולנד", $Norway: "נורווגיה", $Portugal: "פורטוגל", $Spain: "ספרד",
+         $Sweden: "שוודיה", $Switzerland: "שווייץ", $Turkey: "טורקיה", $UnitedKingdom: "הממלכה המאוחדת",
+
+         $AndhraPradesh: "אנדרה פרדש", $ArunachalPradesh: "ארונאצ׳ל פרדש", $Assam: "אסאם", $Bihar: "ביהר", $Chhattisgarh: "צ׳האטיסגאר", $Goa: "גואה", $Gujarat: "גוג׳ראט",
+         $Haryana: "הריאנה", $HimachalPradesh: "הימאצ׳ל פרדש", $Jharkhand: "ג׳הרקאנד", $Karnataka: "קרנאטקה", $Kerala: "קרלה", $MadhyaPradesh: "מאדהיה פרדש",
+         $Maharashtra: "מהאראשטרה", $Manipur: "מניפור", $Meghalaya: "מגהאליה", $Mizoram: "מיזורם", $Nagaland: "נאגאלנד", $Odisha: "אודישה", $Punjab: "פנג׳אב", 
+         $Rajasthan: "ראג׳סטאן", $Sikkim: "סיקים", $TamilNadu: "טאמיל נאדו", $Telangana: "טלנגאנה", $Tripura: "טריפורה", $UttarPradesh: "אוטר פרדש", $Uttarakhand: "אוטראקהאנד",
+         $WestBengal: "מערב בנגל", $AndamanandNicobarIslands: "איי אנדמן וניקובר", $Chandigarh: "צ׳אנדיגאר", $DadraandNagarHaveliandDamanandDiu: "דאדרה ונאגר האוולי ודאמאן ודיו",
+         $Delhi: "דלהי", $JammuandKashmir: "ג׳אמו וקשמיר", $Ladakh: "לדאק", $Lakshadweep: "לקשאדוויפ", $Puducherry: "פודוצ׳רי", 
+   
+         $NewSouthWales: "ניו סאות׳ ויילס", $Queensland: "קווינסלנד", $SouthAustralia: "אוסטרליה הדרומית", $Tasmania: "טסמניה", $Victoria: "ויקטוריה", $WesternAustralia: "אוסטרליה המערבית",
+         $AustralianCapitalTerritory: "טריטוריית הבירה האוסטרלית", $JervisBayTerritory: "טריטוריית מפרץ ג׳רוויס", $NorthernTerritory: "הטריטוריה הצפונית", 
+         $AustralianAntarcticTerritory: "הטריטוריה האנטארקטית האוסטרלית", $ChristmasIsland: "אי חג המולד", $CocosKeelingIslands: "איי קוקוס (קילינג)",
+         $HeardIslandandMcDonaldIslands: "האי הרד ואיי מקדונלד", $NorfolkIsland: "האי נורפוק", 
+   
+         $Anhui: "אנחווי", $Beijing: "בייג׳ינג", $Chongqing: "צ׳ונגצ׳ינג", $Fujian: "פוג׳יין", $Guangdong: "גואנגדונג", $Gansu: "גאנסו", $Guizhou: "גווייג׳ואו", $Henan: "חנאן", $Hubei: "חוביי",
+         $Hebei: "חביי", $Hainan: "חאינאן", $Heilongjiang: "חיילונגג׳יאנג", $Hunan: "חונאן", $Jilin: "ג׳ילין", $Jiangsu: "ג׳יאנגסו", $Jiangxi: "ג׳יאנגשי", $Liaoning: "ליאונינג", $Qinghai: "צ׳ינגהאי",
+         $Sichuan: "סצ׳ואן", $Shandong: "שאנדונג", $Shanghai: "שנגחאי", $Shaanxi: "שאאנשי", $Shanxi: "שאנשי", $Tianjin: "טיינג׳ין", $Yunnan: "יונאן", $Zhejiang: "ג׳ג׳יאנג",
+         $GuangxiZhuang: "גואנגשי ג׳ואנג", $InnerMongolia: "מונגוליה הפנימית", $NingxiaHui: "נינגשיה חווי", $XinjiangUyghur: "שינג׳יאנג האויגורית", $Tibet: "טיבט",
+
+         $Chubu: "צ׳ובו", $Chugoku: "צ׳וגוקו", $Hokkaido: "הוקאידו", $Kansai: "קנסאי", $Kanto: "קאנטו", $Kyushu: "קיושו", $Shikoku: "שיקוקו", $Tohoku: "טוהוקו", 
+
+         $Alberta: "אלברטה", $BritishColumbia: "קולומביה הבריטית", $Manitoba: "מניטובה", $NewBrunswick: "ניו ברנזוויק", $NewfoundlandandLabrador: "ניופאונדלנד ולברדור",
+         $NovaScotia: "נובה סקוטיה", $Ontario: "אונטריו", $PrinceEdwardIsland: "אי הנסיך אדוארד", $Quebec: "קוויבק", $Saskatchewan: "ססקצ׳ואן",
+
+         $Alabama: "אלבמה", $Alaska: "אלסקה", $Arizona: "אריזונה", $Arkansas: "ארקנסו", $California: "קליפורניה", $Colorado: "קולורדו", $Connecticut: "קונטיקט",
+         $Delaware: "דלאוור", $Florida: "פלורידה", $Georgia: "ג׳ורג׳יה", $Hawaii: "הוואי", $Idaho: "איידהו", $Illinois: "אילינוי", $Indiana: "אינדיאנה", $Iowa: "איווה", $Kansas: "קנזס",
+         $Kentucky: "קנטקי", $Louisiana: "לואיזיאנה", $Maine: "מיין", $Maryland: "מרילנד", $Massachusetts: "מסצ׳וסטס", $Michigan: "מישיגן", $Minnesota: "מינסוטה",
+         $Mississippi: "מיסיסיפי", $Missouri: "מיזורי", $Montana: "מונטנה", $Nebraska: "נברסקה", $Nevada: "נבדה", $NewHampshire: "ניו המפשייר", $NewJersey: "ניו ג׳רזי",
+         $NewMexico: "ניו מקסיקו", $NewYork: "ניו יורק", $NorthCarolina: "קרוליינה הצפונית", $NorthDakota: "דקוטה הצפונית", $Ohio: "אוהיו", $Oklahoma: "אוקלהומה", $Oregon: "אורגון",
+         $Pennsylvania: "פנסילבניה", $RhodeIsland: "רוד איילנד", $SouthCarolina: "קרוליינה הדרומית", $SouthDakota: "דקוטה הדרומית", $Tennessee: "טנסי", $Texas: "טקסס",
+         $Utah: "יוטה", $Vermont: "ורמונט", $Virginia: "וירג׳יניה", $Washington: "וושינגטון", $WestVirginia: "וירג׳יניה המערבית", $Wisconsin: "ויסקונסין", $Wyoming: "ויומינג",
+         $DistrictofColumbia: "מחוז קולומביה", $AmericanSamoa: "סמואה האמריקנית", $Guam: "גואם", $NorthernMarianaIslands: "איי מריאנה הצפוניים", $PuertoRico: "פוארטו ריקו",
+         $USVirginIslands: "איי הבתולה של ארה״ב",
+
+         $Acre: "אקרי", $Alagoas: "אלגואס", $Amapa: "אמאפה", $Amazonas: "אמזונאס", $Bahia: "באהיה", $Ceara: "סיארה", $DistritoFederal: "המחוז הפדרלי", $EspiritoSanto: "אספיריטו סנטו",
+         $Goias: "גויאס", $Maranhao: "מרניאו", $MatoGross: "מאטו גרוסו", $MatoGrossodoSul: "מאטו גרוסו דו סול", $MinasGerais: "מינאס ז׳ראיס", $Para: "פארה", $Paraiba: "פאראיבה",
+         $Parana: "פרנה", $Pernambuco: "פרנמבוקו", $Piaui: "פיאאוי", $RiodeJaneiro: "ריו דה ז׳ניירו", $RiodoNort: "ריו גראנדה דו נורטה", $RiodoSul: "ריו גראנדה דו סול", $Rondonia: "רונדוניה",
+         $Roraima: "רוריימה", $SantaCatarina: "סנטה קטרינה", $SaoPaulo: "סאו פאולו", $Sergipe: "סרז׳יפה", $Tocantins: "טוקנטינס", 
+
+         $Alsace: "אלזס", $Aquitaine: "אקיטן", $Auvergne: "אוברן", $Brittany: "ברטאן", $Burgundy: "בורגון", $CentreValdeLoire: "סאנטר־ואל דה לואר", $ChampagneArdenne: "שמפאן־ארדן",
+         $FrancheComte: "פראנש־קונטה", $IledeFrance: "איל־דה־פראנס", $LanguedocRoussillon: "לנגדוק־רוסיון", $Limousin: "לימוזן", $Lorraine: "לורן", $LowerNormandy: "נורמנדי תחתית",
+         $MidiPyrenees: "מידי־פירנה", $NordPasdeCalais: "נור־פה־דה־קאלה", $PaysdelaLoire: "פיי דה לה לואר", $Picardy: "פיקרדי", $PoitouCharentes: "פואטו־שאראנט",
+         $ProvenceAlpesCotedAzur: "פרובאנס־אלפ־קוט ד׳אזור", $RhoneAlpes: "רון־אלפ", $UpperNormandy: "נורמנדי עילית", 
+   
+         $BadenWurttemberg: "באדן־וירטמברג", $Bavaria: "בוואריה", $Berlin: "ברלין", $Brandenburg: "ברנדנבורג", $Bremen: "ברמן", $Hamburg: "המבורג", $Hesse: "הסן",
+         $LowerSaxony: "סקסוניה התחתונה", $MecklenburgWesternPomerania: "מקלנבורג־מערב פומרניה", $NorthRhineWestphalia: "נורדריין־וסטפאליה", 
+         $RhinelandPalatinate: "ריינלנד־פפאלץ", $Saarland: "חבל הסאר", $Saxony: "סקסוניה", $SaxonyAnhalt: "סקסוניה־אנהלט", $SchleswigHolstein: "שלזוויג־הולשטיין", $Thuringia: "תורינגיה",
+
+         $Abruzzo: "אברוצו", $AostaValley: "ואל ד׳אוסטה", $Apulia: "פוליה", $Basilicata: "בזיליקטה", $Calabria: "קלבריה", $Campania: "קמפניה", $EmiliaRomagna: "אמיליה־רומאניה",
+         $FriuliVeneziaGiulia: "פריולי־ונציה ג׳וליה", $Lazio: "לאציו", $Liguria: "ליגוריה", $Lombardy: "לומברדיה", $Marche: "מארקה", $Molise: "מוליזה", $Piedmont: "פיימונטה",
+         $Sardinia: "סרדיניה", $Sicily: "סיציליה", $TrentinoSouthTyrol: "טרנטינו־דרום טירול", $Tuscany: "טוסקנה", $Umbria: "אומבריה", $Veneto: "ונטו", 
+
+         $Andalusia: "אנדלוסיה", $Aragon: "אראגון", $Asturias: "אסטוריאס", $BalearicIslands: "האיים הבלאריים", $BasqueCountry: "חבל הבסקים", $CanaryIslands: "האיים הקנריים",
+         $Cantabria: "קנטבריה", $CastileandLeon: "קסטיליה ולאון", $CastillaLaMancha: "קסטיליה־לה מנצ׳ה", $Catalonia: "קטלוניה", $CommunityofMadrid: "קהילת מדריד",
+         $Extremadura: "אקסטרמדורה", $Galicia: "גליסיה", $LaRioja: "לה ריוחה", $Navarre: "נווארה", $RegionofMurcia: "אזור מורסיה", $ValencianCommunity: "קהילת ולנסיה",
+         $Ceuta: "סאוטה", $Melilla: "מלייה",
+
+         $England: "אנגליה", $NorthernIreland: "צפון אירלנד", $Scotland: "סקוטלנד", $Wales: "ויילס"
+         },
+
+      AI: {
+         //. Sample input history to demonstrate various AI tasks
+         InputHistory: "|-|מה יש בטבלה?|מה אפשר לעשות?|מה יש בתרשימים?"
+                     + "|מה הערך הגבוה ביותר בכמות בינואר?|מה המחיר הגבוה ביותר?"
+                     + "|מה המחיר הכולל של הספקים שנרשמו אחרי שנת 2011 בברזיל?"
+                     + "|מה שם המשפחה הנפוץ ביותר?"
+                     + "|בחר את כל הקבלנים ממדינות ששמן מתחיל ב־B|בחר את כל הספקים ממדינות באסיה|בחר קבלנים שנרשמו אחרי 2/1/2014"
+                     + "|סנן את 10 השורות המובילות לפי סך הרווח"
+                     + "|סמן ומקד את הערכים הגבוהים והנמוכים ביותר שאינם אפס בעמודות הכמות"
+                     + "|הכפל את הערכים בעמודות הכמות|הוסף 3 חודשים לתאריכים באמריקה"
+                     + "|הגדר את מחירי פברואר בקנדה ל־1,234.56|שנה בכל השורות את שם המשפחה Smith לשם המשפחה Mallory"
+                     + "|סמן את נתוני כל הקבלנים כמאומתים|סמן את נתוני כל הספקים כלא מאומתים ואז בחר את כל הספקים ששונו בכל חודש"
+                     + "|שנה את ברזיל לגרמניה אצל כל הקבלנים"
+                     + "|מחק את כל הקבלנים מאירופה|מחק את כל השורות"
+                     + "|הוסף 100 ספקים לברלין|הוסף 10000 קבלנים ומלא את נתוניהם בערכים אקראיים הגיוניים, כולל הפרטים שלהם"
+                     + "|העתק קבלנים מארצות הברית, כל אחד מתחת למקור שלו|העתק קבלנים מברזיל, עם ערכים בשורות הראשיות ופרטים ריקים"
+                     + "|הצג רק את ויסקונסין|הצג תאריכים בין 10/1/2005 ל־7/6/2010|הצג רק שמות באורך 20 תווים לפחות|סנן וסמן את כל הכמויות הקטנות מ־-20 או הגדולות מ־40"
+                     + "|קבץ לפי חודש מהעמודה ״מתאריך״|מיין לפי סך הרווח בסדר יורד"
+                     + "|הסתר כמות ומחיר|העבר את מרץ למקטע השמאלי|בטל את הפעולה"
+                     + "|ייצא נתונים ל־xlsx"
+         }
       }
    }
 }

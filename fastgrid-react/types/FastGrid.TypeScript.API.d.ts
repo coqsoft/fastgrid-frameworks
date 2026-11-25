@@ -348,6 +348,8 @@ interface TGrid {
    MergeBooks(grid: TGrid): void;
    Translate(text: string, type?: number, separator?: string, param?: object): string;
    SetLanguage(language: string): number|boolean;
+   ToDigits(text: string): string;
+   FromDigits(text: string): string;
    GetPartAttr(part: string, attr: string, set?: string): any;
    SetPartAttr(part: string, attr: string, value: any, set?: string): number|boolean;
    AddPart(part: object|string, next?: string|number): string;

@@ -24,17 +24,18 @@ const src = () => ({ //. All layout and data for grid. Defined as function () =>
       //. --- subtract Total1 - Total2 values to Total3 row ---
       monthsubtract: function(G,row,col){
          var r2 = G.GetPrev(row), r1 = G.GetPrev(r2), sep = G.Format.DecimalSeparator, rep = new RegExp("[^\\d\\;\\-\\"+sep+"]","g");
-         var v1 = G.GetValue(r1,col).replace(rep,"").replace(rep,"").split(";"), v2 = G.GetValue(r2,col).replace(/\#\w+/g,"").replace(rep,"").split(";");
+         var v1 = G.FromDigits(G.GetValue(r1,col)).replace(rep,"").replace(rep,"").split(";");
+         var v2 = G.FromDigits(G.GetValue(r2,col)).replace(/\#\w+/g,"").replace(rep,"").split(";");
          if(sep!="."){ v1[0] = v1[0].replace(sep,".");  v1[1] = v1[1].replace(sep,".");  v2[0] = v2[0].replace(sep,".");  v2[1] = v2[1].replace(sep,"."); }
          return G.Text["$Xall"]+": <b style='color:"+(v1[0]-v2[0]>0?G.Colors.blue:G.Colors.red)+"'>"+G.NumberToString(v1[0]-v2[0],",0.##")+"</b>; "+G.Text["$Xverified"]
-               + ": <b style='color:"+(v1[1]-v2[1]>0?G.Colors.blue:G.Colors.red)+"'>"+G.NumberToString(v1[1]-v2[1],",0.##")+"</b>";
+              + ": <b style='color:"+(v1[1]-v2[1]>0?G.Colors.blue:G.Colors.red)+"'>"+G.NumberToString(v1[1]-v2[1],",0.##")+"</b>";
          },
 
       //. --- sums all and verified results in Group and Total rows to Total column ---
       fulltotal: function(G,row,col,pos){
          var sep = G.Format.DecimalSeparator, rep = new RegExp("[^\\d\\;\\-\\"+sep+"]","g"), dec = sep=='.';
          for(var i=1,sum=0;i<=12;i++){
-            var v = G.GetValue(row,G.Cols["A"+i]).replace(/\#\w+/g,"").replace(rep,"").split(";"); 
+            var v = G.FromDigits(G.GetValue(row,G.Cols["A"+i])).replace(/\#\w+/g,"").replace(rep,"").split(";"); 
             sum += dec ? v[pos]-0 : v[pos].replace(sep,".")-0;
             }
          return sum;
@@ -45,15 +46,15 @@ const src = () => ({ //. All layout and data for grid. Defined as function () =>
          var ra = G.Count("Body"), rv = G.Count("Body",15), ca = 0, cv = 0, f = Math.round(G.IconZoom*11), br = "<br/>"; if(f>15) f = 15; else if(f<11){ f = 11; br = ""; }
          for(var c in G.Cols){ ca++; if(!G.IsHidden(G.Cols[c])) cv++; }
          return "<span style='font-size:"+f+"px;line-height:"+(f+1)+"px;display:inline-block;text-align:left;'>"+G.Text["$XShown"]+" <b>"+G.NumberToString(rv*160/4,",0")
-               + (rv!=ra?"</b> / <b>"+G.NumberToString(ra*160/4,",0"):"")+"</b> "+G.Text["$Xcells"]+br+"<b>"+G.NumberToString(rv,",0")+(ra!=rv?"</b> / <b>"+G.NumberToString(ra,",0"):"")
-               + "</b> "+G.Text["$Xrows"]+", <b>"+cv+(cv!=ca?"</b> / <b>"+ca:"")+"</b> "+G.Text["$Xcolumns"]+"</span>&nbsp; &nbsp;";
+              + (rv!=ra?"</b> / <b>"+G.NumberToString(ra*160/4,",0"):"")+"</b> "+G.Text["$Xcells"]+br+"<b>"+G.NumberToString(rv,",0")+(ra!=rv?"</b> / <b>"+G.NumberToString(ra,",0"):"")
+              + "</b> "+G.Text["$Xrows"]+", <b>"+G.ToDigits(cv)+(cv!=ca?"</b> / <b>"+G.ToDigits(ca):"")+"</b> "+G.Text["$Xcolumns"]+"</span>";
          },
 
       //. --- Returns 12 values for chart ---
       GetChartValues: function(G,row,pos){
          while(pos--&&row) row = G.GetNext(row); if(!row) return [];
          var A = [], grp = row.D.Group || row.D.id=="Total", sep = G.Format.DecimalSeparator, rep = new RegExp("[^\\d\\;\\-\\"+sep+"]|;.*$","g"), dec = sep=='.';
-         if(grp) for(var i=1;i<=12;i++){ var v = (G.GetValue(row,G.Cols["A"+i])+"").replace(rep,""); A[A.length] = dec ? v-0 : v.replace(sep,".")-0; }
+         if(grp) for(var i=1;i<=12;i++){ var v = (G.FromDigits(G.GetValue(row,G.Cols["A"+i])+"")).replace(rep,""); A[A.length] = dec ? v-0 : v.replace(sep,".")-0; }
          else for(var i=1;i<=12;i++) A[A.length] = G.GetValue(row,G.Cols["T"+i]);
          return A;
          },
@@ -304,8 +305,8 @@ const src = () => ({ //. All layout and data for grid. Defined as function () =>
          var Cols3 = [
             { id:"Chart", type:"image", 
                description: "XY chart vertically spanned on all three rows. On X axis are 12 months, on Y axis are shown values from the 12 Total columns and three rows. "
-                           + "The Total values from 2023 are displayed as green bars from X axis up. The Total values from 2022 are displayed as gray bars. "
-                           + "The Total values from the third row Gain are displayed as points, positive values as blue above X axis and negative as red points below X axis." },
+                          + "The Total values from 2023 are displayed as green bars from X axis up. The Total values from 2022 are displayed as gray bars. "
+                          + "The Total values from the third row Gain are displayed as points, positive values as blue above X axis and negative as red points below X axis." },
             { id:"Year", type:"string", description:"Shows the detail row name '2023' in the first row, '2022' in the second row and 'Gain' in the third row" },
             { id:"Total", type:"float", description:"Summary of all 12 Total values in given row" }
             ];
@@ -628,9 +629,9 @@ const src = () => ({ //. All layout and data for grid. Defined as function () =>
       Verified:  { D:"Margin", DA:"V", Item1:"V", Width:65, ResizeWidth:1, DWidth:1, UCode:0x0B, FE:1+2+256, Type:"Bool", V: { Header:"$CVerified" }, A: { Total: { Type:"String" } } },
       },
    LeftCols:[
-      { id:"Index", D:"Index", Block:"Panel", Width:68, Button:"", SortIcons:0, NoExport:0, Item:"", Item2:"$CChartIndex", ItemSearch2:"Index", NoMove:1, Fix:1, FE:258 },
+      { id:"Index", D:"Index", Block:"Panel", Width:68, Button:"", SortIcons:0, NoExport:0, Item:"", Item2:"$CChartIndex", ItemSearch2:"Index", NoMove:1, Fix:1, FE:258, Translate:17 },
       { id:"Panel", D:"Panel", Block:"Panel", DA:"Panel", LeftIcons:"SelectRow,DeleteRow,AddRow", IconWrap:1, Width:62, Item2:"$CChartIndex", ItemSearch2:"Panel", NoMove:1, Fix:1, NoPrint:0, NoExport:1, NoSearch:1 },
-      { id:"Name", UCode:0xD1, UIndex:6, Type:"String", Width:250, ExportWidth:150, MinWidth:10, Names:1, Item2:"$CNameYear", ItemSearch2:"Name", NoMove:3, Fix:1 } //. Surname is in Texts, first name in UTexts
+      { id:"Name", UCode:0xD1, UIndex:6, Type:"String", Width:255, ExportWidth:150, MinWidth:10, Names:1, Item2:"$CNameYear", ItemSearch2:"Name", NoMove:3, Fix:1 } //. Surname is in Texts, first name in UTexts
       ],
    LeftCols$2:[
       { id:"Chart", D:"Margin", Block:"Chart", DA:"C", Width:125, Color:"marginbody", RowBorder:"marginbody", ColBorder:"marginbody", Item2:"$CChartIndex", ItemSearch2:"Chart", NoColor:7,
@@ -640,7 +641,7 @@ const src = () => ({ //. All layout and data for grid. Defined as function () =>
          OnTip: "ShowTip(0,Grid.Script.GetChartTip(Grid,Row,Col,Event.Button)),1", Tip:"dummy", NoEdit:1, NoSortBy:1, NoSearch:1, NoMove:3, Fix:1, UseResize:2, ResizeHeight:1, ShortColBorder:0
          },
       { id:"Year",  D:"Number", Block:"Year", DA:"Year",  Width:128, Type:"String", Align:0, Format:"", ExportFormat:"", ExportWidth:63, Item2:"$CNameYear", ItemSearch2:"Year", NoGroupBy:1, NoEdit:1, NoMove:1, Fix:1 },
-      { id:"Total", D:"Number", Block:"Year", DA:"Total", Width:112, Formula:"T1+T2+T3+T4+T5+T6+T7+T8+T9+T10+T11+T12", TextColor:"green", Item2:"$CNameYear", ItemSearch2:"Total", NoEdit:1, NoMove:1, Fix:1 }
+      { id:"Total", D:"Number", Block:"Year", DA:"Total", Width:117, Formula:"T1+T2+T3+T4+T5+T6+T7+T8+T9+T10+T11+T12", TextColor:"green", Item2:"$CNameYear", ItemSearch2:"Total", NoEdit:1, NoMove:1, Fix:1 }
       ],
    Cols: [
       { id:"Region", D:"Location", UCode:0x08, UIndex:0.5, ClearCells:"Country,State", Width:200, ExportWidth:230, DA:"Region", Translate:3,
@@ -738,7 +739,7 @@ const src = () => ({ //. All layout and data for grid. Defined as function () =>
       { id:"Toolbar4", Cells:[ "Settings","Filter","Sort","TipAction","Lock" ], Item:"$CSettings" }, 
       "Layout", "Styles", 
       { id:"DataSet", Item:"$CDataSet", Cells: [ { id:"Data", D:"List", MinWidth:275, Width:0, Align:1, Label:"$XData", TextColor:"blue", UseResize:2,
-         Formula: "Grid.GetSources(1)[1].match(/SetsData\\d+\\w*/)[0]", DisabledFormula:"Grid.IsLocked('Data')", Translate:3, 
+         Formula: "Grid.GetSources(1)[1].match(/SetsData\\d+\\w*/)[0]", DisabledFormula:"Grid.IsLocked('Data')", Translate:19, 
          List: { 
             SetsData10: { Value: "40 $Nrows / 1,600 $Ncells (2 kB)", Text:"40 $Nrows /            1,600 $Ncells     (2 kB)" }, 
             SetsData100: { Value: "400 $Nrows / 16,000 $Ncells (9 kB)", Text:"400 $Nrows /          16,000 $Ncells     (9 kB)" }, 

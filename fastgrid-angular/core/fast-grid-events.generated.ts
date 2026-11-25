@@ -1891,6 +1891,9 @@ export abstract class FastGridEventBindings {
    Fix(item: TRow|TCol, body?: string, head?: string) : number|boolean;
    Fix(...args:any[]) : any { const grid = this.requireGrid(); return (grid.Fix as any).apply(grid,args); }
 
+   FromDigits(text: string) : string;
+   FromDigits(...args:any[]) : any { const grid = this.requireGrid(); return (grid.FromDigits as any).apply(grid,args); }
+
    FullRepaint(part?: any) : void;
    FullRepaint(...args:any[]) : any { const grid = this.requireGrid(); return (grid.FullRepaint as any).apply(grid,args); }
 
@@ -2641,6 +2644,9 @@ export abstract class FastGridEventBindings {
 
    SwitchDraggingToolbars(all?: number|boolean) : void;
    SwitchDraggingToolbars(...args:any[]) : any { const grid = this.requireGrid(); return (grid.SwitchDraggingToolbars as any).apply(grid,args); }
+
+   ToDigits(text: string) : string;
+   ToDigits(...args:any[]) : any { const grid = this.requireGrid(); return (grid.ToDigits as any).apply(grid,args); }
 
    Translate(text: string, type?: number, separator?: string, param?: object) : string;
    Translate(...args:any[]) : any { const grid = this.requireGrid(); return (grid.Translate as any).apply(grid,args); }
